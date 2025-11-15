@@ -31,6 +31,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Install pre-commit hooks
+        run: |
+          pip install pre-commit
+          pre-commit install --install-hooks
+          pre-commit run --all-files || true
+
       - name: Run ruff (lint)
         run: ruff check . || true
 
@@ -40,7 +46,8 @@ jobs:
       - name: Run mypy
         run: |
           if command -v mypy >/dev/null 2>&1; then
-            mypy . || true
+            # Avoid 'module found twice' by setting explicit package base
+            python -m mypy --explicit-package-bases . || true
           else
             echo "mypy not installed"
           fi
@@ -54,6 +61,13 @@ jobs:
         with:
           name: coverage-xml
           path: coverage.xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: coverage.xml
+          flags: unit
+          fail_ci_if_error: false
 
   frontend-build:
     runs-on: ubuntu-latest
