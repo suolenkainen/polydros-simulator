@@ -1,5 +1,7 @@
 # Polydros — TCG Economy Simulator (Scaffold)
 
+[![codecov](https://codecov.io/gh/suolenkainen/polydros-simulator/branch/main/graph/badge.svg)](https://codecov.io/gh/suolenkainen/polydros-simulator)
+
 This repository contains an initial scaffold for the Polydros economy
 simulation. It provides a deterministic, seedable Python simulation core and
 a minimal FastAPI backend to run it.
@@ -52,6 +54,11 @@ pytest --cov=simulation --cov=backend --cov-report=term
 ```
 
 CI: a basic GitHub Actions workflow runs linters and tests and uploads a coverage report. See `.github/workflows/ci.yml`.
+
+Coverage badge and report
+-------------------------
+
+This repository uploads coverage reports to Codecov from CI. The badge above reflects the `main` branch coverage; if you want to target a different branch update the badge URL.
 
 Notes:
 - The simulation engine is in `simulation/engine.py` and supports a seeded run.
