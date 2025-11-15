@@ -4,13 +4,14 @@ This module provides a small, deterministic runner used by the backend and
 unit tests. It follows the project's requirements for RNG seeding and
 reproducibility.
 """
+
+import random
 from dataclasses import dataclass
 from typing import Dict, List
-import random
 
-from .cards import sample_card_pool
 from .booster import open_booster
-from .world import WorldState, Player
+from .cards import sample_card_pool
+from .world import Player, WorldState
 
 
 @dataclass
@@ -58,8 +59,33 @@ def run_simulation(config: SimulationConfig) -> Dict:
             player.prism += 1.0
         timeseries.append({"tick": t, **world.summary()})
 
+    # Build a serializable players summary to expose to the frontend/backend.
+    players_summary = []
+    for _pid, player in world.players.items():
+        # include a few sample cards (card ids and names) to keep payload small
+        sample_cards = []
+        for ci in player.collection[:5]:
+            sample_cards.append(
+                {
+                    "card_id": ci.ref.card_id,
+                    "name": ci.ref.name,
+                    "rarity": ci.ref.rarity.value,
+                    "is_hologram": ci.is_hologram,
+                }
+            )
+
+        players_summary.append(
+            {
+                "id": player.id,
+                "prism": player.prism,
+                "collection_count": len(player.collection),
+                "sample_cards": sample_cards,
+            }
+        )
+
     return {
         "config": config.__dict__,
         "timeseries": timeseries,
         "final": world.summary(),
+        "players": players_summary,
     }

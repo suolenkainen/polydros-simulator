@@ -1,0 +1,27 @@
+[tool.ruff]
+line-length = 88
+exclude = ["frontend", ".venv", "dist", "node_modules"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "C90", "ANN", "B", "S"]
+per-file-ignores = { "simulation/tests/*" = ["S101", "ANN201"], "simulation/engine.py" = ["S311"] }
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+warn_unused_configs = true
+
+[tool.coverage.run]
+branch = true
+source = ["simulation", "backend"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

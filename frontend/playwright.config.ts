@@ -21,14 +21,14 @@ export default defineConfig({
       command: 'python -m uvicorn backend.main:app --reload --port 8000',
       port: 8000,
       cwd: '..',
-      reuseExistingServer: false,
+      reuseExistingServer: true,
     },
     // Start frontend (vite) on fixed port
     {
       command: 'npm run dev -- --port 5173',
       port: 5173,
       cwd: '.',
-      reuseExistingServer: false,
+      reuseExistingServer: true,
     },
   ],
 })

@@ -31,6 +31,28 @@ uvicorn backend.main:app --reload
 pytest -q
 ```
 
+QA, linters and coverage
+------------------------
+
+Run linters and type checks locally:
+
+```cmd
+python -m venv .venv
+.\.venv\Scripts\activate
+pip install -r requirements.txt
+ruff check .
+black --check .
+mypy .
+```
+
+Run tests with coverage:
+
+```cmd
+pytest --cov=simulation --cov=backend --cov-report=term
+```
+
+CI: a basic GitHub Actions workflow runs linters and tests and uploads a coverage report. See `.github/workflows/ci.yml`.
+
 Notes:
 - The simulation engine is in `simulation/engine.py` and supports a seeded run.
 - This scaffold focuses on economy-only logic and deterministic behavior.

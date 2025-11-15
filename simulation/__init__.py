@@ -2,6 +2,7 @@
 
 Expose high-level API here for convenience.
 """
-from .engine import run_simulation, SimulationConfig
+
+from .engine import SimulationConfig, run_simulation
 
 __all__ = ["run_simulation", "SimulationConfig"]

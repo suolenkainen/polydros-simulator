@@ -4,7 +4,8 @@ This module defines simple, serializable dataclasses and enums used across the
 simulation. Keep these lightweight and documented so the rest of the engine
 can remain modular.
 """
-from dataclasses import dataclass, field
+
+from dataclasses import dataclass
 from enum import Enum
 from typing import Optional
 
@@ -27,6 +28,7 @@ class CardRef:
         quality_score: float used by demand heuristics (higher = more desirable)
         pack_weight: relative weight in booster selection
     """
+
     card_id: str
     name: str
     rarity: Rarity
@@ -40,6 +42,7 @@ class CardInstance:
 
     This represents a physical/virtual card a player can hold, sell, or trade.
     """
+
     ref: CardRef
     is_hologram: bool = False
     is_reverse_holo: bool = False
@@ -52,4 +55,8 @@ class CardInstance:
         If `quality_score` is set use it; otherwise fall back to ref. This keeps
         instance-level variation (e.g., better printings) possible.
         """
-        return float(self.quality_score if self.quality_score is not None else self.ref.quality_score)
+        return float(
+            self.quality_score
+            if self.quality_score is not None
+            else self.ref.quality_score
+        )

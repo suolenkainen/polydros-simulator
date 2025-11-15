@@ -3,6 +3,7 @@
 Keep these simple: players have Prism balance and collections. For the skeleton
 we only model opening packs and tracking counts.
 """
+
 from dataclasses import dataclass, field
 from typing import Dict, List
 
@@ -15,7 +16,7 @@ class Player:
     prism: float = 0.0
     collection: List[CardInstance] = field(default_factory=list)
 
-    def add_cards(self, cards: List[CardInstance]):
+    def add_cards(self, cards: List[CardInstance]) -> None:
         self.collection.extend(cards)
 
 

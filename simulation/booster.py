@@ -3,11 +3,11 @@
 Provides functions to sample packs from a card pool using a provided random
 .Random instance to guarantee determinism when seeded.
 """
-from typing import List, Sequence
+
 import random
+from typing import List, Sequence
 
-from .types import CardRef, CardInstance, Rarity
-
+from .types import CardInstance, CardRef, Rarity
 
 DEFAULT_PACK_TEMPLATE = {
     Rarity.COMMON: 7,
@@ -56,7 +56,9 @@ def open_booster(pool: Sequence[CardRef], rng: random.Random) -> List[CardInstan
             # replace in place
             for idx, inst in enumerate(instances):
                 if inst is rares[replace_idx]:
-                    instances[idx] = CardInstance(ref=new_ref, is_hologram=rng.random() < 0.05)
+                    instances[idx] = CardInstance(
+                        ref=new_ref, is_hologram=rng.random() < 0.05
+                    )
                     break
 
     return instances
