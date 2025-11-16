@@ -15,6 +15,39 @@ from .cards import large_card_pool
 from .world import Agent, Event, WorldState
 
 
+def calculate_card_price(card_ref) -> float:
+    """Calculate market price for a card based on rarity, frequency, and quality.
+    
+    Price calculation:
+    - Rarity multiplier: increases price for rarer cards
+    - Appearance/pack_weight: lower appearance = higher price (scarcity premium)
+    - Quality: higher quality increases price
+    
+    Formula: base_price * (rarity_mult * scarcity_mult * quality_mult)
+    """
+    # Rarity multipliers
+    rarity_multipliers = {
+        "Common": 1.0,
+        "Uncommon": 1.5,
+        "Rare": 3.0,
+        "Mythic": 8.0,
+        "Player": 5.0,
+        "Alternate Art": 6.0,
+    }
+    rarity_mult = rarity_multipliers.get(card_ref.rarity.value, 1.0)
+    
+    # Scarcity multiplier based on pack_weight (appearance frequency)
+    # Lower pack_weight = rarer = higher price
+    scarcity_mult = max(0.5, 100.0 / max(card_ref.pack_weight, 1.0))
+    
+    # Quality multiplier (scales around 1.0)
+    # quality_score typically 0-100, normalize to price multiplier
+    quality_mult = 1.0 + (card_ref.quality_score - 50.0) / 100.0
+    quality_mult = max(0.5, min(2.0, quality_mult))  # clamp between 0.5 and 2.0
+    
+    return card_ref.base_price * rarity_mult * scarcity_mult * quality_mult
+
+
 @dataclass
 class SimulationConfig:
     seed: int = 42
@@ -126,11 +159,11 @@ def run_simulation(config: SimulationConfig) -> Dict:
                 {
                     "card_id": ci.ref.card_id,
                     "name": ci.ref.name,
+                    "color": ci.ref.color,
                     "rarity": ci.ref.rarity.value,
                     "is_hologram": ci.is_hologram,
-                    "is_reverse_holo": ci.is_reverse_holo,
-                    "is_alt_art": ci.is_alt_art,
                     "quality_score": ci.effective_quality(),
+                    "price": calculate_card_price(ci.ref),
                 }
             )
 

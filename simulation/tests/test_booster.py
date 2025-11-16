@@ -34,7 +34,7 @@ def test_open_booster_mythic_upgrade() -> None:
 def test_cardinstance_effective_quality() -> None:
     from simulation.types import CardRef, CardInstance, Rarity
 
-    ref = CardRef("X001", "Test", Rarity.COMMON, quality_score=1.5)
+    ref = CardRef("X001", "Test", "Ruby", Rarity.COMMON, quality_score=1.5)
     ci = CardInstance(ref=ref, quality_score=None)
     assert ci.effective_quality() == 1.5
     ci2 = CardInstance(ref=ref, quality_score=2.2)
@@ -46,9 +46,9 @@ def test_open_booster_replaces_rare_with_mythic() -> None:
 
     # small custom pool with at least one common, one rare and one mythic
     pool = [
-        CardRef("C1", "Common", Rarity.COMMON, quality_score=0.5, pack_weight=1.0),
-        CardRef("R1", "Rare", Rarity.RARE, quality_score=2.0, pack_weight=1.0),
-        CardRef("M1", "Mythic", Rarity.MYTHIC, quality_score=5.0, pack_weight=0.1),
+        CardRef("C1", "Common", "Ruby", Rarity.COMMON, quality_score=0.5, pack_weight=1.0),
+        CardRef("R1", "Rare", "Sapphire", Rarity.RARE, quality_score=2.0, pack_weight=1.0),
+        CardRef("M1", "Mythic", "Emerald", Rarity.MYTHIC, quality_score=5.0, pack_weight=0.1),
     ]
 
     class FakeRNG2:

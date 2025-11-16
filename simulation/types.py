@@ -16,6 +16,7 @@ class Rarity(str, Enum):
     RARE = "Rare"
     MYTHIC = "Mythic"
     PLAYER = "Player"
+    ALTERNATE_ART = "Alternate Art"
 
 
 @dataclass(frozen=True)
@@ -25,16 +26,20 @@ class CardRef:
     Attributes:
         card_id: unique identifier (str)
         name: display name
+        color: card color (Ruby, Sapphire, etc.)
         rarity: one of Rarity
         quality_score: float used by demand heuristics (higher = more desirable)
         pack_weight: relative weight in booster selection
+        base_price: base market price from card data
     """
 
     card_id: str
     name: str
+    color: str
     rarity: Rarity
     quality_score: float = 1.0
     pack_weight: float = 1.0
+    base_price: float = 1.0
 
 
 @dataclass
@@ -46,8 +51,6 @@ class CardInstance:
 
     ref: CardRef
     is_hologram: bool = False
-    is_reverse_holo: bool = False
-    is_alt_art: bool = False
     quality_score: Optional[float] = None
 
     def effective_quality(self) -> float:

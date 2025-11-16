@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react'
 type Card = {
   card_id: string
   name: string
+  color: string
   rarity: string
   is_hologram: boolean
-  is_reverse_holo: boolean
-  is_alt_art: boolean
   quality_score: number
+  price: number
 }
 
 type InventoryData = {
@@ -27,7 +27,8 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
   const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [filterRarity, setFilterRarity] = useState<string>('all')
-  const [sortBy, setSortBy] = useState<'name' | 'rarity' | 'quality'>('name')
+  const [filterColor, setFilterColor] = useState<string>('all')
+  const [sortBy, setSortBy] = useState<'name' | 'rarity' | 'quality' | 'price'>('name')
 
   useEffect(() => {
     if (!agentId) {
@@ -90,6 +91,9 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
   if (filterRarity !== 'all') {
     displayCards = displayCards.filter((c) => c.rarity === filterRarity)
   }
+  if (filterColor !== 'all') {
+    displayCards = displayCards.filter((c) => c.color === filterColor)
+  }
   if (searchTerm) {
     displayCards = displayCards.filter((c) => c.name.toLowerCase().includes(searchTerm.toLowerCase()))
   }
@@ -107,6 +111,8 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
     displayCards = [...displayCards].sort((a, b) => (rarityOrder[a.rarity] ?? 5) - (rarityOrder[b.rarity] ?? 5))
   } else if (sortBy === 'quality') {
     displayCards = [...displayCards].sort((a, b) => b.quality_score - a.quality_score)
+  } else if (sortBy === 'price') {
+    displayCards = [...displayCards].sort((a, b) => b.price - a.price)
   }
 
   // Count cards by rarity
@@ -143,12 +149,25 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
           <option value="Uncommon">Uncommon</option>
           <option value="Common">Common</option>
           <option value="Player">Player</option>
+          <option value="Alternate Art">Alternate Art</option>
         </select>
 
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value as 'name' | 'rarity' | 'quality')} className="sort-select">
+        <select value={filterColor} onChange={(e) => setFilterColor(e.target.value)} className="filter-select">
+          <option value="all">All Colors</option>
+          {Array.from(new Set(inventory.cards.map((c) => c.color)))
+            .sort()
+            .map((color) => (
+              <option key={color} value={color}>
+                {color}
+              </option>
+            ))}
+        </select>
+
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value as 'name' | 'rarity' | 'quality' | 'price')} className="sort-select">
           <option value="name">Sort by Name</option>
           <option value="rarity">Sort by Rarity</option>
           <option value="quality">Sort by Quality</option>
+          <option value="price">Sort by Price</option>
         </select>
       </div>
 
@@ -161,10 +180,10 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
               <tr>
                 <th>Name</th>
                 <th>Rarity</th>
+                <th>Color</th>
                 <th>Quality</th>
                 <th>Holo</th>
-                <th>Reverse Holo</th>
-                <th>Alt Art</th>
+                <th>Price</th>
               </tr>
             </thead>
             <tbody>
@@ -172,10 +191,10 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
                 <tr key={idx} className={`rarity-row-${card.rarity.toLowerCase()}`}>
                   <td className="card-name">{card.name}</td>
                   <td className={`rarity rarity-${card.rarity.toLowerCase()}`}>{card.rarity}</td>
+                  <td className="card-color">{card.color}</td>
                   <td className="quality">{card.quality_score.toFixed(2)}</td>
                   <td className="attribute">{card.is_hologram ? '✓' : '—'}</td>
-                  <td className="attribute">{card.is_reverse_holo ? '✓' : '—'}</td>
-                  <td className="attribute">{card.is_alt_art ? '✓' : '—'}</td>
+                  <td className="card-price">{card.price.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>

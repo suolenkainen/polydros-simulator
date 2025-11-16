@@ -36,9 +36,11 @@ def _make_cardref(d: Dict) -> CardRef:
     return CardRef(
         d["id"],
         d["name"],
+        d["color"],
         rarity,
         quality_score=float(d.get("quality_score", 1.0)),
         pack_weight=float(d.get("pack_weight", 1.0)),
+        base_price=float(d.get("base_price", 1.0)),
     )
 
 

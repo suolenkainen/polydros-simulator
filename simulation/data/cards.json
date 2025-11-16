@@ -12,7 +12,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 2.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C002",
@@ -27,7 +28,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 2.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C003",
@@ -42,7 +44,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 1.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C004",
@@ -57,7 +60,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C005",
@@ -72,7 +76,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U006",
@@ -87,7 +92,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 2.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U007",
@@ -102,7 +108,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U008",
@@ -117,7 +124,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U009",
@@ -132,7 +140,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U010",
@@ -147,7 +156,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R011",
@@ -162,7 +172,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R012",
@@ -177,7 +188,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 4.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R013",
@@ -192,7 +204,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R014",
@@ -207,7 +220,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R015",
@@ -222,7 +236,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M016",
@@ -235,9 +250,10 @@
     "power": 0,
     "health": 0,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M017",
@@ -250,9 +266,10 @@
     "power": 5,
     "health": 5,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 5.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M018",
@@ -265,9 +282,10 @@
     "power": 0,
     "health": 0,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "P019",
@@ -282,7 +300,8 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "P020",
@@ -297,7 +316,8 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C021",
@@ -312,7 +332,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 2.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C022",
@@ -327,7 +348,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 2.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C023",
@@ -342,7 +364,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 1.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C024",
@@ -357,7 +380,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C025",
@@ -372,7 +396,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U026",
@@ -387,7 +412,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 4.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U027",
@@ -402,7 +428,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U028",
@@ -417,7 +444,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U029",
@@ -432,7 +460,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U030",
@@ -447,7 +476,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R031",
@@ -462,7 +492,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 4.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R032",
@@ -477,7 +508,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R033",
@@ -492,7 +524,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R034",
@@ -507,7 +540,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 5.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M035",
@@ -520,9 +554,10 @@
     "power": 7,
     "health": 7,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 7.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M036",
@@ -535,9 +570,10 @@
     "power": 0,
     "health": 0,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M037",
@@ -550,9 +586,10 @@
     "power": 0,
     "health": 0,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "P038",
@@ -567,7 +604,8 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "P039",
@@ -582,7 +620,8 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C040",
@@ -597,7 +636,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C041",
@@ -612,7 +652,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 2.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C042",
@@ -627,7 +668,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 1.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C043",
@@ -642,7 +684,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C044",
@@ -657,7 +700,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U045",
@@ -672,7 +716,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 2.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U046",
@@ -687,7 +732,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U047",
@@ -702,7 +748,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 3.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U048",
@@ -717,7 +764,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U049",
@@ -732,7 +780,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R050",
@@ -747,7 +796,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R051",
@@ -762,7 +812,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R052",
@@ -777,7 +828,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R053",
@@ -792,7 +844,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R054",
@@ -807,7 +860,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M055",
@@ -820,9 +874,10 @@
     "power": 4,
     "health": 7,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 5.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M056",
@@ -835,9 +890,10 @@
     "power": 0,
     "health": 0,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M057",
@@ -850,9 +906,10 @@
     "power": 0,
     "health": 0,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "P058",
@@ -867,7 +924,8 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "P059",
@@ -882,7 +940,8 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C060",
@@ -897,7 +956,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 2.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C061",
@@ -912,7 +972,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 2.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C062",
@@ -927,7 +988,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 2.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C063",
@@ -942,7 +1004,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C064",
@@ -957,7 +1020,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U065",
@@ -972,7 +1036,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 3.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U066",
@@ -987,7 +1052,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U067",
@@ -1002,7 +1068,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 3.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U068",
@@ -1017,7 +1084,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U069",
@@ -1032,7 +1100,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R070",
@@ -1047,7 +1116,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R071",
@@ -1062,7 +1132,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 4.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R072",
@@ -1077,7 +1148,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R073",
@@ -1092,7 +1164,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R074",
@@ -1107,7 +1180,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 5.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M075",
@@ -1120,9 +1194,10 @@
     "power": 7,
     "health": 8,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 7.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M076",
@@ -1135,9 +1210,10 @@
     "power": 0,
     "health": 0,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M077",
@@ -1150,9 +1226,10 @@
     "power": 0,
     "health": 0,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "P078",
@@ -1167,7 +1244,8 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "P079",
@@ -1182,7 +1260,8 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C080",
@@ -1197,7 +1276,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 2.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C081",
@@ -1212,7 +1292,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 1.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C082",
@@ -1227,7 +1308,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C083",
@@ -1242,7 +1324,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C084",
@@ -1257,7 +1340,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U085",
@@ -1272,7 +1356,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 2.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U086",
@@ -1287,7 +1372,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 2.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U087",
@@ -1302,7 +1388,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 3.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U088",
@@ -1317,7 +1404,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U089",
@@ -1332,7 +1420,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R090",
@@ -1347,7 +1436,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 4.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R091",
@@ -1362,7 +1452,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 4.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R092",
@@ -1377,7 +1468,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R093",
@@ -1392,7 +1484,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R094",
@@ -1407,7 +1500,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 5.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M095",
@@ -1420,9 +1514,10 @@
     "power": 5,
     "health": 5,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 5.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M096",
@@ -1435,9 +1530,10 @@
     "power": 0,
     "health": 0,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M097",
@@ -1450,9 +1546,10 @@
     "power": 0,
     "health": 0,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "P098",
@@ -1467,7 +1564,8 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "P099",
@@ -1482,7 +1580,8 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C100",
@@ -1497,7 +1596,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 3.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C101",
@@ -1512,7 +1612,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "C102",
@@ -1527,7 +1628,8 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "quality_score": 1.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U103",
@@ -1542,7 +1644,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 2.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U104",
@@ -1557,7 +1660,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "U105",
@@ -1572,7 +1676,8 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "quality_score": 2.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R106",
@@ -1587,7 +1692,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 5.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R107",
@@ -1602,7 +1708,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "R108",
@@ -1617,7 +1724,8 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "quality_score": 4.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M109",
@@ -1630,9 +1738,10 @@
     "power": 7,
     "health": 5,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 6.0
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M110",
@@ -1645,9 +1754,10 @@
     "power": 0,
     "health": 0,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M111",
@@ -1660,9 +1770,10 @@
     "power": 5,
     "health": 8,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 6.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "M112",
@@ -1675,16 +1786,17 @@
     "power": 0,
     "health": 0,
     "per_pack_appearance": 1.04,
-    "holo_chance": 0.0010400000000000001,
+    "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "A113",
-    "name": "Varetha Ironvoice (Alt)",
+    "name": "Varetha Ironvoice, Doom Drummer",
     "color": "Ruby",
     "type": "Character",
-    "rarity": "COMMON",
+    "rarity": "ALTERNATE_ART",
     "gem_colored": 0,
     "gem_colorless": 0,
     "power": 0,
@@ -1692,14 +1804,15 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "A114",
-    "name": "Archon Voss (Alt)",
+    "name": "Archon Lirane Voss, Reflector Prime",
     "color": "Sapphire",
     "type": "Character",
-    "rarity": "COMMON",
+    "rarity": "ALTERNATE_ART",
     "gem_colored": 0,
     "gem_colorless": 0,
     "power": 0,
@@ -1707,14 +1820,15 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "A115",
-    "name": "Bessalynn (Alt)",
+    "name": "Bessalynn, Tiravel’s Flutist",
     "color": "Emerald",
     "type": "Character",
-    "rarity": "COMMON",
+    "rarity": "ALTERNATE_ART",
     "gem_colored": 0,
     "gem_colorless": 0,
     "power": 0,
@@ -1722,14 +1836,15 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "A116",
-    "name": "Bellkeeper Nahl (Alt)",
+    "name": "Bellkeeper Nahl, Hollow Monk",
     "color": "Onyx",
     "type": "Character",
-    "rarity": "COMMON",
+    "rarity": "ALTERNATE_ART",
     "gem_colored": 0,
     "gem_colorless": 0,
     "power": 0,
@@ -1737,14 +1852,15 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "A117",
-    "name": "Mother Iryl (Alt)",
+    "name": "Mother Iryl, Voice Between Realms",
     "color": "Amethyst",
     "type": "Character",
-    "rarity": "COMMON",
+    "rarity": "ALTERNATE_ART",
     "gem_colored": 0,
     "gem_colorless": 0,
     "power": 0,
@@ -1752,14 +1868,15 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "A118",
-    "name": "Aurora Titan (Alt)",
+    "name": "Aurora Titan",
     "color": "Prism",
     "type": "Creature",
-    "rarity": "COMMON",
+    "rarity": "ALTERNATE_ART",
     "gem_colored": 0,
     "gem_colorless": 0,
     "power": 0,
@@ -1767,14 +1884,15 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "A119",
-    "name": "Ramdelom’s Heart-Titan (Alt)",
+    "name": "Ramdelom’s Heart-Titan",
     "color": "Ruby",
     "type": "Creature",
-    "rarity": "COMMON",
+    "rarity": "ALTERNATE_ART",
     "gem_colored": 0,
     "gem_colorless": 0,
     "power": 0,
@@ -1782,14 +1900,15 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   },
   {
     "id": "A120",
-    "name": "Lytheran Dreamwalker (Alt)",
+    "name": "Lytheran Dreamwalker",
     "color": "Amethyst",
     "type": "Creature",
-    "rarity": "COMMON",
+    "rarity": "ALTERNATE_ART",
     "gem_colored": 0,
     "gem_colorless": 0,
     "power": 0,
@@ -1797,6 +1916,7 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "quality_score": 0.5
+    "base_price": 1.0, 
+    "quality_score": 10.0
   }
 ]
