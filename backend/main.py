@@ -123,3 +123,23 @@ def get_agent_cards(agent_id: int) -> dict:
                 "cards": agent.get("full_collection", []),
             }
     return {"error": "Agent not found"}
+
+
+@app.get("/agents/{agent_id}/events")
+def get_agent_events(agent_id: int) -> dict:
+    """Return all events for a specific agent.
+    
+    This endpoint returns events where the agent was the primary actor
+    (e.g., purchases, sales initiated by this agent).
+    """
+    if LAST_RUN is None:
+        return {"error": "No simulation run available"}
+    agents = LAST_RUN.get("agents", [])
+    for agent in agents:
+        if int(agent["id"]) == int(agent_id):
+            return {
+                "id": agent.get("id"),
+                "name": agent.get("name"),
+                "events": agent.get("agent_events", []),
+            }
+    return {"error": "Agent not found"}

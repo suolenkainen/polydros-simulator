@@ -1,0 +1,801 @@
+/* ============================================================================
+   GLOBAL STYLES - Polydros Simulator
+   ============================================================================ */
+
+/* Base Styles */
+body {
+  font-family: Arial, sans-serif;
+  padding: 1rem;
+  margin: 0;
+  background: #fafafa;
+  color: #333;
+}
+
+h1, h2, h3 {
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #222;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+p, div, span, li {
+  line-height: 1.5;
+}
+
+/* ============================================================================
+   LAYOUT & CONTAINER
+   ============================================================================ */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Two-column layout for agents */
+.app-layout {
+  display: flex;
+  gap: 2rem;
+}
+
+.app-layout-column {
+  flex: 1 1 300px;
+}
+
+.app-layout-column-large {
+  flex: 1 1 400px;
+}
+
+/* ============================================================================
+   FORMS & INPUTS
+   ============================================================================ */
+
+.form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.form label {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  font-weight: 500;
+}
+
+.form input[type="number"],
+.form input[type="text"],
+.form select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.form input[type="number"]:focus,
+.form input[type="text"]:focus,
+.form select:focus {
+  outline: none;
+  border-color: #4a9eff;
+  box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+}
+
+.form button {
+  padding: 0.5rem 1rem;
+  background: #4a9eff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.form button:hover:not(:disabled) {
+  background: #357abd;
+}
+
+.form button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   CHARTS
+   ============================================================================ */
+
+.chart {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+}
+
+/* ============================================================================
+   WORLD VIEW
+   ============================================================================ */
+
+.world-view {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.world-view h2 {
+  margin-top: 0;
+}
+
+.world-view ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.world-view li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.world-view li:last-child {
+  border-bottom: none;
+}
+
+.world-view li strong {
+  display: inline-block;
+  min-width: 200px;
+  font-weight: 600;
+}
+
+/* ============================================================================
+   AGENT LIST
+   ============================================================================ */
+
+.agent-list {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.agent-list h2 {
+  margin-top: 0;
+}
+
+.agent-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.agent-list li {
+  margin-bottom: 0.5rem;
+}
+
+.agent-list li:last-child {
+  margin-bottom: 0;
+}
+
+.agent-list button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.agent-list button:hover {
+  background: #e8e8e8;
+  border-color: #4a9eff;
+}
+
+/* ============================================================================
+   AGENT DETAIL
+   ============================================================================ */
+
+.agent-detail {
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.agent-detail h3 {
+  margin-top: 0;
+}
+
+.agent-detail p {
+  margin: 0.5rem 0;
+}
+
+.agent-detail p strong {
+  font-weight: 600;
+}
+
+/* Collapsible Sections */
+.detail-section {
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background: #fafafa;
+}
+
+.detail-section-header {
+  cursor: pointer;
+  font-weight: bold;
+  user-select: none;
+  padding: 0.5rem;
+  margin: -0.5rem -0.5rem 0 -0.5rem;
+  border-radius: 3px;
+  transition: background 0.15s ease;
+}
+
+.detail-section-header:hover {
+  background: rgba(74, 158, 255, 0.1);
+}
+
+.detail-section-header.expanded {
+  background: rgba(74, 158, 255, 0.05);
+}
+
+.detail-section-content {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+}
+
+.detail-section-content p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.detail-section-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+}
+
+.detail-section-content li {
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.detail-section-content li span {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.trait-scores {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+}
+
+.trait-scores div {
+  padding: 0.25rem 0;
+}
+
+.rarity-entries {
+  font-size: 0.9rem;
+}
+
+.rarity-entries div {
+  padding: 0.25rem 0;
+}
+
+.agent-events-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.agent-events-list li {
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  background: #fafafa;
+  border-left: 3px solid #ccc;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.agent-events-list li:last-child {
+  margin-bottom: 0;
+}
+
+.agent-events-list .event-tick {
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #666;
+  background: #e5e5e5;
+  padding: 2px 5px;
+  border-radius: 2px;
+  min-width: 30px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.agent-events-list .event-desc {
+  color: #333;
+  flex: 1;
+}
+
+.agent-event-type-booster_purchase {
+  border-left-color: #4a9eff;
+}
+
+.agent-event-type-booster_purchase {
+  background: #f0f7ff;
+}
+
+.agent-event-type-card_trade {
+  border-left-color: #9d4edd;
+  background: #faf5ff;
+}
+
+.agent-event-type-card_sale {
+  border-left-color: #ff9f43;
+  background: #fffaf5;
+}
+
+.agent-event-type-match {
+  border-left-color: #ee5a6f;
+  background: #fff5f7;
+}
+
+.agent-event-type-booster_open {
+  border-left-color: #2ed573;
+  background: #f5fff9;
+}
+
+/* ============================================================================
+   AGENT INVENTORY
+   ============================================================================ */
+
+.agent-inventory {
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.agent-inventory h2 {
+  margin: 0 0 15px 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.inventory-placeholder {
+  padding: 40px;
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.inventory-stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.stat-item {
+  padding: 8px 12px;
+  background: white;
+  border-radius: 4px;
+  border-left: 3px solid #ccc;
+  font-weight: 500;
+}
+
+.stat-item.rarity-mythic {
+  border-left-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.stat-item.rarity-rare {
+  border-left-color: #ffd93d;
+  color: #d99e1f;
+}
+
+.stat-item.rarity-uncommon {
+  border-left-color: #6bcf7f;
+  color: #2d7a3a;
+}
+
+.stat-item.rarity-common {
+  border-left-color: #999;
+  color: #666;
+}
+
+.stat-item.rarity-player {
+  border-left-color: #9d4edd;
+  color: #7209b7;
+}
+
+.inventory-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.search-input,
+.filter-select,
+.sort-select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: white;
+  min-width: 120px;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-input:focus,
+.filter-select:focus,
+.sort-select:focus {
+  outline: none;
+  border-color: #4a9eff;
+  box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+}
+
+.inventory-table-container {
+  background: white;
+  border-radius: 4px;
+  overflow: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.inventory-table thead {
+  background: #f0f0f0;
+  border-bottom: 2px solid #ddd;
+}
+
+.inventory-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+}
+
+.inventory-table tbody tr {
+  border-bottom: 1px solid #e5e5e5;
+  transition: background-color 0.15s ease;
+}
+
+.inventory-table tbody tr:hover {
+  background-color: #fafafa;
+}
+
+.inventory-table td {
+  padding: 10px 12px;
+}
+
+.card-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.rarity {
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-align: center;
+  width: fit-content;
+  min-width: 70px;
+}
+
+.rarity-mythic {
+  background: #ffe6e6;
+  color: #ff6b6b;
+}
+
+.rarity-rare {
+  background: #fff3cd;
+  color: #d99e1f;
+}
+
+.rarity-uncommon {
+  background: #d4edda;
+  color: #2d7a3a;
+}
+
+.rarity-common {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.rarity-player {
+  background: #f3e5ff;
+  color: #7209b7;
+}
+
+.rarity-row-mythic {
+  border-left: 3px solid #ff6b6b;
+}
+
+.rarity-row-rare {
+  border-left: 3px solid #ffd93d;
+}
+
+.rarity-row-uncommon {
+  border-left: 3px solid #6bcf7f;
+}
+
+.rarity-row-common {
+  border-left: 3px solid #999;
+}
+
+.rarity-row-player {
+  border-left: 3px solid #9d4edd;
+}
+
+.quality {
+  text-align: center;
+  color: #666;
+  font-weight: 500;
+}
+
+.attribute {
+  text-align: center;
+  color: #666;
+  font-size: 1rem;
+}
+
+.inventory-footer {
+  margin-top: 15px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  color: #999;
+  text-align: right;
+}
+
+/* ============================================================================
+   EVENTS VIEW
+   ============================================================================ */
+
+.events-view {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.events-view h2 {
+  margin-top: 0;
+}
+
+.events-placeholder {
+  padding: 40px;
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  background: #fafafa;
+  border-radius: 4px;
+  border: 1px solid #e5e5e5;
+}
+
+.events-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.events-controls .search-input,
+.events-controls .filter-select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: white;
+}
+
+.events-controls .search-input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.events-controls .search-input:focus,
+.events-controls .filter-select:focus {
+  outline: none;
+  border-color: #4a9eff;
+  box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+}
+
+.events-list {
+  max-height: 500px;
+  overflow-y: auto;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background: #fafafa;
+}
+
+.event-item {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e5e5e5;
+  transition: background-color 0.15s ease;
+  border-left: 4px solid #ccc;
+}
+
+.event-item:last-child {
+  border-bottom: none;
+}
+
+.event-item:hover {
+  background-color: #f5f5f5;
+}
+
+.event-item.event-type-booster_purchase {
+  border-left-color: #4a9eff;
+}
+
+.event-item.event-type-card_trade {
+  border-left-color: #9d4edd;
+}
+
+.event-item.event-type-card_sale {
+  border-left-color: #ff9f43;
+}
+
+.event-item.event-type-match {
+  border-left-color: #ee5a6f;
+}
+
+.event-item.event-type-booster_open {
+  border-left-color: #2ed573;
+}
+
+.event-header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+  align-items: center;
+}
+
+.event-tick {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #666;
+  background: #e5e5e5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  min-width: 35px;
+  text-align: center;
+}
+
+.event-type-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.event-type-badge-booster_purchase {
+  background: #d3e4ff;
+  color: #1d4a8c;
+}
+
+.event-type-badge-card_trade {
+  background: #f0d9ff;
+  color: #6b2e7f;
+}
+
+.event-type-badge-card_sale {
+  background: #ffe5cc;
+  color: #994d00;
+}
+
+.event-type-badge-match {
+  background: #ffd5db;
+  color: #990038;
+}
+
+.event-type-badge-booster_open {
+  background: #d4f4dd;
+  color: #1a6b3a;
+}
+
+.event-description {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+.events-footer {
+  margin-top: 1rem;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  color: #999;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .app-layout-column,
+  .app-layout-column-large {
+    flex: 1 1 auto;
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  .form label {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .form label input {
+    flex: 1;
+    margin-left: 0.5rem;
+  }
+
+  .inventory-controls {
+    flex-direction: column;
+  }
+
+  .search-input,
+  .filter-select,
+  .sort-select {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .inventory-stats {
+    flex-direction: column;
+  }
+
+  .stat-item {
+    width: 100%;
+  }
+}

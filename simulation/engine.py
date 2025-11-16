@@ -12,7 +12,7 @@ from typing import Dict, List
 from .agents import generate_agent_traits
 from .booster import open_booster
 from .cards import large_card_pool
-from .world import Agent, WorldState
+from .world import Agent, Event, WorldState
 
 
 @dataclass
@@ -78,6 +78,15 @@ def run_simulation(config: SimulationConfig) -> Dict:
                 world.distributor_boosters -= buy_count
                 # charge prism
                 agent.prism -= buy_count * BOOSTER_COST
+                # log event
+                event = Event(
+                    tick=t,
+                    agent_id=agent.id,
+                    event_type="booster_purchase",
+                    description=f"{agent.name} bought {buy_count} booster{'s' if buy_count > 1 else ''} for {buy_count * BOOSTER_COST} Prism",
+                    agent_ids=[agent.id],
+                )
+                world.add_event(event)
 
         # Opening phase: agents open up to default_open boosters from their inventory
         default_open = 5
@@ -91,7 +100,9 @@ def run_simulation(config: SimulationConfig) -> Dict:
                 agent.add_cards(cards)
                 agent.remove_boosters(1)
 
-        timeseries.append({"tick": t, **world.summary()})
+        # Collect events that occurred this tick
+        tick_events = [e.to_dict() for e in world.events if e.tick == t]
+        timeseries.append({"tick": t, **world.summary(), "events": tick_events})
 
     # Build a serializable agents summary to expose to the frontend/backend.
     agents_summary = []
@@ -131,6 +142,9 @@ def run_simulation(config: SimulationConfig) -> Dict:
             r = ci.ref.rarity.value
             rarity_counts[r] = rarity_counts.get(r, 0) + 1
 
+        # Agent-specific events (events where this agent is the primary actor)
+        agent_events = [e.to_dict() for e in world.events if e.agent_id == agent.id]
+
         agents_summary.append(
             {
                 "id": agent.id,
@@ -144,6 +158,7 @@ def run_simulation(config: SimulationConfig) -> Dict:
                 "sample_cards": sample_cards,
                 "full_collection": full_collection,
                 "traits": traits_dict,
+                "agent_events": agent_events,
             }
         )
 
@@ -152,4 +167,5 @@ def run_simulation(config: SimulationConfig) -> Dict:
         "timeseries": timeseries,
         "final": world.summary(),
         "agents": agents_summary,
+        "events": [e.to_dict() for e in world.events],
     }

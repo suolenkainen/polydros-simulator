@@ -20,6 +20,13 @@ type TimeseriesPoint = {
   agent_count: number
   total_cards: number
   total_unopened_boosters: number
+  events?: Array<{
+    tick: number
+    agent_id: number
+    event_type: string
+    description: string
+    agent_ids: number[]
+  }>
 }
 
 type WorldSummary = {
@@ -29,13 +36,27 @@ type WorldSummary = {
   total_unopened_boosters: number
 }
 
-export default function SimulationRunner({ onWorldSummary }: { onWorldSummary?: (summary: WorldSummary) => void }) {
+type SimulationEvent = {
+  tick: number
+  agent_id: number
+  event_type: string
+  description: string
+  agent_ids: number[]
+}
+
+export default function SimulationRunner({
+  onWorldSummary,
+  onEvents,
+}: {
+  onWorldSummary?: (summary: WorldSummary) => void
+  onEvents?: (events: SimulationEvent[]) => void
+}) {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState<TimeseriesPoint[] | null>(null)
   const [seed, setSeed] = useState<number>(42)
   const [agents, setAgents] = useState<number>(10)
-  const [packs, setPacks] = useState<number>(3)
-  const [ticks, setTicks] = useState<number>(5)
+  const [packs, setPacks] = useState<number>(1)
+  const [ticks, setTicks] = useState<number>(1)
 
   async function onRun(e: React.FormEvent) {
     e.preventDefault()
@@ -53,6 +74,16 @@ export default function SimulationRunner({ onWorldSummary }: { onWorldSummary?: 
           total_cards: last.total_cards,
           total_unopened_boosters: last.total_unopened_boosters,
         })
+      }
+      // Collect all events from all ticks
+      if (onEvents) {
+        const allEvents: SimulationEvent[] = []
+        series.forEach((point) => {
+          if (point.events && Array.isArray(point.events)) {
+            allEvents.push(...point.events)
+          }
+        })
+        onEvents(allEvents)
       }
     } catch (err) {
       console.error(err)

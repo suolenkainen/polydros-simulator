@@ -24,6 +24,13 @@ interface Agent {
   }>
   traits?: Traits
   rarity_breakdown?: Record<string, number>
+  agent_events?: Array<{
+    tick: number
+    agent_id: number
+    event_type: string
+    description: string
+    agent_ids: number[]
+  }>
 }
 
 export default function AgentDetail({ id }: { id: number | null }) {
@@ -60,28 +67,28 @@ export default function AgentDetail({ id }: { id: number | null }) {
   const rarityBreakdown = agent.rarity_breakdown || {}
 
   return (
-    <div style={{ padding: '1rem' }}>
+    <div className="agent-detail">
       <h3>Agent {agent.id}</h3>
       <p><strong>Prism:</strong> {agent.prism}</p>
       <p><strong>Collection size:</strong> {agent.collection_count} cards</p>
 
       {/* Traits Section */}
       {traits && (
-        <div style={{ marginTop: '1rem', border: '1px solid #ccc', padding: '0.5rem', borderRadius: '4px' }}>
+        <div className="detail-section">
           <div
-            style={{ cursor: 'pointer', fontWeight: 'bold', userSelect: 'none' }}
+            className="detail-section-header"
             onClick={() => toggleSection('traits')}
           >
             {expandedSections.has('traits') ? '▼' : '▶'} Traits & Personality
           </div>
           {expandedSections.has('traits') && (
-            <div style={{ marginTop: '0.5rem', marginLeft: '1rem' }}>
+            <div className="detail-section-content">
               <p><strong>Primary Trait:</strong> {traits.primary_trait}</p>
               <p><strong>Risk Aversion:</strong> {traits.risk_aversion}</p>
               <p><strong>Time Horizon:</strong> {traits.time_horizon}</p>
               <div style={{ marginTop: '0.5rem' }}>
                 <p style={{ marginBottom: '0.25rem' }}><strong>Trait Scores:</strong></p>
-                <div style={{ marginLeft: '1rem', fontSize: '0.9rem' }}>
+                <div className="trait-scores">
                   <div>Collector: {(traits.collector * 100).toFixed(1)}%</div>
                   <div>Competitor: {(traits.competitor * 100).toFixed(1)}%</div>
                   <div>Gambler: {(traits.gambler * 100).toFixed(1)}%</div>
@@ -94,17 +101,17 @@ export default function AgentDetail({ id }: { id: number | null }) {
       )}
 
       {/* Rarity Breakdown Section */}
-      <div style={{ marginTop: '1rem', border: '1px solid #ccc', padding: '0.5rem', borderRadius: '4px' }}>
+      <div className="detail-section">
         <div
-          style={{ cursor: 'pointer', fontWeight: 'bold', userSelect: 'none' }}
+          className="detail-section-header"
           onClick={() => toggleSection('rarity')}
         >
           {expandedSections.has('rarity') ? '▼' : '▶'} Rarity Breakdown
         </div>
         {expandedSections.has('rarity') && (
-          <div style={{ marginTop: '0.5rem', marginLeft: '1rem' }}>
+          <div className="detail-section-content">
             {Object.keys(rarityBreakdown).length > 0 ? (
-              <div style={{ fontSize: '0.9rem' }}>
+              <div className="rarity-entries">
                 {Object.entries(rarityBreakdown).map(([rarity, count]) => (
                   <div key={rarity}>{rarity}: {count}</div>
                 ))}
@@ -117,23 +124,47 @@ export default function AgentDetail({ id }: { id: number | null }) {
       </div>
 
       {/* Sample Cards Section */}
-      <div style={{ marginTop: '1rem', border: '1px solid #ccc', padding: '0.5rem', borderRadius: '4px' }}>
+      <div className="detail-section">
         <div
-          style={{ cursor: 'pointer', fontWeight: 'bold', userSelect: 'none' }}
+          className="detail-section-header"
           onClick={() => toggleSection('cards')}
         >
           {expandedSections.has('cards') ? '▼' : '▶'} Sample Cards ({agent.sample_cards?.length || 0})
         </div>
         {expandedSections.has('cards') && (
-          <ul style={{ marginTop: '0.5rem', marginLeft: '1.5rem' }}>
+          <ul className="detail-section-content">
             {agent.sample_cards && agent.sample_cards.map((c) => (
               <li key={c.card_id}>
-                {c.name} <span style={{ fontSize: '0.85rem', color: '#666' }}>({c.rarity}){c.is_hologram ? ' [Hologram]' : ''}</span>
+                {c.name} <span>({c.rarity}){c.is_hologram ? ' [Hologram]' : ''}</span>
               </li>
             ))}
           </ul>
         )}
       </div>
+
+      {/* Agent Events Section */}
+      {agent.agent_events && agent.agent_events.length > 0 && (
+        <div className="detail-section">
+          <div
+            className="detail-section-header"
+            onClick={() => toggleSection('events')}
+          >
+            {expandedSections.has('events') ? '▼' : '▶'} Events ({agent.agent_events.length})
+          </div>
+          {expandedSections.has('events') && (
+            <div className="detail-section-content">
+              <ul className="agent-events-list">
+                {agent.agent_events.map((e, idx) => (
+                  <li key={idx} className={`agent-event-type-${e.event_type}`}>
+                    <span className="event-tick">T{e.tick}</span>
+                    <span className="event-desc">{e.description}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Full Inventory Section */}
       <AgentInventory agentId={id} />

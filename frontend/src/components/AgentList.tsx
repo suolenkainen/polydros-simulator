@@ -25,7 +25,7 @@ export default function AgentList({ onSelect }: { onSelect: (id: number) => void
   if (!agents) return <div>No agents available</div>
 
   return (
-    <div>
+    <div className="agent-list">
       <h2>Agents</h2>
       <ul>
         {agents.map((a) => (
