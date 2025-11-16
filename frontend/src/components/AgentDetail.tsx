@@ -16,14 +16,16 @@ interface Agent {
   id: number
   prism: number
   collection_count: number
-  sample_cards: Array<{
-    card_id: number
+  deck?: Array<{
+    card_id: string
     name: string
-    rarity: string
-    is_hologram: boolean
+    type: string
+    color: string
+    power: number
+    health: number
+    cost: number
   }>
   traits?: Traits
-  rarity_breakdown?: Record<string, number>
   agent_events?: Array<{
     tick: number
     agent_id: number
@@ -64,7 +66,6 @@ export default function AgentDetail({ id }: { id: number | null }) {
   if (!agent) return <div>Agent not found</div>
 
   const traits = agent.traits
-  const rarityBreakdown = agent.rarity_breakdown || {}
 
   return (
     <div className="agent-detail">
@@ -100,47 +101,45 @@ export default function AgentDetail({ id }: { id: number | null }) {
         </div>
       )}
 
-      {/* Rarity Breakdown Section */}
-      <div className="detail-section">
-        <div
-          className="detail-section-header"
-          onClick={() => toggleSection('rarity')}
-        >
-          {expandedSections.has('rarity') ? '▼' : '▶'} Rarity Breakdown
-        </div>
-        {expandedSections.has('rarity') && (
-          <div className="detail-section-content">
-            {Object.keys(rarityBreakdown).length > 0 ? (
-              <div className="rarity-entries">
-                {Object.entries(rarityBreakdown).map(([rarity, count]) => (
-                  <div key={rarity}>{rarity}: {count}</div>
-                ))}
-              </div>
-            ) : (
-              <p>No rarity data available</p>
-            )}
+      {/* Deck Section - shown when agent has more than 40 cards */}
+      {agent.deck && agent.collection_count > 40 && (
+        <div className="detail-section">
+          <div
+            className="detail-section-header"
+            onClick={() => toggleSection('deck')}
+          >
+            {expandedSections.has('deck') ? '▼' : '▶'} Deck ({agent.deck.length})
           </div>
-        )}
-      </div>
-
-      {/* Sample Cards Section */}
-      <div className="detail-section">
-        <div
-          className="detail-section-header"
-          onClick={() => toggleSection('cards')}
-        >
-          {expandedSections.has('cards') ? '▼' : '▶'} Sample Cards ({agent.sample_cards?.length || 0})
+          {expandedSections.has('deck') && (
+            <div className="detail-section-content">
+              <table className="deck-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
+                <thead>
+                  <tr style={{ borderBottom: '1px solid #ccc' }}>
+                    <th style={{ textAlign: 'left', padding: '0.4rem' }}>Name</th>
+                    <th style={{ textAlign: 'center', padding: '0.4rem', width: '90px' }}>Type</th>
+                    <th style={{ textAlign: 'center', padding: '0.4rem', width: '80px' }}>Color</th>
+                    <th style={{ textAlign: 'center', padding: '0.4rem', width: '50px' }}>Power</th>
+                    <th style={{ textAlign: 'center', padding: '0.4rem', width: '50px' }}>Health</th>
+                    <th style={{ textAlign: 'center', padding: '0.4rem', width: '45px' }}>Cost</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {agent.deck.map((card, idx) => (
+                    <tr key={idx} style={{ borderBottom: '1px solid #eee' }}>
+                      <td style={{ padding: '0.4rem' }}>{card.name}</td>
+                      <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.type}</td>
+                      <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.color}</td>
+                      <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.power}</td>
+                      <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.health}</td>
+                      <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.cost}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
-        {expandedSections.has('cards') && (
-          <ul className="detail-section-content">
-            {agent.sample_cards && agent.sample_cards.map((c) => (
-              <li key={c.card_id}>
-                {c.name} <span>({c.rarity}){c.is_hologram ? ' [Hologram]' : ''}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      )}
 
       {/* Agent Events Section */}
       {agent.agent_events && agent.agent_events.length > 0 && (

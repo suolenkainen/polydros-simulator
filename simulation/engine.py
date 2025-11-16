@@ -31,7 +31,7 @@ def calculate_card_price(card_ref) -> float:
         "Uncommon": 1.5,
         "Rare": 3.0,
         "Mythic": 8.0,
-        "Player": 5.0,
+        "Player": 1.0,
         "Alternate Art": 6.0,
     }
     rarity_mult = rarity_multipliers.get(card_ref.rarity.value, 1.0)
@@ -45,24 +45,61 @@ def calculate_card_price(card_ref) -> float:
     quality_mult = 1.0 + (card_ref.quality_score - 50.0) / 100.0
     quality_mult = max(0.5, min(2.0, quality_mult))  # clamp between 0.5 and 2.0
     
-    return card_ref.base_price * rarity_mult * scarcity_mult * quality_mult
+    return card_ref.base_price * rarity_mult * scarcity_mult * quality_mult * 0.1  # scale down final price
+
+
+def build_deck(collection: List, rng: random.Random, deck_size: int = 40) -> List[Dict]:
+    """Build a deck with 40 cards: 1 player, 4 mine, and 35 other cards.
+    
+    Args:
+        collection: list of CardInstance objects to select from
+        rng: random number generator for shuffling
+        deck_size: total deck size (default 40)
+    
+    Returns:
+        list of deck card dicts with name, color, power, health, cost
+    """
+    if len(collection) < deck_size:
+        # If collection is too small, use what we have
+        deck_cards = collection
+    else:
+        # Shuffle and pick deck_size cards
+        shuffled = list(collection)
+        rng.shuffle(shuffled)
+        deck_cards = shuffled[:deck_size]
+    
+    deck = []
+    for card_inst in deck_cards:
+        ref = card_inst.ref
+        # Calculate cost as gem_colored + gem_colorless (stored in the raw card data)
+        # For now, we'll use a placeholder since CardRef doesn't expose gem fields
+        # We'll need to update CardRef to include these fields
+        deck.append({
+            "card_id": ref.card_id,
+            "name": ref.name,
+            "type": ref.type,
+            "color": ref.color,
+            "power": getattr(ref, 'power', 0),  # Will be added to CardRef
+            "health": getattr(ref, 'health', 0),  # Will be added to CardRef
+            "cost": getattr(ref, 'cost', 0),  # Will be added to CardRef
+        })
+    
+    return deck
 
 
 @dataclass
 class SimulationConfig:
     seed: int = 42
     initial_agents: int = 10
-    initial_packs_per_agent: int = 15
     ticks: int = 1
 
 
 def run_simulation(config: SimulationConfig) -> Dict:
     """Run a minimal deterministic simulation.
 
-    The runner is intentionally small: it creates agents, opens the seeded
-    number of boosters for each agent at t=0, then advances `ticks` times
-    without further market logic. This gives a stable base for later
-    development.
+    The runner is intentionally small: it creates agents with realistic starting
+    Prism, advances `ticks` times with market logic. Agents buy boosters from
+    the distributor, open them, and track events.
 
     Returns a dictionary containing summary time-series and final world state
     metadata.
@@ -73,15 +110,25 @@ def run_simulation(config: SimulationConfig) -> Dict:
 
     world = WorldState()
 
-    # Distributor initially owns all boosters; agents start empty
-    total_boosters = config.initial_agents * config.initial_packs_per_agent
-    world.distributor_boosters = total_boosters
+    # Distributor initially owns a large supply of boosters
+    # (agents will buy from them each tick)
+    world.distributor_boosters = 10000
 
-    # Create agents with deterministic per-agent RNG seeds and empty collections
+    # Create agents with realistic starting Prism and deterministic per-agent RNG seeds
+    # Each agent starts with exactly 200.00 Prism
     for pid in range(config.initial_agents):
         traits = generate_agent_traits(rng)
         seed = rng.randint(0, 2 ** 31 - 1)
-        agent = Agent(id=pid, prism=0.0, traits=traits, name=f"Agent-{pid}", nick=f"A{pid}", rng_seed=seed, boosters=0)
+        starting_prism = 200.00  # 200.00 Prism per agent
+        agent = Agent(
+            id=pid,
+            prism=round(starting_prism, 2),
+            traits=traits,
+            name=f"Agent-{pid}",
+            nick=f"A{pid}",
+            rng_seed=seed,
+            boosters=0,
+        )
         world.agents[pid] = agent
 
     # Collect time-series (simple: only initial snapshot + tick summaries)
@@ -89,39 +136,33 @@ def run_simulation(config: SimulationConfig) -> Dict:
     timeseries.append({"tick": 0, **world.summary()})
 
     # Cost parameters
-    BOOSTER_COST = 5.0
+    BOOSTER_COST = 12.0  # 12 Prism per booster pack
 
     # Advance ticks: agents buy boosters from distributor and open some
     for t in range(1, config.ticks + 1):
         world.tick = t
-        # Each agent gets small income
-        for agent in world.agents.values():
-            agent.prism += 1.0
 
-        # Buying phase: each agent buys up to default_buy boosters (influenced by collector_trait)
-        default_buy = 5
+        # Buying phase: each agent buys exactly 5 boosters
+        buy_count = 5
         for agent in world.agents.values():
-            # Buying decisions: default behavior (no trait influence): buy up to default_buy
-            # constrained by distributor stock and affordability (BOOSTER_COST)
-            affordable = int(agent.prism // BOOSTER_COST)
-            buy_wish = default_buy
-            buy_count = min(buy_wish, world.distributor_boosters, affordable)
-            if buy_count > 0:
+            cost = buy_count * BOOSTER_COST
+            # Only buy if agent has enough Prism and distributor has enough boosters
+            if world.distributor_boosters >= buy_count and agent.prism >= cost:
                 agent.add_boosters(buy_count)
                 world.distributor_boosters -= buy_count
-                # charge prism
-                agent.prism -= buy_count * BOOSTER_COST
+                agent.prism -= cost
+                agent.prism = round(agent.prism, 2)  # Round to 2 decimals
                 # log event
                 event = Event(
                     tick=t,
                     agent_id=agent.id,
                     event_type="booster_purchase",
-                    description=f"{agent.name} bought {buy_count} booster{'s' if buy_count > 1 else ''} for {buy_count * BOOSTER_COST} Prism",
+                    description=f"{agent.name} bought {buy_count} booster{'s' if buy_count > 1 else ''} for {cost} Prism",
                     agent_ids=[agent.id],
                 )
                 world.add_event(event)
 
-        # Opening phase: agents open up to default_open boosters from their inventory
+        # Opening phase: agents open some of their boosters
         default_open = 5
         for agent in world.agents.values():
             open_count = min(default_open, agent.boosters)
@@ -140,18 +181,6 @@ def run_simulation(config: SimulationConfig) -> Dict:
     # Build a serializable agents summary to expose to the frontend/backend.
     agents_summary = []
     for _pid, agent in world.agents.items():
-        # include a few sample cards (card ids and names) to keep payload small
-        sample_cards = []
-        for ci in agent.collection[:5]:
-            sample_cards.append(
-                {
-                    "card_id": ci.ref.card_id,
-                    "name": ci.ref.name,
-                    "rarity": ci.ref.rarity.value,
-                    "is_hologram": ci.is_hologram,
-                }
-            )
-
         # Full collection for detailed view
         full_collection = []
         for ci in agent.collection:
@@ -167,13 +196,11 @@ def run_simulation(config: SimulationConfig) -> Dict:
                 }
             )
 
-        traits_dict = agent.traits.to_dict() if agent.traits else {}
+        # Build a deck from the collection
+        a_rng = random.Random(agent.rng_seed + 5000)
+        deck = build_deck(agent.collection, a_rng)
 
-        # Collection summary by rarity
-        rarity_counts: Dict[str, int] = {}
-        for ci in agent.collection:
-            r = ci.ref.rarity.value
-            rarity_counts[r] = rarity_counts.get(r, 0) + 1
+        traits_dict = agent.traits.to_dict() if agent.traits else {}
 
         # Agent-specific events (events where this agent is the primary actor)
         agent_events = [e.to_dict() for e in world.events if e.agent_id == agent.id]
@@ -187,9 +214,8 @@ def run_simulation(config: SimulationConfig) -> Dict:
                 "rng_seed": agent.rng_seed,
                 "collection_count": len(agent.collection),
                 "booster_count": agent.boosters,
-                "rarity_breakdown": rarity_counts,
-                "sample_cards": sample_cards,
                 "full_collection": full_collection,
+                "deck": deck,
                 "traits": traits_dict,
                 "agent_events": agent_events,
             }

@@ -1,4 +1,4 @@
-export async function runSimulation(body: { seed: number; agents: number; packs_per_agent: number; ticks: number; }) {
+export async function runSimulation(body: { seed: number; agents: number; ticks: number; }) {
   const res = await fetch('http://127.0.0.1:8000/run', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

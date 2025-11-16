@@ -28,18 +28,26 @@ class CardRef:
         name: display name
         color: card color (Ruby, Sapphire, etc.)
         rarity: one of Rarity
+        type: card type (Creature, Spell, etc.)
         quality_score: float used by demand heuristics (higher = more desirable)
         pack_weight: relative weight in booster selection
         base_price: base market price from card data
+        power: creature power (for deck building)
+        health: creature health (for deck building)
+        cost: mana/gem cost (gem_colored + gem_colorless)
     """
 
     card_id: str
     name: str
     color: str
     rarity: Rarity
+    type: str = "Unknown"
     quality_score: float = 1.0
     pack_weight: float = 1.0
     base_price: float = 1.0
+    power: int = 0
+    health: int = 0
+    cost: int = 0
 
 
 @dataclass

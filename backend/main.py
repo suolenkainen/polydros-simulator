@@ -34,7 +34,6 @@ class RunRequest(BaseModel):
     # Optional[int]. Pydantic will still accept values via the HTTP payload.
     seed: int = 42
     agents: int = 500
-    packs_per_agent: int = 15
     ticks: int = 1
 
 
@@ -43,7 +42,6 @@ def run(req: RunRequest) -> dict:
     cfg = SimulationConfig(
         seed=req.seed,
         initial_agents=req.agents,
-        initial_packs_per_agent=req.packs_per_agent,
         ticks=req.ticks,
     )
     result = run_simulation(cfg)

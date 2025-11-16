@@ -55,14 +55,13 @@ export default function SimulationRunner({
   const [data, setData] = useState<TimeseriesPoint[] | null>(null)
   const [seed, setSeed] = useState<number>(42)
   const [agents, setAgents] = useState<number>(10)
-  const [packs, setPacks] = useState<number>(1)
   const [ticks, setTicks] = useState<number>(1)
 
   async function onRun(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await runSimulation({ seed, agents, packs_per_agent: packs, ticks })
+      const res = await runSimulation({ seed, agents, ticks })
       const series = res.timeseries as TimeseriesPoint[]
       setData(series)
       // Use the last timeseries point as the current world summary
@@ -115,8 +114,7 @@ export default function SimulationRunner({
     <div>
       <form onSubmit={onRun} className="form">
         <label>Seed <input type="number" value={seed} onChange={(e) => setSeed(Number(e.target.value))} /></label>
-  <label>Agents <input type="number" value={agents} onChange={(e) => setAgents(Number(e.target.value))} /></label>
-  <label>Packs per agent <input type="number" value={packs} onChange={(e) => setPacks(Number(e.target.value))} /></label>
+        <label>Agents <input type="number" value={agents} onChange={(e) => setAgents(Number(e.target.value))} /></label>
         <label>Ticks <input type="number" value={ticks} onChange={(e) => setTicks(Number(e.target.value))} /></label>
         <button type="submit" disabled={loading}>{loading ? 'Running...' : 'Run'}</button>
       </form>

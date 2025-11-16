@@ -27,8 +27,8 @@ test.describe('Polydros Simulator E2E', () => {
     // Run simulation
     await page.click('button[type="submit"]')
 
-    // Wait for agents list to populate
-    await page.waitForSelector('ul li button', { timeout: 15000 })
+    // Wait for agents list to populate (with longer timeout for backend startup)
+    await page.waitForSelector('ul li button', { timeout: 30000 })
 
     // Verify agents are listed
     const agentButtons = page.locator('ul li button')
@@ -95,7 +95,7 @@ test.describe('Polydros Simulator E2E', () => {
   test('agent detail shows agent events', async ({ page }) => {
     // Run simulation
     await page.click('button[type="submit"]')
-    await page.waitForSelector('ul li button', { timeout: 15000 })
+    await page.waitForSelector('ul li button', { timeout: 30000 })
 
     // Click first agent
     await page.locator('ul li button').first().click()
@@ -132,8 +132,8 @@ test.describe('Polydros Simulator E2E', () => {
     // Run simulation
     await page.click('button[type="submit"]')
 
-    // Wait for data to populate
-    await page.waitForSelector('ul li button', { timeout: 15000 })
+    // Wait for data to populate (longer timeout for backend)
+    await page.waitForSelector('ul li button', { timeout: 30000 })
 
     // Verify page is still responsive
     const footer = page.locator('.events-footer')

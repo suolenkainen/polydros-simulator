@@ -33,14 +33,20 @@ def _load_raw_cards() -> List[Dict]:
 def _make_cardref(d: Dict) -> CardRef:
     """Convert a raw card dict from JSON into a CardRef instance."""
     rarity = Rarity[d["rarity"].upper()]
+    # Cost is the sum of gem_colored and gem_colorless
+    cost = int(d.get("gem_colored", 0)) + int(d.get("gem_colorless", 0))
     return CardRef(
         d["id"],
         d["name"],
         d["color"],
         rarity,
+        type=d.get("type", "Unknown"),
         quality_score=float(d.get("quality_score", 1.0)),
         pack_weight=float(d.get("pack_weight", 1.0)),
         base_price=float(d.get("base_price", 1.0)),
+        power=int(d.get("power", 0)),
+        health=int(d.get("health", 0)),
+        cost=cost,
     )
 
 
