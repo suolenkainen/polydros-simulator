@@ -19,13 +19,21 @@ type TimeseriesPoint = {
   tick: number
   agent_count: number
   total_cards: number
+  total_unopened_boosters: number
 }
 
-export default function SimulationRunner() {
+type WorldSummary = {
+  tick: number
+  agent_count: number
+  total_cards: number
+  total_unopened_boosters: number
+}
+
+export default function SimulationRunner({ onWorldSummary }: { onWorldSummary?: (summary: WorldSummary) => void }) {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState<TimeseriesPoint[] | null>(null)
   const [seed, setSeed] = useState<number>(42)
-  const [agents, setAgents] = useState<number>(50)
+  const [agents, setAgents] = useState<number>(10)
   const [packs, setPacks] = useState<number>(3)
   const [ticks, setTicks] = useState<number>(5)
 
@@ -34,7 +42,18 @@ export default function SimulationRunner() {
     setLoading(true)
     try {
       const res = await runSimulation({ seed, agents, packs_per_agent: packs, ticks })
-      setData(res.timeseries as TimeseriesPoint[])
+      const series = res.timeseries as TimeseriesPoint[]
+      setData(series)
+      // Use the last timeseries point as the current world summary
+      if (onWorldSummary && series.length > 0) {
+        const last = series[series.length - 1]
+        onWorldSummary({
+          tick: last.tick,
+          agent_count: last.agent_count,
+          total_cards: last.total_cards,
+          total_unopened_boosters: last.total_unopened_boosters,
+        })
+      }
     } catch (err) {
       console.error(err)
       alert('Failed to run simulation; is backend running at http://127.0.0.1:8000?')
@@ -71,11 +90,12 @@ export default function SimulationRunner() {
         <button type="submit" disabled={loading}>{loading ? 'Running...' : 'Run'}</button>
       </form>
 
-      {data && (
+      {/* Chart temporarily disabled; world view will surface aggregate stats instead */}
+      {/* {data && (
         <div className="chart">
           <Line data={chartData} />
         </div>
-      )}
+      )} */}
     </div>
   )
 }

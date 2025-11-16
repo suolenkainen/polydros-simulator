@@ -1,0 +1,189 @@
+import React, { useEffect, useState } from 'react'
+import '../styles/AgentInventory.css'
+
+type Card = {
+  card_id: string
+  name: string
+  rarity: string
+  is_hologram: boolean
+  is_reverse_holo: boolean
+  is_alt_art: boolean
+  quality_score: number
+}
+
+type InventoryData = {
+  id: number
+  name: string
+  collection_count: number
+  cards: Card[]
+}
+
+type AgentInventoryProps = {
+  agentId: number | null
+}
+
+export default function AgentInventory({ agentId }: AgentInventoryProps) {
+  const [inventory, setInventory] = useState<InventoryData | null>(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [filterRarity, setFilterRarity] = useState<string>('all')
+  const [sortBy, setSortBy] = useState<'name' | 'rarity' | 'quality'>('name')
+
+  useEffect(() => {
+    if (!agentId) {
+      setInventory(null)
+      return
+    }
+
+    const fetchInventory = async () => {
+      setLoading(true)
+      setError(null)
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/agents/${agentId}/cards`)
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`)
+        }
+        const data = await response.json()
+        if (data.error) {
+          setError(data.error)
+          setInventory(null)
+        } else {
+          setInventory(data)
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch inventory')
+        setInventory(null)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchInventory()
+  }, [agentId])
+
+  if (!agentId) {
+    return (
+      <div className="agent-inventory">
+        <div className="inventory-placeholder">Select an agent to view their card collection.</div>
+      </div>
+    )
+  }
+
+  if (loading) {
+    return (
+      <div className="agent-inventory">
+        <div className="inventory-placeholder">Loading inventory...</div>
+      </div>
+    )
+  }
+
+  if (error || !inventory) {
+    return (
+      <div className="agent-inventory">
+        <div className="inventory-placeholder">Error: {error || 'No data'}</div>
+      </div>
+    )
+  }
+
+  // Filter and sort cards
+  let displayCards = inventory.cards
+  if (filterRarity !== 'all') {
+    displayCards = displayCards.filter((c) => c.rarity === filterRarity)
+  }
+  if (searchTerm) {
+    displayCards = displayCards.filter((c) => c.name.toLowerCase().includes(searchTerm.toLowerCase()))
+  }
+
+  if (sortBy === 'name') {
+    displayCards = [...displayCards].sort((a, b) => a.name.localeCompare(b.name))
+  } else if (sortBy === 'rarity') {
+    const rarityOrder: Record<string, number> = {
+      Mythic: 0,
+      Rare: 1,
+      Uncommon: 2,
+      Common: 3,
+      Player: 4,
+    }
+    displayCards = [...displayCards].sort((a, b) => (rarityOrder[a.rarity] ?? 5) - (rarityOrder[b.rarity] ?? 5))
+  } else if (sortBy === 'quality') {
+    displayCards = [...displayCards].sort((a, b) => b.quality_score - a.quality_score)
+  }
+
+  // Count cards by rarity
+  const rarityCount: Record<string, number> = {}
+  inventory.cards.forEach((c) => {
+    rarityCount[c.rarity] = (rarityCount[c.rarity] || 0) + 1
+  })
+
+  return (
+    <div className="agent-inventory">
+      <h2>{inventory.name}'s Card Collection</h2>
+      <div className="inventory-stats">
+        <span className="stat-item">Total Cards: {inventory.collection_count}</span>
+        {Object.entries(rarityCount).map(([rarity, count]) => (
+          <span key={rarity} className={`stat-item rarity-${rarity.toLowerCase()}`}>
+            {rarity}: {count}
+          </span>
+        ))}
+      </div>
+
+      <div className="inventory-controls">
+        <input
+          type="text"
+          placeholder="Search card name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+
+        <select value={filterRarity} onChange={(e) => setFilterRarity(e.target.value)} className="filter-select">
+          <option value="all">All Rarities</option>
+          <option value="Mythic">Mythic</option>
+          <option value="Rare">Rare</option>
+          <option value="Uncommon">Uncommon</option>
+          <option value="Common">Common</option>
+          <option value="Player">Player</option>
+        </select>
+
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value as 'name' | 'rarity' | 'quality')} className="sort-select">
+          <option value="name">Sort by Name</option>
+          <option value="rarity">Sort by Rarity</option>
+          <option value="quality">Sort by Quality</option>
+        </select>
+      </div>
+
+      <div className="inventory-table-container">
+        {displayCards.length === 0 ? (
+          <div className="inventory-placeholder">No cards match your filters.</div>
+        ) : (
+          <table className="inventory-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Rarity</th>
+                <th>Quality</th>
+                <th>Holo</th>
+                <th>Reverse Holo</th>
+                <th>Alt Art</th>
+              </tr>
+            </thead>
+            <tbody>
+              {displayCards.map((card, idx) => (
+                <tr key={idx} className={`rarity-row-${card.rarity.toLowerCase()}`}>
+                  <td className="card-name">{card.name}</td>
+                  <td className={`rarity rarity-${card.rarity.toLowerCase()}`}>{card.rarity}</td>
+                  <td className="quality">{card.quality_score.toFixed(2)}</td>
+                  <td className="attribute">{card.is_hologram ? '✓' : '—'}</td>
+                  <td className="attribute">{card.is_reverse_holo ? '✓' : '—'}</td>
+                  <td className="attribute">{card.is_alt_art ? '✓' : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+      <div className="inventory-footer">Showing {displayCards.length} of {inventory.collection_count} cards</div>
+    </div>
+  )
+}

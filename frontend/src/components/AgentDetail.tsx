@@ -1,5 +1,6 @@
 import React from 'react'
 import { getAgent } from '../api'
+import AgentInventory from './AgentInventory'
 
 interface Traits {
   primary_trait: string
@@ -133,6 +134,9 @@ export default function AgentDetail({ id }: { id: number | null }) {
           </ul>
         )}
       </div>
+
+      {/* Full Inventory Section */}
+      <AgentInventory agentId={id} />
     </div>
   )
 }

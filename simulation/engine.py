@@ -18,7 +18,7 @@ from .world import Agent, WorldState
 @dataclass
 class SimulationConfig:
     seed: int = 42
-    initial_agents: int = 500
+    initial_agents: int = 10
     initial_packs_per_agent: int = 15
     ticks: int = 1
 
@@ -108,6 +108,21 @@ def run_simulation(config: SimulationConfig) -> Dict:
                 }
             )
 
+        # Full collection for detailed view
+        full_collection = []
+        for ci in agent.collection:
+            full_collection.append(
+                {
+                    "card_id": ci.ref.card_id,
+                    "name": ci.ref.name,
+                    "rarity": ci.ref.rarity.value,
+                    "is_hologram": ci.is_hologram,
+                    "is_reverse_holo": ci.is_reverse_holo,
+                    "is_alt_art": ci.is_alt_art,
+                    "quality_score": ci.effective_quality(),
+                }
+            )
+
         traits_dict = agent.traits.to_dict() if agent.traits else {}
 
         # Collection summary by rarity
@@ -127,6 +142,7 @@ def run_simulation(config: SimulationConfig) -> Dict:
                 "booster_count": agent.boosters,
                 "rarity_breakdown": rarity_counts,
                 "sample_cards": sample_cards,
+                "full_collection": full_collection,
                 "traits": traits_dict,
             }
         )

@@ -1,0 +1,212 @@
+.agent-inventory {
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.agent-inventory h2 {
+  margin: 0 0 15px 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.inventory-placeholder {
+  padding: 40px;
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.inventory-stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.stat-item {
+  padding: 8px 12px;
+  background: white;
+  border-radius: 4px;
+  border-left: 3px solid #ccc;
+  font-weight: 500;
+}
+
+.stat-item.rarity-mythic {
+  border-left-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.stat-item.rarity-rare {
+  border-left-color: #ffd93d;
+  color: #d99e1f;
+}
+
+.stat-item.rarity-uncommon {
+  border-left-color: #6bcf7f;
+  color: #2d7a3a;
+}
+
+.stat-item.rarity-common {
+  border-left-color: #999;
+  color: #666;
+}
+
+.stat-item.rarity-player {
+  border-left-color: #9d4edd;
+  color: #7209b7;
+}
+
+.inventory-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.search-input,
+.filter-select,
+.sort-select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: white;
+  min-width: 120px;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-input:focus,
+.filter-select:focus,
+.sort-select:focus {
+  outline: none;
+  border-color: #4a9eff;
+  box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+}
+
+.inventory-table-container {
+  background: white;
+  border-radius: 4px;
+  overflow: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.inventory-table thead {
+  background: #f0f0f0;
+  border-bottom: 2px solid #ddd;
+}
+
+.inventory-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+}
+
+.inventory-table tbody tr {
+  border-bottom: 1px solid #e5e5e5;
+  transition: background-color 0.15s ease;
+}
+
+.inventory-table tbody tr:hover {
+  background-color: #fafafa;
+}
+
+.inventory-table td {
+  padding: 10px 12px;
+}
+
+.card-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.rarity {
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-align: center;
+  width: fit-content;
+  min-width: 70px;
+}
+
+.rarity-mythic {
+  background: #ffe6e6;
+  color: #ff6b6b;
+}
+
+.rarity-rare {
+  background: #fff3cd;
+  color: #d99e1f;
+}
+
+.rarity-uncommon {
+  background: #d4edda;
+  color: #2d7a3a;
+}
+
+.rarity-common {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.rarity-player {
+  background: #f3e5ff;
+  color: #7209b7;
+}
+
+.rarity-row-mythic {
+  border-left: 3px solid #ff6b6b;
+}
+
+.rarity-row-rare {
+  border-left: 3px solid #ffd93d;
+}
+
+.rarity-row-uncommon {
+  border-left: 3px solid #6bcf7f;
+}
+
+.rarity-row-common {
+  border-left: 3px solid #999;
+}
+
+.rarity-row-player {
+  border-left: 3px solid #9d4edd;
+}
+
+.quality {
+  text-align: center;
+  color: #666;
+  font-weight: 500;
+}
+
+.attribute {
+  text-align: center;
+  color: #666;
+  font-size: 1rem;
+}
+
+.inventory-footer {
+  margin-top: 15px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  color: #999;
+  text-align: right;
+}

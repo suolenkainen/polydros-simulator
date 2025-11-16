@@ -102,3 +102,24 @@ def get_agent_collection(agent_id: int) -> dict:
                 "sample_cards": agent.get("sample_cards", []),
             }
     return {"error": "Agent not found"}
+
+
+@app.get("/agents/{agent_id}/cards")
+def get_agent_cards(agent_id: int) -> dict:
+    """Return all cards in an agent's collection (full inventory).
+    
+    This endpoint returns the complete card database for an agent, including
+    all card details (rarity, holo status, quality score, etc.).
+    """
+    if LAST_RUN is None:
+        return {"error": "No simulation run available"}
+    agents = LAST_RUN.get("agents", [])
+    for agent in agents:
+        if int(agent["id"]) == int(agent_id):
+            return {
+                "id": agent.get("id"),
+                "name": agent.get("name"),
+                "collection_count": agent.get("collection_count"),
+                "cards": agent.get("full_collection", []),
+            }
+    return {"error": "Agent not found"}
