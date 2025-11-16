@@ -1,20 +1,21 @@
-"""World and player representations.
+"""World and agent representations.
 
-Keep these simple: players have Prism balance and collections. For the skeleton
+Keep these simple: agents have Prism balance and collections. For the skeleton
 we only model opening packs and tracking counts.
 """
 
 from dataclasses import dataclass, field
 from typing import Dict, List
 
-from .types import CardInstance
+from .types import AgentTraits, CardInstance
 
 
 @dataclass
-class Player:
+class Agent:
     id: int
     prism: float = 0.0
     collection: List[CardInstance] = field(default_factory=list)
+    traits: AgentTraits | None = None
 
     def add_cards(self, cards: List[CardInstance]) -> None:
         self.collection.extend(cards)
@@ -22,12 +23,12 @@ class Player:
 
 @dataclass
 class WorldState:
-    players: Dict[int, Player] = field(default_factory=dict)
+    agents: Dict[int, Agent] = field(default_factory=dict)
     tick: int = 0
 
     def summary(self) -> Dict:
         return {
             "tick": self.tick,
-            "player_count": len(self.players),
-            "total_cards": sum(len(p.collection) for p in self.players.values()),
+            "agent_count": len(self.agents),
+            "total_cards": sum(len(a.collection) for a in self.agents.values()),
         }

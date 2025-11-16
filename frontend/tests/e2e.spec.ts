@@ -21,7 +21,7 @@ test('run simulation and view agent', async ({ page }) => {
   // Wait for agent detail to show
   await page.waitForSelector('h3')
   const header = await page.locator('h3').innerText()
-  expect(header).toContain('Player')
+  expect(header).toContain('Agent')
 
   // Verify sample cards list exists (may be empty)
   expect(await page.locator('h4')).toHaveText('Sample cards')

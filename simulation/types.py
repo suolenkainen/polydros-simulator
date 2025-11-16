@@ -40,7 +40,7 @@ class CardRef:
 class CardInstance:
     """A specific owned card instance with visual flags.
 
-    This represents a physical/virtual card a player can hold, sell, or trade.
+    This represents a physical/virtual card an agent can hold, sell, or trade.
     """
 
     ref: CardRef
@@ -60,3 +60,53 @@ class CardInstance:
             if self.quality_score is not None
             else self.ref.quality_score
         )
+
+
+class AgentTrait(str, Enum):
+    """Behavioral traits that influence agent decision-making."""
+
+    COLLECTOR = "collector_trait"
+    COMPETITOR = "competitor_trait"
+    GAMBLER = "gambler_trait"
+    SCAVENGER = "scavenger_trait"
+
+
+class RiskAversion(str, Enum):
+    """Risk tolerance spectrum."""
+
+    LOW = "low"  # aggressive, takes risks
+    MEDIUM = "medium"
+    HIGH = "high"  # conservative, avoids risks
+
+
+class TimeHorizon(str, Enum):
+    """Planning horizon for agent decisions."""
+
+    SHORT_TERM = "short_term"
+    MEDIUM_TERM = "medium_term"
+    LONG_TERM = "long_term"
+
+
+@dataclass
+class AgentTraits:
+    """Bundle of trait values for an agent."""
+
+    primary_trait: AgentTrait
+    risk_aversion: RiskAversion
+    time_horizon: TimeHorizon
+    collector_trait: float = 0.0  # 0.0 to 1.0
+    competitor_trait: float = 0.0
+    gambler_trait: float = 0.0
+    scavenger_trait: float = 0.0
+
+    def to_dict(self) -> dict:
+        """Serialize traits to a dictionary."""
+        return {
+            "primary_trait": self.primary_trait.value,
+            "risk_aversion": self.risk_aversion.value,
+            "time_horizon": self.time_horizon.value,
+            "collector_trait": self.collector_trait,
+            "competitor_trait": self.competitor_trait,
+            "gambler_trait": self.gambler_trait,
+            "scavenger_trait": self.scavenger_trait,
+        }

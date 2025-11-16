@@ -102,10 +102,10 @@ Used for:
 - Trading  
 - (Later) Crafting
 
-#### 500 Players Join the World
+#### 500 Agents Join the World
 At time `t = 0`:
 
-- 500 players  
+- 500 agents  
 - Each opens **15 booster packs**  
 - Packs seed the initial collections  
 
@@ -126,7 +126,7 @@ This module does **not** simulate combat stats.
 
 Each pack contains:
 
-- 1 Crystal/Player card  
+- 1 Crystal/Agent card  
 - 1 Rare/Mythic  
 - 3 Uncommons  
 - 7 Commons  
@@ -139,11 +139,11 @@ Probability-based enhancements:
 
 ---
 
-## 👥 Player Behavior Models
+## 👥 Agent Behavior Models
 
-Players run simple heuristic-based decisions each “tick” (simulated day):
+Agents run simple heuristic-based decisions each “tick” (simulated day):
 
-Players can:
+Agents can:
 
 - Open boosters  
 - Buy cards on market  
@@ -195,8 +195,8 @@ Over time this naturally creates:
 
 Each tick simulates:
 
-1. Prism income to all players  
-2. Player decision logic (buy packs/cards, sell cards, hold)  
+1. Prism income to all agents  
+2. Agent decision logic (buy packs/cards, sell cards, hold)  
 3. Order creation  
 4. Market matching  
 5. Price updates  
@@ -210,7 +210,7 @@ Simulation outputs time series for:
 - Collection completion  
 - Rarity availability  
 - Card scarcity  
-- Player wealth inequality  
+- Agent wealth inequality  
 
 ---
 
@@ -249,7 +249,7 @@ Copilot should produce/extend a structure like:
 /simulation
 cards.py
 booster.py
-player.py
+agent.py
 market.py
 world.py
 engine.py
@@ -318,7 +318,7 @@ def run_tick(world):
     Simulates one economic tick.
 
     Parameters:
-        world (WorldState): The current players, market, and time data.
+        world (WorldState): The current agents, market, and time data.
 
     Returns:
         WorldState: Updated world with resolved trades and new prices.

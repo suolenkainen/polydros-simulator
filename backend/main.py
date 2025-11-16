@@ -32,8 +32,8 @@ app.add_middleware(
 
 class RunRequest(BaseModel):
     seed: Optional[int] = 42
-    players: Optional[int] = 500
-    packs_per_player: Optional[int] = 15
+    agents: Optional[int] = 500
+    packs_per_agent: Optional[int] = 15
     ticks: Optional[int] = 1
 
 
@@ -41,8 +41,8 @@ class RunRequest(BaseModel):
 def run(req: RunRequest) -> dict:
     cfg = SimulationConfig(
         seed=req.seed,
-        initial_players=req.players,
-        initial_packs_per_player=req.packs_per_player,
+        initial_agents=req.agents,
+        initial_packs_per_agent=req.packs_per_agent,
         ticks=req.ticks,
     )
     result = run_simulation(cfg)
@@ -54,21 +54,50 @@ def run(req: RunRequest) -> dict:
 
 @app.get("/agents")
 def list_agents() -> dict:
-    """Return a list of agents (players) from the last run.
+    """Return a list of agents from the last run.
 
     Returns minimal metadata: id, prism, collection_count.
     """
     if LAST_RUN is None:
         return {"error": "No simulation run available"}
-    return {"players": LAST_RUN.get("players", [])}
+    return {"agents": LAST_RUN.get("agents", [])}
 
 
 @app.get("/agents/{agent_id}")
 def get_agent(agent_id: int) -> dict:
     if LAST_RUN is None:
         return {"error": "No simulation run available"}
-    players = LAST_RUN.get("players", [])
-    for p in players:
-        if int(p["id"]) == int(agent_id):
-            return {"player": p}
-    return {"error": "Player not found"}
+    agents = LAST_RUN.get("agents", [])
+    for agent in agents:
+        if int(agent["id"]) == int(agent_id):
+            return {"agent": agent}
+    return {"error": "Agent not found"}
+
+
+@app.get("/agents/{agent_id}/traits")
+def get_agent_traits(agent_id: int) -> dict:
+    """Return trait profile for an agent."""
+    if LAST_RUN is None:
+        return {"error": "No simulation run available"}
+    agents = LAST_RUN.get("agents", [])
+    for agent in agents:
+        if int(agent["id"]) == int(agent_id):
+            return {"traits": agent.get("traits", {})}
+    return {"error": "Agent not found"}
+
+
+@app.get("/agents/{agent_id}/collection")
+def get_agent_collection(agent_id: int) -> dict:
+    """Return collection summary by rarity for an agent."""
+    if LAST_RUN is None:
+        return {"error": "No simulation run available"}
+    agents = LAST_RUN.get("agents", [])
+    for agent in agents:
+        if int(agent["id"]) == int(agent_id):
+            return {
+                "id": agent.get("id"),
+                "collection_count": agent.get("collection_count"),
+                "rarity_breakdown": agent.get("rarity_breakdown", {}),
+                "sample_cards": agent.get("sample_cards", []),
+            }
+    return {"error": "Agent not found"}

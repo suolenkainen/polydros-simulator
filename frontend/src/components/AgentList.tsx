@@ -15,7 +15,7 @@ export default function AgentList({ onSelect }: { onSelect: (id: number) => void
     setLoading(true)
     getAgents()
       .then((res) => {
-        setAgents(res.players || [])
+        setAgents(res.agents || [])
       })
       .catch((err) => console.error(err))
       .finally(() => setLoading(false))
@@ -30,7 +30,7 @@ export default function AgentList({ onSelect }: { onSelect: (id: number) => void
       <ul>
         {agents.map((a) => (
           <li key={a.id}>
-            <button onClick={() => onSelect(a.id)}>{`Player ${a.id} — ${a.collection_count} cards — ${a.prism} Prism`}</button>
+            <button onClick={() => onSelect(a.id)}>{`Agent ${a.id} — ${a.collection_count} cards — ${a.prism} Prism`}</button>
           </li>
         ))}
       </ul>
