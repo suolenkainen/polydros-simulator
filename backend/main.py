@@ -6,7 +6,6 @@ background task execution.
 """
 
 from typing import Optional
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -31,10 +30,12 @@ app.add_middleware(
 
 
 class RunRequest(BaseModel):
-    seed: Optional[int] = 42
-    agents: Optional[int] = 500
-    packs_per_agent: Optional[int] = 15
-    ticks: Optional[int] = 1
+    # Use concrete int types so downstream callers (mypy) see int and not
+    # Optional[int]. Pydantic will still accept values via the HTTP payload.
+    seed: int = 42
+    agents: int = 500
+    packs_per_agent: int = 15
+    ticks: int = 1
 
 
 @app.post("/run")

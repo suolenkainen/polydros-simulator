@@ -1,3 +1,6 @@
+from typing import cast
+import random
+
 from simulation.cards import sample_card_pool
 from simulation.booster import open_booster
 
@@ -6,22 +9,22 @@ def test_open_booster_mythic_upgrade() -> None:
     pool = sample_card_pool()
 
     class FakeRNG:
-        def choices(self, candidates, weights, k):
+        def choices(self, candidates, weights, k) -> list:
             # pick the first candidate always
             return [candidates[0] for _ in range(k)]
 
-        def random(self):
+        def random(self) -> float:
             # Force hologram flags and mythic-upgrade branch
             return 0.01
 
-        def randrange(self, n):
+        def randrange(self, n) -> int:
             return 0
 
         def choice(self, seq):
             return seq[0]
 
     rng = FakeRNG()
-    inst = open_booster(pool, rng)
+    inst = open_booster(pool, cast(random.Random, rng))
     # ensure we return a list of CardInstance-like objects and that at least
     # one card was opened
     assert isinstance(inst, list)
@@ -49,20 +52,20 @@ def test_open_booster_replaces_rare_with_mythic() -> None:
     ]
 
     class FakeRNG2:
-        def choices(self, candidates, weights, k):
+        def choices(self, candidates, weights, k) -> list:
             # always pick the first candidate available
             return [candidates[0] for _ in range(k)]
 
-        def random(self):
+        def random(self) -> float:
             # trigger mythic-upgrade branch
             return 0.01
 
-        def randrange(self, n):
+        def randrange(self, n) -> int:
             return 0
 
         def choice(self, seq):
             return seq[0]
 
-    inst = open_booster(pool, FakeRNG2())
+    inst = open_booster(pool, cast(random.Random, FakeRNG2()))
     # at least one card should be mythic when replacement happens
     assert any(i.ref.rarity == Rarity.MYTHIC for i in inst)

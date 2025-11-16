@@ -13,7 +13,7 @@ DEFAULT_PACK_TEMPLATE = {
     Rarity.COMMON: 7,
     Rarity.UNCOMMON: 3,
     Rarity.RARE: 1,  # may be replaced by mythic via probability
-    # "Crystal/Player" is outside rarity flow in full spec; omitted in scaffold
+    Rarity.PLAYER: 1,  # one player card per pack
 }
 
 

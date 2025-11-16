@@ -11,7 +11,7 @@ from typing import Dict, List
 
 from .agents import generate_agent_traits
 from .booster import open_booster
-from .cards import sample_card_pool
+from .cards import large_card_pool
 from .world import Agent, WorldState
 
 
@@ -36,29 +36,61 @@ def run_simulation(config: SimulationConfig) -> Dict:
     """
     rng = random.Random(config.seed)
 
-    pool = sample_card_pool()
+    pool = large_card_pool()
 
     world = WorldState()
 
-    # Create agents and seed packs
+    # Distributor initially owns all boosters; agents start empty
+    total_boosters = config.initial_agents * config.initial_packs_per_agent
+    world.distributor_boosters = total_boosters
+
+    # Create agents with deterministic per-agent RNG seeds and empty collections
     for pid in range(config.initial_agents):
         traits = generate_agent_traits(rng)
-        agent = Agent(id=pid, prism=0.0, traits=traits)
-        for _ in range(config.initial_packs_per_agent):
-            cards = open_booster(pool, rng)
-            agent.add_cards(cards)
+        seed = rng.randint(0, 2 ** 31 - 1)
+        agent = Agent(id=pid, prism=0.0, traits=traits, name=f"Agent-{pid}", nick=f"A{pid}", rng_seed=seed, boosters=0)
         world.agents[pid] = agent
 
     # Collect time-series (simple: only initial snapshot + tick summaries)
     timeseries: List[Dict] = []
     timeseries.append({"tick": 0, **world.summary()})
 
-    # Advance ticks (no market yet; reserved for later)
+    # Cost parameters
+    BOOSTER_COST = 5.0
+
+    # Advance ticks: agents buy boosters from distributor and open some
     for t in range(1, config.ticks + 1):
         world.tick = t
-        # Placeholder: grant small income
+        # Each agent gets small income
         for agent in world.agents.values():
             agent.prism += 1.0
+
+        # Buying phase: each agent buys up to default_buy boosters (influenced by collector_trait)
+        default_buy = 5
+        for agent in world.agents.values():
+            # Buying decisions: default behavior (no trait influence): buy up to default_buy
+            # constrained by distributor stock and affordability (BOOSTER_COST)
+            affordable = int(agent.prism // BOOSTER_COST)
+            buy_wish = default_buy
+            buy_count = min(buy_wish, world.distributor_boosters, affordable)
+            if buy_count > 0:
+                agent.add_boosters(buy_count)
+                world.distributor_boosters -= buy_count
+                # charge prism
+                agent.prism -= buy_count * BOOSTER_COST
+
+        # Opening phase: agents open up to default_open boosters from their inventory
+        default_open = 5
+        for agent in world.agents.values():
+            open_count = min(default_open, agent.boosters)
+            if open_count <= 0:
+                continue
+            a_rng = random.Random(agent.rng_seed + t + 1000)
+            for _ in range(open_count):
+                cards = open_booster(pool, a_rng)
+                agent.add_cards(cards)
+                agent.remove_boosters(1)
+
         timeseries.append({"tick": t, **world.summary()})
 
     # Build a serializable agents summary to expose to the frontend/backend.
@@ -88,7 +120,11 @@ def run_simulation(config: SimulationConfig) -> Dict:
             {
                 "id": agent.id,
                 "prism": agent.prism,
+                "name": agent.name,
+                "nick": agent.nick,
+                "rng_seed": agent.rng_seed,
                 "collection_count": len(agent.collection),
+                "booster_count": agent.boosters,
                 "rarity_breakdown": rarity_counts,
                 "sample_cards": sample_cards,
                 "traits": traits_dict,

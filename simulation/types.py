@@ -15,6 +15,7 @@ class Rarity(str, Enum):
     UNCOMMON = "Uncommon"
     RARE = "Rare"
     MYTHIC = "Mythic"
+    PLAYER = "Player"
 
 
 @dataclass(frozen=True)
