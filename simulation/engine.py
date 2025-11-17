@@ -142,9 +142,23 @@ def run_simulation(config: SimulationConfig) -> Dict:
     for t in range(1, config.ticks + 1):
         world.tick = t
 
-        # Buying phase: each agent buys exactly 5 boosters
-        buy_count = 5
+        # Buying phase: each agent buys boosters based on collector trait
+        # - Before 60 cards: always buy 5 packs
+        # - After 60 cards: only buy if collector trait triggers (random chance)
         for agent in world.agents.values():
+            buy_count = 5
+            
+            # Check if agent already has 60+ cards
+            if len(agent.collection) >= 60:
+                # After 60 cards, use collector trait to determine if they buy
+                a_rng = random.Random(agent.rng_seed + t + 2000)
+                collector_roll = a_rng.random()
+                
+                if collector_roll >= agent.traits.collector_trait:
+                    # Collector trait did NOT trigger this tick, skip purchase
+                    continue
+                # else: collector trait triggered, proceed with purchase
+            
             cost = buy_count * BOOSTER_COST
             # Only buy if agent has enough Prism and distributor has enough boosters
             if world.distributor_boosters >= buy_count and agent.prism >= cost:
@@ -152,12 +166,18 @@ def run_simulation(config: SimulationConfig) -> Dict:
                 world.distributor_boosters -= buy_count
                 agent.prism -= cost
                 agent.prism = round(agent.prism, 2)  # Round to 2 decimals
-                # log event
+                
+                # Log event with trait info if applicable
+                if len(agent.collection) >= 60:
+                    description = f"{agent.name} bought {buy_count} booster{'s' if buy_count > 1 else ''} for {cost} Prism (collector trait triggered: {agent.traits.collector_trait:.0%})"
+                else:
+                    description = f"{agent.name} bought {buy_count} booster{'s' if buy_count > 1 else ''} for {cost} Prism"
+                
                 event = Event(
                     tick=t,
                     agent_id=agent.id,
                     event_type="booster_purchase",
-                    description=f"{agent.name} bought {buy_count} booster{'s' if buy_count > 1 else ''} for {cost} Prism",
+                    description=description,
                     agent_ids=[agent.id],
                 )
                 world.add_event(event)

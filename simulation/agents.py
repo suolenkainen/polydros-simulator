@@ -22,12 +22,13 @@ def generate_agent_traits(rng: random.Random) -> AgentTraits:
     risk = rng.choice(list(RiskAversion))
     horizon = rng.choice(list(TimeHorizon))
 
-    # Each trait is independent and ranges [0, 1]
+    # Collector trait ranges [0.10, 0.50] (10-50% chance per tick to buy after 60 cards)
+    # Other traits range [0, 1]
     traits = AgentTraits(
         primary_trait=primary,
         risk_aversion=risk,
         time_horizon=horizon,
-        collector_trait=rng.random(),
+        collector_trait=round(0.10 + rng.random() * 0.40, 2),  # 10-50%
         competitor_trait=rng.random(),
         gambler_trait=rng.random(),
         scavenger_trait=rng.random(),
