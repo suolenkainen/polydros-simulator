@@ -59,6 +59,35 @@ export default function SimulationRunner({
   const [ticks, setTicks] = useState<number>(1)
   const [allEvents, setAllEvents] = useState<SimulationEvent[]>([])
 
+  // Initialize simulation at tick 0 when component mounts
+  React.useEffect(() => {
+    const initializeSimulation = async () => {
+      try {
+        const res = await runSimulation({ seed, agents, ticks: 0 })
+        const series = res.timeseries as TimeseriesPoint[]
+        setData(series)
+        
+        // Display initial world summary
+        if (onWorldSummary && series.length > 0) {
+          const initial = series[0]
+          onWorldSummary({
+            tick: initial.tick,
+            agent_count: initial.agent_count,
+            total_cards: initial.total_cards,
+            total_unopened_boosters: initial.total_unopened_boosters,
+          })
+        }
+        if (onEvents) {
+          onEvents([])
+        }
+      } catch (err) {
+        console.error('Failed to initialize simulation:', err)
+      }
+    }
+    
+    initializeSimulation()
+  }, [seed, agents, onWorldSummary, onEvents])
+
   async function onRun(e: React.FormEvent) {
     e.preventDefault()
     
@@ -113,20 +142,31 @@ export default function SimulationRunner({
   }
 
   function onReset() {
-    setData(null)
     setCurrentTick(0)
     setAllEvents([])
-    if (onWorldSummary) {
-      onWorldSummary({
-        tick: 0,
-        agent_count: 0,
-        total_cards: 0,
-        total_unopened_boosters: 0,
-      })
+    // Reinitialize to show tick 0 state with agents
+    const reinitialize = async () => {
+      try {
+        const res = await runSimulation({ seed, agents, ticks: 0 })
+        const series = res.timeseries as TimeseriesPoint[]
+        setData(series)
+        if (onWorldSummary && series.length > 0) {
+          const initial = series[0]
+          onWorldSummary({
+            tick: initial.tick,
+            agent_count: initial.agent_count,
+            total_cards: initial.total_cards,
+            total_unopened_boosters: initial.total_unopened_boosters,
+          })
+        }
+        if (onEvents) {
+          onEvents([])
+        }
+      } catch (err) {
+        console.error('Failed to reset simulation:', err)
+      }
     }
-    if (onEvents) {
-      onEvents([])
-    }
+    reinitialize()
   }
 
   const chartData = {
