@@ -2,7 +2,6 @@
 """Verify the deck structure."""
 
 from simulation.engine import SimulationConfig, run_simulation
-import json
 
 # Run simulation
 config = SimulationConfig(seed=42, initial_agents=1, ticks=1)
@@ -30,5 +29,5 @@ for i, card in enumerate(agent['full_collection'][:3]):
 
 print("\n✓ Deck successfully created with:")
 print(f"  - {len(deck)} total cards")
-print(f"  - Name, Color, Power, Health, Cost fields")
-print(f"  - Collection preserved with full details")
+print("  - Name, Color, Power, Health, Cost fields")
+print("  - Collection preserved with full details")

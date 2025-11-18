@@ -4,7 +4,6 @@ This module provides utilities to create and randomize agent traits.
 """
 
 import random
-from typing import Sequence
 
 from .types import AgentTrait, AgentTraits, RiskAversion, TimeHorizon
 

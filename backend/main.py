@@ -5,7 +5,6 @@ simulation and return JSON. In production you'd add pagination, auth, and
 background task execution.
 """
 
-from typing import Optional
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel

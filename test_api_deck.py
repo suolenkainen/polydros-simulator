@@ -19,14 +19,14 @@ for agent in data['agents']:
     print(f"  Prism: {agent['prism']}")
     print(f"  Collection count: {agent['collection_count']}")
     print(f"  Deck size: {len(agent.get('deck', []))}")
-    
+
     if agent.get('deck'):
         print(f"  First deck card: {agent['deck'][0]['name']}")
         print(f"    - Color: {agent['deck'][0]['color']}")
         print(f"    - Power: {agent['deck'][0]['power']}")
         print(f"    - Health: {agent['deck'][0]['health']}")
         print(f"    - Cost: {agent['deck'][0]['cost']}")
-    
+
     print(f"  Sample_cards present: {'sample_cards' in agent}")
     print(f"  Full_collection present: {'full_collection' in agent}")
     print()

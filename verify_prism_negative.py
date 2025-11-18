@@ -11,7 +11,7 @@ print("=== Prism Balance Verification ===\n")
 for agent in result["agents"]:
     purchases = [e for e in agent.get("agent_events", []) if e["event_type"] == "booster_purchase"]
     print(f"Agent {agent['id']}:")
-    print(f"  Starting Prism: 200.00")
+    print("  Starting Prism: 200.00")
     print(f"  Final Prism: {agent['prism']}")
     print(f"  Number of purchases: {len(purchases)}")
     print(f"  Total spent: {len(purchases) * 60} Prism (5 boosters × 12 Prism each)")

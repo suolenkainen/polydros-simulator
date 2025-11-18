@@ -7,15 +7,18 @@ reproducibility.
 
 import random
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import TYPE_CHECKING, Dict, List
 
 from .agents import generate_agent_traits
 from .booster import open_booster
 from .cards import large_card_pool
 from .world import Agent, Event, WorldState
 
+if TYPE_CHECKING:
+    from .types import CardRef
 
-def calculate_card_price(card_ref) -> float:
+
+def calculate_card_price(card_ref: "CardRef") -> float:
     """Calculate market price for a card based on rarity, frequency, and quality.
     
     Price calculation:
@@ -35,17 +38,25 @@ def calculate_card_price(card_ref) -> float:
         "Alternate Art": 6.0,
     }
     rarity_mult = rarity_multipliers.get(card_ref.rarity.value, 1.0)
-    
+
     # Scarcity multiplier based on pack_weight (appearance frequency)
     # Lower pack_weight = rarer = higher price
     scarcity_mult = max(0.5, 100.0 / max(card_ref.pack_weight, 1.0))
-    
+
     # Quality multiplier (scales around 1.0)
     # quality_score typically 0-100, normalize to price multiplier
     quality_mult = 1.0 + (card_ref.quality_score - 50.0) / 100.0
-    quality_mult = max(0.5, min(2.0, quality_mult))  # clamp between 0.5 and 2.0
-    
-    return card_ref.base_price * rarity_mult * scarcity_mult * quality_mult * 0.1  # scale down final price
+    quality_mult = max(0.5, min(2.0, quality_mult))
+
+    # Final calculation: base_price * (rarity_mult * scarcity_mult * quality_mult)
+    # Scale down by 0.1 for reasonable prices
+    return (
+        card_ref.base_price
+        * rarity_mult
+        * scarcity_mult
+        * quality_mult
+        * 0.1
+    )
 
 
 def build_deck(collection: List, rng: random.Random, deck_size: int = 40) -> List[Dict]:
@@ -67,7 +78,7 @@ def build_deck(collection: List, rng: random.Random, deck_size: int = 40) -> Lis
         shuffled = list(collection)
         rng.shuffle(shuffled)
         deck_cards = shuffled[:deck_size]
-    
+
     deck = []
     for card_inst in deck_cards:
         ref = card_inst.ref
@@ -83,7 +94,7 @@ def build_deck(collection: List, rng: random.Random, deck_size: int = 40) -> Lis
             "health": getattr(ref, 'health', 0),  # Will be added to CardRef
             "cost": getattr(ref, 'cost', 0),  # Will be added to CardRef
         })
-    
+
     return deck
 
 
@@ -147,18 +158,18 @@ def run_simulation(config: SimulationConfig) -> Dict:
         # - After 60 cards: only buy if collector trait triggers (random chance)
         for agent in world.agents.values():
             buy_count = 5
-            
+
             # Check if agent already has 60+ cards
-            if len(agent.collection) >= 60:
+            if len(agent.collection) >= 60 and agent.traits is not None:
                 # After 60 cards, use collector trait to determine if they buy
                 a_rng = random.Random(agent.rng_seed + t + 2000)
                 collector_roll = a_rng.random()
-                
+
                 if collector_roll >= agent.traits.collector_trait:
-                    # Collector trait did NOT trigger this tick, skip purchase
+                    # Collector trait did NOT trigger, skip purchase
                     continue
                 # else: collector trait triggered, proceed with purchase
-            
+
             cost = buy_count * BOOSTER_COST
             # Only buy if agent has enough Prism and distributor has enough boosters
             if world.distributor_boosters >= buy_count and agent.prism >= cost:
@@ -166,13 +177,21 @@ def run_simulation(config: SimulationConfig) -> Dict:
                 world.distributor_boosters -= buy_count
                 agent.prism -= cost
                 agent.prism = round(agent.prism, 2)  # Round to 2 decimals
-                
+
                 # Log event with trait info if applicable
-                if len(agent.collection) >= 60:
-                    description = f"{agent.name} bought {buy_count} booster{'s' if buy_count > 1 else ''} for {cost} Prism (collector trait triggered: {agent.traits.collector_trait:.0%})"
+                if (len(agent.collection) >= 60 and agent.traits is not None):
+                    trait_str = f"{agent.traits.collector_trait:.0%}"
+                    description = (
+                        f"{agent.name} bought {buy_count} booster"
+                        f"{'s' if buy_count > 1 else ''} for {cost} Prism "
+                        f"(collector trait triggered: {trait_str})"
+                    )
                 else:
-                    description = f"{agent.name} bought {buy_count} booster{'s' if buy_count > 1 else ''} for {cost} Prism"
-                
+                    description = (
+                        f"{agent.name} bought {buy_count} booster"
+                        f"{'s' if buy_count > 1 else ''} for {cost} Prism"
+                    )
+
                 event = Event(
                     tick=t,
                     agent_id=agent.id,

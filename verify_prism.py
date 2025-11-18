@@ -14,12 +14,12 @@ for agent in result["agents"]:
     prism = agent["prism"]
     boosters = agent["booster_count"]
     print(f"Agent {agent_id}:")
-    print(f"  Starting Prism: 200.00")
-    print(f"  Packs bought: 5")
-    print(f"  Cost (5 × 12): 60.00 Prism")
+    print("  Starting Prism: 200.00")
+    print("  Packs bought: 5")
+    print("  Cost (5 × 12): 60.00 Prism")
     print(f"  Remaining Prism: {prism}")
     print(f"  Boosters owned: {boosters}")
-    print(f"  Expected: 140.00 Prism, 5 boosters")
+    print("  Expected: 140.00 Prism, 5 boosters")
     print()
 
 # Check events

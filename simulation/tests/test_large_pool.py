@@ -21,6 +21,6 @@ def test_large_pool_counts():
     assert counts["Rare"] >= 2
     assert counts["Mythic"] >= 2
     assert counts["Player"] >= 1  # At least one player card
-    
+
     # Verify total pool is non-empty
     assert len(pool) >= 9

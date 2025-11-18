@@ -26,7 +26,7 @@ class Event:
     event_type: str  # 'purchase', 'sale', 'match', 'booster_open', etc.
     description: str
     agent_ids: List[int] = field(default_factory=list)
-    
+
     def to_dict(self) -> Dict:
         return {
             "tick": self.tick,
