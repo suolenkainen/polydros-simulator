@@ -15,7 +15,7 @@ from .cards import large_card_pool
 from .world import Agent, Event, WorldState
 
 if TYPE_CHECKING:
-    from .types import CardRef
+    from .types import CardRef, CardInstance
 
 
 def calculate_card_price(card_ref: "CardRef") -> float:
@@ -61,12 +61,12 @@ def calculate_card_price(card_ref: "CardRef") -> float:
 
 def build_deck(collection: List, rng: random.Random, deck_size: int = 40) -> List[Dict]:
     """Build a deck with 40 cards: 1 player, 4 mine, and 35 other cards.
-    
+
     Args:
         collection: list of CardInstance objects to select from
         rng: random number generator for shuffling
         deck_size: total deck size (default 40)
-    
+
     Returns:
         list of deck card dicts with name, color, power, health, cost
     """
@@ -98,6 +98,16 @@ def build_deck(collection: List, rng: random.Random, deck_size: int = 40) -> Lis
     return deck
 
 
+def degrade_card_quality(card: "CardInstance", degradation: float) -> None:
+    """Degrade a card's quality by a percentage amount.
+
+    Args:
+        card: CardInstance to degrade
+        degradation: degradation amount (1.0 = 1%, so 0.01 = 1% reduction)
+    """
+    current_quality = card.effective_quality()
+    new_quality = current_quality * (1.0 - degradation)
+    card.quality_score = new_quality
 @dataclass
 class SimulationConfig:
     seed: int = 42
@@ -212,6 +222,55 @@ def run_simulation(config: SimulationConfig) -> Dict:
                 cards = open_booster(pool, a_rng)
                 agent.add_cards(cards)
                 agent.remove_boosters(1)
+
+        # Play phase: agents play games with their decks, degrading card quality
+        for agent in world.agents.values():
+            if len(agent.collection) < 40:
+                # Can't play without a deck
+                continue
+
+            # Use seeded RNG to decide if agent plays this tick
+            a_rng = random.Random(agent.rng_seed + t + 2000)
+            play_chance = a_rng.random()
+
+            # Play if random roll is less than 0.5 (50% chance per tick)
+            if play_chance < 0.5:
+                # Degrade all cards in deck by 1%
+                if len(agent.collection) >= 40:
+                    deck_sample = agent.collection[:40]
+                else:
+                    deck_sample = agent.collection
+                for card in deck_sample:
+                    degrade_card_quality(card, 0.01)  # 1% degradation
+
+                description = f"{agent.name} played a game"
+                event = Event(
+                    tick=t,
+                    agent_id=agent.id,
+                    event_type="play",
+                    description=description,
+                    agent_ids=[agent.id],
+                )
+                world.add_event(event)
+
+        # Degrade unopened packs by 1% every 180 ticks
+        for agent in world.agents.values():
+            if agent.boosters > 0 and t > 0 and t % 180 == 0:
+                # Pack degradation happens at tick 180, 360, 540, etc.
+                # For now, we log this but don't degrade anything physical
+                # (packs don't have quality_score, only opened cards do)
+                plural = "s" if agent.boosters > 1 else ""
+                description = (
+                    f"{agent.name}'s {agent.boosters} unopened booster{plural} aged"
+                )
+                event = Event(
+                    tick=t,
+                    agent_id=agent.id,
+                    event_type="pack_age",
+                    description=description,
+                    agent_ids=[agent.id],
+                )
+                world.add_event(event)
 
         # Collect events that occurred this tick
         tick_events = [e.to_dict() for e in world.events if e.tick == t]

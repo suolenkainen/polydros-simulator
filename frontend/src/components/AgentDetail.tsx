@@ -6,10 +6,10 @@ interface Traits {
   primary_trait: string
   risk_aversion: string
   time_horizon: string
-  collector: number
-  competitor: number
-  gambler: number
-  scavenger: number
+  collector_trait: number
+  competitor_trait: number
+  gambler_trait: number
+  scavenger_trait: number
 }
 
 interface Agent {
@@ -90,10 +90,30 @@ export default function AgentDetail({ id }: { id: number | null }) {
               <div style={{ marginTop: '0.5rem' }}>
                 <p style={{ marginBottom: '0.25rem' }}><strong>Trait Scores:</strong></p>
                 <div className="trait-scores">
-                  <div>Collector: {(traits.collector * 100).toFixed(1)}%</div>
-                  <div>Competitor: {(traits.competitor * 100).toFixed(1)}%</div>
-                  <div>Gambler: {(traits.gambler * 100).toFixed(1)}%</div>
-                  <div>Scavenger: {(traits.scavenger * 100).toFixed(1)}%</div>
+                  <div>
+                    <strong>Collector: {(traits.collector_trait * 100).toFixed(1)}%</strong>
+                    <p style={{ fontSize: '0.85rem', marginTop: '0.2rem', marginBottom: '0.5rem', color: '#666' }}>
+                      Probability to purchase packs or high-attraction cards. Rarely plays.
+                    </p>
+                  </div>
+                  <div>
+                    <strong>Competitor: {(traits.competitor_trait * 100).toFixed(1)}%</strong>
+                    <p style={{ fontSize: '0.85rem', marginTop: '0.2rem', marginBottom: '0.5rem', color: '#666' }}>
+                      Late purchaser: buys boosters from new sets late and upgrades pack with those cards.
+                    </p>
+                  </div>
+                  <div>
+                    <strong>Gambler: {(traits.gambler_trait * 100).toFixed(1)}%</strong>
+                    <p style={{ fontSize: '0.85rem', marginTop: '0.2rem', marginBottom: '0.5rem', color: '#666' }}>
+                      Buys singles with appreciating value. Purchases packs then singles from those sets.
+                    </p>
+                  </div>
+                  <div>
+                    <strong>Scavenger: {(traits.scavenger_trait * 100).toFixed(1)}%</strong>
+                    <p style={{ fontSize: '0.85rem', marginTop: '0.2rem', marginBottom: '0.5rem', color: '#666' }}>
+                      Spends heavily on boosters early (may not open). Buys from other agents before value increases, sells at high price.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

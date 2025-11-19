@@ -197,10 +197,11 @@ Each tick simulates:
 
 1. Prism income to all agents  
 2. Agent decision logic (buy packs/cards, sell cards, hold)  
-3. Order creation  
-4. Market matching  
-5. Price updates  
-6. Logging/analytics  
+3. Booster purchase execution  
+4. Booster opening (agents open boosters and add cards to collection)  
+5. Play phase (agents with ≥40 cards may play games, degrading card quality)  
+6. Pack aging (every 180 ticks, unopened boosters age and quality degrades)  
+7. Logging/analytics  
 
 Simulation outputs time series for:
 
@@ -210,7 +211,28 @@ Simulation outputs time series for:
 - Collection completion  
 - Rarity availability  
 - Card scarcity  
+- Card quality degradation over time  
 - Agent wealth inequality  
+
+### Play Logic & Quality Degradation
+
+**Play Phase:**
+- Agents with ≥40 cards in collection can play games each tick
+- Uses deterministic RNG (seeded by agent.rng_seed + tick + offset) to decide if agent plays
+- 50% chance per tick for agents with sufficient collection size
+- When an agent plays: all cards in a 40-card deck sample degrade by 1% (quality_score *= 0.99)
+- Play events are logged with event_type="play"
+
+**Pack Aging:**
+- Every 180 ticks (at ticks 180, 360, 540, etc.), unopened boosters age
+- Pack aging is logged as event_type="pack_age" 
+- Note: Unopened packs don't have instance-level quality tracking yet; events are logged for tracking purposes
+
+**Quality Tracking:**
+- `CardInstance` has optional `quality_score` field for instance-level degradation
+- `CardRef` has base `quality_score` from card pool data
+- `effective_quality()` returns instance score if set, otherwise falls back to card reference score
+- Card quality affects both market pricing and agent demand calculations  
 
 ---
 
