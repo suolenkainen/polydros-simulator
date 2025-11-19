@@ -20,12 +20,12 @@ if TYPE_CHECKING:
 
 def calculate_card_price(card_ref: "CardRef") -> float:
     """Calculate market price for a card based on rarity, frequency, and quality.
-    
+
     Price calculation:
     - Rarity multiplier: increases price for rarer cards
     - Appearance/pack_weight: lower appearance = higher price (scarcity premium)
     - Quality: higher quality increases price
-    
+
     Formula: base_price * (rarity_mult * scarcity_mult * quality_mult)
     """
     # Rarity multipliers
@@ -108,6 +108,41 @@ def degrade_card_quality(card: "CardInstance", degradation: float) -> None:
     current_quality = card.effective_quality()
     new_quality = current_quality * (1.0 - degradation)
     card.quality_score = new_quality
+
+
+def calculate_combat_score(deck: List["CardInstance"]) -> float:
+    """Calculate total combat score for a deck.
+
+    Score is computed as: sum of (card_power/total_gems) - (card_health/total_gems)
+    where total_gems is the sum of all gem costs in the deck.
+
+    Args:
+        deck: list of CardInstance objects in the deck
+
+    Returns:
+        total combat score (can be positive or negative)
+    """
+    if not deck:
+        return 0.0
+
+    # Calculate total gems (gem_colored + gem_colorless)
+    total_gems = sum(
+        card.ref.gem_colored + card.ref.gem_colorless for card in deck
+    )
+    if total_gems == 0:
+        # Avoid division by zero; if no gems, score is average power - health
+        return sum(card.ref.power - card.ref.health for card in deck)
+
+    # Calculate score: attack contribution minus defence contribution
+    score = 0.0
+    for card in deck:
+        # Attack (power) contributes positively
+        attack_contribution = card.ref.power / total_gems
+        # Defence (health) subtracts from opponent
+        defence_contribution = card.ref.health / total_gems
+        score += attack_contribution - defence_contribution
+
+    return score
 @dataclass
 class SimulationConfig:
     seed: int = 42
@@ -115,7 +150,7 @@ class SimulationConfig:
     ticks: int = 1
 
 
-def run_simulation(config: SimulationConfig) -> Dict:
+def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
     """Run a minimal deterministic simulation.
 
     The runner is intentionally small: it creates agents with realistic starting
@@ -235,23 +270,91 @@ def run_simulation(config: SimulationConfig) -> Dict:
 
             # Play if random roll is less than 0.5 (50% chance per tick)
             if play_chance < 0.5:
-                # Degrade all cards in deck by 1%
-                if len(agent.collection) >= 40:
-                    deck_sample = agent.collection[:40]
-                else:
-                    deck_sample = agent.collection
-                for card in deck_sample:
-                    degrade_card_quality(card, 0.01)  # 1% degradation
+                # Pick a random opponent from other agents
+                other_agents = [a for a in world.agents.values()
+                                if a.id != agent.id and len(a.collection) >= 40]
 
-                description = f"{agent.name} played a game"
-                event = Event(
-                    tick=t,
-                    agent_id=agent.id,
-                    event_type="play",
-                    description=description,
-                    agent_ids=[agent.id],
-                )
-                world.add_event(event)
+                if other_agents:
+                    # Use seeded RNG for opponent selection
+                    opponent_rng = random.Random(agent.rng_seed + t + 2001)
+                    opponent = opponent_rng.choice(other_agents)
+
+                    # Build decks (40 cards)
+                    if len(agent.collection) >= 40:
+                        player1_deck = agent.collection[:40]
+                    else:
+                        player1_deck = agent.collection
+
+                    if len(opponent.collection) >= 40:
+                        player2_deck = opponent.collection[:40]
+                    else:
+                        player2_deck = opponent.collection
+
+                    # Calculate combat scores
+                    player1_score = calculate_combat_score(player1_deck)
+                    player2_score = calculate_combat_score(player2_deck)
+
+                    # Determine winner
+                    if player1_score > player2_score:
+                        winner = agent
+                        loser = opponent
+                        winner_score = player1_score
+                        loser_score = player2_score
+                        winner_deck = player1_deck
+                        loser_deck = player2_deck
+                    else:
+                        winner = opponent
+                        loser = agent
+                        winner_score = player2_score
+                        loser_score = player1_score
+                        winner_deck = player2_deck
+                        loser_deck = player1_deck
+
+                    # Boost attractiveness and price of winning cards by 1%
+                    for card in winner_deck:
+                        world.boost_card_stats(card.ref.card_id, 0.01)
+
+                    # Penalize attractiveness and price of losing cards by 1%
+                    for card in loser_deck:
+                        world.penalize_card_stats(card.ref.card_id, 0.01)
+
+                    # Degrade cards in both decks by 1%
+                    for card in player1_deck:
+                        degrade_card_quality(card, 0.01)  # 1% degradation
+                    for card in player2_deck:
+                        degrade_card_quality(card, 0.01)  # 1% degradation
+
+                    # Log combat event
+                    description = (
+                        f"{winner.name} defeated {loser.name} "
+                        f"({winner_score:.2f} vs {loser_score:.2f})"
+                    )
+                    event = Event(
+                        tick=t,
+                        agent_id=winner.id,
+                        event_type="combat",
+                        description=description,
+                        agent_ids=[winner.id, loser.id],
+                    )
+                    world.add_event(event)
+                else:
+                    # No opponent available, just degrade cards
+                    if len(agent.collection) >= 40:
+                        deck_sample = agent.collection[:40]
+                    else:
+                        deck_sample = agent.collection
+                    for card in deck_sample:
+                        degrade_card_quality(card, 0.01)
+
+                    description = f"{agent.name} played a game (no opponent)"
+                    event = Event(
+                        tick=t,
+                        agent_id=agent.id,
+                        event_type="play",
+                        description=description,
+                        agent_ids=[agent.id],
+                    )
+                    world.add_event(event)
 
         # Degrade unopened packs by 1% every 180 ticks
         for agent in world.agents.values():
@@ -290,7 +393,12 @@ def run_simulation(config: SimulationConfig) -> Dict:
                     "rarity": ci.ref.rarity.value,
                     "is_hologram": ci.is_hologram,
                     "quality_score": ci.effective_quality(),
-                    "price": calculate_card_price(ci.ref),
+                    "price": world.get_card_price(ci.ref.card_id),
+                    "attractiveness": world.get_card_attractiveness(ci.ref.card_id),
+                    "power": ci.ref.power,
+                    "health": ci.ref.health,
+                    "gem_colored": ci.ref.gem_colored,
+                    "gem_colorless": ci.ref.gem_colorless,
                 }
             )
 

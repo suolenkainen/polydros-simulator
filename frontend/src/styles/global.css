@@ -812,3 +812,329 @@ p, div, span, li {
     width: 100%;
   }
 }
+
+/* ============================================================================
+   CARD DETAIL MODAL
+   ============================================================================ */
+
+.card-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.card-detail-modal {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 2rem;
+}
+
+.card-detail-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.card-detail-close:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.card-detail-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.card-detail-header h2 {
+  margin: 0 0 0.5rem 0;
+}
+
+.card-detail-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card-rarity {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.card-rarity-inline {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+  display: inline-block;
+}
+
+.card-color {
+  padding: 0.25rem 0.75rem;
+  background: #f0f0f0;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.card-hologram {
+  padding: 0.25rem 0.75rem;
+  background: #fff3cd;
+  border-radius: 4px;
+  font-weight: 500;
+  color: #856404;
+}
+
+.card-detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Card Image */
+.card-image-placeholder {
+  width: 100%;
+  aspect-ratio: 5/7;
+  background: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e0e0e0;
+}
+
+.card-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card Stats */
+.card-stats-section {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Card Features & Flavor */
+.card-features-section,
+.card-flavor-section {
+  border-left: 3px solid #4a9eff;
+  padding-left: 1rem;
+}
+
+.card-features-section h4,
+.card-flavor-section h4 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.card-feature-text,
+.card-flavor-text {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.card-flavor-text p {
+  font-style: italic;
+  color: #777;
+}
+
+/* Economy Section */
+.card-economy-section {
+  background: #f0f8ff;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #b3d9ff;
+}
+
+.card-economy-section h4 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.economy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.economy-item {
+  text-align: center;
+}
+
+.economy-item label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.economy-value {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.price-capped {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+.price-cap-note {
+  display: block;
+  font-size: 0.75rem;
+  color: #d32f2f;
+  margin-top: 0.25rem;
+}
+
+/* Price Graph */
+.card-price-graph-section {
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.card-price-graph-section h4 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.price-graph-placeholder {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.price-graph {
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  max-height: 300px;
+}
+
+.graph-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Card Row Hover Effect */
+.card-row-clickable {
+  transition: background-color 0.2s;
+}
+
+.card-row-clickable:hover {
+  background-color: #f0f8ff !important;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .card-detail-modal {
+    max-width: 95%;
+    max-height: 95vh;
+    padding: 1.5rem 1rem;
+  }
+
+  .card-detail-close {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .stats-grid,
+  .economy-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-detail-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .graph-legend {
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: flex-start;
+  }
+}
+

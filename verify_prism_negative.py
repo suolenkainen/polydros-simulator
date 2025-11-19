@@ -9,7 +9,10 @@ result = run_simulation(config)
 
 print("=== Prism Balance Verification ===\n")
 for agent in result["agents"]:
-    purchases = [e for e in agent.get("agent_events", []) if e["event_type"] == "booster_purchase"]
+    purchases = [
+        e for e in agent.get("agent_events", [])
+        if e["event_type"] == "booster_purchase"
+    ]
     print(f"Agent {agent['id']}:")
     print("  Starting Prism: 200.00")
     print(f"  Final Prism: {agent['prism']}")

@@ -22,7 +22,7 @@ except ImportError:
     exit(1)
 
 
-def parse_excel_to_cards(excel_path: Path) -> List[Dict[str, Any]]:
+def parse_excel_to_cards(excel_path: Path) -> List[Dict[str, Any]]:  # noqa: C901
     """Parse the Excel master set and return a list of card dictionaries."""
     wb = openpyxl.load_workbook(excel_path, data_only=True)
     sheet = wb.active
@@ -39,7 +39,9 @@ def parse_excel_to_cards(excel_path: Path) -> List[Dict[str, Any]]:
             col_map[h.strip()] = idx
 
     cards = []
-    for row_idx, row in enumerate(sheet.iter_rows(min_row=2, values_only=True), start=2):
+    for _row_idx, row in enumerate(
+        sheet.iter_rows(min_row=2, values_only=True), start=2
+    ):
         # Skip empty rows
         if not row or not row[col_map.get("#", 0)]:
             continue

@@ -6,7 +6,13 @@ result = run_simulation(cfg)
 
 print("Agents:")
 for agent in result['agents']:
-    print(f"  Agent {agent['id']}: Prism={agent['prism']:.1f}, Boosters={agent['booster_count']}, Cards={agent['collection_count']}")
+    prism = agent['prism']
+    boosters = agent['booster_count']
+    cards = agent['collection_count']
+    print(
+        f"  Agent {agent['id']}: Prism={prism:.1f}, "
+        f"Boosters={boosters}, Cards={cards}"
+    )
 
 print("\nEvents:")
 for event in result['events']:

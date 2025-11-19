@@ -214,14 +214,33 @@ Simulation outputs time series for:
 - Card quality degradation over time  
 - Agent wealth inequality  
 
-### Play Logic & Quality Degradation
+### Play Logic & Combat System
 
 **Play Phase:**
 - Agents with ≥40 cards in collection can play games each tick
 - Uses deterministic RNG (seeded by agent.rng_seed + tick + offset) to decide if agent plays
 - 50% chance per tick for agents with sufficient collection size
-- When an agent plays: all cards in a 40-card deck sample degrade by 1% (quality_score *= 0.99)
-- Play events are logged with event_type="play"
+
+**Combat Mechanics:**
+- When an agent decides to play, they challenge a random opponent (also with ≥40 cards)
+- Both agents build a 40-card deck from their collection
+- **Score Calculation**: `sum((card_power / total_gems) - (card_health / total_gems))`
+  - `total_gems` = sum of card gem costs (gem_colored + gem_colorless)
+  - Each card's power contributes positively to the player's score
+  - Each card's health subtracts from the opponent's score
+- The player with the higher total score wins
+- Both decks degrade by 1% per card during play
+- **Winning cards have attractiveness and price boosted by 1%** (applies globally to all instances)
+- Combat events are logged with event_type="combat" and include winner/loser names and scores
+
+**Card Stat Evolution:**
+- When a card **wins** a combat, its `attractiveness` and base `price` both increase by 1%
+- When a card **loses** a combat, its `attractiveness` and base `price` both decrease by 1%
+- Stats have a minimum floor of 0.01 to prevent negative values
+- These changes are tracked globally in `WorldState.card_metadata` by card_id
+- All instances of that card (owned by any agent) are affected
+- This creates a natural meta where winning cards become more desirable/expensive and losing cards become less desirable/cheaper
+- Results in emergent gameplay where card utility and market value are interdependent
 
 **Pack Aging:**
 - Every 180 ticks (at ticks 180, 360, 540, etc.), unopened boosters age

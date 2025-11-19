@@ -4,7 +4,7 @@ from simulation.types import Rarity
 
 def test_large_pool_counts():
     """Test that the card pool loads successfully and has expected structure.
-    
+
     NOTE: This test uses placeholder data until the Excel export runs.
     After running scripts/export_cards_from_excel.py, the pool will contain
     the full master set (150+ cards) and these assertions will validate the

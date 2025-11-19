@@ -12,8 +12,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C002",
@@ -28,8 +29,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C003",
@@ -44,8 +46,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C004",
@@ -60,8 +63,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C005",
@@ -76,11 +80,12 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U006",
+    "id": "C006",
     "name": "Forge Choir Captain",
     "color": "Ruby",
     "type": "Creature",
@@ -92,11 +97,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U007",
+    "id": "C007",
     "name": "Blazetongue Bard",
     "color": "Ruby",
     "type": "Creature",
@@ -108,11 +114,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U008",
+    "id": "C008",
     "name": "Brassclad Duelist",
     "color": "Ruby",
     "type": "Creature",
@@ -124,11 +131,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U009",
+    "id": "C009",
     "name": "Blazing Crescendo",
     "color": "Ruby",
     "type": "Spell",
@@ -140,11 +148,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U010",
+    "id": "C010",
     "name": "Ash Vein Quarry",
     "color": "Ruby",
     "type": "Mine",
@@ -156,11 +165,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R011",
+    "id": "C011",
     "name": "Vulcanic Harbinger",
     "color": "Ruby",
     "type": "Creature",
@@ -172,11 +182,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R012",
+    "id": "C012",
     "name": "Forge Golem Mk.IV",
     "color": "Ruby",
     "type": "Golem",
@@ -188,11 +199,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R013",
+    "id": "C013",
     "name": "Symphony of Sparks",
     "color": "Ruby",
     "type": "Spell",
@@ -204,11 +216,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R014",
+    "id": "C014",
     "name": "Heartforge Tunnel",
     "color": "Ruby",
     "type": "Mine",
@@ -220,11 +233,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R015",
+    "id": "C015",
     "name": "Varetha Ironvoice, Doom Drummer",
     "color": "Ruby",
     "type": "Character",
@@ -236,11 +250,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M016",
+    "id": "C016",
     "name": "Song of the Mountain Forge",
     "color": "Ruby",
     "type": "Spell",
@@ -252,12 +267,13 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M017",
-    "name": "Ramdelom’s Heart-Titan",
+    "id": "C017",
+    "name": "Ramdelom\u00e2\u20ac\u2122s Heart-Titan",
     "color": "Ruby",
     "type": "Creature",
     "rarity": "MYTHIC",
@@ -268,12 +284,13 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M018",
-    "name": "Ramdelom’s Core",
+    "id": "C018",
+    "name": "Ramdelom\u00e2\u20ac\u2122s Core",
     "color": "Ruby",
     "type": "Mine",
     "rarity": "MYTHIC",
@@ -284,11 +301,12 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "P019",
+    "id": "C019",
     "name": "Ruby Miner",
     "color": "Ruby",
     "type": "Player",
@@ -300,11 +318,12 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "P020",
+    "id": "C020",
     "name": "Ruby Stalwart",
     "color": "Ruby",
     "type": "Player",
@@ -316,8 +335,9 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C021",
@@ -332,8 +352,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C022",
@@ -348,8 +369,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C023",
@@ -364,8 +386,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C024",
@@ -380,8 +403,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C025",
@@ -396,11 +420,12 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U026",
+    "id": "C026",
     "name": "Scholar of Whessa",
     "color": "Sapphire",
     "type": "Creature",
@@ -412,11 +437,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U027",
+    "id": "C027",
     "name": "Illusionist Adept",
     "color": "Sapphire",
     "type": "Creature",
@@ -428,11 +454,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U028",
+    "id": "C028",
     "name": "Crystal Navigator",
     "color": "Sapphire",
     "type": "Creature",
@@ -444,11 +471,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U029",
+    "id": "C029",
     "name": "Fractal Mirage",
     "color": "Sapphire",
     "type": "Spell",
@@ -460,11 +488,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U030",
+    "id": "C030",
     "name": "Blue Vein Lab",
     "color": "Sapphire",
     "type": "Mine",
@@ -476,11 +505,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R031",
+    "id": "C031",
     "name": "Reflection Serpent",
     "color": "Sapphire",
     "type": "Creature",
@@ -492,11 +522,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R032",
+    "id": "C032",
     "name": "Deep Equation",
     "color": "Sapphire",
     "type": "Spell",
@@ -508,11 +539,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R033",
+    "id": "C033",
     "name": "Mirror Reef",
     "color": "Sapphire",
     "type": "Mine",
@@ -524,11 +556,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R034",
+    "id": "C034",
     "name": "Archon Lirane Voss, Reflector Prime",
     "color": "Sapphire",
     "type": "Character",
@@ -540,11 +573,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M035",
+    "id": "C035",
     "name": "Aether Whale",
     "color": "Sapphire",
     "type": "Creature",
@@ -556,12 +590,13 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M036",
-    "name": "Whessa’s Reflection",
+    "id": "C036",
+    "name": "Whessa\u00e2\u20ac\u2122s Reflection",
     "color": "Sapphire",
     "type": "Spell",
     "rarity": "MYTHIC",
@@ -572,12 +607,13 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M037",
-    "name": "Whessa’s Core Spiral",
+    "id": "C037",
+    "name": "Whessa\u00e2\u20ac\u2122s Core Spiral",
     "color": "Sapphire",
     "type": "Mine",
     "rarity": "MYTHIC",
@@ -588,11 +624,12 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "P038",
+    "id": "C038",
     "name": "Sapphire Diver",
     "color": "Sapphire",
     "type": "Player",
@@ -604,11 +641,12 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "P039",
+    "id": "C039",
     "name": "Mirror Architect",
     "color": "Sapphire",
     "type": "Player",
@@ -620,8 +658,9 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C040",
@@ -636,8 +675,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C041",
@@ -652,8 +692,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C042",
@@ -668,8 +709,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C043",
@@ -684,8 +726,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C044",
@@ -700,11 +743,12 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U045",
+    "id": "C045",
     "name": "Vine Harpist",
     "color": "Emerald",
     "type": "Creature",
@@ -716,11 +760,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U046",
+    "id": "C046",
     "name": "Verdant Shaman",
     "color": "Emerald",
     "type": "Creature",
@@ -732,11 +777,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U047",
+    "id": "C047",
     "name": "Chordvine Panther",
     "color": "Emerald",
     "type": "Creature",
@@ -748,12 +794,13 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U048",
-    "name": "Lifeweaver’s Tune",
+    "id": "C048",
+    "name": "Lifeweaver\u00e2\u20ac\u2122s Tune",
     "color": "Emerald",
     "type": "Spell",
     "rarity": "UNCOMMON",
@@ -764,11 +811,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U049",
+    "id": "C049",
     "name": "Rootspire Garden",
     "color": "Emerald",
     "type": "Mine",
@@ -780,11 +828,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R050",
+    "id": "C050",
     "name": "Bloom Stag",
     "color": "Emerald",
     "type": "Creature",
@@ -796,11 +845,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R051",
+    "id": "C051",
     "name": "Root Sentinel",
     "color": "Emerald",
     "type": "Golem",
@@ -812,11 +862,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R052",
+    "id": "C052",
     "name": "Overgrow",
     "color": "Emerald",
     "type": "Spell",
@@ -828,11 +879,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R053",
+    "id": "C053",
     "name": "Heartbloom Crater",
     "color": "Emerald",
     "type": "Mine",
@@ -844,12 +896,13 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R054",
-    "name": "Bessalynn, Tiravel’s Flutist",
+    "id": "C054",
+    "name": "Bessalynn, Tiravel\u00e2\u20ac\u2122s Flutist",
     "color": "Emerald",
     "type": "Character",
     "rarity": "RARE",
@@ -860,11 +913,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M055",
+    "id": "C055",
     "name": "Verdant Colossus",
     "color": "Emerald",
     "type": "Creature",
@@ -876,12 +930,13 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M056",
-    "name": "Tiravel’s Harmony",
+    "id": "C056",
+    "name": "Tiravel\u00e2\u20ac\u2122s Harmony",
     "color": "Emerald",
     "type": "Spell",
     "rarity": "MYTHIC",
@@ -892,12 +947,13 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M057",
-    "name": "Tiravel’s Heartroot",
+    "id": "C057",
+    "name": "Tiravel\u00e2\u20ac\u2122s Heartroot",
     "color": "Emerald",
     "type": "Mine",
     "rarity": "MYTHIC",
@@ -908,11 +964,12 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "P058",
+    "id": "C058",
     "name": "Emerald Forager",
     "color": "Emerald",
     "type": "Player",
@@ -924,11 +981,12 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "P059",
+    "id": "C059",
     "name": "Heartlistener Monk",
     "color": "Emerald",
     "type": "Player",
@@ -940,8 +998,9 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C060",
@@ -956,8 +1015,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C061",
@@ -972,8 +1032,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C062",
@@ -988,8 +1049,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C063",
@@ -1004,8 +1066,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C064",
@@ -1020,11 +1083,12 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U065",
+    "id": "C065",
     "name": "Bellkeeper Exile",
     "color": "Onyx",
     "type": "Creature",
@@ -1036,11 +1100,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U066",
+    "id": "C066",
     "name": "Crypt Sentinel",
     "color": "Onyx",
     "type": "Creature",
@@ -1052,11 +1117,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U067",
+    "id": "C067",
     "name": "Soul Lantern Warden",
     "color": "Onyx",
     "type": "Creature",
@@ -1068,11 +1134,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U068",
+    "id": "C068",
     "name": "Bell of Remembrance",
     "color": "Onyx",
     "type": "Spell",
@@ -1084,11 +1151,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U069",
+    "id": "C069",
     "name": "Obsidian Vein",
     "color": "Onyx",
     "type": "Mine",
@@ -1100,11 +1168,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R070",
+    "id": "C070",
     "name": "Grave Siren",
     "color": "Onyx",
     "type": "Creature",
@@ -1116,11 +1185,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R071",
+    "id": "C071",
     "name": "Bellframe Guardian",
     "color": "Onyx",
     "type": "Golem",
@@ -1132,11 +1202,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R072",
+    "id": "C072",
     "name": "Silence the Pulse",
     "color": "Onyx",
     "type": "Spell",
@@ -1148,11 +1219,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R073",
+    "id": "C073",
     "name": "Black Bell Cavern",
     "color": "Onyx",
     "type": "Mine",
@@ -1164,11 +1236,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R074",
+    "id": "C074",
     "name": "Bellkeeper Nahl, Hollow Monk",
     "color": "Onyx",
     "type": "Character",
@@ -1180,11 +1253,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M075",
+    "id": "C075",
     "name": "The Pale Regent",
     "color": "Onyx",
     "type": "Creature",
@@ -1196,12 +1270,13 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M076",
-    "name": "Dirge of N’kurath",
+    "id": "C076",
+    "name": "Dirge of N\u00e2\u20ac\u2122kurath",
     "color": "Onyx",
     "type": "Spell",
     "rarity": "MYTHIC",
@@ -1212,11 +1287,12 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M077",
+    "id": "C077",
     "name": "Echo Core Depths",
     "color": "Onyx",
     "type": "Mine",
@@ -1228,11 +1304,12 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "P078",
+    "id": "C078",
     "name": "Onyx Supplicant",
     "color": "Onyx",
     "type": "Player",
@@ -1244,11 +1321,12 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "P079",
+    "id": "C079",
     "name": "Gravetone Acolyte",
     "color": "Onyx",
     "type": "Player",
@@ -1260,8 +1338,9 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C080",
@@ -1276,8 +1355,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C081",
@@ -1292,8 +1372,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C082",
@@ -1308,8 +1389,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C083",
@@ -1324,8 +1406,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C084",
@@ -1340,11 +1423,12 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U085",
+    "id": "C085",
     "name": "Mindpetal Mystic",
     "color": "Amethyst",
     "type": "Creature",
@@ -1356,11 +1440,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U086",
+    "id": "C086",
     "name": "Dreamsinger Monk",
     "color": "Amethyst",
     "type": "Creature",
@@ -1372,11 +1457,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U087",
+    "id": "C087",
     "name": "Lucid Seer",
     "color": "Amethyst",
     "type": "Creature",
@@ -1388,11 +1474,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U088",
+    "id": "C088",
     "name": "Dream Refrain",
     "color": "Amethyst",
     "type": "Spell",
@@ -1404,11 +1491,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U089",
+    "id": "C089",
     "name": "Amethyst Riftpool",
     "color": "Amethyst",
     "type": "Mine",
@@ -1420,11 +1508,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R090",
+    "id": "C090",
     "name": "Aurora Serpent",
     "color": "Amethyst",
     "type": "Creature",
@@ -1436,11 +1525,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R091",
+    "id": "C091",
     "name": "Dream Sentinel",
     "color": "Amethyst",
     "type": "Golem",
@@ -1452,11 +1542,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R092",
+    "id": "C092",
     "name": "Moonlight Chorus",
     "color": "Amethyst",
     "type": "Spell",
@@ -1468,11 +1559,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R093",
+    "id": "C093",
     "name": "Aurora Well",
     "color": "Amethyst",
     "type": "Mine",
@@ -1484,11 +1576,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R094",
+    "id": "C094",
     "name": "Mother Iryl, Voice Between Realms",
     "color": "Amethyst",
     "type": "Character",
@@ -1500,11 +1593,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M095",
+    "id": "C095",
     "name": "Lytheran Dreamwalker",
     "color": "Amethyst",
     "type": "Creature",
@@ -1516,12 +1610,13 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M096",
-    "name": "Lythera’s Awakening",
+    "id": "C096",
+    "name": "Lythera\u00e2\u20ac\u2122s Awakening",
     "color": "Amethyst",
     "type": "Spell",
     "rarity": "MYTHIC",
@@ -1532,11 +1627,12 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M097",
+    "id": "C097",
     "name": "Lytheran Nexus",
     "color": "Amethyst",
     "type": "Mine",
@@ -1548,11 +1644,12 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "P098",
+    "id": "C098",
     "name": "Amethyst Dreamer",
     "color": "Amethyst",
     "type": "Player",
@@ -1564,11 +1661,12 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "P099",
+    "id": "C099",
     "name": "Lytheran Prophet",
     "color": "Amethyst",
     "type": "Player",
@@ -1580,8 +1678,9 @@
     "per_pack_appearance": 10.0,
     "holo_chance": 0.01,
     "pack_weight": 10.0,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C100",
@@ -1596,8 +1695,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C101",
@@ -1612,8 +1712,9 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
     "id": "C102",
@@ -1628,11 +1729,12 @@
     "per_pack_appearance": 18.37,
     "holo_chance": 0.01837,
     "pack_weight": 18.37,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U103",
+    "id": "C103",
     "name": "Dualflame Beast",
     "color": "Prism",
     "type": "Creature",
@@ -1644,11 +1746,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U104",
+    "id": "C104",
     "name": "Prismatic Flux",
     "color": "Prism",
     "type": "Spell",
@@ -1660,11 +1763,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "U105",
+    "id": "C105",
     "name": "Hybrid Experiment",
     "color": "Prism",
     "type": "Creature",
@@ -1676,11 +1780,12 @@
     "per_pack_appearance": 11.53,
     "holo_chance": 0.01153,
     "pack_weight": 11.53,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R106",
+    "id": "C106",
     "name": "Prism Knight",
     "color": "Prism",
     "type": "Creature",
@@ -1692,11 +1797,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R107",
+    "id": "C107",
     "name": "Fifth Song Fragment",
     "color": "Prism",
     "type": "Spell",
@@ -1708,11 +1814,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "R108",
+    "id": "C108",
     "name": "Fused Beast of the Veins",
     "color": "Prism",
     "type": "Creature",
@@ -1724,11 +1831,12 @@
     "per_pack_appearance": 4.38,
     "holo_chance": 0.00438,
     "pack_weight": 4.38,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M109",
+    "id": "C109",
     "name": "Aurora Titan",
     "color": "Prism",
     "type": "Creature",
@@ -1740,11 +1848,12 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M110",
+    "id": "C110",
     "name": "Call of the Sixth Song",
     "color": "Prism",
     "type": "Spell",
@@ -1756,11 +1865,12 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M111",
+    "id": "C111",
     "name": "Prism Warden",
     "color": "Prism",
     "type": "Golem",
@@ -1772,11 +1882,12 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "M112",
+    "id": "C112",
     "name": "Harmonic Rift Core",
     "color": "Prism",
     "type": "Mine",
@@ -1788,11 +1899,12 @@
     "per_pack_appearance": 1.04,
     "holo_chance": 0.00104,
     "pack_weight": 1.04,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "A113",
+    "id": "C113",
     "name": "Varetha Ironvoice, Doom Drummer",
     "color": "Ruby",
     "type": "Character",
@@ -1804,11 +1916,12 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "A114",
+    "id": "C114",
     "name": "Archon Lirane Voss, Reflector Prime",
     "color": "Sapphire",
     "type": "Character",
@@ -1820,12 +1933,13 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "A115",
-    "name": "Bessalynn, Tiravel’s Flutist",
+    "id": "C115",
+    "name": "Bessalynn, Tiravel\u00e2\u20ac\u2122s Flutist",
     "color": "Emerald",
     "type": "Character",
     "rarity": "ALTERNATE_ART",
@@ -1836,11 +1950,12 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "A116",
+    "id": "C116",
     "name": "Bellkeeper Nahl, Hollow Monk",
     "color": "Onyx",
     "type": "Character",
@@ -1852,11 +1967,12 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "A117",
+    "id": "C117",
     "name": "Mother Iryl, Voice Between Realms",
     "color": "Amethyst",
     "type": "Character",
@@ -1868,11 +1984,12 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "A118",
+    "id": "C118",
     "name": "Aurora Titan",
     "color": "Prism",
     "type": "Creature",
@@ -1884,12 +2001,13 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "A119",
-    "name": "Ramdelom’s Heart-Titan",
+    "id": "C119",
+    "name": "Ramdelom\u00e2\u20ac\u2122s Heart-Titan",
     "color": "Ruby",
     "type": "Creature",
     "rarity": "ALTERNATE_ART",
@@ -1900,11 +2018,12 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   },
   {
-    "id": "A120",
+    "id": "C120",
     "name": "Lytheran Dreamwalker",
     "color": "Amethyst",
     "type": "Creature",
@@ -1916,7 +2035,8 @@
     "per_pack_appearance": 0.62,
     "holo_chance": 0.00062,
     "pack_weight": 0.62,
-    "base_price": 1.0, 
-    "quality_score": 10.0
+    "base_price": 1.0,
+    "quality_score": 10.0,
+    "attractiveness": 1.0
   }
 ]

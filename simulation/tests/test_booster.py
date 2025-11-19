@@ -9,7 +9,7 @@ def test_open_booster_mythic_upgrade() -> None:
     pool = sample_card_pool()
 
     class FakeRNG:
-        def choices(self, candidates, weights, k) -> list:
+        def choices(self, candidates: list, weights: list, k: int) -> list:
             # pick the first candidate always
             return [candidates[0] for _ in range(k)]
 
@@ -17,10 +17,10 @@ def test_open_booster_mythic_upgrade() -> None:
             # Force hologram flags and mythic-upgrade branch
             return 0.01
 
-        def randrange(self, n) -> int:
+        def randrange(self, n: int) -> int:
             return 0
 
-        def choice(self, seq):
+        def choice(self, seq: list) -> object:
             return seq[0]
 
     rng = FakeRNG()
@@ -73,7 +73,7 @@ def test_open_booster_replaces_rare_with_mythic() -> None:
     ]
 
     class FakeRNG2:
-        def choices(self, candidates, weights, k) -> list:
+        def choices(self, candidates: list, weights: list, k: int) -> list:
             # always pick the first candidate available
             return [candidates[0] for _ in range(k)]
 
@@ -81,10 +81,10 @@ def test_open_booster_replaces_rare_with_mythic() -> None:
             # trigger mythic-upgrade branch
             return 0.01
 
-        def randrange(self, n) -> int:
+        def randrange(self, n: int) -> int:
             return 0
 
-        def choice(self, seq):
+        def choice(self, seq: list) -> object:
             return seq[0]
 
     inst = open_booster(pool, cast(random.Random, FakeRNG2()))

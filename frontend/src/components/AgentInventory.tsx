@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { formatPrice, formatPriceWithCap } from '../utils/priceFormatter'
+import CardDetail from './CardDetail'
 
 type Card = {
   card_id: string
@@ -8,6 +10,11 @@ type Card = {
   is_hologram: boolean
   quality_score: number
   price: number
+  attractiveness?: number
+  power?: number
+  health?: number
+  cost?: number
+  type?: string
 }
 
 type InventoryData = {
@@ -29,6 +36,7 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
   const [filterRarity, setFilterRarity] = useState<string>('all')
   const [filterColor, setFilterColor] = useState<string>('all')
   const [sortBy, setSortBy] = useState<'name' | 'rarity' | 'quality' | 'price'>('name')
+  const [selectedCard, setSelectedCard] = useState<Card | null>(null)
 
   useEffect(() => {
     if (!agentId) {
@@ -188,13 +196,18 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
             </thead>
             <tbody>
               {displayCards.map((card, idx) => (
-                <tr key={idx} className={`rarity-row-${card.rarity.toLowerCase()}`}>
+                <tr
+                  key={idx}
+                  className={`rarity-row-${card.rarity.toLowerCase()} card-row-clickable`}
+                  onClick={() => setSelectedCard(card)}
+                  style={{ cursor: 'pointer' }}
+                >
                   <td className="card-name">{card.name}</td>
                   <td className={`rarity rarity-${card.rarity.toLowerCase()}`}>{card.rarity}</td>
                   <td className="card-color">{card.color}</td>
                   <td className="quality">{card.quality_score.toFixed(2)}</td>
                   <td className="attribute">{card.is_hologram ? '✓' : '—'}</td>
-                  <td className="card-price">{card.price.toFixed(2)}</td>
+                  <td className="card-price">{formatPrice(card.price)}</td>
                 </tr>
               ))}
             </tbody>
@@ -202,6 +215,8 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
         )}
       </div>
       <div className="inventory-footer">Showing {displayCards.length} of {inventory.collection_count} cards</div>
+
+      {selectedCard && <CardDetail card={selectedCard} onClose={() => setSelectedCard(null)} />}
     </div>
   )
 }

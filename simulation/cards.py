@@ -33,8 +33,6 @@ def _load_raw_cards() -> List[Dict]:
 def _make_cardref(d: Dict) -> CardRef:
     """Convert a raw card dict from JSON into a CardRef instance."""
     rarity = Rarity[d["rarity"].upper()]
-    # Cost is the sum of gem_colored and gem_colorless
-    cost = int(d.get("gem_colored", 0)) + int(d.get("gem_colorless", 0))
     return CardRef(
         d["id"],
         d["name"],
@@ -46,7 +44,8 @@ def _make_cardref(d: Dict) -> CardRef:
         base_price=float(d.get("base_price", 1.0)),
         power=int(d.get("power", 0)),
         health=int(d.get("health", 0)),
-        cost=cost,
+        gem_colored=int(d.get("gem_colored", 0)),
+        gem_colorless=int(d.get("gem_colorless", 0)),
     )
 
 
@@ -58,7 +57,7 @@ def load_all_cards() -> List[CardRef]:
 
 def sample_card_pool() -> List[CardRef]:
     """Return a small sample pool for quick tests.
-    
+
     Filters to cards with high pack_weight (>= 5.0) to get a manageable subset.
     """
     raw = _load_raw_cards()
@@ -67,7 +66,7 @@ def sample_card_pool() -> List[CardRef]:
 
 def large_card_pool() -> List[CardRef]:
     """Return the full card pool for integration tests and production runs.
-    
+
     This is now equivalent to load_all_cards() but kept for API compatibility.
     """
     return load_all_cards()

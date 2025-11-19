@@ -34,7 +34,8 @@ class CardRef:
         base_price: base market price from card data
         power: creature power (for deck building)
         health: creature health (for deck building)
-        cost: mana/gem cost (gem_colored + gem_colorless)
+        gem_colored: number of colored gems in cost
+        gem_colorless: number of colorless gems in cost
     """
 
     card_id: str
@@ -47,7 +48,8 @@ class CardRef:
     base_price: float = 1.0
     power: int = 0
     health: int = 0
-    cost: int = 0
+    gem_colored: int = 0
+    gem_colorless: int = 0
 
 
 @dataclass

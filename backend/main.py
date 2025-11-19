@@ -104,7 +104,7 @@ def get_agent_collection(agent_id: int) -> dict:
 @app.get("/agents/{agent_id}/cards")
 def get_agent_cards(agent_id: int) -> dict:
     """Return all cards in an agent's collection (full inventory).
-    
+
     This endpoint returns the complete card database for an agent, including
     all card details (rarity, holo status, quality score, etc.).
     """
@@ -125,7 +125,7 @@ def get_agent_cards(agent_id: int) -> dict:
 @app.get("/agents/{agent_id}/events")
 def get_agent_events(agent_id: int) -> dict:
     """Return all events for a specific agent.
-    
+
     This endpoint returns events where the agent was the primary actor
     (e.g., purchases, sales initiated by this agent).
     """

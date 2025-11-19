@@ -11,3 +11,7 @@ __pycache__/
 # OS
 Thumbs.db
 .DS_Store
+
+# Card images (large binary files)
+/images/
+frontend/public/cards/
