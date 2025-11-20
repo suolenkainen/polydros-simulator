@@ -13,15 +13,31 @@ export default function AgentList({ onSelect }: { onSelect: (id: number) => void
 
   React.useEffect(() => {
     setLoading(true)
-    getAgents()
-      .then((res) => {
+    
+    const fetchAgents = async () => {
+      try {
+        const res = await getAgents()
         setAgents(res.agents || [])
-      })
-      .catch((err) => console.error(err))
-      .finally(() => setLoading(false))
+      } catch (err) {
+        console.error('Error fetching agents:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchAgents()
+
+    // Poll for updates every 2 seconds
+    const interval = setInterval(() => {
+      getAgents()
+        .then((res) => setAgents(res.agents || []))
+        .catch((err) => console.error('Error polling agents:', err))
+    }, 2000)
+
+    return () => clearInterval(interval)
   }, [])
 
-  if (loading) return <div>Loading agents...</div>
+  if (loading && !agents) return <div>Loading agents...</div>
   if (!agents) return <div>No agents available</div>
 
   return (

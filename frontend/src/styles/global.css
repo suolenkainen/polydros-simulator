@@ -749,6 +749,22 @@ p, div, span, li {
   color: #1a6b3a;
 }
 
+/* Event triggered state indicators */
+.event-item.event-triggered-true {
+  background-color: #d4f4dd;
+  border-left-color: #2ed573 !important;
+}
+
+.event-item.event-triggered-false {
+  background-color: #ffe8d4;
+  border-left-color: #ff9f43 !important;
+}
+
+.event-item.event-triggered-combat-lost {
+  background-color: #ffd4d4;
+  border-left-color: #ee5a6f !important;
+}
+
 .event-description {
   font-size: 0.95rem;
   color: #333;
@@ -762,6 +778,43 @@ p, div, span, li {
   color: #999;
   text-align: right;
   border-top: 1px solid #e5e5e5;
+}
+
+.events-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid #e5e5e5;
+}
+
+.pagination-btn {
+  padding: 8px 12px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #4a9eff;
+  color: white;
+  border-color: #4a9eff;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
 }
 
 /* ============================================================================
@@ -925,7 +978,7 @@ p, div, span, li {
 /* Card Image */
 .card-image-placeholder {
   width: 100%;
-  aspect-ratio: 5/7;
+  aspect-ratio: 16/9;
   background: #f5f5f5;
   border-radius: 8px;
   overflow: hidden;

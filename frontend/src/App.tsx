@@ -21,6 +21,29 @@ export default function App() {
     agent_ids: number[]
   }> | null>(null)
 
+  // Save state to sessionStorage whenever it changes
+  React.useEffect(() => {
+    const state = {
+      worldSummary,
+      events,
+    }
+    sessionStorage.setItem('simulationState', JSON.stringify(state))
+  }, [worldSummary, events])
+
+  // Load state from sessionStorage on mount
+  React.useEffect(() => {
+    const saved = sessionStorage.getItem('simulationState')
+    if (saved) {
+      try {
+        const state = JSON.parse(saved)
+        if (state.worldSummary) setWorldSummary(state.worldSummary)
+        if (state.events) setEvents(state.events)
+      } catch (err) {
+        console.error('Failed to restore simulation state:', err)
+      }
+    }
+  }, [])
+
   return (
     <div className="container">
       <h1>Polydros — Economy Simulator</h1>

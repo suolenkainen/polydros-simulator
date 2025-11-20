@@ -55,7 +55,7 @@ Write-Host "Waiting a couple of seconds for dev servers to come up..."
 Start-Sleep -Seconds 3
 
 # Open the default browser to the common Vite port. Vite may use another port; check the frontend window if this fails.
-$urlsToTry = @('http://127.0.0.1:5173','http://127.0.0.1:5174','http://127.0.0.1:5175')
+$urlsToTry = @('http://localhost:5173','http://localhost:5174','http://localhost:5175')
 foreach ($u in $urlsToTry) {
     try {
         Start-Process $u

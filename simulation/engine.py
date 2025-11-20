@@ -60,7 +60,15 @@ def calculate_card_price(card_ref: "CardRef") -> float:
 
 
 def build_deck(collection: List, rng: random.Random, deck_size: int = 40) -> List[Dict]:
-    """Build a deck with 40 cards: 1 player, 4 mine, and 35 other cards.
+    """Build a deck with 40 cards enforcing rarity constraints:
+    - 1 player-card (Player rarity)
+    - 20 common cards (Common rarity)
+    - 10 uncommon cards (Uncommon rarity)
+    - 3 mine cards (Mine rarity - if available)
+    - 5 rare cards (Rare rarity - if available)
+    - 2 mythic cards (Mythic rarity - if available)
+    - Up to 1 alternate art card (if available after above are selected)
+    - Fill remaining slots with any cards
 
     Args:
         collection: list of CardInstance objects to select from
@@ -70,29 +78,62 @@ def build_deck(collection: List, rng: random.Random, deck_size: int = 40) -> Lis
     Returns:
         list of deck card dicts with name, color, power, health, cost
     """
-    if len(collection) < deck_size:
-        # If collection is too small, use what we have
-        deck_cards = collection
-    else:
-        # Shuffle and pick deck_size cards
-        shuffled = list(collection)
-        rng.shuffle(shuffled)
-        deck_cards = shuffled[:deck_size]
+    from .types import Rarity
+
+    # Target counts for each rarity
+    requirements = {
+        Rarity.PLAYER: (1, 1),        # (min, max)
+        Rarity.COMMON: (20, 20),
+        Rarity.UNCOMMON: (10, 10),
+        Rarity.ALTERNATE_ART: (0, 1), # Try to get 1, but optional
+        Rarity.RARE: (5, 5),
+        Rarity.MYTHIC: (2, 2),
+    }
+
+    # Categorize collection by rarity
+    by_rarity = {}
+    for rarity in Rarity:
+        by_rarity[rarity] = [c for c in collection if c.ref.rarity == rarity]
+        rng.shuffle(by_rarity[rarity])
+
+    deck_cards = []
+
+    # Select cards according to requirements
+    for rarity, (_min_count, max_count) in requirements.items():
+        available = by_rarity[rarity]
+        # Take as many as we can, up to max_count, but at least min_count if available
+        count_to_take = min(len(available), max_count)
+        if count_to_take > 0:
+            deck_cards.extend(available[:count_to_take])
+
+    # Fill remaining slots if we have fewer than deck_size cards after requirements
+    if len(deck_cards) < deck_size:
+        # Collect all remaining cards not yet selected
+        selected_ids = set(id(c) for c in deck_cards)
+        remaining = [c for c in collection if id(c) not in selected_ids]
+        rng.shuffle(remaining)
+
+        needed = deck_size - len(deck_cards)
+        deck_cards.extend(remaining[:needed])
+
+    # Truncate to deck_size if needed
+    deck_cards = deck_cards[:deck_size]
+
+    # If collection is too small, pad with available cards
+    if len(deck_cards) < deck_size and len(collection) < deck_size:
+        deck_cards = list(collection)
 
     deck = []
     for card_inst in deck_cards:
         ref = card_inst.ref
-        # Calculate cost as gem_colored + gem_colorless (stored in the raw card data)
-        # For now, we'll use a placeholder since CardRef doesn't expose gem fields
-        # We'll need to update CardRef to include these fields
         deck.append({
             "card_id": ref.card_id,
             "name": ref.name,
             "type": ref.type,
             "color": ref.color,
-            "power": getattr(ref, 'power', 0),  # Will be added to CardRef
-            "health": getattr(ref, 'health', 0),  # Will be added to CardRef
-            "cost": getattr(ref, 'cost', 0),  # Will be added to CardRef
+            "power": getattr(ref, 'power', 0),
+            "health": getattr(ref, 'health', 0),
+            "cost": getattr(ref, 'cost', 0),
         })
 
     return deck
@@ -172,7 +213,8 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
 
     # Create agents with realistic starting Prism and deterministic per-agent RNG seeds
     # Each agent starts with exactly 200.00 Prism
-    for pid in range(config.initial_agents):
+    # Agent IDs start from 1 (not 0)
+    for pid in range(1, config.initial_agents + 1):
         traits = generate_agent_traits(rng)
         seed = rng.randint(0, 2 ** 31 - 1)
         starting_prism = 200.00  # 200.00 Prism per agent
@@ -214,6 +256,8 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
                     # Collector trait did NOT trigger, skip purchase
                     continue
                 # else: collector trait triggered, proceed with purchase
+            else:
+                collector_roll = None
 
             cost = buy_count * BOOSTER_COST
             # Only buy if agent has enough Prism and distributor has enough boosters
@@ -224,13 +268,20 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
                 agent.prism = round(agent.prism, 2)  # Round to 2 decimals
 
                 # Log event with trait info if applicable
-                if (len(agent.collection) >= 60 and agent.traits is not None):
+                triggered = None  # neutral for purchases before 60 cards
+                if (
+                    len(agent.collection) >= 60
+                    and agent.traits is not None
+                    and collector_roll is not None
+                ):
                     trait_str = f"{agent.traits.collector_trait:.0%}"
+                    roll_str = f"{collector_roll:.0%}"
                     description = (
                         f"{agent.name} bought {buy_count} booster"
                         f"{'s' if buy_count > 1 else ''} for {cost} Prism "
-                        f"(collector trait triggered: {trait_str})"
+                        f"(collector trait triggered: {trait_str} with {roll_str})"
                     )
+                    triggered = True  # trait triggered, purchase happened
                 else:
                     description = (
                         f"{agent.name} bought {buy_count} booster"
@@ -243,6 +294,7 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
                     event_type="booster_purchase",
                     description=description,
                     agent_ids=[agent.id],
+                    triggered=triggered,
                 )
                 world.add_event(event)
 
@@ -302,21 +354,31 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
                         loser_score = player2_score
                         winner_deck = player1_deck
                         loser_deck = player2_deck
-                    else:
+                        is_tie = False
+                    elif player2_score > player1_score:
                         winner = opponent
                         loser = agent
                         winner_score = player2_score
                         loser_score = player1_score
                         winner_deck = player2_deck
                         loser_deck = player1_deck
+                        is_tie = False
+                    else:
+                        # Tie - no winner/loser
+                        winner = None
+                        loser = None
+                        winner_score = player1_score
+                        loser_score = player2_score
+                        winner_deck = player1_deck
+                        loser_deck = player2_deck
+                        is_tie = True
 
-                    # Boost attractiveness and price of winning cards by 1%
-                    for card in winner_deck:
-                        world.boost_card_stats(card.ref.card_id, 0.01)
-
-                    # Penalize attractiveness and price of losing cards by 1%
-                    for card in loser_deck:
-                        world.penalize_card_stats(card.ref.card_id, 0.01)
+                    # Boost/penalize attractiveness and price based on outcome
+                    if not is_tie:
+                        for card in winner_deck:
+                            world.boost_card_stats(card.ref.card_id, 0.01)
+                        for card in loser_deck:
+                            world.penalize_card_stats(card.ref.card_id, 0.01)
 
                     # Degrade cards in both decks by 1%
                     for card in player1_deck:
@@ -325,17 +387,34 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
                         degrade_card_quality(card, 0.01)  # 1% degradation
 
                     # Log combat event
-                    description = (
-                        f"{winner.name} defeated {loser.name} "
-                        f"({winner_score:.2f} vs {loser_score:.2f})"
-                    )
-                    event = Event(
-                        tick=t,
-                        agent_id=winner.id,
-                        event_type="combat",
-                        description=description,
-                        agent_ids=[winner.id, loser.id],
-                    )
+                    if is_tie:
+                        description = (
+                            f"{agent.name} tied with {opponent.name} "
+                            f"({player1_score:.2f} vs {player2_score:.2f})"
+                        )
+                        event = Event(
+                            tick=t,
+                            agent_id=agent.id,
+                            event_type="combat",
+                            description=description,
+                            agent_ids=[agent.id, opponent.id],
+                            triggered=True,  # tie is considered triggered
+                        )
+                    else:
+                        if winner is None or loser is None:
+                            continue  # Skip if tie logic failed
+                        description = (
+                            f"{winner.name} defeated {loser.name} "
+                            f"({winner_score:.2f} vs {loser_score:.2f})"
+                        )
+                        event = Event(
+                            tick=t,
+                            agent_id=winner.id,
+                            event_type="combat",
+                            description=description,
+                            agent_ids=[winner.id, loser.id],
+                            triggered=True,
+                        )
                     world.add_event(event)
                 else:
                     # No opponent available, just degrade cards
@@ -353,6 +432,7 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
                         event_type="play",
                         description=description,
                         agent_ids=[agent.id],
+                        triggered=False,  # play without opponent is not triggered
                     )
                     world.add_event(event)
 

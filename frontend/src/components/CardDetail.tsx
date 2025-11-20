@@ -40,6 +40,10 @@ export default function CardDetail({ card, onClose }: CardDetailProps) {
   }
 
   const rarityColor = rarityColors[card.rarity] || '#888888'
+  
+  // Alternate Art cards show full image, others align to top
+  const isAlternateArt = card.rarity === 'Alternate Art'
+  const imageObjectPosition = isAlternateArt ? 'center' : 'center top'
 
   // Generate gem text from gem_colored and gem_colorless
   const gemTexts: string[] = []
@@ -83,10 +87,11 @@ export default function CardDetail({ card, onClose }: CardDetailProps) {
           {/* Card Image */}
           <div className="card-image-placeholder">
             <img 
-              src={`/cards/${card.card_id}.png`} 
-              alt={card.name} 
+              src={`/cards/${card.card_id}.png`}
+              alt={card.name}
+              style={{ objectPosition: imageObjectPosition }}
               onError={(e) => {
-                (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="280"%3E%3Crect fill="%23333" width="200" height="280"/%3E%3Ctext x="50%25" y="50%25" fill="%23999" text-anchor="middle" dy=".3em" font-size="14"%3ECard Image Not Found%3C/text%3E%3C/svg%3E'
+                (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="320" height="180"%3E%3Crect fill="%23333" width="320" height="180"/%3E%3Ctext x="50%25" y="50%25" fill="%23999" text-anchor="middle" dy=".3em" font-size="14"%3ECard Image Not Found%3C/text%3E%3C/svg%3E'
               }} 
             />
           </div>

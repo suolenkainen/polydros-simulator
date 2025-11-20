@@ -58,9 +58,54 @@ export default function SimulationRunner({
   const [agents, setAgents] = useState<number>(10)
   const [ticks, setTicks] = useState<number>(1)
   const [allEvents, setAllEvents] = useState<SimulationEvent[]>([])
+  const [initialized, setInitialized] = useState(false)
 
-  // Initialize simulation at tick 0 when component mounts
+  // Load persisted state from sessionStorage on mount
   React.useEffect(() => {
+    if (initialized) return // Only run once
+    
+    const saved = sessionStorage.getItem('simulationRunnerState')
+    if (saved) {
+      try {
+        const state = JSON.parse(saved)
+        setSeed(state.seed ?? 42)
+        setAgents(state.agents ?? 10)
+        setCurrentTick(state.currentTick ?? 0)
+        setAllEvents(state.allEvents ?? [])
+        setData(state.data ?? null)
+        setInitialized(true)
+        return
+      } catch (err) {
+        console.error('Failed to restore simulation runner state:', err)
+      }
+    }
+    
+    // If no saved state, initialize normally
+    setInitialized(true)
+  }, [])
+
+  // Initialize simulation at tick 0 when component mounts (only if not restored from storage)
+  React.useEffect(() => {
+    if (!initialized) return
+    
+    // If we have current tick and data, we've been restored from storage
+    if (data !== null) {
+      if (onWorldSummary && data.length > 0) {
+        const last = data[data.length - 1]
+        onWorldSummary({
+          tick: last.tick,
+          agent_count: last.agent_count,
+          total_cards: last.total_cards,
+          total_unopened_boosters: last.total_unopened_boosters,
+        })
+      }
+      if (onEvents) {
+        onEvents(allEvents)
+      }
+      return
+    }
+    
+    // Otherwise, initialize fresh simulation
     const initializeSimulation = async () => {
       try {
         const res = await runSimulation({ seed, agents, ticks: 0 })
@@ -86,7 +131,7 @@ export default function SimulationRunner({
     }
     
     initializeSimulation()
-  }, [seed, agents, onWorldSummary, onEvents])
+  }, [initialized, onWorldSummary, onEvents, data, allEvents, seed, agents])
 
   async function onRun(e: React.FormEvent) {
     e.preventDefault()
@@ -108,6 +153,8 @@ export default function SimulationRunner({
       const nextTick = currentTick + ticks
       const res = await runSimulation({ seed, agents, ticks: nextTick })
       const series = res.timeseries as TimeseriesPoint[]
+      const newEvents: SimulationEvent[] = []
+      
       setData(series)
       setCurrentTick(nextTick)
       
@@ -124,7 +171,6 @@ export default function SimulationRunner({
       
       // Collect all events from all ticks
       if (onEvents) {
-        const newEvents: SimulationEvent[] = []
         series.forEach((point) => {
           if (point.events && Array.isArray(point.events)) {
             newEvents.push(...point.events)
@@ -133,6 +179,16 @@ export default function SimulationRunner({
         setAllEvents(newEvents)
         onEvents(newEvents)
       }
+      
+      // Save state to sessionStorage
+      const state = {
+        seed,
+        agents,
+        currentTick: nextTick,
+        data: series,
+        allEvents: newEvents,
+      }
+      sessionStorage.setItem('simulationRunnerState', JSON.stringify(state))
     } catch (err) {
       console.error(err)
       alert('Failed to run simulation; is backend running at http://127.0.0.1:8000?')
@@ -144,6 +200,9 @@ export default function SimulationRunner({
   function onReset() {
     setCurrentTick(0)
     setAllEvents([])
+    // Clear persisted state
+    sessionStorage.removeItem('simulationRunnerState')
+    sessionStorage.removeItem('simulationState')
     // Reinitialize to show tick 0 state with agents
     const reinitialize = async () => {
       try {

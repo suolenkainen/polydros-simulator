@@ -1,6 +1,7 @@
 import React from 'react'
 import { getAgent } from '../api'
 import AgentInventory from './AgentInventory'
+import { usePagination } from '../hooks/usePagination'
 
 interface Traits {
   primary_trait: string
@@ -32,6 +33,7 @@ interface Agent {
     event_type: string
     description: string
     agent_ids: number[]
+    triggered?: boolean | null
   }>
 }
 
@@ -39,6 +41,7 @@ export default function AgentDetail({ id }: { id: number | null }) {
   const [agent, setAgent] = React.useState<Agent | null>(null)
   const [loading, setLoading] = React.useState(false)
   const [expandedSections, setExpandedSections] = React.useState<Set<string>>(new Set())
+  const eventPagination = usePagination(agent?.agent_events?.length || 0, { initialPageSize: 25 })
 
   React.useEffect(() => {
     if (id == null) return
@@ -172,14 +175,76 @@ export default function AgentDetail({ id }: { id: number | null }) {
           </div>
           {expandedSections.has('events') && (
             <div className="detail-section-content">
+              {/* Pagination Controls */}
+              <div style={{ marginBottom: '1rem', display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <select 
+                  value={eventPagination.pageSize.toString()} 
+                  onChange={(e) => {
+                    eventPagination.setPageSize(parseInt(e.target.value))
+                    eventPagination.setCurrentPage(1)
+                  }} 
+                  style={{ padding: '0.4rem', borderRadius: '4px', border: '1px solid #ccc', fontSize: '0.9rem' }}
+                >
+                  <option value="10">10 per page</option>
+                  <option value="25">25 per page</option>
+                  <option value="50">50 per page</option>
+                  <option value="100">100 per page</option>
+                </select>
+              </div>
+
+              {/* Events List */}
               <ul className="agent-events-list">
-                {agent.agent_events.map((e, idx) => (
-                  <li key={idx} className={`agent-event-type-${e.event_type}`}>
-                    <span className="event-tick">T{e.tick}</span>
-                    <span className="event-desc">{e.description}</span>
-                  </li>
-                ))}
+                {(() => {
+                  const totalPages = Math.ceil(agent.agent_events.length / eventPagination.pageSize)
+                  const startIdx = (eventPagination.currentPage - 1) * eventPagination.pageSize
+                  const endIdx = startIdx + eventPagination.pageSize
+                  const paginatedEvents = agent.agent_events.slice(startIdx, endIdx)
+                  
+                  return paginatedEvents.map((e, idx) => {
+                    let triggeredClass = ''
+                    if (e.triggered === true) {
+                      triggeredClass = 'event-triggered-true'
+                    } else if (e.triggered === false) {
+                      triggeredClass = 'event-triggered-false'
+                    }
+                    return (
+                      <li key={idx} className={`agent-event-type-${e.event_type} ${triggeredClass}`}>
+                        <span className="event-tick">T{e.tick}</span>
+                        <span className="event-desc">{e.description}</span>
+                      </li>
+                    )
+                  })
+                })()}
               </ul>
+
+              {/* Pagination Buttons */}
+              {(() => {
+                const totalPages = Math.ceil(agent.agent_events.length / eventPagination.pageSize)
+                if (totalPages > 1) {
+                  return (
+                    <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                      <button 
+                        onClick={() => eventPagination.setCurrentPage(Math.max(1, eventPagination.currentPage - 1))}
+                        disabled={eventPagination.currentPage === 1}
+                        style={{ padding: '0.4rem 0.8rem', borderRadius: '4px', border: '1px solid #ccc', cursor: 'pointer', opacity: eventPagination.currentPage === 1 ? 0.5 : 1 }}
+                      >
+                        ← Previous
+                      </button>
+                      <span style={{ fontSize: '0.9rem', color: '#666' }}>
+                        Page {eventPagination.currentPage} of {totalPages}
+                      </span>
+                      <button 
+                        onClick={() => eventPagination.setCurrentPage(Math.min(totalPages, eventPagination.currentPage + 1))}
+                        disabled={eventPagination.currentPage === totalPages}
+                        style={{ padding: '0.4rem 0.8rem', borderRadius: '4px', border: '1px solid #ccc', cursor: 'pointer', opacity: eventPagination.currentPage === totalPages ? 0.5 : 1 }}
+                      >
+                        Next →
+                      </button>
+                    </div>
+                  )
+                }
+                return null
+              })()}
             </div>
           )}
         </div>

@@ -19,13 +19,15 @@ class Event:
         agent_id: id of the primary agent involved
         event_type: 'purchase', 'sale', 'match', 'booster_open', etc.
         description: human-readable event description
-        agent_ids: list of all agent ids involved (for bilateral events like trades)
+        agent_ids: list of all agent ids involved (for bilateral events)
+        triggered: event status (True=success, False=fail, None=neutral)
     """
     tick: int
     agent_id: int
     event_type: str  # 'purchase', 'sale', 'match', 'booster_open', etc.
     description: str
     agent_ids: List[int] = field(default_factory=list)
+    triggered: bool | None = None  # True=triggered/won, False=not triggered/lost
 
     def to_dict(self) -> Dict:
         return {
@@ -34,6 +36,7 @@ class Event:
             "event_type": self.event_type,
             "description": self.description,
             "agent_ids": self.agent_ids,
+            "triggered": self.triggered,
         }
 
 
