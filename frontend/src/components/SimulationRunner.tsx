@@ -62,9 +62,11 @@ type Card = {
 export default function SimulationRunner({
   onWorldSummary,
   onEvents,
+  onAgents,
 }: {
   onWorldSummary?: (summary: WorldSummary) => void
   onEvents?: (events: SimulationEvent[]) => void
+  onAgents?: (agents: any[]) => void
 }) {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState<TimeseriesPoint[] | null>(null)
@@ -74,6 +76,7 @@ export default function SimulationRunner({
   const [ticks, setTicks] = useState<number>(1)
   const [allEvents, setAllEvents] = useState<SimulationEvent[]>([])
   const [initialized, setInitialized] = useState(false)
+  const [agentsData, setAgentsData] = useState<any[]>([])
   const [cards, setCards] = useState<Card[]>([])
   const [selectedCard, setSelectedCard] = useState<Card | null>(null)
 
@@ -146,6 +149,11 @@ export default function SimulationRunner({
         const series = res.timeseries as TimeseriesPoint[]
         setData(series)
         
+        // Pass agents data to parent
+        if (onAgents && res.agents) {
+          onAgents(res.agents)
+        }
+        
         // Display initial world summary
         if (onWorldSummary && series.length > 0) {
           const initial = series[0]
@@ -191,6 +199,11 @@ export default function SimulationRunner({
       
       setData(series)
       setCurrentTick(nextTick)
+      
+      // Pass agents data to parent
+      if (onAgents && res.agents) {
+        onAgents(res.agents)
+      }
       
       // Use the last timeseries point as the current world summary
       if (onWorldSummary && series.length > 0) {
@@ -243,6 +256,12 @@ export default function SimulationRunner({
         const res = await runSimulation({ seed, agents, ticks: 0 })
         const series = res.timeseries as TimeseriesPoint[]
         setData(series)
+        
+        // Pass agents data to parent
+        if (onAgents && res.agents) {
+          onAgents(res.agents)
+        }
+        
         if (onWorldSummary && series.length > 0) {
           const initial = series[0]
           onWorldSummary({

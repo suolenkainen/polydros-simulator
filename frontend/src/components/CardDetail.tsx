@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { formatPrice, formatPriceWithCap } from '../utils/priceFormatter'
 
+type PriceDataPoint = {
+  tick: number
+  price: number
+  quality_score: number
+  desirability: number
+}
+
 type CardData = {
   card_id: string
   name: string
@@ -15,6 +22,7 @@ type CardData = {
   gem_colored?: number
   gem_colorless?: number
   flavor_text?: string
+  priceHistory?: PriceDataPoint[]
 }
 
 type CardStats = {
@@ -175,44 +183,117 @@ export default function CardDetail({ card, onClose }: CardDetailProps) {
           <div className="card-price-graph-section">
             <h4>Price History</h4>
             <div className="price-graph-placeholder">
-              <svg viewBox="0 0 300 150" className="price-graph">
-                {/* Grid */}
-                {[0, 30, 60, 90, 120, 150].map((y) => (
-                  <line key={`h-${y}`} x1="0" y1={y} x2="300" y2={y} stroke="#ddd" strokeWidth="0.5" />
-                ))}
-                {[0, 60, 120, 180, 240, 300].map((x) => (
-                  <line key={`v-${x}`} x1={x} y1="0" x2={x} y2="150" stroke="#ddd" strokeWidth="0.5" />
-                ))}
+              {card.priceHistory && card.priceHistory.length > 0 ? (
+                <>
+                  <svg viewBox="0 0 350 180" className="price-graph">
+                    {/* Grid lines */}
+                    {[0, 30, 60, 90, 120, 150].map((y) => (
+                      <line key={`h-${y}`} x1="40" y1={y} x2="330" y2={y} stroke="#eee" strokeWidth="0.5" />
+                    ))}
+                    {[0, 58, 116, 174, 232, 290].map((x) => (
+                      <line key={`v-${x}`} x1={x + 40} y1="0" x2={x + 40} y2="150" stroke="#eee" strokeWidth="0.5" />
+                    ))}
 
-                {/* Sample price curve */}
-                <polyline
-                  points="0,100 30,95 60,90 90,85 120,80 150,75 180,70 210,72 240,75 300,80"
-                  fill="none"
-                  stroke="#4CAF50"
-                  strokeWidth="2"
-                />
+                    {/* Calculate scaling */}
+                    {(() => {
+                      const prices = card.priceHistory.map(p => p.price)
+                      const minPrice = Math.min(...prices)
+                      const maxPrice = Math.max(...prices)
+                      const priceRange = maxPrice - minPrice || 1
+                      const tickRange = card.priceHistory.length - 1 || 1
 
-                {/* Current price dot */}
-                <circle cx="300" cy="80" r="3" fill="#FF6B6B" />
+                      // Generate points for polyline
+                      const points = card.priceHistory.map((point, idx) => {
+                        const x = 40 + (idx / tickRange) * 290
+                        const y = 150 - ((point.price - minPrice) / priceRange) * 150
+                        return `${x},${y}`
+                      }).join(' ')
 
-                {/* Axis labels */}
-                <text x="150" y="145" textAnchor="middle" fontSize="12" fill="#666">
-                  Ticks
-                </text>
-                <text x="10" y="15" fontSize="12" fill="#666">
-                  Price
-                </text>
-              </svg>
-              <div className="graph-legend">
-                <span className="legend-item">
-                  <span className="legend-dot" style={{ backgroundColor: '#4CAF50' }}></span>
-                  Price trend (placeholder)
-                </span>
-                <span className="legend-item">
-                  <span className="legend-dot" style={{ backgroundColor: '#FF6B6B' }}></span>
-                  Current price
-                </span>
-              </div>
+                      return (
+                        <>
+                          {/* Price curve */}
+                          <polyline
+                            points={points}
+                            fill="none"
+                            stroke="#4CAF50"
+                            strokeWidth="2"
+                          />
+                          {/* Current price dot */}
+                          {(() => {
+                            const lastPoint = card.priceHistory[card.priceHistory.length - 1]
+                            const x = 40 + 290
+                            const y = 150 - ((lastPoint.price - minPrice) / priceRange) * 150
+                            return <circle cx={x} cy={y} r="3" fill="#FF6B6B" />
+                          })()}
+                        </>
+                      )
+                    })()}
+
+                    {/* Y-axis (Price) */}
+                    <line x1="40" y1="0" x2="40" y2="150" stroke="#333" strokeWidth="1" />
+                    {/* X-axis (Ticks) */}
+                    <line x1="40" y1="150" x2="330" y2="150" stroke="#333" strokeWidth="1" />
+
+                    {/* Y-axis label */}
+                    <text x="15" y="75" textAnchor="middle" fontSize="11" fill="#333" transform="rotate(-90 15 75)">
+                      Prisms
+                    </text>
+                    {/* X-axis label */}
+                    <text x="185" y="170" textAnchor="middle" fontSize="11" fill="#333">
+                      Tick
+                    </text>
+
+                    {/* Y-axis tick labels */}
+                    {(() => {
+                      if (card.priceHistory.length === 0) return null
+                      const prices = card.priceHistory.map(p => p.price)
+                      const minPrice = Math.min(...prices)
+                      const maxPrice = Math.max(...prices)
+                      return [0, 50, 100, 150].map((y) => (
+                        <text key={`y-${y}`} x="35" y={150 - y} textAnchor="end" fontSize="9" fill="#666">
+                          {(minPrice + (maxPrice - minPrice) * (y / 150)).toFixed(0)}
+                        </text>
+                      ))
+                    })()}
+
+                    {/* X-axis tick labels (show first, middle, last tick) */}
+                    {(() => {
+                      if (card.priceHistory.length === 0) return null
+                      const first = card.priceHistory[0].tick
+                      const last = card.priceHistory[card.priceHistory.length - 1].tick
+                      const mid = Math.floor((first + last) / 2)
+                      const ticks = [first, mid, last]
+                      const tickRange = last - first || 1
+                      return ticks.map((tick) => (
+                        <text
+                          key={`x-${tick}`}
+                          x={40 + ((tick - first) / tickRange) * 290}
+                          y="165"
+                          textAnchor="middle"
+                          fontSize="9"
+                          fill="#666"
+                        >
+                          {tick}
+                        </text>
+                      ))
+                    })()}
+                  </svg>
+                  <div className="graph-legend">
+                    <span className="legend-item">
+                      <span className="legend-dot" style={{ backgroundColor: '#4CAF50' }}></span>
+                      Price trend
+                    </span>
+                    <span className="legend-item">
+                      <span className="legend-dot" style={{ backgroundColor: '#FF6B6B' }}></span>
+                      Current price
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <div style={{ padding: '1rem', textAlign: 'center', color: '#999' }}>
+                  No price history available
+                </div>
+              )}
             </div>
           </div>
         </div>

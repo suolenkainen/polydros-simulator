@@ -46,6 +46,7 @@ def _make_cardref(d: Dict) -> CardRef:
         health=int(d.get("health", 0)),
         gem_colored=int(d.get("gem_colored", 0)),
         gem_colorless=int(d.get("gem_colorless", 0)),
+        flavor_text=d.get("flavor_text", ""),
     )
 
 

@@ -20,15 +20,17 @@ export default function App() {
     description: string
     agent_ids: number[]
   }> | null>(null)
+  const [agents, setAgents] = React.useState<any[]>([])
 
   // Save state to sessionStorage whenever it changes
   React.useEffect(() => {
     const state = {
       worldSummary,
       events,
+      agents,
     }
     sessionStorage.setItem('simulationState', JSON.stringify(state))
-  }, [worldSummary, events])
+  }, [worldSummary, events, agents])
 
   // Load state from sessionStorage on mount
   React.useEffect(() => {
@@ -38,6 +40,7 @@ export default function App() {
         const state = JSON.parse(saved)
         if (state.worldSummary) setWorldSummary(state.worldSummary)
         if (state.events) setEvents(state.events)
+        if (state.agents) setAgents(state.agents)
       } catch (err) {
         console.error('Failed to restore simulation state:', err)
       }
@@ -47,7 +50,11 @@ export default function App() {
   return (
     <div className="container">
       <h1>Polydros — Economy Simulator</h1>
-      <SimulationRunner onWorldSummary={setWorldSummary} onEvents={setEvents} />
+      <SimulationRunner 
+        onWorldSummary={setWorldSummary} 
+        onEvents={setEvents}
+        onAgents={setAgents}
+      />
       <WorldView summary={worldSummary} />
       <EventsView events={events} />
       <div className="app-layout">
@@ -55,7 +62,7 @@ export default function App() {
           <AgentList onSelect={setSelectedAgentId} />
         </div>
         <div className="app-layout-column-large">
-          {selectedAgentId !== null && <AgentDetail id={selectedAgentId} />}
+          {selectedAgentId !== null && <AgentDetail id={selectedAgentId} agents={agents} />}
         </div>
       </div>
     </div>

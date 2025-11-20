@@ -15,6 +15,12 @@ type Card = {
   health?: number
   cost?: number
   type?: string
+  condition?: string
+  desirability?: number
+  win_count?: number
+  loss_count?: number
+  flavor_text?: string
+  priceHistory?: Array<{ tick: number; price: number; quality_score: number; desirability: number }>
 }
 
 type InventoryData = {
@@ -26,9 +32,10 @@ type InventoryData = {
 
 type AgentInventoryProps = {
   agentId: number | null
+  agents?: any[]
 }
 
-export default function AgentInventory({ agentId }: AgentInventoryProps) {
+export default function AgentInventory({ agentId, agents }: AgentInventoryProps) {
   const [inventory, setInventory] = useState<InventoryData | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -44,6 +51,43 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
       return
     }
 
+    // If agents data is provided, use card_instances from it
+    if (agents && agents.length > 0) {
+      const agent = agents.find((a) => a.id === agentId)
+      if (agent && agent.card_instances) {
+        // Convert card_instances to inventory format
+        const cards = agent.card_instances.map((instance: any) => ({
+          card_id: instance.card_id,
+          name: instance.card_name || instance.name || 'Unknown Card',
+          color: instance.card_color || '',
+          rarity: instance.card_rarity || '',
+          is_hologram: instance.is_hologram || false,
+          quality_score: instance.quality_score || 0,
+          price: instance.current_price || 0,
+          attractiveness: instance.desirability || 0,
+          priceHistory: instance.price_history || [],
+          power: instance.power,
+          health: instance.health,
+          cost: instance.cost,
+          type: instance.type,
+          flavor_text: instance.flavor_text || '',
+          condition: instance.condition,
+          desirability: instance.desirability,
+          win_count: instance.win_count,
+          loss_count: instance.loss_count,
+        }))
+        setInventory({
+          id: agent.id,
+          name: `Agent ${agent.id}`,
+          collection_count: cards.length,
+          cards,
+        })
+        setLoading(false)
+        return
+      }
+    }
+
+    // Otherwise, fetch from API
     const fetchInventory = async () => {
       setLoading(true)
       setError(null)
@@ -68,7 +112,7 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
     }
 
     fetchInventory()
-  }, [agentId])
+  }, [agentId, agents])
 
   if (!agentId) {
     return (
@@ -219,5 +263,5 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
       {selectedCard && <CardDetail card={selectedCard} onClose={() => setSelectedCard(null)} />}
     </div>
   )
-  
+
 }

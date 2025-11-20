@@ -36,6 +36,7 @@ class CardRef:
         health: creature health (for deck building)
         gem_colored: number of colored gems in cost
         gem_colorless: number of colorless gems in cost
+        flavor_text: flavor text describing the card
     """
 
     card_id: str
@@ -50,6 +51,7 @@ class CardRef:
     health: int = 0
     gem_colored: int = 0
     gem_colorless: int = 0
+    flavor_text: str = ""
 
 
 @dataclass
@@ -170,6 +172,10 @@ class AgentCardInstance:
     Attributes:
         card_instance_id: unique identifier for this specific card copy
         card_id: reference to the master card definition
+        card_name: card name (for display)
+        flavor_text: card flavor text
+        card_color: card color
+        card_rarity: card rarity
         agent_id: current owner agent ID
         acquisition_tick: tick when this card was acquired
         acquisition_price: price paid when acquired
@@ -184,6 +190,10 @@ class AgentCardInstance:
 
     card_instance_id: str
     card_id: str
+    card_name: str
+    flavor_text: str
+    card_color: str
+    card_rarity: str
     agent_id: int
     acquisition_tick: int
     acquisition_price: float
@@ -200,6 +210,10 @@ class AgentCardInstance:
         return {
             "card_instance_id": self.card_instance_id,
             "card_id": self.card_id,
+            "card_name": self.card_name,
+            "flavor_text": self.flavor_text,
+            "card_color": self.card_color,
+            "card_rarity": self.card_rarity,
             "agent_id": self.agent_id,
             "acquisition_tick": self.acquisition_tick,
             "acquisition_price": self.acquisition_price,

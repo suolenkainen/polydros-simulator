@@ -330,6 +330,10 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
                     agent_card = AgentCardInstance(
                         card_instance_id=card_instance_id,
                         card_id=card.ref.card_id,
+                        card_name=card.ref.name,
+                        flavor_text=card.ref.flavor_text,
+                        card_color=card.ref.color,
+                        card_rarity=card.ref.rarity.value,
                         agent_id=agent.id,
                         acquisition_tick=t,
                         acquisition_price=card_price,

@@ -37,7 +37,7 @@ interface Agent {
   }>
 }
 
-export default function AgentDetail({ id }: { id: number | null }) {
+export default function AgentDetail({ id, agents }: { id: number | null; agents?: any[] }) {
   const [agent, setAgent] = React.useState<Agent | null>(null)
   const [loading, setLoading] = React.useState(false)
   const [expandedSections, setExpandedSections] = React.useState<Set<string>>(new Set())
@@ -251,7 +251,7 @@ export default function AgentDetail({ id }: { id: number | null }) {
       )}
 
       {/* Full Inventory Section */}
-      <AgentInventory agentId={id} />
+      <AgentInventory agentId={id} agents={agents} />
     </div>
   )
 }
