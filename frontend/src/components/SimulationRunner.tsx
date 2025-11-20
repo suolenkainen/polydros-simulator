@@ -11,6 +11,7 @@ import {
   Legend,
 } from 'chart.js'
 import { runSimulation } from '../api.ts'
+import CardDetail from './CardDetail'
 
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
@@ -44,6 +45,20 @@ type SimulationEvent = {
   agent_ids: number[]
 }
 
+type Card = {
+  id: string
+  name: string
+  color: string
+  rarity: string
+  power?: number
+  health?: number
+  gem_colored?: number
+  gem_colorless?: number
+  quality_score?: number
+  base_price?: number
+  flavor_text?: string
+}
+
 export default function SimulationRunner({
   onWorldSummary,
   onEvents,
@@ -59,6 +74,25 @@ export default function SimulationRunner({
   const [ticks, setTicks] = useState<number>(1)
   const [allEvents, setAllEvents] = useState<SimulationEvent[]>([])
   const [initialized, setInitialized] = useState(false)
+  const [cards, setCards] = useState<Card[]>([])
+  const [selectedCard, setSelectedCard] = useState<Card | null>(null)
+
+  // Load cards from public/cards/cards.json on component mount
+  React.useEffect(() => {
+    const loadCards = async () => {
+      try {
+        const response = await fetch('/cards/cards.json')
+        if (!response.ok) {
+          throw new Error('Failed to load cards')
+        }
+        const cardsData = await response.json()
+        setCards(cardsData)
+      } catch (err) {
+        console.error('Failed to load card data:', err)
+      }
+    }
+    loadCards()
+  }, [])
 
   // Load persisted state from sessionStorage on mount
   React.useEffect(() => {
@@ -258,6 +292,54 @@ export default function SimulationRunner({
         <button type="submit" disabled={loading}>{loading ? 'Running...' : 'Run'}</button>
         <button type="button" onClick={onReset} disabled={loading || currentTick === 0}>Reset</button>
       </form>
+
+      {/* Card Browser Dropdown */}
+      <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#f5f5f5', borderRadius: '4px' }}>
+        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
+          Browse Cards
+        </label>
+        <select 
+          onChange={(e) => {
+            if (e.target.value) {
+              const card = cards.find(c => c.id === e.target.value)
+              if (card) setSelectedCard(card)
+            }
+          }}
+          style={{ width: '100%', padding: '0.5rem', marginBottom: '0.5rem' }}
+          defaultValue=""
+        >
+          <option value="">Select a card to view details...</option>
+          {cards.map((card) => (
+            <option key={card.id} value={card.id}>
+              {card.name} ({card.rarity}) - {card.color}
+            </option>
+          ))}
+        </select>
+        <small style={{ display: 'block', color: '#666' }}>
+          {cards.length} cards available
+        </small>
+      </div>
+
+      {/* Card Detail Modal */}
+      {selectedCard && (
+        <CardDetail 
+          card={{
+            card_id: selectedCard.id,
+            name: selectedCard.name,
+            color: selectedCard.color,
+            rarity: selectedCard.rarity,
+            is_hologram: false,
+            quality_score: selectedCard.quality_score || 0,
+            price: selectedCard.base_price || 0,
+            power: selectedCard.power,
+            health: selectedCard.health,
+            gem_colored: selectedCard.gem_colored,
+            gem_colorless: selectedCard.gem_colorless,
+            flavor_text: selectedCard.flavor_text,
+          }}
+          onClose={() => setSelectedCard(null)}
+        />
+      )}
 
       {/* Chart temporarily disabled; world view will surface aggregate stats instead */}
       {/* {data && (

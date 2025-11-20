@@ -14,6 +14,7 @@ type CardData = {
   health?: number
   gem_colored?: number
   gem_colorless?: number
+  flavor_text?: string
 }
 
 type CardStats = {
@@ -140,7 +141,7 @@ export default function CardDetail({ card, onClose }: CardDetailProps) {
           <div className="card-flavor-section">
             <h4>Flavor</h4>
             <div className="card-flavor-text">
-              <p><em>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</em></p>
+              <p><em>{card.flavor_text || 'No flavor text available.'}</em></p>
             </div>
           </div>
 
@@ -218,5 +219,5 @@ export default function CardDetail({ card, onClose }: CardDetailProps) {
       </div>
     </div>
   )
-  
+
 }

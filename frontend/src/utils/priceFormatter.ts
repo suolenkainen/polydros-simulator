@@ -26,4 +26,5 @@ export function formatPriceWithCap(price: number): { formatted: string; isCapped
 export function getPriceDisplay(price: number): string {
   const { formatted, isCapped } = formatPriceWithCap(price)
   return isCapped ? `${formatted} (capped)` : formatted
+  
 }

@@ -2,6 +2,7 @@
   {
     "id": "C001",
     "name": "Ashmarch Footsoldier",
+    "flavor_text": "Step light, breathe shallow. The ash remembers every trespass.",  
     "color": "Ruby",
     "type": "Creature",
     "rarity": "COMMON",
@@ -19,6 +20,7 @@
   {
     "id": "C002",
     "name": "Moltenback Drake",
+    "flavor_text": "Wings of cinder, hunger of a furnace—anything it circles, it claims.",  
     "color": "Ruby",
     "type": "Creature",
     "rarity": "COMMON",
@@ -36,6 +38,7 @@
   {
     "id": "C003",
     "name": "Cindermane Lion",
+    "flavor_text": "Even its roar is smoke that claws at the sky.",  
     "color": "Ruby",
     "type": "Creature",
     "rarity": "COMMON",
@@ -53,6 +56,7 @@
   {
     "id": "C004",
     "name": "Drumfire Strike",
+    "flavor_text": "Three beats. One spark. Then the world becomes percussion.",  
     "color": "Ruby",
     "type": "Spell",
     "rarity": "COMMON",
@@ -70,6 +74,7 @@
   {
     "id": "C005",
     "name": "Forge Pulse",
+    "flavor_text": "The mountain never sleeps—its heartbeat just runs hotter.",  
     "color": "Ruby",
     "type": "Spell",
     "rarity": "COMMON",
@@ -87,6 +92,7 @@
   {
     "id": "C006",
     "name": "Forge Choir Captain",
+    "flavor_text": "Every hammer blow is a note; every spark, a stanza.",  
     "color": "Ruby",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -104,6 +110,7 @@
   {
     "id": "C007",
     "name": "Blazetongue Bard",
+    "flavor_text": "His verses scorch the air long before the flames do.",  
     "color": "Ruby",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -121,6 +128,7 @@
   {
     "id": "C008",
     "name": "Brassclad Duelist",
+    "flavor_text": "He polishes his armor with the heat of battle—literally.",  
     "color": "Ruby",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -138,6 +146,7 @@
   {
     "id": "C009",
     "name": "Blazing Crescendo",
+    "flavor_text": "When the final chord hits, even stone dares not stand.",  
     "color": "Ruby",
     "type": "Spell",
     "rarity": "UNCOMMON",
@@ -155,6 +164,7 @@
   {
     "id": "C010",
     "name": "Ash Vein Quarry",
+    "flavor_text": "The deeper they dig, the louder the mountain growls.",  
     "color": "Ruby",
     "type": "Mine",
     "rarity": "UNCOMMON",
@@ -172,6 +182,7 @@
   {
     "id": "C011",
     "name": "Vulcanic Harbinger",
+    "flavor_text": "It comes not to warn, but to announce.",  
     "color": "Ruby",
     "type": "Creature",
     "rarity": "RARE",
@@ -189,6 +200,7 @@
   {
     "id": "C012",
     "name": "Forge Golem Mk.IV",
+    "flavor_text": "Built to withstand molten rivers—and pilot them.",  
     "color": "Ruby",
     "type": "Golem",
     "rarity": "RARE",
@@ -206,6 +218,7 @@
   {
     "id": "C013",
     "name": "Symphony of Sparks",
+    "flavor_text": "The forge conducts, the flames perform.",  
     "color": "Ruby",
     "type": "Spell",
     "rarity": "RARE",
@@ -223,6 +236,7 @@
   {
     "id": "C014",
     "name": "Heartforge Tunnel",
+    "flavor_text": "Travelers swear they can hear the mountain breathing.",  
     "color": "Ruby",
     "type": "Mine",
     "rarity": "RARE",
@@ -240,6 +254,7 @@
   {
     "id": "C015",
     "name": "Varetha Ironvoice, Doom Drummer",
+    "flavor_text": "He doesn’t keep the beat. He commands it.",  
     "color": "Ruby",
     "type": "Character",
     "rarity": "RARE",
@@ -257,6 +272,7 @@
   {
     "id": "C016",
     "name": "Song of the Mountain Forge",
+    "flavor_text": "Sing loud enough, and the mountain sings back.",  
     "color": "Ruby",
     "type": "Spell",
     "rarity": "MYTHIC",
@@ -274,8 +290,9 @@
   {
     "id": "C017",
     "name": "Ramdelom’s Heart-Titan",
+    "flavor_text": "Born from pressure, crowned in fire.",  
     "color": "Ruby",
-    "type": "Creature",
+    "type": "Golem",
     "rarity": "MYTHIC",
     "gem_colored": 2,
     "gem_colorless": 3,
@@ -291,6 +308,7 @@
   {
     "id": "C018",
     "name": "Ramdelom’s Core",
+    "flavor_text": "A heartbeat too hot for mortal hands.",  
     "color": "Ruby",
     "type": "Mine",
     "rarity": "MYTHIC",
@@ -308,6 +326,7 @@
   {
     "id": "C019",
     "name": "Ruby Miner",
+    "flavor_text": "Some seek jewels. Some find them.",  
     "color": "Ruby",
     "type": "Player",
     "rarity": "PLAYER",
@@ -325,6 +344,7 @@
   {
     "id": "C020",
     "name": "Ruby Stalwart",
+    "flavor_text": "Heat tempers steel—but will alone tempers warriors.",  
     "color": "Ruby",
     "type": "Player",
     "rarity": "PLAYER",
@@ -342,6 +362,7 @@
   {
     "id": "C021",
     "name": "Mirrorfin Scout",
+    "flavor_text": "What it sees, the sea soon knows.",  
     "color": "Sapphire",
     "type": "Creature",
     "rarity": "COMMON",
@@ -359,6 +380,7 @@
   {
     "id": "C022",
     "name": "Glasswing Diver",
+    "flavor_text": "Glass wings don’t break—they bend the ocean to lift them.",  
     "color": "Sapphire",
     "type": "Creature",
     "rarity": "COMMON",
@@ -376,6 +398,7 @@
   {
     "id": "C023",
     "name": "Refractor Owl",
+    "flavor_text": "It stares straight through you and studies the echo.",  
     "color": "Sapphire",
     "type": "Creature",
     "rarity": "COMMON",
@@ -393,6 +416,7 @@
   {
     "id": "C024",
     "name": "Counterwave",
+    "flavor_text": "Every spell has a ripple. Every ripple can be unmade.",  
     "color": "Sapphire",
     "type": "Spell",
     "rarity": "COMMON",
@@ -410,6 +434,7 @@
   {
     "id": "C025",
     "name": "Echo Vision",
+    "flavor_text": "See the moment twice—once as it was, and once as it could be.",  
     "color": "Sapphire",
     "type": "Spell",
     "rarity": "COMMON",
@@ -427,6 +452,7 @@
   {
     "id": "C026",
     "name": "Scholar of Whessa",
+    "flavor_text": "To learn from reflections is to learn twice as fast.",  
     "color": "Sapphire",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -444,6 +470,7 @@
   {
     "id": "C027",
     "name": "Illusionist Adept",
+    "flavor_text": "Reality is merely a polite suggestion.",  
     "color": "Sapphire",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -461,6 +488,7 @@
   {
     "id": "C028",
     "name": "Crystal Navigator",
+    "flavor_text": "The sea is glass, and she reads its cracks like maps.",  
     "color": "Sapphire",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -478,6 +506,7 @@
   {
     "id": "C029",
     "name": "Fractal Mirage",
+    "flavor_text": "Touch it, and you become part of the pattern.",  
     "color": "Sapphire",
     "type": "Spell",
     "rarity": "UNCOMMON",
@@ -495,6 +524,7 @@
   {
     "id": "C030",
     "name": "Blue Vein Lab",
+    "flavor_text": "Where ideas fracture, recombine, and crystallize.",  
     "color": "Sapphire",
     "type": "Mine",
     "rarity": "UNCOMMON",
@@ -512,6 +542,7 @@
   {
     "id": "C031",
     "name": "Reflection Serpent",
+    "flavor_text": "If it coils around your image, run—it prefers the original next.",  
     "color": "Sapphire",
     "type": "Creature",
     "rarity": "RARE",
@@ -529,6 +560,7 @@
   {
     "id": "C032",
     "name": "Deep Equation",
+    "flavor_text": "The deeper the proof, the colder the truth.",  
     "color": "Sapphire",
     "type": "Spell",
     "rarity": "RARE",
@@ -546,6 +578,7 @@
   {
     "id": "C033",
     "name": "Mirror Reef",
+    "flavor_text": "Every tide rearranges the mirrors—and the creatures behind them.",  
     "color": "Sapphire",
     "type": "Mine",
     "rarity": "RARE",
@@ -563,6 +596,7 @@
   {
     "id": "C034",
     "name": "Archon Lirane Voss, Reflector Prime",
+    "flavor_text": "One thought, held perfectly still, can reshape a world.",  
     "color": "Sapphire",
     "type": "Character",
     "rarity": "RARE",
@@ -580,6 +614,7 @@
   {
     "id": "C035",
     "name": "Aether Whale",
+    "flavor_text": "It swims between possibilities, grazing on unrealized futures.",  
     "color": "Sapphire",
     "type": "Creature",
     "rarity": "MYTHIC",
@@ -597,6 +632,7 @@
   {
     "id": "C036",
     "name": "Whessa’s Reflection",
+    "flavor_text": "To see her face is to question your own.",  
     "color": "Sapphire",
     "type": "Spell",
     "rarity": "MYTHIC",
@@ -614,6 +650,7 @@
   {
     "id": "C037",
     "name": "Whessa’s Core Spiral",
+    "flavor_text": "Knowledge condensed until it sings.",  
     "color": "Sapphire",
     "type": "Mine",
     "rarity": "MYTHIC",
@@ -631,6 +668,7 @@
   {
     "id": "C038",
     "name": "Sapphire Diver",
+    "flavor_text": "Where others drown, she simply listens.",  
     "color": "Sapphire",
     "type": "Player",
     "rarity": "PLAYER",
@@ -648,6 +686,7 @@
   {
     "id": "C039",
     "name": "Mirror Architect",
+    "flavor_text": "He builds houses for thoughts that haven’t yet been imagined.",  
     "color": "Sapphire",
     "type": "Player",
     "rarity": "PLAYER",
@@ -665,6 +704,7 @@
   {
     "id": "C040",
     "name": "Leafrunner Scout",
+    "flavor_text": "Trust her footprints—they’re already growing over.",  
     "color": "Emerald",
     "type": "Creature",
     "rarity": "COMMON",
@@ -682,6 +722,7 @@
   {
     "id": "C041",
     "name": "Tonebird Flock",
+    "flavor_text": "Their songs root themselves in your bones.",  
     "color": "Emerald",
     "type": "Creature",
     "rarity": "COMMON",
@@ -699,6 +740,7 @@
   {
     "id": "C042",
     "name": "Mosswolf Pup",
+    "flavor_text": "Small as a leaf, loud as a storm.",  
     "color": "Emerald",
     "type": "Creature",
     "rarity": "COMMON",
@@ -716,6 +758,7 @@
   {
     "id": "C043",
     "name": "Grow Pulse",
+    "flavor_text": "The land swells, inhales, and decides to thrive.",  
     "color": "Emerald",
     "type": "Spell",
     "rarity": "COMMON",
@@ -733,6 +776,7 @@
   {
     "id": "C044",
     "name": "Song of Renewal",
+    "flavor_text": "A melody that invites the world to start again.",  
     "color": "Emerald",
     "type": "Spell",
     "rarity": "COMMON",
@@ -750,6 +794,7 @@
   {
     "id": "C045",
     "name": "Vine Harpist",
+    "flavor_text": "One pluck, and vines hurry to listen.",  
     "color": "Emerald",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -767,6 +812,7 @@
   {
     "id": "C046",
     "name": "Verdant Shaman",
+    "flavor_text": "He speaks for the soil, and the soil roars back.",  
     "color": "Emerald",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -784,6 +830,7 @@
   {
     "id": "C047",
     "name": "Chordvine Panther",
+    "flavor_text": "Each step is a chord struck on living strings.",  
     "color": "Emerald",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -801,6 +848,7 @@
   {
     "id": "C048",
     "name": "Lifeweaver’s Tune",
+    "flavor_text": "A lullaby that knits flesh and stem.",  
     "color": "Emerald",
     "type": "Spell",
     "rarity": "UNCOMMON",
@@ -818,6 +866,7 @@
   {
     "id": "C049",
     "name": "Rootspire Garden",
+    "flavor_text": "Roots climb here—not down.",  
     "color": "Emerald",
     "type": "Mine",
     "rarity": "UNCOMMON",
@@ -835,6 +884,7 @@
   {
     "id": "C050",
     "name": "Bloom Stag",
+    "flavor_text": "Its antlers bloom with seasons that haven’t happened yet.",  
     "color": "Emerald",
     "type": "Creature",
     "rarity": "RARE",
@@ -852,6 +902,7 @@
   {
     "id": "C051",
     "name": "Root Sentinel",
+    "flavor_text": "Unmoving, but never still.",  
     "color": "Emerald",
     "type": "Golem",
     "rarity": "RARE",
@@ -869,6 +920,7 @@
   {
     "id": "C052",
     "name": "Overgrow",
+    "flavor_text": "When the land has had enough, it takes everything back.",  
     "color": "Emerald",
     "type": "Spell",
     "rarity": "RARE",
@@ -886,6 +938,7 @@
   {
     "id": "C053",
     "name": "Heartbloom Crater",
+    "flavor_text": "A wound healed too quickly—and too powerfully.",  
     "color": "Emerald",
     "type": "Mine",
     "rarity": "RARE",
@@ -903,6 +956,7 @@
   {
     "id": "C054",
     "name": "Bessalynn, Tiravel’s Flutist",
+    "flavor_text": "Her song coaxes sap into symphony.",  
     "color": "Emerald",
     "type": "Character",
     "rarity": "RARE",
@@ -920,6 +974,7 @@
   {
     "id": "C055",
     "name": "Verdant Colossus",
+    "flavor_text": "A walking season.",  
     "color": "Emerald",
     "type": "Creature",
     "rarity": "MYTHIC",
@@ -937,6 +992,7 @@
   {
     "id": "C056",
     "name": "Tiravel’s Harmony",
+    "flavor_text": "Where the harmony settles, peace grows.",  
     "color": "Emerald",
     "type": "Spell",
     "rarity": "MYTHIC",
@@ -954,6 +1010,7 @@
   {
     "id": "C057",
     "name": "Tiravel’s Heartroot",
+    "flavor_text": "e root that remembers every melody.",  
     "color": "Emerald",
     "type": "Mine",
     "rarity": "MYTHIC",
@@ -971,6 +1028,7 @@
   {
     "id": "C058",
     "name": "Emerald Forager",
+    "flavor_text": "She gathers not for hunger, but for balance.",  
     "color": "Emerald",
     "type": "Player",
     "rarity": "PLAYER",
@@ -988,6 +1046,7 @@
   {
     "id": "C059",
     "name": "Heartlistener Monk",
+    "flavor_text": "Stillness is just another form of growth.",  
     "color": "Emerald",
     "type": "Player",
     "rarity": "PLAYER",
@@ -1005,6 +1064,7 @@
   {
     "id": "C060",
     "name": "Grave Acolyte",
+    "flavor_text": "He prays not for souls, but for their echoes.",  
     "color": "Onyx",
     "type": "Creature",
     "rarity": "COMMON",
@@ -1022,6 +1082,7 @@
   {
     "id": "C061",
     "name": "Echo Moth Swarm",
+    "flavor_text": "They gather around the dying, hungry for final words.",  
     "color": "Onyx",
     "type": "Creature",
     "rarity": "COMMON",
@@ -1039,6 +1100,7 @@
   {
     "id": "C062",
     "name": "Shadow Rat",
+    "flavor_text": "Small, silent, utterly unforgiving.",  
     "color": "Onyx",
     "type": "Creature",
     "rarity": "COMMON",
@@ -1056,6 +1118,7 @@
   {
     "id": "C063",
     "name": "Funeral Toll",
+    "flavor_text": "One ring for grief. Two for the forgotten.",  
     "color": "Onyx",
     "type": "Spell",
     "rarity": "COMMON",
@@ -1073,6 +1136,7 @@
   {
     "id": "C064",
     "name": "Dark Reprise",
+    "flavor_text": "The dead don’t rise to fight—they rise to finish the song.",  
     "color": "Onyx",
     "type": "Spell",
     "rarity": "COMMON",
@@ -1090,6 +1154,7 @@
   {
     "id": "C065",
     "name": "Bellkeeper Exile",
+    "flavor_text": "He was cast out for hearing too clearly.",  
     "color": "Onyx",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -1107,6 +1172,7 @@
   {
     "id": "C066",
     "name": "Crypt Sentinel",
+    "flavor_text": "Only the dead may pass. Others merely try.",  
     "color": "Onyx",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -1124,6 +1190,7 @@
   {
     "id": "C067",
     "name": "Soul Lantern Warden",
+    "flavor_text": "The light inside flickers to the rhythm of stolen names.",  
     "color": "Onyx",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -1141,6 +1208,7 @@
   {
     "id": "C068",
     "name": "Bell of Remembrance",
+    "flavor_text": "It rings once for each regret.",  
     "color": "Onyx",
     "type": "Spell",
     "rarity": "UNCOMMON",
@@ -1158,6 +1226,7 @@
   {
     "id": "C069",
     "name": "Obsidian Vein",
+    "flavor_text": "A seam of black that bleeds memory.",  
     "color": "Onyx",
     "type": "Mine",
     "rarity": "UNCOMMON",
@@ -1175,6 +1244,7 @@
   {
     "id": "C070",
     "name": "Grave Siren",
+    "flavor_text": "It sings you to rest—but never to peace.",  
     "color": "Onyx",
     "type": "Creature",
     "rarity": "RARE",
@@ -1192,6 +1262,7 @@
   {
     "id": "C071",
     "name": "Bellframe Guardian",
+    "flavor_text": "The frame stands even when the bell shatters.",  
     "color": "Onyx",
     "type": "Golem",
     "rarity": "RARE",
@@ -1209,6 +1280,7 @@
   {
     "id": "C072",
     "name": "Silence the Pulse",
+    "flavor_text": "Stop the heartbeat, stop the hope.",  
     "color": "Onyx",
     "type": "Spell",
     "rarity": "RARE",
@@ -1226,6 +1298,7 @@
   {
     "id": "C073",
     "name": "Black Bell Cavern",
+    "flavor_text": "In the dark, the bells ring themselves.",  
     "color": "Onyx",
     "type": "Mine",
     "rarity": "RARE",
@@ -1243,6 +1316,7 @@
   {
     "id": "C074",
     "name": "Bellkeeper Nahl, Hollow Monk",
+    "flavor_text": "His voice is gone—his echoes, never.",  
     "color": "Onyx",
     "type": "Character",
     "rarity": "RARE",
@@ -1260,6 +1334,7 @@
   {
     "id": "C075",
     "name": "The Pale Regent",
+    "flavor_text": "A ruler crowned in quiet.",  
     "color": "Onyx",
     "type": "Creature",
     "rarity": "MYTHIC",
@@ -1277,6 +1352,7 @@
   {
     "id": "C076",
     "name": "Dirge of N’kurath",
+    "flavor_text": "A melody that demands surrender.",  
     "color": "Onyx",
     "type": "Spell",
     "rarity": "MYTHIC",
@@ -1294,6 +1370,7 @@
   {
     "id": "C077",
     "name": "Echo Core Depths",
+    "flavor_text": "Whispers fall here and never climb out.",  
     "color": "Onyx",
     "type": "Mine",
     "rarity": "MYTHIC",
@@ -1311,6 +1388,7 @@
   {
     "id": "C078",
     "name": "Onyx Supplicant",
+    "flavor_text": "Kneel once—and forget why you rose.",  
     "color": "Onyx",
     "type": "Player",
     "rarity": "PLAYER",
@@ -1328,6 +1406,7 @@
   {
     "id": "C079",
     "name": "Gravetone Acolyte",
+    "flavor_text": "He writes his prayers in dust and shadow.",  
     "color": "Onyx",
     "type": "Player",
     "rarity": "PLAYER",
@@ -1345,6 +1424,7 @@
   {
     "id": "C080",
     "name": "Moon Raven",
+    "flavor_text": "It glides on thought more than wind.",  
     "color": "Amethyst",
     "type": "Creature",
     "rarity": "COMMON",
@@ -1362,6 +1442,7 @@
   {
     "id": "C081",
     "name": "Dreamheart Fawn",
+    "flavor_text": "Born from a dream someone forgot they had.",  
     "color": "Amethyst",
     "type": "Creature",
     "rarity": "COMMON",
@@ -1379,6 +1460,7 @@
   {
     "id": "C082",
     "name": "Echo Spirit",
+    "flavor_text": "A whisper given shape.",  
     "color": "Amethyst",
     "type": "Creature",
     "rarity": "COMMON",
@@ -1396,6 +1478,7 @@
   {
     "id": "C083",
     "name": "Lullaby Veil",
+    "flavor_text": "Sleep settles softly—then refuses to leave.",  
     "color": "Amethyst",
     "type": "Spell",
     "rarity": "COMMON",
@@ -1413,6 +1496,7 @@
   {
     "id": "C084",
     "name": "Mind Echo",
+    "flavor_text": "The thought you lost comes back sharper.",  
     "color": "Amethyst",
     "type": "Spell",
     "rarity": "COMMON",
@@ -1430,6 +1514,7 @@
   {
     "id": "C085",
     "name": "Mindpetal Mystic",
+    "flavor_text": "She blooms new ideas in anyone who listens.",  
     "color": "Amethyst",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -1447,6 +1532,7 @@
   {
     "id": "C086",
     "name": "Dreamsinger Monk",
+    "flavor_text": "His chants ripple like moonlit water.",  
     "color": "Amethyst",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -1464,6 +1550,7 @@
   {
     "id": "C087",
     "name": "Lucid Seer",
+    "flavor_text": "She knows the future because she dreamed it first.",  
     "color": "Amethyst",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -1481,6 +1568,7 @@
   {
     "id": "C088",
     "name": "Dream Refrain",
+    "flavor_text": "One note caught between waking and not.",  
     "color": "Amethyst",
     "type": "Spell",
     "rarity": "UNCOMMON",
@@ -1498,6 +1586,7 @@
   {
     "id": "C089",
     "name": "Amethyst Riftpool",
+    "flavor_text": "A pool that reflects only possibilities.",  
     "color": "Amethyst",
     "type": "Mine",
     "rarity": "UNCOMMON",
@@ -1515,6 +1604,7 @@
   {
     "id": "C090",
     "name": "Aurora Serpent",
+    "flavor_text": "It slithers between colors no one can name.",  
     "color": "Amethyst",
     "type": "Creature",
     "rarity": "RARE",
@@ -1532,6 +1622,7 @@
   {
     "id": "C091",
     "name": "Dream Sentinel",
+    "flavor_text": "Silent, still, but always inside your thoughts.",  
     "color": "Amethyst",
     "type": "Golem",
     "rarity": "RARE",
@@ -1549,6 +1640,7 @@
   {
     "id": "C092",
     "name": "Moonlight Chorus",
+    "flavor_text": "A thousand soft voices, none belonging to mortals.",  
     "color": "Amethyst",
     "type": "Spell",
     "rarity": "RARE",
@@ -1566,6 +1658,7 @@
   {
     "id": "C093",
     "name": "Aurora Well",
+    "flavor_text": "Drink, and remember someone else’s dream.",  
     "color": "Amethyst",
     "type": "Mine",
     "rarity": "RARE",
@@ -1583,6 +1676,7 @@
   {
     "id": "C094",
     "name": "Mother Iryl, Voice Between Realms",
+    "flavor_text": "She sings where the worlds overlap.",  
     "color": "Amethyst",
     "type": "Character",
     "rarity": "RARE",
@@ -1600,6 +1694,7 @@
   {
     "id": "C095",
     "name": "Lytheran Dreamwalker",
+    "flavor_text": "He strolls across reflections of dreams.",  
     "color": "Amethyst",
     "type": "Creature",
     "rarity": "MYTHIC",
@@ -1617,6 +1712,7 @@
   {
     "id": "C096",
     "name": "Lythera’s Awakening",
+    "flavor_text": "Her first breath reshaped the horizon.",  
     "color": "Amethyst",
     "type": "Spell",
     "rarity": "MYTHIC",
@@ -1634,6 +1730,7 @@
   {
     "id": "C097",
     "name": "Lytheran Nexus",
+    "flavor_text": "All dreams lead here—eventually.",  
     "color": "Amethyst",
     "type": "Mine",
     "rarity": "MYTHIC",
@@ -1651,6 +1748,7 @@
   {
     "id": "C098",
     "name": "Amethyst Dreamer",
+    "flavor_text": "He sees the world as it could be, not as it is.",  
     "color": "Amethyst",
     "type": "Player",
     "rarity": "PLAYER",
@@ -1668,6 +1766,7 @@
   {
     "id": "C099",
     "name": "Lytheran Prophet",
+    "flavor_text": "Truth tastes different in dreams.",  
     "color": "Amethyst",
     "type": "Player",
     "rarity": "PLAYER",
@@ -1685,6 +1784,7 @@
   {
     "id": "C100",
     "name": "Crystal Nomad",
+    "flavor_text": "Wandering until the colors align.",  
     "color": "Prism",
     "type": "Creature",
     "rarity": "COMMON",
@@ -1702,6 +1802,7 @@
   {
     "id": "C101",
     "name": "Resonance Surge",
+    "flavor_text": "When light remembers how to sing.",  
     "color": "Prism",
     "type": "Spell",
     "rarity": "COMMON",
@@ -1719,6 +1820,7 @@
   {
     "id": "C102",
     "name": "Alloyed Guardian",
+    "flavor_text": "A body of metal, a heart of harmony.",  
     "color": "Prism",
     "type": "Golem",
     "rarity": "COMMON",
@@ -1736,6 +1838,7 @@
   {
     "id": "C103",
     "name": "Dualflame Beast",
+    "flavor_text": "Two fires, one purpose: burn brighter.",  
     "color": "Prism",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -1753,6 +1856,7 @@
   {
     "id": "C104",
     "name": "Prismatic Flux",
+    "flavor_text": "Color unbound becomes power unrestrained.",  
     "color": "Prism",
     "type": "Spell",
     "rarity": "UNCOMMON",
@@ -1770,6 +1874,7 @@
   {
     "id": "C105",
     "name": "Hybrid Experiment",
+    "flavor_text": "Success is measured in how long it survives.",  
     "color": "Prism",
     "type": "Creature",
     "rarity": "UNCOMMON",
@@ -1787,6 +1892,7 @@
   {
     "id": "C106",
     "name": "Prism Knight",
+    "flavor_text": "Each strike radiates a different oath.",  
     "color": "Prism",
     "type": "Creature",
     "rarity": "RARE",
@@ -1804,6 +1910,7 @@
   {
     "id": "C107",
     "name": "Fifth Song Fragment",
+    "flavor_text": "A lost note that hums with unfinished promise.",  
     "color": "Prism",
     "type": "Spell",
     "rarity": "RARE",
@@ -1821,6 +1928,7 @@
   {
     "id": "C108",
     "name": "Fused Beast of the Veins",
+    "flavor_text": "It moves like a storm of colors fighting for shape.",  
     "color": "Prism",
     "type": "Creature",
     "rarity": "RARE",
@@ -1838,8 +1946,9 @@
   {
     "id": "C109",
     "name": "Aurora Titan",
+    "flavor_text": "Every step rewrites the sky.",  
     "color": "Prism",
-    "type": "Creature",
+    "type": "Golem",
     "rarity": "MYTHIC",
     "gem_colored": 5,
     "gem_colorless": 1,
@@ -1855,6 +1964,7 @@
   {
     "id": "C110",
     "name": "Call of the Sixth Song",
+    "flavor_text": "A summons that resonates across realms.",  
     "color": "Prism",
     "type": "Spell",
     "rarity": "MYTHIC",
@@ -1872,6 +1982,7 @@
   {
     "id": "C111",
     "name": "Prism Warden",
+    "flavor_text": "Keeper of colors no eye has seen.",  
     "color": "Prism",
     "type": "Golem",
     "rarity": "MYTHIC",
@@ -1889,6 +2000,7 @@
   {
     "id": "C112",
     "name": "Harmonic Rift Core",
+    "flavor_text": "A heart beating to six different rhythms at once.",  
     "color": "Prism",
     "type": "Mine",
     "rarity": "MYTHIC",
@@ -1906,6 +2018,7 @@
   {
     "id": "C113",
     "name": "Varetha Ironvoice, Doom Drummer",
+    "flavor_text": "Her drumbeat pierces the veil between sound and fury.",  
     "color": "Ruby",
     "type": "Character",
     "rarity": "ALTERNATE_ART",
@@ -1923,6 +2036,7 @@
   {
     "id": "C114",
     "name": "Archon Lirane Voss, Reflector Prime",
+    "flavor_text": "In stillness, she divines entire timelines.",  
     "color": "Sapphire",
     "type": "Character",
     "rarity": "ALTERNATE_ART",
@@ -1940,6 +2054,7 @@
   {
     "id": "C115",
     "name": "Bessalynn, Tiravel’s Flutist",
+    "flavor_text": "Her flute carries a forest’s memory.",  
     "color": "Emerald",
     "type": "Character",
     "rarity": "ALTERNATE_ART",
@@ -1957,6 +2072,7 @@
   {
     "id": "C116",
     "name": "Bellkeeper Nahl, Hollow Monk",
+    "flavor_text": "His silence strikes harder than any bell.",  
     "color": "Onyx",
     "type": "Character",
     "rarity": "ALTERNATE_ART",
@@ -1974,6 +2090,7 @@
   {
     "id": "C117",
     "name": "Mother Iryl, Voice Between Realms",
+    "flavor_text": "She whispers songs meant for the spaces between dreams.",  
     "color": "Amethyst",
     "type": "Character",
     "rarity": "ALTERNATE_ART",
@@ -1991,8 +2108,9 @@
   {
     "id": "C118",
     "name": "Aurora Titan",
+    "flavor_text": "A prism given purpose and mass.",  
     "color": "Prism",
-    "type": "Creature",
+    "type": "Golem",
     "rarity": "ALTERNATE_ART",
     "gem_colored": 0,
     "gem_colorless": 0,
@@ -2008,8 +2126,9 @@
   {
     "id": "C119",
     "name": "Ramdelom’s Heart-Titan",
+    "flavor_text": "The heart burns hotter in this telling.",  
     "color": "Ruby",
-    "type": "Creature",
+    "type": "Golem",
     "rarity": "ALTERNATE_ART",
     "gem_colored": 0,
     "gem_colorless": 0,
@@ -2025,6 +2144,7 @@
   {
     "id": "C120",
     "name": "Lytheran Dreamwalker",
+    "flavor_text": "He journeys across dreams that dare not wake.",  
     "color": "Amethyst",
     "type": "Creature",
     "rarity": "ALTERNATE_ART",
