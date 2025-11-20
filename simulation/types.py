@@ -5,7 +5,7 @@ simulation. Keep these lightweight and documented so the rest of the engine
 can remain modular.
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from typing import Optional
 
@@ -123,4 +123,166 @@ class AgentTraits:
             "competitor_trait": self.competitor_trait,
             "gambler_trait": self.gambler_trait,
             "scavenger_trait": self.scavenger_trait,
+        }
+
+
+@dataclass
+class PriceDataPoint:
+    """A snapshot of a card's price and metrics at a specific tick.
+
+    Attributes:
+        tick: simulation tick when this data point was captured
+        price: market price of the card at this tick
+        quality_score: card quality at this tick
+        desirability: desirability metric (0.0 to 10.0)
+    """
+
+    tick: int
+    price: float
+    quality_score: float
+    desirability: float
+
+    def to_dict(self) -> dict:
+        """Serialize to dictionary for API response."""
+        return {
+            "tick": self.tick,
+            "price": self.price,
+            "quality_score": self.quality_score,
+            "desirability": self.desirability,
+        }
+
+
+class CardCondition(str, Enum):
+    """Physical condition of a card instance."""
+
+    MINT = "mint"  # Perfect condition, never played
+    PLAYED = "played"  # Normal play wear
+    DAMAGED = "damaged"  # Significant wear
+    WORN = "worn"  # Heavy wear, barely playable
+
+
+@dataclass
+class AgentCardInstance:
+    """A specific card instance owned by an agent with individual tracking.
+
+    This represents a unique copy of a card with its own stats, history, and metrics.
+
+    Attributes:
+        card_instance_id: unique identifier for this specific card copy
+        card_id: reference to the master card definition
+        agent_id: current owner agent ID
+        acquisition_tick: tick when this card was acquired
+        acquisition_price: price paid when acquired
+        current_price: current market price
+        quality_score: current quality (0.0 to 10.0)
+        desirability: desirability metric (0.0 to 10.0)
+        win_count: number of combat wins with this card
+        loss_count: number of combat losses with this card
+        condition: physical condition (mint, played, damaged, worn)
+        price_history: list of PriceDataPoint for this card across ticks
+    """
+
+    card_instance_id: str
+    card_id: str
+    agent_id: int
+    acquisition_tick: int
+    acquisition_price: float
+    current_price: float
+    quality_score: float = 10.0
+    desirability: float = 5.0
+    win_count: int = 0
+    loss_count: int = 0
+    condition: CardCondition = CardCondition.MINT
+    price_history: list = field(default_factory=list)  # List[PriceDataPoint]
+
+    def to_dict(self) -> dict:
+        """Serialize to dictionary for API response."""
+        return {
+            "card_instance_id": self.card_instance_id,
+            "card_id": self.card_id,
+            "agent_id": self.agent_id,
+            "acquisition_tick": self.acquisition_tick,
+            "acquisition_price": self.acquisition_price,
+            "current_price": self.current_price,
+            "quality_score": self.quality_score,
+            "desirability": self.desirability,
+            "win_count": self.win_count,
+            "loss_count": self.loss_count,
+            "condition": self.condition.value,
+            "price_history": [p.to_dict() for p in self.price_history],
+        }
+
+    def update_condition(self) -> None:
+        """Calculate and update card condition based on quality and win/loss record."""
+        if self.quality_score > 9.5:
+            self.condition = CardCondition.MINT
+        elif self.quality_score > 7.5 and self.loss_count == 0:
+            self.condition = CardCondition.PLAYED
+        elif self.quality_score > 5.0:
+            self.condition = CardCondition.DAMAGED
+        else:
+            self.condition = CardCondition.WORN
+
+    def calculate_desirability(self) -> float:
+        """Calculate desirability based on quality, wins, and losses.
+
+        Returns:
+            desirability score (0.0 to 10.0)
+        """
+        base_desirability = 5.0
+        win_bonus = self.win_count * 0.5
+        loss_penalty = self.loss_count * 0.3
+        quality_factor = (self.quality_score / 10.0) * 2.0
+
+        desirability = base_desirability + win_bonus - loss_penalty + quality_factor
+        return max(0.0, min(10.0, desirability))  # Clamp to [0, 10]
+
+    def record_price_point(self, tick: int) -> None:
+        """Record current card state as a price data point at the given tick."""
+        # Update desirability first
+        self.desirability = self.calculate_desirability()
+        # Update condition
+        self.update_condition()
+        # Record price point
+        price_point = PriceDataPoint(
+            tick=tick,
+            price=self.current_price,
+            quality_score=self.quality_score,
+            desirability=self.desirability,
+        )
+        self.price_history.append(price_point)
+
+
+@dataclass
+class MarketSnapshot:
+    """Aggregate market statistics for a tick.
+
+    Attributes:
+        tick: simulation tick
+        total_volume_traded: total Prisms exchanged this tick
+        cards_traded_count: number of card trades this tick
+        price_index: average price across all cards
+        volatility: price movement variance
+        unique_cards_in_circulation: count of unique card IDs owned
+        total_card_instances: total individual card instances across all agents
+    """
+
+    tick: int
+    total_volume_traded: float = 0.0
+    cards_traded_count: int = 0
+    price_index: float = 0.0
+    volatility: float = 0.0
+    unique_cards_in_circulation: int = 0
+    total_card_instances: int = 0
+
+    def to_dict(self) -> dict:
+        """Serialize to dictionary for API response."""
+        return {
+            "tick": self.tick,
+            "total_volume_traded": self.total_volume_traded,
+            "cards_traded_count": self.cards_traded_count,
+            "price_index": self.price_index,
+            "volatility": self.volatility,
+            "unique_cards_in_circulation": self.unique_cards_in_circulation,
+            "total_card_instances": self.total_card_instances,
         }

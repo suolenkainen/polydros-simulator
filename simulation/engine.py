@@ -6,6 +6,7 @@ reproducibility.
 """
 
 import random
+import uuid
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Dict, List
 
@@ -16,6 +17,17 @@ from .world import Agent, Event, WorldState
 
 if TYPE_CHECKING:
     from .types import CardRef, CardInstance
+
+
+def generate_card_instance_id(card_id: str, agent_id: int, tick: int, rng: random.Random) -> str:
+    """Generate a unique card instance ID.
+
+    Format: INST_{card_id}_{agent_id}_{tick}_{random}
+
+    This ensures uniqueness while maintaining determinism with seeded RNG.
+    """
+    random_part = rng.randint(100000, 999999)
+    return f"INST_{card_id}_{agent_id}_{tick}_{random_part}"
 
 
 def calculate_card_price(card_ref: "CardRef") -> float:
@@ -308,6 +320,27 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
             for _ in range(open_count):
                 cards = open_booster(pool, a_rng)
                 agent.add_cards(cards)
+                
+                # Also create tracked card instances
+                for card in cards:
+                    card_price = calculate_card_price(card.ref)
+                    card_instance_id = generate_card_instance_id(card.ref.card_id, agent.id, t, a_rng)
+                    
+                    from .types import AgentCardInstance
+                    agent_card = AgentCardInstance(
+                        card_instance_id=card_instance_id,
+                        card_id=card.ref.card_id,
+                        agent_id=agent.id,
+                        acquisition_tick=t,
+                        acquisition_price=card_price,
+                        current_price=card_price,
+                        quality_score=card.effective_quality(),
+                        desirability=5.0,
+                        win_count=0,
+                        loss_count=0,
+                    )
+                    agent.add_card_instance(agent_card)
+                
                 agent.remove_boosters(1)
 
         # Play phase: agents play games with their decks, degrading card quality
@@ -457,7 +490,22 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
 
         # Collect events that occurred this tick
         tick_events = [e.to_dict() for e in world.events if e.tick == t]
-        timeseries.append({"tick": t, **world.summary(), "events": tick_events})
+        
+        # Record price points for all card instances
+        world.record_price_points()
+        
+        # Capture market snapshot
+        world.capture_market_snapshot()
+        
+        # Get latest market snapshot if available
+        market_snapshot = None
+        if world.market_snapshots:
+            market_snapshot = world.market_snapshots[-1].to_dict()
+        
+        tick_summary = {"tick": t, **world.summary(), "events": tick_events}
+        if market_snapshot:
+            tick_summary["market_snapshot"] = market_snapshot
+        timeseries.append(tick_summary)
 
     # Build a serializable agents summary to expose to the frontend/backend.
     agents_summary = []
@@ -490,6 +538,9 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
 
         # Agent-specific events (events where this agent is the primary actor)
         agent_events = [e.to_dict() for e in world.events if e.agent_id == agent.id]
+        
+        # Build card instances list
+        card_instances = [ci.to_dict() for ci in agent.card_instances.values()]
 
         agents_summary.append(
             {
@@ -501,6 +552,7 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
                 "collection_count": len(agent.collection),
                 "booster_count": agent.boosters,
                 "full_collection": full_collection,
+                "card_instances": card_instances,
                 "deck": deck,
                 "traits": traits_dict,
                 "agent_events": agent_events,
