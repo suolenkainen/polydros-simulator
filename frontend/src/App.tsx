@@ -22,6 +22,11 @@ export default function App() {
   }> | null>(null)
   const [agents, setAgents] = React.useState<any[]>([])
 
+  // Log when agents change
+  React.useEffect(() => {
+    console.log('[App] agents updated:', agents.length > 0 ? `${agents.length} agents` : 'empty')
+  }, [agents])
+
   // Save state to sessionStorage whenever it changes
   React.useEffect(() => {
     const state = {

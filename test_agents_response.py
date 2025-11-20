@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Test that agents data is properly returned in simulation response."""
 
-from simulation.engine import run_simulation
+from simulation.engine import run_simulation, SimulationConfig
 
 # Run simulation
-res = run_simulation({
-    'seed': 42,
-    'agents': [{'name': 'Agent 1'}, {'name': 'Agent 2'}],
-    'ticks': 1
-})
+res = run_simulation(SimulationConfig(
+    seed=42,
+    initial_agents=2,
+    ticks=1
+))
 
 print(f"Response keys: {list(res.keys())}")
 print(f"Has 'agents' key: {'agents' in res}")

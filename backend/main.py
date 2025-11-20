@@ -117,7 +117,7 @@ def get_agent_cards(agent_id: int) -> dict:
                 "id": agent.get("id"),
                 "name": agent.get("name"),
                 "collection_count": agent.get("collection_count"),
-                "cards": agent.get("full_collection", []),
+                "cards": agent.get("card_instances", []),
             }
     return {"error": "Agent not found"}
 
