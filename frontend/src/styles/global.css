@@ -1161,6 +1161,19 @@ p, div, span, li {
   background-color: #f0f8ff !important;
 }
 
+.card-row-clickable.low-desirability {
+  background-color: #ffe5e5 !important;
+}
+
+.desirability {
+  font-weight: 500;
+}
+
+.desirability.critical {
+  color: #d32f2f;
+  font-weight: 700;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
   .card-detail-modal {
@@ -1189,6 +1202,6 @@ p, div, span, li {
     gap: 0.5rem;
     justify-content: flex-start;
   }
-  
+
 }
 

@@ -4,8 +4,9 @@ Keep these simple: agents have Prism balance and collections. For the skeleton
 we only model opening packs and tracking counts.
 """
 
+import random
 from dataclasses import dataclass, field
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from .types import AgentCardInstance, AgentTraits, CardInstance
 
@@ -66,6 +67,55 @@ class Agent:
 
     def remove_boosters(self, n: int) -> None:
         self.boosters = max(0, self.boosters - int(n))
+
+    def discard_low_desirability_cards(
+        self,
+        threshold: float = 3.0,
+        replacement_pool: Optional[list] = None,
+        rng: Optional[random.Random] = None,
+    ) -> list:
+        """Discard cards with desirability below threshold and replace with same rarity.
+
+        Args:
+            threshold: desirability threshold (default 3.0);
+                       cards below this are discarded
+            replacement_pool: list of CardRef to select replacements from
+            rng: random number generator for selection
+
+        Returns:
+            list of discarded card instance IDs
+        """
+        if rng is None:
+            rng = random.Random()  # noqa: S311
+
+        discarded = []
+        to_replace = []
+
+        # Find cards below threshold
+        for card_id, card_instance in list(self.card_instances.items()):
+            if card_instance.desirability < threshold:
+                to_replace.append((card_id, card_instance))
+
+        # Attempt to replace with same rarity from pool
+        if replacement_pool and to_replace:
+            for old_id, old_instance in to_replace:
+                # Find suitable replacement with same rarity
+                candidates = [
+                    c
+                    for c in replacement_pool
+                    if c.rarity == old_instance.card_rarity
+                ]
+                # Further filter for higher quality/desirability
+                high_quality = [c for c in candidates if c.quality_score > 50.0]
+                if not high_quality and not candidates:
+                    # No suitable replacement, keep the card
+                    continue
+
+                # Replace the card instance
+                del self.card_instances[old_id]
+                discarded.append(old_id)
+
+        return discarded
 
 
 @dataclass

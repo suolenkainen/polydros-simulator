@@ -14,6 +14,8 @@ type Card = {
   power?: number
   health?: number
   cost?: number
+  gem_colored?: number
+  gem_colorless?: number
   type?: string
   condition?: string
   desirability?: number
@@ -71,6 +73,8 @@ export default function AgentInventory({ agentId, agents }: AgentInventoryProps)
           power: instance.power,
           health: instance.health,
           cost: instance.cost,
+          gem_colored: instance.gem_colored || 0,
+          gem_colorless: instance.gem_colorless || 0,
           type: instance.type,
           flavor_text: instance.flavor_text || '',
           condition: instance.condition,
@@ -119,6 +123,8 @@ export default function AgentInventory({ agentId, agents }: AgentInventoryProps)
             power: instance.power,
             health: instance.health,
             cost: instance.cost,
+            gem_colored: instance.gem_colored || 0,
+            gem_colorless: instance.gem_colorless || 0,
             type: instance.type,
             flavor_text: instance.flavor_text || '',
             condition: instance.condition,
@@ -264,27 +270,36 @@ export default function AgentInventory({ agentId, agents }: AgentInventoryProps)
                 <th>Name</th>
                 <th>Rarity</th>
                 <th>Color</th>
+                <th>Cost</th>
                 <th>Quality</th>
+                <th>Desirability</th>
                 <th>Holo</th>
                 <th>Price</th>
               </tr>
             </thead>
             <tbody>
-              {displayCards.map((card, idx) => (
-                <tr
-                  key={idx}
-                  className={`rarity-row-${card.rarity.toLowerCase()} card-row-clickable`}
-                  onClick={() => setSelectedCard(card)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <td className="card-name">{card.name}</td>
-                  <td className={`rarity rarity-${card.rarity.toLowerCase()}`}>{card.rarity}</td>
-                  <td className="card-color">{card.color}</td>
-                  <td className="quality">{card.quality_score.toFixed(2)}</td>
-                  <td className="attribute">{card.is_hologram ? '✓' : '—'}</td>
-                  <td className="card-price">{formatPrice(card.price)}</td>
-                </tr>
-              ))}
+              {displayCards.map((card, idx) => {
+                const isLowDesirability = card.desirability !== undefined && card.desirability < 3.0
+                return (
+                  <tr
+                    key={idx}
+                    className={`rarity-row-${card.rarity.toLowerCase()} card-row-clickable ${isLowDesirability ? 'low-desirability' : ''}`}
+                    onClick={() => setSelectedCard(card)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <td className="card-name">{card.name}</td>
+                    <td className={`rarity rarity-${card.rarity.toLowerCase()}`}>{card.rarity}</td>
+                    <td className="card-color">{card.color}</td>
+                    <td className="card-cost">{card.gem_colored}/{card.gem_colorless}</td>
+                    <td className="quality">{card.quality_score.toFixed(2)}</td>
+                    <td className={`desirability ${isLowDesirability ? 'critical' : ''}`}>
+                      {card.desirability?.toFixed(1) || '—'}
+                    </td>
+                    <td className="attribute">{card.is_hologram ? '✓' : '—'}</td>
+                    <td className="card-price">{formatPrice(card.price)}</td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         )}

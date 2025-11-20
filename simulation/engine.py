@@ -18,6 +18,11 @@ if TYPE_CHECKING:
     from .types import CardRef, CardInstance
 
 
+def round_price(price: float) -> float:
+    """Round price to 2 decimal places (Prism precision)."""
+    return round(price, 2)
+
+
 def generate_card_instance_id(
     card_id: str, agent_id: int, tick: int, rng: random.Random
 ) -> str:
@@ -63,13 +68,14 @@ def calculate_card_price(card_ref: "CardRef") -> float:
 
     # Final calculation: base_price * (rarity_mult * scarcity_mult * quality_mult)
     # Scale down by 0.1 for reasonable prices
-    return (
+    price = (
         card_ref.base_price
         * rarity_mult
         * scarcity_mult
         * quality_mult
         * 0.1
     )
+    return round_price(price)
 
 
 def build_deck(collection: List, rng: random.Random, deck_size: int = 40) -> List[Dict]:

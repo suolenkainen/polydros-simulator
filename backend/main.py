@@ -32,7 +32,7 @@ class RunRequest(BaseModel):
     # Use concrete int types so downstream callers (mypy) see int and not
     # Optional[int]. Pydantic will still accept values via the HTTP payload.
     seed: int = 42
-    agents: int = 500
+    agents: int = 5
     ticks: int = 1
 
 

@@ -148,7 +148,7 @@ class PriceDataPoint:
         """Serialize to dictionary for API response."""
         return {
             "tick": self.tick,
-            "price": self.price,
+            "price": round(self.price, 2),
             "quality_score": self.quality_score,
             "desirability": self.desirability,
         }
@@ -216,8 +216,8 @@ class AgentCardInstance:
             "card_rarity": self.card_rarity,
             "agent_id": self.agent_id,
             "acquisition_tick": self.acquisition_tick,
-            "acquisition_price": self.acquisition_price,
-            "current_price": self.current_price,
+            "acquisition_price": round(self.acquisition_price, 2),
+            "current_price": round(self.current_price, 2),
             "quality_score": self.quality_score,
             "desirability": self.desirability,
             "win_count": self.win_count,
@@ -293,10 +293,10 @@ class MarketSnapshot:
         """Serialize to dictionary for API response."""
         return {
             "tick": self.tick,
-            "total_volume_traded": self.total_volume_traded,
+            "total_volume_traded": round(self.total_volume_traded, 2),
             "cards_traded_count": self.cards_traded_count,
-            "price_index": self.price_index,
-            "volatility": self.volatility,
+            "price_index": round(self.price_index, 2),
+            "volatility": round(self.volatility, 2),
             "unique_cards_in_circulation": self.unique_cards_in_circulation,
             "total_card_instances": self.total_card_instances,
         }
