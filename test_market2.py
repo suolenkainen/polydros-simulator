@@ -11,12 +11,12 @@ for i, tick in enumerate(result['timeseries']):
     print(f"  Keys: {list(tick.keys())}")
     if 'market_snapshot' in tick:
         snapshot = tick['market_snapshot']
-        print(f"  Market Snapshot:")
+        print("  Market Snapshot:")
         print(f"    Total Instances: {snapshot['total_card_instances']}")
         print(f"    Unique Cards: {snapshot['unique_cards_in_circulation']}")
         print(f"    Price Index: {snapshot['price_index']:.2f}")
     else:
-        print(f"  NO MARKET SNAPSHOT")
+        print("  NO MARKET SNAPSHOT")
 
 print("\n\nAgent card instances count:")
 for agent in result['agents']:

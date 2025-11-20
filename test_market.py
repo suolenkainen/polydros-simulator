@@ -12,7 +12,7 @@ print(f"Agent 1 card_instances: {len(agent.get('card_instances', []))}")
 
 if agent.get('card_instances'):
     first_card = agent['card_instances'][0]
-    print(f"\nFirst card instance:")
+    print("\nFirst card instance:")
     print(f"  ID: {first_card['card_instance_id']}")
     print(f"  Card ID: {first_card['card_id']}")
     print(f"  Quality: {first_card['quality_score']}")
@@ -25,7 +25,7 @@ if result['timeseries']:
     tick = result['timeseries'][0]
     if 'market_snapshot' in tick:
         snapshot = tick['market_snapshot']
-        print(f"\nMarket Snapshot (Tick 0):")
+        print("\nMarket Snapshot (Tick 0):")
         print(f"  Total Instances: {snapshot['total_card_instances']}")
         print(f"  Unique Cards: {snapshot['unique_cards_in_circulation']}")
         print(f"  Price Index: {snapshot['price_index']:.2f}")

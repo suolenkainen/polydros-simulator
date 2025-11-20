@@ -45,7 +45,9 @@ class Agent:
     id: int
     prism: float = 50.0
     collection: List[CardInstance] = field(default_factory=list)
-    card_instances: Dict[str, AgentCardInstance] = field(default_factory=dict)  # card_instance_id -> AgentCardInstance
+    card_instances: Dict[str, AgentCardInstance] = field(
+        default_factory=dict
+    )  # card_instance_id -> AgentCardInstance
     traits: AgentTraits | None = None
     name: str = ""
     nick: str = ""
