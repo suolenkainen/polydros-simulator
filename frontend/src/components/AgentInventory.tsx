@@ -219,4 +219,5 @@ export default function AgentInventory({ agentId }: AgentInventoryProps) {
       {selectedCard && <CardDetail card={selectedCard} onClose={() => setSelectedCard(null)} />}
     </div>
   )
+  
 }

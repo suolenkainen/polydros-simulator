@@ -137,6 +137,7 @@ export default function EventsView({ events }: EventsViewProps) {
       <div className="events-footer">Showing {paginatedEvents.length} of {displayEvents.length} events (filtered from {events.length} total)</div>
     </div>
   )
+  
 }
 
 function formatEventType(type: string): string {

@@ -26,4 +26,5 @@ export default function WorldView({ summary }: { summary: WorldSummary | null })
       </ul>
     </div>
   )
+  
 }

@@ -218,4 +218,5 @@ export default function CardDetail({ card, onClose }: CardDetailProps) {
       </div>
     </div>
   )
+  
 }
