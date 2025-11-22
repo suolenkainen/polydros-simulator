@@ -414,23 +414,23 @@ p, div, span, li {
 }
 
 .stat-item.rarity-mythic {
-  border-left-color: #ff6b6b;
-  color: #ff6b6b;
+  border-left-color: #9c3c0f;
+  color: #9c3c0f;
 }
 
 .stat-item.rarity-rare {
-  border-left-color: #ffd93d;
-  color: #d99e1f;
+  border-left-color: #3c6382;
+  color: #3c6382;
 }
 
 .stat-item.rarity-uncommon {
-  border-left-color: #6bcf7f;
-  color: #2d7a3a;
+  border-left-color: #2d5016;
+  color: #2d5016;
 }
 
 .stat-item.rarity-common {
-  border-left-color: #999;
-  color: #666;
+  border-left-color: #555;
+  color: #555;
 }
 
 .stat-item.rarity-player {
@@ -536,28 +536,28 @@ p, div, span, li {
 }
 
 .rarity-mythic {
-  background: #ffe6e6;
-  color: #ff6b6b;
+  background: #9c3c0f;
+  color: #ffffff;
 }
 
 .rarity-rare {
-  background: #fff3cd;
-  color: #d99e1f;
+  background: #3c6382;
+  color: #ffffff;
 }
 
 .rarity-uncommon {
-  background: #d4edda;
-  color: #2d7a3a;
+  background: #2d5016;
+  color: #ffffff;
 }
 
 .rarity-common {
-  background: #e9ecef;
-  color: #495057;
+  background: #f0f0f0;
+  color: #333333;
 }
 
 .rarity-player {
-  background: #f3e5ff;
-  color: #7209b7;
+  background: #6b3b8a;
+  color: #ffffff;
 }
 
 .rarity-row-mythic {

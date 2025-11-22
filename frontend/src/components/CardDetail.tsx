@@ -288,6 +288,31 @@ export default function CardDetail({ card, onClose }: CardDetailProps) {
                       Current price
                     </span>
                   </div>
+
+                  {/* Price History Table */}
+                  <div className="price-history-table" style={{ marginTop: '1.5rem' }}>
+                    <h5>Per-Tick History</h5>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
+                      <thead>
+                        <tr style={{ borderBottom: '2px solid #ddd' }}>
+                          <th style={{ textAlign: 'left', padding: '0.5rem' }}>Tick</th>
+                          <th style={{ textAlign: 'right', padding: '0.5rem' }}>Price</th>
+                          <th style={{ textAlign: 'right', padding: '0.5rem' }}>Quality</th>
+                          <th style={{ textAlign: 'right', padding: '0.5rem' }}>Desirability</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {card.priceHistory.slice(-10).map((point, idx) => (
+                          <tr key={idx} style={{ borderBottom: '1px solid #eee' }}>
+                            <td style={{ textAlign: 'left', padding: '0.5rem' }}>{point.tick}</td>
+                            <td style={{ textAlign: 'right', padding: '0.5rem' }}>{formatPrice(point.price)}</td>
+                            <td style={{ textAlign: 'right', padding: '0.5rem' }}>{point.quality_score.toFixed(2)}</td>
+                            <td style={{ textAlign: 'right', padding: '0.5rem' }}>{point.desirability.toFixed(2)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </>
               ) : (
                 <div style={{ padding: '1rem', textAlign: 'center', color: '#999' }}>

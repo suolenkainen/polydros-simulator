@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Test the API to see if agents data is returned."""
 
-import requests
+import requests  # type: ignore[import-untyped]
 
 # Run a simulation via the API
 response = requests.post(

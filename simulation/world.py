@@ -117,6 +117,85 @@ class Agent:
 
         return discarded
 
+    def replace_low_feasibility_deck_cards(
+        self,
+        deck: Optional[list] = None,
+        feasibility_threshold: float = 1.0,
+        replacement_pool: Optional[list] = None,
+        rng: Optional[random.Random] = None,
+    ) -> list:
+        """Replace deck cards with feasibility score below threshold.
+
+        Feasibility score = (power + defense) / cost * win_loss_ratio
+
+        Args:
+            deck: list of deck cards with feasibility_score calculated
+            feasibility_threshold: minimum acceptable feasibility score (default 1.0)
+            replacement_pool: list of CardInstance to select replacements from
+            rng: random number generator for selection
+
+        Returns:
+            list of replaced card IDs
+        """
+        if rng is None:
+            rng = random.Random()  # noqa: S311
+        if deck is None:
+            deck = []
+
+        replaced = []
+
+        # Find deck cards below threshold
+        for deck_card in deck:
+            card_id = deck_card.get("card_id")
+            feasibility_score = deck_card.get("feasibility_score", 0)
+
+            if feasibility_score < feasibility_threshold and card_id in self.card_instances:
+                old_instance = self.card_instances[card_id]
+
+                # Find replacement with better feasibility
+                if replacement_pool:
+                    # Prefer same rarity but accept better feasibility score
+                    candidates = [
+                        c
+                        for c in replacement_pool
+                        if c.ref.rarity == old_instance.card_rarity
+                    ]
+                    if not candidates:
+                        candidates = list(replacement_pool)
+
+                    if candidates:
+                        # Pick a random candidate from top performers
+                        rng.shuffle(candidates)
+                        replacement_ref = candidates[0]
+
+                        # Create new card instance with same stats as old
+                        from .types import AgentCardInstance
+                        new_instance = AgentCardInstance(
+                            card_instance_id=f"{replacement_ref.card_id}_rep_{self.id}_{rng.randint(0, 99999)}",
+                            card_id=replacement_ref.card_id,
+                            card_name=replacement_ref.name,
+                            flavor_text=replacement_ref.flavor_text,
+                            card_color=replacement_ref.color,
+                            card_rarity=replacement_ref.rarity.value,
+                            agent_id=self.id,
+                            acquisition_tick=0,  # Will be set by caller
+                            acquisition_price=old_instance.current_price,
+                            current_price=old_instance.current_price,
+                            quality_score=replacement_ref.quality_score,
+                            desirability=5.0,
+                            win_count=0,
+                            loss_count=0,
+                            gem_colored=replacement_ref.gem_colored,
+                            gem_colorless=replacement_ref.gem_colorless,
+                        )
+
+                        # Replace in card_instances
+                        del self.card_instances[card_id]
+                        self.card_instances[new_instance.card_instance_id] = new_instance
+                        replaced.append(card_id)
+
+        return replaced
+
 
 @dataclass
 class WorldState:

@@ -186,6 +186,8 @@ class AgentCardInstance:
         loss_count: number of combat losses with this card
         condition: physical condition (mint, played, damaged, worn)
         price_history: list of PriceDataPoint for this card across ticks
+        gem_colored: number of colored gems in cost
+        gem_colorless: number of colorless gems in cost
     """
 
     card_instance_id: str
@@ -204,6 +206,8 @@ class AgentCardInstance:
     loss_count: int = 0
     condition: CardCondition = CardCondition.MINT
     price_history: list = field(default_factory=list)  # List[PriceDataPoint]
+    gem_colored: int = 0
+    gem_colorless: int = 0
 
     def to_dict(self) -> dict:
         """Serialize to dictionary for API response."""
@@ -224,6 +228,8 @@ class AgentCardInstance:
             "loss_count": self.loss_count,
             "condition": self.condition.value,
             "price_history": [p.to_dict() for p in self.price_history],
+            "gem_colored": self.gem_colored,
+            "gem_colorless": self.gem_colorless,
         }
 
     def update_condition(self) -> None:

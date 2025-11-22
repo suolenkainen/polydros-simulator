@@ -4,6 +4,7 @@ import AgentList from './components/AgentList.tsx'
 import AgentDetail from './components/AgentDetail.tsx'
 import WorldView from './components/WorldView.tsx'
 import EventsView from './components/EventsView.tsx'
+import MarketBlock from './components/MarketBlock.tsx'
 
 export default function App() {
   const [selectedAgentId, setSelectedAgentId] = React.useState<number | null>(null)
@@ -27,31 +28,6 @@ export default function App() {
     console.log('[App] agents updated:', agents.length > 0 ? `${agents.length} agents` : 'empty')
   }, [agents])
 
-  // Save state to sessionStorage whenever it changes
-  React.useEffect(() => {
-    const state = {
-      worldSummary,
-      events,
-      agents,
-    }
-    sessionStorage.setItem('simulationState', JSON.stringify(state))
-  }, [worldSummary, events, agents])
-
-  // Load state from sessionStorage on mount
-  React.useEffect(() => {
-    const saved = sessionStorage.getItem('simulationState')
-    if (saved) {
-      try {
-        const state = JSON.parse(saved)
-        if (state.worldSummary) setWorldSummary(state.worldSummary)
-        if (state.events) setEvents(state.events)
-        if (state.agents) setAgents(state.agents)
-      } catch (err) {
-        console.error('Failed to restore simulation state:', err)
-      }
-    }
-  }, [])
-
   return (
     <div className="container">
       <h1>Polydros — Economy Simulator</h1>
@@ -62,6 +38,7 @@ export default function App() {
       />
       <WorldView summary={worldSummary} />
       <EventsView events={events} />
+      <MarketBlock agents={agents} />
       <div className="app-layout">
         <div className="app-layout-column">
           <AgentList onSelect={setSelectedAgentId} />

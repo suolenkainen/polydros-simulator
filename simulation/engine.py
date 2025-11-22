@@ -145,14 +145,42 @@ def build_deck(collection: List, rng: random.Random, deck_size: int = 40) -> Lis
     deck = []
     for card_inst in deck_cards:
         ref = card_inst.ref
+        gem_colored = getattr(ref, 'gem_colored', 0)
+        gem_colorless = getattr(ref, 'gem_colorless', 0)
+        power = getattr(ref, 'power', 0)
+        health = getattr(ref, 'health', 0)
+        total_power_defense = power + health
+        total_cost = gem_colored + gem_colorless if (gem_colored + gem_colorless) > 0 else 1  # Avoid division by zero
+        
+        # Get win/loss counts (only if this is an AgentCardInstance, otherwise use defaults)
+        win_count = getattr(card_inst, 'win_count', 0)
+        loss_count = getattr(card_inst, 'loss_count', 0)
+        
+        # Calculate win/loss ratio (avoid division by zero)
+        win_loss_ratio = 1.0
+        if loss_count > 0:
+            win_loss_ratio = (win_count + 1) / (loss_count + 1)
+        elif win_count > 0:
+            win_loss_ratio = float(win_count)
+        
+        # Deck feasibility score: (power+defense) / cost * win_loss_ratio
+        feasibility_score = (total_power_defense / total_cost) * win_loss_ratio
+        
         deck.append({
             "card_id": ref.card_id,
             "name": ref.name,
             "type": ref.type,
             "color": ref.color,
-            "power": getattr(ref, 'power', 0),
-            "health": getattr(ref, 'health', 0),
-            "cost": getattr(ref, 'cost', 0),
+            "power": power,
+            "health": health,
+            "gem_colored": gem_colored,
+            "gem_colorless": gem_colorless,
+            "cost": f"{gem_colored}/{gem_colorless}",
+            "total_power_defense": total_power_defense,
+            "total_cost": total_cost,
+            "win_count": win_count,
+            "loss_count": loss_count,
+            "feasibility_score": round(feasibility_score, 2),
         })
 
     return deck
@@ -351,6 +379,8 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
                         desirability=5.0,
                         win_count=0,
                         loss_count=0,
+                        gem_colored=card.ref.gem_colored,
+                        gem_colorless=card.ref.gem_colorless,
                     )
                     agent.add_card_instance(agent_card)
 
@@ -500,6 +530,30 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
                     agent_ids=[agent.id],
                 )
                 world.add_event(event)
+
+        # Deck maintenance: every 20 ticks, replace low-feasibility deck cards
+        if t > 0 and t % 20 == 0:
+            for agent in world.agents.values():
+                if len(agent.collection) >= 40:
+                    # Build current deck to evaluate feasibility
+                    a_rng = random.Random(agent.rng_seed + t + 5000)
+                    current_deck = build_deck(agent.collection, a_rng)
+                    
+                    # Get cards available for replacement (exclude current deck)
+                    deck_card_ids = set(c["card_id"] for c in current_deck)
+                    replacement_pool = [
+                        c for c in agent.collection 
+                        if c.ref.card_id not in deck_card_ids
+                    ]
+                    
+                    # Replace low-feasibility cards (score < 1.0)
+                    if replacement_pool:
+                        agent.replace_low_feasibility_deck_cards(
+                            deck=current_deck,
+                            feasibility_threshold=1.0,
+                            replacement_pool=replacement_pool,
+                            rng=a_rng,
+                        )
 
         # Collect events that occurred this tick
         tick_events = [e.to_dict() for e in world.events if e.tick == t]

@@ -24,7 +24,14 @@ interface Agent {
     color: string
     power: number
     health: number
-    cost: number
+    gem_colored: number
+    gem_colorless: number
+    cost: string
+    total_power_defense: number
+    total_cost: number
+    win_count: number
+    loss_count: number
+    feasibility_score: number
   }>
   traits?: Traits
   agent_events?: Array<{
@@ -141,22 +148,38 @@ export default function AgentDetail({ id, agents }: { id: number | null; agents?
                     <th style={{ textAlign: 'left', padding: '0.4rem' }}>Name</th>
                     <th style={{ textAlign: 'center', padding: '0.4rem', width: '90px' }}>Type</th>
                     <th style={{ textAlign: 'center', padding: '0.4rem', width: '80px' }}>Color</th>
-                    <th style={{ textAlign: 'center', padding: '0.4rem', width: '50px' }}>Power</th>
-                    <th style={{ textAlign: 'center', padding: '0.4rem', width: '50px' }}>Health</th>
-                    <th style={{ textAlign: 'center', padding: '0.4rem', width: '45px' }}>Cost</th>
+                    <th style={{ textAlign: 'center', padding: '0.4rem', width: '70px' }}>Cost</th>
+                    <th style={{ textAlign: 'center', padding: '0.4rem', width: '80px' }}>Power+Def</th>
+                    <th style={{ textAlign: 'center', padding: '0.4rem', width: '100px' }}>Feasibility</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {agent.deck.map((card, idx) => (
-                    <tr key={idx} style={{ borderBottom: '1px solid #eee' }}>
-                      <td style={{ padding: '0.4rem' }}>{card.name}</td>
-                      <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.type}</td>
-                      <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.color}</td>
-                      <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.power}</td>
-                      <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.health}</td>
-                      <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.cost}</td>
-                    </tr>
-                  ))}
+                  {agent.deck.map((card, idx) => {
+                    const isBadCard = card.feasibility_score < 1.0
+                    return (
+                      <tr 
+                        key={idx} 
+                        style={{ 
+                          borderBottom: '1px solid #eee',
+                          backgroundColor: isBadCard ? '#ffe6e6' : 'transparent'
+                        }}
+                      >
+                        <td style={{ padding: '0.4rem' }}>{card.name}</td>
+                        <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.type}</td>
+                        <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.color}</td>
+                        <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.cost}</td>
+                        <td style={{ textAlign: 'center', padding: '0.4rem' }}>{card.total_power_defense}</td>
+                        <td style={{ 
+                          textAlign: 'center', 
+                          padding: '0.4rem',
+                          fontWeight: 'bold',
+                          color: isBadCard ? '#cc0000' : '#666'
+                        }}>
+                          {card.feasibility_score.toFixed(2)}
+                        </td>
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             </div>
