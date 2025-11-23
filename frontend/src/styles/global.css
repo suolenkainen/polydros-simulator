@@ -551,8 +551,9 @@ p, div, span, li {
 }
 
 .rarity-common {
-  background: #f0f0f0;
-  color: #333333;
+  background: #666666;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .rarity-player {

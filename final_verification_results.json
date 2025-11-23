@@ -1,0 +1,23 @@
+{
+  "total_listings": 484,
+  "total_purchases": 56,
+  "agent_1": {
+    "prism_change": -187.24,
+    "card_count": 184
+  },
+  "agent_2": {
+    "prism_change": -172.76,
+    "card_count": 176
+  },
+  "test_results": {
+    "Run tick": true,
+    "Check deck": true,
+    "Card listing occurred": true,
+    "Card appeared in marketplace": true,
+    "Agent 2 bought card": true,
+    "Prism transferred between agents": true,
+    "Card inventory tracking": true,
+    "Marketplace events recorded": true
+  },
+  "all_passed": true
+}

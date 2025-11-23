@@ -208,6 +208,8 @@ class WorldState:
     market_snapshots: List = field(default_factory=list)  # List[MarketSnapshot]
     cards_traded_this_tick: int = 0  # Counter for trades in current tick
     volume_traded_this_tick: float = 0.0  # Total prisms exchanged this tick
+    # Marketplace: card_instance_id -> (seller_agent_id, card_instance, listing_price, listing_tick)
+    marketplace: Dict[str, tuple] = field(default_factory=dict)
 
     def add_event(self, event: Event) -> None:
         """Record an event that occurred in the world."""
@@ -313,6 +315,84 @@ class WorldState:
         # Reset tick counters
         self.cards_traded_this_tick = 0
         self.volume_traded_this_tick = 0.0
+
+    def list_card_for_sale(
+        self, card_instance_id: str, seller_agent_id: int, 
+        card_instance: "AgentCardInstance", listing_price: float
+    ) -> None:
+        """List a card instance on the marketplace.
+
+        Args:
+            card_instance_id: unique identifier of the card instance
+            seller_agent_id: ID of agent selling the card
+            card_instance: the AgentCardInstance being listed
+            listing_price: asking price in Prism
+        """
+        self.marketplace[card_instance_id] = (
+            seller_agent_id,
+            card_instance,
+            listing_price,
+            self.tick,
+        )
+
+    def get_marketplace_listings(self) -> List[tuple]:
+        """Get all active marketplace listings.
+
+        Returns:
+            list of (card_instance_id, seller_agent_id, card_instance, listing_price, listing_tick)
+        """
+        result = []
+        for card_id, (seller_id, card_inst, price, listing_tick) in self.marketplace.items():
+            result.append((card_id, seller_id, card_inst, price, listing_tick))
+        return result
+
+    def buy_from_marketplace(
+        self, card_instance_id: str, buyer_agent_id: int
+    ) -> tuple | None:
+        """Process a card purchase from the marketplace.
+
+        Args:
+            card_instance_id: ID of card instance to buy
+            buyer_agent_id: ID of agent buying
+
+        Returns:
+            (seller_agent_id, card_instance, listing_price) if successful, None otherwise
+        """
+        if card_instance_id not in self.marketplace:
+            return None
+
+        seller_agent_id, card_instance, listing_price, _ = self.marketplace[card_instance_id]
+        seller = self.agents.get(seller_agent_id)
+        buyer = self.agents.get(buyer_agent_id)
+
+        if not seller or not buyer:
+            return None
+
+        # Check buyer has enough Prism
+        if buyer.prism < listing_price:
+            return None
+
+        # Transfer card from seller inventory to buyer
+        if card_instance_id not in seller.card_instances:
+            return None
+
+        # Execute transfer
+        card_instance.agent_id = buyer_agent_id  # Update card ownership
+        buyer.card_instances[card_instance_id] = card_instance
+        del seller.card_instances[card_instance_id]
+
+        # Transfer Prism
+        seller.prism = round(seller.prism + listing_price, 2)
+        buyer.prism = round(buyer.prism - listing_price, 2)
+
+        # Remove from marketplace
+        del self.marketplace[card_instance_id]
+
+        # Update trade counters
+        self.cards_traded_this_tick += 1
+        self.volume_traded_this_tick += listing_price
+
+        return (seller_agent_id, card_instance, listing_price)
 
     def summary(self) -> Dict:
         return {

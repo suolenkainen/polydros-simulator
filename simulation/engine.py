@@ -234,7 +234,7 @@ def calculate_combat_score(deck: List["CardInstance"]) -> float:
 @dataclass
 class SimulationConfig:
     seed: int = 42
-    initial_agents: int = 10
+    initial_agents: int = 5
     ticks: int = 1
 
 
@@ -554,6 +554,22 @@ def run_simulation(config: SimulationConfig) -> Dict:  # noqa: C901
                             replacement_pool=replacement_pool,
                             rng=a_rng,
                         )
+
+        # Trading cycle: every 3 ticks
+        # Tick 1, 4, 7, ...: SELLING PHASE (agents list cards)
+        # Tick 2, 5, 8, ...: BUYING PHASE (agents buy cards listed in previous tick)
+        # Tick 0, 3, 6, ...: No trading
+        if t > 0 and t % 3 == 1:
+            # Tick 1, 4, 7... SELLING PHASE
+            from .trading import build_sell_lists, execute_selling_phase
+            sell_lists = build_sell_lists(world)
+            cards_listed = execute_selling_phase(world, sell_lists)
+            
+        elif t > 0 and t % 3 == 2:
+            # Tick 2, 5, 8... BUYING PHASE
+            from .trading import build_purchase_lists, execute_buying_phase
+            purchase_lists = build_purchase_lists(world)
+            purchases_made = execute_buying_phase(world, purchase_lists)
 
         # Collect events that occurred this tick
         tick_events = [e.to_dict() for e in world.events if e.tick == t]

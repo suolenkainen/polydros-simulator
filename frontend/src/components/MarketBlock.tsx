@@ -37,8 +37,8 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
         card_name: 'Fire Elemental',
         card_color: 'Ruby',
         card_rarity: 'Rare',
-        agent_id: 0,
-        agent_name: 'Agent 0',
+        agent_id: 1,
+        agent_name: 'Agent 1',
         current_price: 45.5,
         quality_score: 8.5,
         desirability: 7.2,
@@ -50,8 +50,8 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
         card_name: 'Frost Mage',
         card_color: 'Sapphire',
         card_rarity: 'Mythic',
-        agent_id: 0,
-        agent_name: 'Agent 0',
+        agent_id: 2,
+        agent_name: 'Agent 2',
         current_price: 125.0,
         quality_score: 9.8,
         desirability: 9.1,
@@ -63,8 +63,8 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
         card_name: 'Forest Guardian',
         card_color: 'Emerald',
         card_rarity: 'Uncommon',
-        agent_id: 0,
-        agent_name: 'Agent 0',
+        agent_id: 3,
+        agent_name: 'Agent 3',
         current_price: 12.25,
         quality_score: 6.2,
         desirability: 5.8,
@@ -76,8 +76,8 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
         card_name: 'Golden Knight',
         card_color: 'Topaz',
         card_rarity: 'Rare',
-        agent_id: 0,
-        agent_name: 'Agent 0',
+        agent_id: 4,
+        agent_name: 'Agent 4',
         current_price: 38.75,
         quality_score: 8.1,
         desirability: 6.9,
@@ -89,8 +89,8 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
         card_name: 'Void Sorcerer',
         card_color: 'Amethyst',
         card_rarity: 'Rare',
-        agent_id: 0,
-        agent_name: 'Agent 0',
+        agent_id: 5,
+        agent_name: 'Agent 5',
         current_price: 55.0,
         quality_score: 8.7,
         desirability: 7.5,
@@ -102,8 +102,8 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
         card_name: 'Crystal Artifact',
         card_color: 'Diamond',
         card_rarity: 'Common',
-        agent_id: 0,
-        agent_name: 'Agent 0',
+        agent_id: 1,
+        agent_name: 'Agent 1',
         current_price: 2.5,
         quality_score: 4.0,
         desirability: 3.2,
@@ -115,8 +115,8 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
         card_name: 'Ancient Dragon',
         card_color: 'Ruby',
         card_rarity: 'Mythic',
-        agent_id: 0,
-        agent_name: 'Agent 0',
+        agent_id: 2,
+        agent_name: 'Agent 2',
         current_price: 189.99,
         quality_score: 10.0,
         desirability: 9.9,
@@ -128,8 +128,8 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
         card_name: 'Water Sprite',
         card_color: 'Sapphire',
         card_rarity: 'Common',
-        agent_id: 0,
-        agent_name: 'Agent 0',
+        agent_id: 3,
+        agent_name: 'Agent 3',
         current_price: 1.75,
         quality_score: 3.8,
         desirability: 2.5,
@@ -141,8 +141,8 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
         card_name: 'Forest Sprite',
         card_color: 'Emerald',
         card_rarity: 'Common',
-        agent_id: 0,
-        agent_name: 'Agent 0',
+        agent_id: 4,
+        agent_name: 'Agent 4',
         current_price: 2.0,
         quality_score: 4.2,
         desirability: 3.1,
@@ -154,8 +154,8 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
         card_name: 'Solar Flare',
         card_color: 'Topaz',
         card_rarity: 'Uncommon',
-        agent_id: 0,
-        agent_name: 'Agent 0',
+        agent_id: 5,
+        agent_name: 'Agent 5',
         current_price: 8.5,
         quality_score: 5.9,
         desirability: 5.2,
@@ -167,8 +167,8 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
         card_name: 'Shadow Clone',
         card_color: 'Amethyst',
         card_rarity: 'Uncommon',
-        agent_id: 0,
-        agent_name: 'Agent 0',
+        agent_id: 1,
+        agent_name: 'Agent 1',
         current_price: 11.0,
         quality_score: 6.5,
         desirability: 6.1,
@@ -180,8 +180,8 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
         card_name: 'Shadow Assassin',
         card_color: 'Obsidian',
         card_rarity: 'Rare',
-        agent_id: 0,
-        agent_name: 'Agent 0',
+        agent_id: 2,
+        agent_name: 'Agent 2',
         current_price: 42.0,
         quality_score: 7.8,
         desirability: 6.8,
@@ -376,8 +376,6 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
               <div className="market-card-seller">
                 <span>Seller: {card.agent_name}</span>
               </div>
-
-              <button className="market-card-buy">Buy Now</button>
             </div>
           ))
         )}
@@ -605,27 +603,6 @@ export default function MarketBlock({ agents }: MarketBlockProps) {
           background: #fff;
           border-radius: 3px;
           border: 1px dashed #ddd;
-        }
-
-        .market-card-buy {
-          padding: 10px 15px;
-          background: #4a9eff;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          font-weight: 600;
-          font-size: 0.9rem;
-          transition: all 0.2s ease;
-        }
-
-        .market-card-buy:hover {
-          background: #357abd;
-          box-shadow: 0 2px 8px rgba(74, 158, 255, 0.3);
-        }
-
-        .market-card-buy:active {
-          transform: scale(0.98);
         }
 
         .market-pagination {

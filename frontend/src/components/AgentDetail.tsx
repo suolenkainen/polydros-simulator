@@ -81,7 +81,6 @@ export default function AgentDetail({ id, agents }: { id: number | null; agents?
     <div className="agent-detail">
       <h3>Agent {agent.id}</h3>
       <p><strong>Prism:</strong> {agent.prism}</p>
-      <p><strong>Collection size:</strong> {agent.collection_count} cards</p>
 
       {/* Traits Section */}
       {traits && (
@@ -131,8 +130,8 @@ export default function AgentDetail({ id, agents }: { id: number | null; agents?
         </div>
       )}
 
-      {/* Deck Section - shown when agent has more than 40 cards */}
-      {agent.deck && agent.collection_count > 40 && (
+      {/* Deck Section - shown when agent has deck data */}
+      {agent.deck && (
         <div className="detail-section">
           <div
             className="detail-section-header"

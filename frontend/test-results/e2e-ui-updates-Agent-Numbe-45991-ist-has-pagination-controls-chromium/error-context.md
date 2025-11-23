@@ -1,0 +1,366 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - heading "Polydros — Economy Simulator" [level=1] [ref=e4]
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - strong [ref=e8]: "Current Tick: 0"
+      - generic [ref=e9]:
+        - text: Seed
+        - spinbutton "Seed" [active] [ref=e10]: "111"
+      - generic [ref=e11]:
+        - text: Agents
+        - spinbutton "Agents" [ref=e12]: "10"
+      - generic [ref=e13]:
+        - text: Ticks
+        - spinbutton "Ticks" [ref=e14]: "1"
+      - button "Run" [ref=e15] [cursor=pointer]
+      - button "Reset" [disabled] [ref=e16]
+    - generic [ref=e17]:
+      - generic [ref=e18]: Browse Cards
+      - combobox [ref=e19]:
+        - option "Select a card to view details..." [selected]
+        - option "Ashmarch Footsoldier (COMMON) - Ruby"
+        - option "Moltenback Drake (COMMON) - Ruby"
+        - option "Cindermane Lion (COMMON) - Ruby"
+        - option "Drumfire Strike (COMMON) - Ruby"
+        - option "Forge Pulse (COMMON) - Ruby"
+        - option "Forge Choir Captain (UNCOMMON) - Ruby"
+        - option "Blazetongue Bard (UNCOMMON) - Ruby"
+        - option "Brassclad Duelist (UNCOMMON) - Ruby"
+        - option "Blazing Crescendo (UNCOMMON) - Ruby"
+        - option "Ash Vein Quarry (UNCOMMON) - Ruby"
+        - option "Vulcanic Harbinger (RARE) - Ruby"
+        - option "Forge Golem Mk.IV (RARE) - Ruby"
+        - option "Symphony of Sparks (RARE) - Ruby"
+        - option "Heartforge Tunnel (RARE) - Ruby"
+        - option "Varetha Ironvoice, Doom Drummer (RARE) - Ruby"
+        - option "Song of the Mountain Forge (MYTHIC) - Ruby"
+        - option "Ramdelom’s Heart-Titan (MYTHIC) - Ruby"
+        - option "Ramdelom’s Core (MYTHIC) - Ruby"
+        - option "Ruby Miner (PLAYER) - Ruby"
+        - option "Ruby Stalwart (PLAYER) - Ruby"
+        - option "Mirrorfin Scout (COMMON) - Sapphire"
+        - option "Glasswing Diver (COMMON) - Sapphire"
+        - option "Refractor Owl (COMMON) - Sapphire"
+        - option "Counterwave (COMMON) - Sapphire"
+        - option "Echo Vision (COMMON) - Sapphire"
+        - option "Scholar of Whessa (UNCOMMON) - Sapphire"
+        - option "Illusionist Adept (UNCOMMON) - Sapphire"
+        - option "Crystal Navigator (UNCOMMON) - Sapphire"
+        - option "Fractal Mirage (UNCOMMON) - Sapphire"
+        - option "Blue Vein Lab (UNCOMMON) - Sapphire"
+        - option "Reflection Serpent (RARE) - Sapphire"
+        - option "Deep Equation (RARE) - Sapphire"
+        - option "Mirror Reef (RARE) - Sapphire"
+        - option "Archon Lirane Voss, Reflector Prime (RARE) - Sapphire"
+        - option "Aether Whale (MYTHIC) - Sapphire"
+        - option "Whessa’s Reflection (MYTHIC) - Sapphire"
+        - option "Whessa’s Core Spiral (MYTHIC) - Sapphire"
+        - option "Sapphire Diver (PLAYER) - Sapphire"
+        - option "Mirror Architect (PLAYER) - Sapphire"
+        - option "Leafrunner Scout (COMMON) - Emerald"
+        - option "Tonebird Flock (COMMON) - Emerald"
+        - option "Mosswolf Pup (COMMON) - Emerald"
+        - option "Grow Pulse (COMMON) - Emerald"
+        - option "Song of Renewal (COMMON) - Emerald"
+        - option "Vine Harpist (UNCOMMON) - Emerald"
+        - option "Verdant Shaman (UNCOMMON) - Emerald"
+        - option "Chordvine Panther (UNCOMMON) - Emerald"
+        - option "Lifeweaver’s Tune (UNCOMMON) - Emerald"
+        - option "Rootspire Garden (UNCOMMON) - Emerald"
+        - option "Bloom Stag (RARE) - Emerald"
+        - option "Root Sentinel (RARE) - Emerald"
+        - option "Overgrow (RARE) - Emerald"
+        - option "Heartbloom Crater (RARE) - Emerald"
+        - option "Bessalynn, Tiravel’s Flutist (RARE) - Emerald"
+        - option "Verdant Colossus (MYTHIC) - Emerald"
+        - option "Tiravel’s Harmony (MYTHIC) - Emerald"
+        - option "Tiravel’s Heartroot (MYTHIC) - Emerald"
+        - option "Emerald Forager (PLAYER) - Emerald"
+        - option "Heartlistener Monk (PLAYER) - Emerald"
+        - option "Grave Acolyte (COMMON) - Onyx"
+        - option "Echo Moth Swarm (COMMON) - Onyx"
+        - option "Shadow Rat (COMMON) - Onyx"
+        - option "Funeral Toll (COMMON) - Onyx"
+        - option "Dark Reprise (COMMON) - Onyx"
+        - option "Bellkeeper Exile (UNCOMMON) - Onyx"
+        - option "Crypt Sentinel (UNCOMMON) - Onyx"
+        - option "Soul Lantern Warden (UNCOMMON) - Onyx"
+        - option "Bell of Remembrance (UNCOMMON) - Onyx"
+        - option "Obsidian Vein (UNCOMMON) - Onyx"
+        - option "Grave Siren (RARE) - Onyx"
+        - option "Bellframe Guardian (RARE) - Onyx"
+        - option "Silence the Pulse (RARE) - Onyx"
+        - option "Black Bell Cavern (RARE) - Onyx"
+        - option "Bellkeeper Nahl, Hollow Monk (RARE) - Onyx"
+        - option "The Pale Regent (MYTHIC) - Onyx"
+        - option "Dirge of N’kurath (MYTHIC) - Onyx"
+        - option "Echo Core Depths (MYTHIC) - Onyx"
+        - option "Onyx Supplicant (PLAYER) - Onyx"
+        - option "Gravetone Acolyte (PLAYER) - Onyx"
+        - option "Moon Raven (COMMON) - Amethyst"
+        - option "Dreamheart Fawn (COMMON) - Amethyst"
+        - option "Echo Spirit (COMMON) - Amethyst"
+        - option "Lullaby Veil (COMMON) - Amethyst"
+        - option "Mind Echo (COMMON) - Amethyst"
+        - option "Mindpetal Mystic (UNCOMMON) - Amethyst"
+        - option "Dreamsinger Monk (UNCOMMON) - Amethyst"
+        - option "Lucid Seer (UNCOMMON) - Amethyst"
+        - option "Dream Refrain (UNCOMMON) - Amethyst"
+        - option "Amethyst Riftpool (UNCOMMON) - Amethyst"
+        - option "Aurora Serpent (RARE) - Amethyst"
+        - option "Dream Sentinel (RARE) - Amethyst"
+        - option "Moonlight Chorus (RARE) - Amethyst"
+        - option "Aurora Well (RARE) - Amethyst"
+        - option "Mother Iryl, Voice Between Realms (RARE) - Amethyst"
+        - option "Lytheran Dreamwalker (MYTHIC) - Amethyst"
+        - option "Lythera’s Awakening (MYTHIC) - Amethyst"
+        - option "Lytheran Nexus (MYTHIC) - Amethyst"
+        - option "Amethyst Dreamer (PLAYER) - Amethyst"
+        - option "Lytheran Prophet (PLAYER) - Amethyst"
+        - option "Crystal Nomad (COMMON) - Prism"
+        - option "Resonance Surge (COMMON) - Prism"
+        - option "Alloyed Guardian (COMMON) - Prism"
+        - option "Dualflame Beast (UNCOMMON) - Prism"
+        - option "Prismatic Flux (UNCOMMON) - Prism"
+        - option "Hybrid Experiment (UNCOMMON) - Prism"
+        - option "Prism Knight (RARE) - Prism"
+        - option "Fifth Song Fragment (RARE) - Prism"
+        - option "Fused Beast of the Veins (RARE) - Prism"
+        - option "Aurora Titan (MYTHIC) - Prism"
+        - option "Call of the Sixth Song (MYTHIC) - Prism"
+        - option "Prism Warden (MYTHIC) - Prism"
+        - option "Harmonic Rift Core (MYTHIC) - Prism"
+        - option "Varetha Ironvoice, Doom Drummer (ALTERNATE_ART) - Ruby"
+        - option "Archon Lirane Voss, Reflector Prime (ALTERNATE_ART) - Sapphire"
+        - option "Bessalynn, Tiravel’s Flutist (ALTERNATE_ART) - Emerald"
+        - option "Bellkeeper Nahl, Hollow Monk (ALTERNATE_ART) - Onyx"
+        - option "Mother Iryl, Voice Between Realms (ALTERNATE_ART) - Amethyst"
+        - option "Aurora Titan (ALTERNATE_ART) - Prism"
+        - option "Ramdelom’s Heart-Titan (ALTERNATE_ART) - Ruby"
+        - option "Lytheran Dreamwalker (ALTERNATE_ART) - Amethyst"
+      - generic [ref=e20]: 120 cards available
+  - generic [ref=e21]:
+    - heading "World Overview" [level=2] [ref=e22]
+    - list [ref=e23]:
+      - listitem [ref=e24]:
+        - strong [ref=e25]: "Tick:"
+        - text: "0"
+      - listitem [ref=e26]:
+        - strong [ref=e27]: "Agents:"
+        - text: "10"
+      - listitem [ref=e28]:
+        - strong [ref=e29]: "Total cards opened:"
+        - text: "0"
+      - listitem [ref=e30]:
+        - strong [ref=e31]: "Unopened boosters (distributor stock):"
+        - text: "0"
+      - listitem [ref=e32]:
+        - strong [ref=e33]: "Approx. total boosters created:"
+        - text: "0"
+  - generic [ref=e34]:
+    - heading "Events Log" [level=2] [ref=e35]
+    - generic [ref=e36]: No events yet. Run a simulation to see events.
+  - generic [ref=e37]:
+    - heading "Market" [level=2] [ref=e38]
+    - paragraph [ref=e39]: Cards available for purchase from agents
+    - generic [ref=e40]:
+      - textbox "Search card name..." [ref=e41]
+      - combobox [ref=e42]:
+        - option "All Rarities" [selected]
+        - option "Common"
+        - option "Mythic"
+        - option "Rare"
+        - option "Uncommon"
+      - combobox [ref=e43]:
+        - option "All Sellers" [selected]
+        - option "Agent 0"
+      - combobox [ref=e44]:
+        - 'option "Price: Low → High" [selected]'
+        - 'option "Price: High → Low"'
+        - option "Name"
+        - 'option "Quality: High → Low"'
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - heading "Water Sprite" [level=4] [ref=e48]
+          - generic [ref=e49]: "1.75"
+        - generic [ref=e50]:
+          - generic [ref=e51]: Common
+          - generic [ref=e52]:
+            - generic [ref=e53]: ◆
+            - text: Sapphire
+          - generic [ref=e54]: worn
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - generic [ref=e57]: Quality
+            - generic [ref=e58]: "3.8"
+          - generic [ref=e59]:
+            - generic [ref=e60]: Desirability
+            - generic [ref=e61]: "2.5"
+        - generic [ref=e63]: "Seller: Agent 0"
+        - button "Buy Now" [ref=e64] [cursor=pointer]
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - heading "Forest Sprite" [level=4] [ref=e67]
+          - generic [ref=e68]: "2"
+        - generic [ref=e69]:
+          - generic [ref=e70]: Common
+          - generic [ref=e71]:
+            - generic [ref=e72]: ◆
+            - text: Emerald
+          - generic [ref=e73]: played
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - generic [ref=e76]: Quality
+            - generic [ref=e77]: "4.2"
+          - generic [ref=e78]:
+            - generic [ref=e79]: Desirability
+            - generic [ref=e80]: "3.1"
+        - generic [ref=e82]: "Seller: Agent 0"
+        - button "Buy Now" [ref=e83] [cursor=pointer]
+      - generic [ref=e84]:
+        - generic [ref=e85]:
+          - heading "Crystal Artifact" [level=4] [ref=e86]
+          - generic [ref=e87]: "2.5"
+        - generic [ref=e88]:
+          - generic [ref=e89]: Common
+          - generic [ref=e90]:
+            - generic [ref=e91]: ◇
+            - text: Diamond
+          - generic [ref=e92]: damaged
+        - generic [ref=e93]:
+          - generic [ref=e94]:
+            - generic [ref=e95]: Quality
+            - generic [ref=e96]: "4.0"
+          - generic [ref=e97]:
+            - generic [ref=e98]: Desirability
+            - generic [ref=e99]: "3.2"
+        - generic [ref=e101]: "Seller: Agent 0"
+        - button "Buy Now" [ref=e102] [cursor=pointer]
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - heading "Solar Flare" [level=4] [ref=e105]
+          - generic [ref=e106]: "8.5"
+        - generic [ref=e107]:
+          - generic [ref=e108]: Uncommon
+          - generic [ref=e109]:
+            - generic [ref=e110]: ◆
+            - text: Topaz
+          - generic [ref=e111]: played
+        - generic [ref=e112]:
+          - generic [ref=e113]:
+            - generic [ref=e114]: Quality
+            - generic [ref=e115]: "5.9"
+          - generic [ref=e116]:
+            - generic [ref=e117]: Desirability
+            - generic [ref=e118]: "5.2"
+        - generic [ref=e120]: "Seller: Agent 0"
+        - button "Buy Now" [ref=e121] [cursor=pointer]
+      - generic [ref=e122]:
+        - generic [ref=e123]:
+          - heading "Shadow Clone" [level=4] [ref=e124]
+          - generic [ref=e125]: "11"
+        - generic [ref=e126]:
+          - generic [ref=e127]: Uncommon
+          - generic [ref=e128]:
+            - generic [ref=e129]: ◆
+            - text: Amethyst
+          - generic [ref=e130]: mint
+        - generic [ref=e131]:
+          - generic [ref=e132]:
+            - generic [ref=e133]: Quality
+            - generic [ref=e134]: "6.5"
+          - generic [ref=e135]:
+            - generic [ref=e136]: Desirability
+            - generic [ref=e137]: "6.1"
+        - generic [ref=e139]: "Seller: Agent 0"
+        - button "Buy Now" [ref=e140] [cursor=pointer]
+      - generic [ref=e141]:
+        - generic [ref=e142]:
+          - heading "Forest Guardian" [level=4] [ref=e143]
+          - generic [ref=e144]: "12.25"
+        - generic [ref=e145]:
+          - generic [ref=e146]: Uncommon
+          - generic [ref=e147]:
+            - generic [ref=e148]: ◆
+            - text: Emerald
+          - generic [ref=e149]: played
+        - generic [ref=e150]:
+          - generic [ref=e151]:
+            - generic [ref=e152]: Quality
+            - generic [ref=e153]: "6.2"
+          - generic [ref=e154]:
+            - generic [ref=e155]: Desirability
+            - generic [ref=e156]: "5.8"
+        - generic [ref=e158]: "Seller: Agent 0"
+        - button "Buy Now" [ref=e159] [cursor=pointer]
+      - generic [ref=e160]:
+        - generic [ref=e161]:
+          - heading "Golden Knight" [level=4] [ref=e162]
+          - generic [ref=e163]: "38.75"
+        - generic [ref=e164]:
+          - generic [ref=e165]: Rare
+          - generic [ref=e166]:
+            - generic [ref=e167]: ◆
+            - text: Topaz
+          - generic [ref=e168]: mint
+        - generic [ref=e169]:
+          - generic [ref=e170]:
+            - generic [ref=e171]: Quality
+            - generic [ref=e172]: "8.1"
+          - generic [ref=e173]:
+            - generic [ref=e174]: Desirability
+            - generic [ref=e175]: "6.9"
+        - generic [ref=e177]: "Seller: Agent 0"
+        - button "Buy Now" [ref=e178] [cursor=pointer]
+      - generic [ref=e179]:
+        - generic [ref=e180]:
+          - heading "Shadow Assassin" [level=4] [ref=e181]
+          - generic [ref=e182]: "42"
+        - generic [ref=e183]:
+          - generic [ref=e184]: Rare
+          - generic [ref=e185]:
+            - generic [ref=e186]: ◆
+            - text: Obsidian
+          - generic [ref=e187]: mint
+        - generic [ref=e188]:
+          - generic [ref=e189]:
+            - generic [ref=e190]: Quality
+            - generic [ref=e191]: "7.8"
+          - generic [ref=e192]:
+            - generic [ref=e193]: Desirability
+            - generic [ref=e194]: "6.8"
+        - generic [ref=e196]: "Seller: Agent 0"
+        - button "Buy Now" [ref=e197] [cursor=pointer]
+    - generic [ref=e198]:
+      - button "← Previous" [disabled] [ref=e199]
+      - generic [ref=e200]: Page 1 of 2
+      - button "Next →" [ref=e201] [cursor=pointer]
+    - generic [ref=e202]: Showing 8 of 12 cards (filtered from 12 total)
+  - generic [ref=e205]:
+    - heading "Agents" [level=2] [ref=e206]
+    - list [ref=e207]:
+      - listitem [ref=e208]:
+        - button "Agent 1 — 0 cards — 200 Prism" [ref=e209] [cursor=pointer]
+      - listitem [ref=e210]:
+        - button "Agent 2 — 0 cards — 200 Prism" [ref=e211] [cursor=pointer]
+      - listitem [ref=e212]:
+        - button "Agent 3 — 0 cards — 200 Prism" [ref=e213] [cursor=pointer]
+      - listitem [ref=e214]:
+        - button "Agent 4 — 0 cards — 200 Prism" [ref=e215] [cursor=pointer]
+      - listitem [ref=e216]:
+        - button "Agent 5 — 0 cards — 200 Prism" [ref=e217] [cursor=pointer]
+      - listitem [ref=e218]:
+        - button "Agent 6 — 0 cards — 200 Prism" [ref=e219] [cursor=pointer]
+      - listitem [ref=e220]:
+        - button "Agent 7 — 0 cards — 200 Prism" [ref=e221] [cursor=pointer]
+      - listitem [ref=e222]:
+        - button "Agent 8 — 0 cards — 200 Prism" [ref=e223] [cursor=pointer]
+      - listitem [ref=e224]:
+        - button "Agent 9 — 0 cards — 200 Prism" [ref=e225] [cursor=pointer]
+      - listitem [ref=e226]:
+        - button "Agent 10 — 0 cards — 200 Prism" [ref=e227] [cursor=pointer]
+```
