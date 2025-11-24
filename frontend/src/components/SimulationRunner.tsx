@@ -106,7 +106,7 @@ export default function SimulationRunner({
       try {
         const state = JSON.parse(saved)
         setSeed(state.seed ?? 42)
-        setAgents(state.agents ?? 10)
+        setAgents(state.agents ?? 5)
         setCurrentTick(state.currentTick ?? 0)
         setAllEvents(state.allEvents ?? [])
         setData(state.data ?? null)

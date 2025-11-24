@@ -346,6 +346,33 @@ class WorldState:
             result.append((card_id, seller_id, card_inst, price, listing_tick))
         return result
 
+    def _update_card_price_from_sale(self, card_id: str, sale_price: float) -> None:
+        """Update the global card price based on a sale, and propagate to all agent instances.
+
+        Calculates the average of the previous price and the new sale price.
+
+        Args:
+            card_id: the card that was sold
+            sale_price: the price it sold for this tick
+        """
+        # Get current price from metadata
+        current_price = self.get_card_price(card_id)
+
+        # Calculate average of old and new price
+        average_price = (current_price + sale_price) / 2.0
+
+        # Update global metadata
+        if card_id not in self.card_metadata:
+            self.card_metadata[card_id] = {"attractiveness": 1.0, "price": average_price}
+        else:
+            self.card_metadata[card_id]["price"] = average_price
+
+        # Update current_price for all agents' instances of this card
+        for agent in self.agents.values():
+            for card_instance in agent.card_instances.values():
+                if card_instance.card_id == card_id:
+                    card_instance.current_price = average_price
+
     def buy_from_marketplace(
         self, card_instance_id: str, buyer_agent_id: int
     ) -> tuple | None:
@@ -391,6 +418,9 @@ class WorldState:
         # Update trade counters
         self.cards_traded_this_tick += 1
         self.volume_traded_this_tick += listing_price
+
+        # Calculate average price for this card ID sold this tick and update all instances
+        self._update_card_price_from_sale(card_instance.card_id, listing_price)
 
         return (seller_agent_id, card_instance, listing_price)
 

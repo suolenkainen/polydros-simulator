@@ -46,7 +46,7 @@ export default function AgentList({ onSelect }: { onSelect: (id: number) => void
       <ul>
         {agents.map((a) => (
           <li key={a.id}>
-            <button onClick={() => onSelect(a.id)}>{`Agent ${a.id} — ${a.collection_count} cards — ${a.prism} Prism`}</button>
+            <button onClick={() => onSelect(a.id)}>{`Agent ${a.id}`}</button>
           </li>
         ))}
       </ul>
