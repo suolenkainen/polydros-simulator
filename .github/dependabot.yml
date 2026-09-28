@@ -2,10 +2,14 @@ version: 2
 updates:
   # Monthly, with each ecosystem's updates grouped into one PR, so updates
   # arrive as a few PRs a month instead of one per package.
+  #
+  # Paused during the redesign (#39, #50): open-pull-requests-limit: 0 stops
+  # version-update PRs. Remove those lines to turn updates back on.
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "monthly"
+    open-pull-requests-limit: 0
     groups:
       python:
         patterns: ["*"]
@@ -14,6 +18,7 @@ updates:
     directory: "/frontend"
     schedule:
       interval: "monthly"
+    open-pull-requests-limit: 0
     groups:
       # Packages that must move together get their own group.
       react:
@@ -27,6 +32,7 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    open-pull-requests-limit: 0
     groups:
       actions:
         patterns: ["*"]
