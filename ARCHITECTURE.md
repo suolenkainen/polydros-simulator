@@ -145,8 +145,9 @@ At the end of each tick, `WorldState.record_price_points()` calls
 copy's desirability and condition, then appends
 `{tick, price, quality_score, desirability}` to its `price_history`. A card
 opened on tick 5 of a 50-tick run has 46 points. The history travels with the
-copy when it's traded. The frontend draws it as an SVG chart in
-`CardDetail.tsx`.
+copy when it's traded. The frontend shows the last 10 points as a small SVG
+chart per card in an agent's collection (`AgentInventory.tsx`). The card
+detail view has no price chart.
 
 ## The result
 
