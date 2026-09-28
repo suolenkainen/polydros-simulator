@@ -10,7 +10,7 @@ httpx>=0.24
 # .pre-commit-config.yaml)
 ruff>=0.12.0
 black>=26.5.1
-mypy>=1.8
+mypy>=2.3.1
 pre-commit>=3.3
 
 # scripts/export_cards_from_excel.py
