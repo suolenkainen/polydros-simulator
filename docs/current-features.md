@@ -50,8 +50,8 @@ Everything sits on one page, in this order.
 | Feature | State | Keep? |
 |---|---|---|
 | **Runner.** Seed, agents and ticks fields; Run and Reset buttons. | Works, but "run N more ticks" reruns the whole simulation from tick 0. State is kept in `sessionStorage`. | Redesign. |
-| **Card browser.** A dropdown of all cards that opens the card detail. | Broken on a fresh checkout: it loads `/cards/cards.json` from `frontend/public/cards/`, which is gitignored and not in the repo. | Keep the idea; it's the "browse the card set" feature. |
-| **Card detail.** Picture, rarity, colour, cost, power, defence, flavour text, price, quality. | Mostly works. The picture comes from `/cards/<id>.png`, also not in the repo. "Features" is placeholder lorem ipsum. No price history chart. | Keep and extend. |
+| **Card browser.** A dropdown of all cards that opens the card detail. | Replaced in milestone 1 by the Cards tab (`frontend/src/cards/`), and removed. | Done. |
+| **Card detail.** Picture, rarity, colour, cost, power, defence, flavour text, price, quality. | Still used from an agent's collection. Pictures now come from the API. "Features" is placeholder lorem ipsum. No price history chart. | Goes with the old page; the new card view replaces it. |
 | **World overview.** Tick, agent count, cards opened, unopened boosters. | Works. "Approx. total boosters created" is estimated by dividing cards by 12. | Replace with the result views. |
 | **Events list.** All events with a type filter, search and pages. | Works. | Drop; too much at scale. |
 | **Market.** Card grid with search, filters, sort and pages. | Doesn't show the market. It lists every card every agent owns as "for sale", and shows 12 made-up cards when there's no data. | Drop. |

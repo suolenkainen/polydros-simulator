@@ -17,7 +17,7 @@ import { test, expect } from '@playwright/test'
 test.describe('Combat System & Agent Behavior', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to frontend
-    await page.goto('http://localhost:5173')
+    await page.goto('http://localhost:5173/#old-simulation')
   })
 
   test('tick 0 shows no events on agents (seed 42)', async ({ page }) => {
@@ -280,7 +280,7 @@ test.describe('Combat System & Agent Behavior', () => {
     const trait777 = agent777.agent.traits.collector_trait
 
     // Reset and run with seed 333
-    await page.goto('http://localhost:5173')
+    await page.goto('http://localhost:5173/#old-simulation')
     await page.fill('input[type="number"]:nth-of-type(1)', '333')
     await page.fill('input[type="number"]:nth-of-type(2)', '3')
     await page.fill('input[type="number"]:nth-of-type(3)', '1')

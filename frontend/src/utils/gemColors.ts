@@ -53,6 +53,20 @@ export const gemColorMap: Record<string, GemColorInfo> = {
     icon: '◆',
     description: 'Obsidian gem - Black mana',
   },
+  // Onyx and Prism are the two colours in the card set that the list above
+  // didn't have, so their cards showed up grey.
+  Onyx: {
+    name: 'Onyx',
+    hexColor: '#2F2F3A', // Near-black
+    icon: '◆',
+    description: 'Onyx gem',
+  },
+  Prism: {
+    name: 'Prism',
+    hexColor: '#B8A9E0', // Pale violet
+    icon: '◇',
+    description: 'Prism gem',
+  },
 }
 
 /**

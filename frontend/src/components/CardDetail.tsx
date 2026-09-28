@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { formatPrice, formatPriceWithCap } from '../utils/priceFormatter'
+import { cardImageUrl } from '../cards/cardApi'
 
 type PriceDataPoint = {
   tick: number
@@ -96,7 +97,7 @@ export default function CardDetail({ card, onClose }: CardDetailProps) {
           {/* Card Image */}
           <div className="card-image-placeholder">
             <img 
-              src={`/cards/${card.card_id}.png`}
+              src={cardImageUrl(card.card_id)}
               alt={card.name}
               style={{ objectPosition: imageObjectPosition }}
               onError={(e) => {
