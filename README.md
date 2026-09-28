@@ -1,65 +1,77 @@
-# Polydros — TCG Economy Simulator (Scaffold)
+# Polydros: a trading card game economy simulator
 
 [![codecov](https://codecov.io/gh/suolenkainen/polydros-simulator/branch/main/graph/badge.svg)](https://codecov.io/gh/suolenkainen/polydros-simulator)
 
-This repository contains an initial scaffold for the Polydros economy
-simulation. It provides a deterministic, seedable Python simulation core and
-a minimal FastAPI backend to run it.
+Polydros simulates the economy of a trading card game. Agents with different
+traits buy and open booster packs, play games against each other, and buy and
+sell cards on a market. Runs are seeded, so the same settings always give the
+same result. A FastAPI backend runs the simulation and a React frontend shows
+the agents, their cards, the market and each card's price history.
 
-Quick dev setup (Windows, cmd.exe):
+[ARCHITECTURE.md](ARCHITECTURE.md) explains how the simulation works.
+[CLAUDE.md](CLAUDE.md) has the working rules for coding agents, and they apply
+to people too.
 
-1. Create a virtual environment and activate it:
+## Setup
 
-```cmd
+You need Python 3.11 or newer and Node.js 20. `requirements.txt` has what the
+backend needs to run; `requirements-dev.txt` adds the test and lint tools.
+Install the dev one for development.
+
+```
 python -m venv .venv
-.\.venv\Scripts\activate
+.venv\Scripts\activate
+pip install -r requirements-dev.txt
+cd frontend
+npm install
 ```
 
-2. Install dependencies:
+## Run it
 
-```cmd
-pip install -r requirements.txt
+`run_all.ps1` runs ruff, mypy and pytest, then opens the backend and frontend
+in two new windows and opens the browser:
+
+```
+powershell -ExecutionPolicy Bypass -File .\run_all.ps1
 ```
 
-3. Run the backend locally:
+Or start them yourself, each in its own terminal:
 
-```cmd
-uvicorn backend.main:app --reload
+```
+uvicorn backend.main:app --reload      # http://127.0.0.1:8000, API docs at /docs
+cd frontend; npm run dev               # http://localhost:5173
 ```
 
-4. Run tests:
+The frontend expects the backend at `http://127.0.0.1:8000`.
 
-```cmd
-pytest -q
+## Test
+
+```
+pytest -q                                                   # Python tests, from the repo root
+pytest --cov=simulation --cov=backend --cov-report=term     # with coverage
+cd frontend; npx vitest run                                 # frontend unit tests
+cd frontend; npm run test:e2e                               # Playwright
 ```
 
-QA, linters and coverage
-------------------------
+Playwright starts the backend and Vite itself if they aren't already running.
+If old servers are still up, it reuses them and tests run against old code.
 
-Run linters and type checks locally:
+CI ([ci.yml](.github/workflows/ci.yml)) runs the Python tests on Python 3.11
+and builds the frontend. It doesn't run the frontend tests yet (#14).
 
-```cmd
-python -m venv .venv
-.\.venv\Scripts\activate
-pip install -r requirements.txt
+## Lint
+
+```
 ruff check .
 black --check .
-mypy .
+mypy --explicit-package-bases .
 ```
 
-Run tests with coverage:
+These run in CI but don't fail the build yet (#15).
 
-```cmd
-pytest --cov=simulation --cov=backend --cov-report=term
-```
+## Card data
 
-CI: a basic GitHub Actions workflow runs linters and tests and uploads a coverage report. See `.github/workflows/ci.yml`.
-
-Coverage badge and report
--------------------------
-
-This repository uploads coverage reports to Codecov from CI. The badge above reflects the `main` branch coverage; if you want to target a different branch update the badge URL.
-
-Notes:
-- The simulation engine is in `simulation/engine.py` and supports a seeded run.
-- This scaffold focuses on economy-only logic and deterministic behavior.
+The simulation reads the card list from `simulation/data/cards.json`. It was
+first generated from `polydros_master_set_v1.xlsx`, but the two have drifted
+apart. Don't run the export script until #33 is fixed; see
+[scripts/README.md](scripts/README.md).

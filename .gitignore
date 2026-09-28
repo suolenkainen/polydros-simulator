@@ -15,3 +15,7 @@ Thumbs.db
 # Card images (large binary files)
 /images/
 frontend/public/cards/
+
+# Coverage output
+.coverage
+coverage.xml
