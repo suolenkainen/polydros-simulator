@@ -32,10 +32,12 @@ Play a chosen number of games between decks and measure how often each kind of
 deck wins: "a deck with this set of cards wins X of Y games".
 
 Strength comes from **groups of cards**, not single cards. A group can matter
-far more as a whole than as the sum of its parts. For example, a group of 5
-cards in any deck may raise its chance of winning a lot, while 4 of those 5
-barely help. The rating has to find groups like that, and the win rates of
-decks built around a group then raise the value of every card in the group.
+far more as a whole than as the sum of its parts, and groups come in different
+sizes depending on the style of play: two cards may be a strong pair, while
+another combination only works once all 3, or all 5, of its cards are in the
+deck. A partial group barely helps. The rating has to find groups like that,
+whatever their size, and the win rates of decks built around a group then
+raise the value of every card in the group.
 
 - Start with **abstract combat**: a strength score calculated from card stats,
   without real game rules. Even abstract combat has to model group effects,
