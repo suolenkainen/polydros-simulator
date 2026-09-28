@@ -68,7 +68,18 @@ rewritten (#39), so they aren't worth fixing first.
 
 ## Card data
 
-The simulation reads the card list from `simulation/data/cards.json`. It was
-first generated from `polydros_master_set_v1.xlsx`, but the two have drifted
-apart. Don't run the export script until #33 is fixed; see
+The card list is `polydros/data/cards.json`. The backend checks it when it
+starts and refuses to start if anything is wrong, with a message naming each
+card and field. `GET /cards` serves it.
+
+The old simulation still reads its own copy, `simulation/data/cards.json`.
+Both were first generated from `polydros_master_set_v1.xlsx`, but they've
+drifted apart since. Don't run the export script until #33 is fixed; see
 [scripts/README.md](scripts/README.md).
+
+**Card pictures** aren't in git; they're about 340 MB. Put them in an `images/`
+folder at the repo root, one PNG per card named by its ID (`images/C001.png`
+and so on). Ask the project owner for the folder. The backend makes small
+thumbnails in `images/thumbs/` the first time each is asked for. To keep the
+pictures somewhere else, set the `POLYDROS_IMAGES` environment variable to
+that folder.

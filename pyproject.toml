@@ -4,7 +4,7 @@ exclude = ["frontend", ".venv", "dist", "node_modules"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "C90", "ANN", "B", "S"]
-per-file-ignores = { "simulation/tests/*" = ["S101", "ANN201"], "simulation/engine.py" = ["S311"] }
+per-file-ignores = { "simulation/tests/*" = ["S101", "ANN201"], "polydros/tests/*" = ["S101"], "simulation/engine.py" = ["S311"] }
 
 [build-system]
 requires = ["setuptools", "wheel"]
