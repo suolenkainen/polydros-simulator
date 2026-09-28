@@ -4,10 +4,21 @@ This file describes how the code works today, including the parts that don't
 work the way their comments suggest. For setup and commands, see
 [README.md](README.md).
 
+The simulator is being rebuilt in a new package, `polydros/`
+([docs/design.md](docs/design.md)). This file mostly describes the old
+`simulation/` package, which stays until the new one replaces it. So far
+`polydros/` has the card set and its API routes (milestone 1).
+
 ## Layout
 
 ```
-backend/main.py          FastAPI app: runs the engine, keeps the last result in memory
+polydros/
+  cards.py               load_cards(): reads and checks the card file, returns a CardSet
+  api.py                 /cards, /cards/{id}/image and /cards/{id}/thumb routes
+  data/cards.json        The card list (120 cards), with labels
+  tests/                 pytest
+images/                  Card pictures, <id>.png (not in git); thumbnails in images/thumbs/
+backend/main.py          FastAPI app: the card routes above, plus the old engine and last result
 simulation/
   engine.py              SimulationConfig, run_simulation(): the tick loop, combat, pricing
   trading.py             Selling and buying phases, per-agent desirability scoring
@@ -174,6 +185,9 @@ server restarts.
 
 | Endpoint | Returns |
 |---|---|
+| `GET /cards` | `{"cards": [...]}`, the whole card set from `polydros/data/cards.json` |
+| `GET /cards/{id}/image` | The card's picture (PNG), or 404 |
+| `GET /cards/{id}/thumb` | A 384-pixel-wide WebP thumbnail, made on first request and cached, or 404 |
 | `POST /run` | Runs a simulation. Body: `{"seed": 42, "agents": 5, "ticks": 1}` (these are the defaults). Returns the whole result. |
 | `GET /agents` | `{"agents": [...]}` from the last run |
 | `GET /agents/{id}` | `{"agent": {...}}` |

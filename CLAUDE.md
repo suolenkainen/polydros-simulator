@@ -87,6 +87,30 @@ This covers docs, comments, commit messages, PR descriptions and issues.
 
 ## Architecture rules (don't break these)
 
+### Two packages during the redesign
+
+The simulator is being rebuilt in a new package, `polydros/`, one milestone at
+a time ([docs/design.md](docs/design.md)). The old `simulation/` package keeps
+working until a milestone replaces it, then it's deleted.
+
+- **New work goes in `polydros/`.** Don't add features to `simulation/`, and
+  don't refactor it. Fix it only if it's broken in a way that blocks
+  something, and say so.
+- **`polydros/` never imports from `simulation/`.** If you need something from
+  the old code, port it and test it.
+- **Each part of `polydros/` owns one thing** (see the parts table in
+  design.md). Card definitions come only from `polydros.cards.load_cards()`.
+  Combat doesn't know about prices, pricing doesn't play games, and the
+  frontend never calculates simulation results.
+- **The card file is checked when it loads.** `polydros/data/cards.json` is
+  the one card list; the backend and frontend both get cards from it. If you
+  add a field, add it to the checks in `polydros/cards.py` too, with a test.
+- **Card pictures aren't in git.** They're in `images/` at the repo root
+  (gitignored, about 340 MB), served by `polydros/api.py`, which also makes
+  and caches thumbnails in `images/thumbs/`.
+
+### The old `simulation/` package
+
 - **The simulation is deterministic.** The same `SimulationConfig` and seed
   must give the same result every time. All randomness goes through a
   `random.Random` that is seeded from the config (the engine's `rng`, or an
@@ -104,13 +128,12 @@ This covers docs, comments, commit messages, PR descriptions and issues.
 - **Prism can't go negative.** Agents never spend money they don't have.
   `test_prism_negative.py` checks this. Keep that true for any new way of
   spending or trading.
-- **Don't run the card export script yet.** `simulation/data/cards.json` was
-  first generated from `polydros_master_set_v1.xlsx` by
-  `scripts/export_cards_from_excel.py`, but the JSON has since gained fields
-  the script doesn't write (`flavor_text`, `base_price`, `attractiveness`, the
-  Alternate Art rarity). Running the script now would wipe them (#33). Until
-  that's fixed, card data changes go into the JSON directly, and only when the
-  user asks.
+- **Don't run the card export script yet.** `scripts/export_cards_from_excel.py`
+  writes `simulation/data/cards.json`, but that file has since gained fields
+  the script doesn't write (`flavor_text`, the Alternate Art rarity), so
+  running it would wipe them (#33). Card data changes go into
+  `polydros/data/cards.json` directly, and only when the user asks.
+  `simulation/data/cards.json` stays as it is until `simulation/` is deleted.
 
 ## Testing
 

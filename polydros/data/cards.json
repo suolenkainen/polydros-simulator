@@ -1,0 +1,2162 @@
+[
+  {
+    "id": "C001",
+    "name": "Ashmarch Footsoldier",
+    "rarity": "COMMON",
+    "color": "Ruby",
+    "type": "Creature",
+    "labels": [
+      "Ruby",
+      "Creature"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 0,
+    "power": 1,
+    "health": 3,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Step light, breathe shallow. The ash remembers every trespass."
+  },
+  {
+    "id": "C002",
+    "name": "Moltenback Drake",
+    "rarity": "COMMON",
+    "color": "Ruby",
+    "type": "Creature",
+    "labels": [
+      "Ruby",
+      "Creature"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 0,
+    "power": 2,
+    "health": 3,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Wings of cinder, hunger of a furnace—anything it circles, it claims."
+  },
+  {
+    "id": "C003",
+    "name": "Cindermane Lion",
+    "rarity": "COMMON",
+    "color": "Ruby",
+    "type": "Creature",
+    "labels": [
+      "Ruby",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 0,
+    "power": 2,
+    "health": 1,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Even its roar is smoke that claws at the sky."
+  },
+  {
+    "id": "C004",
+    "name": "Drumfire Strike",
+    "rarity": "COMMON",
+    "color": "Ruby",
+    "type": "Spell",
+    "labels": [
+      "Ruby",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Three beats. One spark. Then the world becomes percussion."
+  },
+  {
+    "id": "C005",
+    "name": "Forge Pulse",
+    "rarity": "COMMON",
+    "color": "Ruby",
+    "type": "Spell",
+    "labels": [
+      "Ruby",
+      "Spell"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "The mountain never sleeps—its heartbeat just runs hotter."
+  },
+  {
+    "id": "C006",
+    "name": "Forge Choir Captain",
+    "rarity": "UNCOMMON",
+    "color": "Ruby",
+    "type": "Creature",
+    "labels": [
+      "Ruby",
+      "Creature"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 1,
+    "power": 3,
+    "health": 2,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "Every hammer blow is a note; every spark, a stanza."
+  },
+  {
+    "id": "C007",
+    "name": "Blazetongue Bard",
+    "rarity": "UNCOMMON",
+    "color": "Ruby",
+    "type": "Creature",
+    "labels": [
+      "Ruby",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 0,
+    "power": 2,
+    "health": 4,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "His verses scorch the air long before the flames do."
+  },
+  {
+    "id": "C008",
+    "name": "Brassclad Duelist",
+    "rarity": "UNCOMMON",
+    "color": "Ruby",
+    "type": "Creature",
+    "labels": [
+      "Ruby",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 0,
+    "power": 3,
+    "health": 3,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "He polishes his armor with the heat of battle—literally."
+  },
+  {
+    "id": "C009",
+    "name": "Blazing Crescendo",
+    "rarity": "UNCOMMON",
+    "color": "Ruby",
+    "type": "Spell",
+    "labels": [
+      "Ruby",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "When the final chord hits, even stone dares not stand."
+  },
+  {
+    "id": "C010",
+    "name": "Ash Vein Quarry",
+    "rarity": "UNCOMMON",
+    "color": "Ruby",
+    "type": "Mine",
+    "labels": [
+      "Ruby",
+      "Mine"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "The deeper they dig, the louder the mountain growls."
+  },
+  {
+    "id": "C011",
+    "name": "Vulcanic Harbinger",
+    "rarity": "RARE",
+    "color": "Ruby",
+    "type": "Creature",
+    "labels": [
+      "Ruby",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 3,
+    "health": 3,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "It comes not to warn, but to announce."
+  },
+  {
+    "id": "C012",
+    "name": "Forge Golem Mk.IV",
+    "rarity": "RARE",
+    "color": "Ruby",
+    "type": "Golem",
+    "labels": [
+      "Ruby",
+      "Golem"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 4,
+    "health": 5,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "Built to withstand molten rivers—and pilot them."
+  },
+  {
+    "id": "C013",
+    "name": "Symphony of Sparks",
+    "rarity": "RARE",
+    "color": "Ruby",
+    "type": "Spell",
+    "labels": [
+      "Ruby",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "The forge conducts, the flames perform."
+  },
+  {
+    "id": "C014",
+    "name": "Heartforge Tunnel",
+    "rarity": "RARE",
+    "color": "Ruby",
+    "type": "Mine",
+    "labels": [
+      "Ruby",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "Travelers swear they can hear the mountain breathing."
+  },
+  {
+    "id": "C015",
+    "name": "Varetha Ironvoice, Doom Drummer",
+    "rarity": "RARE",
+    "color": "Ruby",
+    "type": "Character",
+    "labels": [
+      "Ruby",
+      "Character"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 3,
+    "health": 3,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "He doesn’t keep the beat. He commands it."
+  },
+  {
+    "id": "C016",
+    "name": "Song of the Mountain Forge",
+    "rarity": "MYTHIC",
+    "color": "Ruby",
+    "type": "Spell",
+    "labels": [
+      "Ruby",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 4,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "Sing loud enough, and the mountain sings back."
+  },
+  {
+    "id": "C017",
+    "name": "Ramdelom’s Heart-Titan",
+    "rarity": "MYTHIC",
+    "color": "Ruby",
+    "type": "Golem",
+    "labels": [
+      "Ruby",
+      "Golem"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 5,
+    "health": 5,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "Born from pressure, crowned in fire."
+  },
+  {
+    "id": "C018",
+    "name": "Ramdelom’s Core",
+    "rarity": "MYTHIC",
+    "color": "Ruby",
+    "type": "Mine",
+    "labels": [
+      "Ruby",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "A heartbeat too hot for mortal hands."
+  },
+  {
+    "id": "C019",
+    "name": "Ruby Miner",
+    "rarity": "PLAYER",
+    "color": "Ruby",
+    "type": "Player",
+    "labels": [
+      "Ruby",
+      "Player"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 10.0,
+    "holo_chance": 0.01,
+    "flavor_text": "Some seek jewels. Some find them."
+  },
+  {
+    "id": "C020",
+    "name": "Ruby Stalwart",
+    "rarity": "PLAYER",
+    "color": "Ruby",
+    "type": "Player",
+    "labels": [
+      "Ruby",
+      "Player"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 10.0,
+    "holo_chance": 0.01,
+    "flavor_text": "Heat tempers steel—but will alone tempers warriors."
+  },
+  {
+    "id": "C021",
+    "name": "Mirrorfin Scout",
+    "rarity": "COMMON",
+    "color": "Sapphire",
+    "type": "Creature",
+    "labels": [
+      "Sapphire",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 0,
+    "power": 1,
+    "health": 3,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "What it sees, the sea soon knows."
+  },
+  {
+    "id": "C022",
+    "name": "Glasswing Diver",
+    "rarity": "COMMON",
+    "color": "Sapphire",
+    "type": "Creature",
+    "labels": [
+      "Sapphire",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 0,
+    "power": 3,
+    "health": 1,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Glass wings don’t break—they bend the ocean to lift them."
+  },
+  {
+    "id": "C023",
+    "name": "Refractor Owl",
+    "rarity": "COMMON",
+    "color": "Sapphire",
+    "type": "Creature",
+    "labels": [
+      "Sapphire",
+      "Creature"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 0,
+    "power": 2,
+    "health": 1,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "It stares straight through you and studies the echo."
+  },
+  {
+    "id": "C024",
+    "name": "Counterwave",
+    "rarity": "COMMON",
+    "color": "Sapphire",
+    "type": "Spell",
+    "labels": [
+      "Sapphire",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Every spell has a ripple. Every ripple can be unmade."
+  },
+  {
+    "id": "C025",
+    "name": "Echo Vision",
+    "rarity": "COMMON",
+    "color": "Sapphire",
+    "type": "Spell",
+    "labels": [
+      "Sapphire",
+      "Spell"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "See the moment twice—once as it was, and once as it could be."
+  },
+  {
+    "id": "C026",
+    "name": "Scholar of Whessa",
+    "rarity": "UNCOMMON",
+    "color": "Sapphire",
+    "type": "Creature",
+    "labels": [
+      "Sapphire",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 4,
+    "health": 4,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "To learn from reflections is to learn twice as fast."
+  },
+  {
+    "id": "C027",
+    "name": "Illusionist Adept",
+    "rarity": "UNCOMMON",
+    "color": "Sapphire",
+    "type": "Creature",
+    "labels": [
+      "Sapphire",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 3,
+    "health": 3,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "Reality is merely a polite suggestion."
+  },
+  {
+    "id": "C028",
+    "name": "Crystal Navigator",
+    "rarity": "UNCOMMON",
+    "color": "Sapphire",
+    "type": "Creature",
+    "labels": [
+      "Sapphire",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 4,
+    "health": 2,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "The sea is glass, and she reads its cracks like maps."
+  },
+  {
+    "id": "C029",
+    "name": "Fractal Mirage",
+    "rarity": "UNCOMMON",
+    "color": "Sapphire",
+    "type": "Spell",
+    "labels": [
+      "Sapphire",
+      "Spell"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "Touch it, and you become part of the pattern."
+  },
+  {
+    "id": "C030",
+    "name": "Blue Vein Lab",
+    "rarity": "UNCOMMON",
+    "color": "Sapphire",
+    "type": "Mine",
+    "labels": [
+      "Sapphire",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "Where ideas fracture, recombine, and crystallize."
+  },
+  {
+    "id": "C031",
+    "name": "Reflection Serpent",
+    "rarity": "RARE",
+    "color": "Sapphire",
+    "type": "Creature",
+    "labels": [
+      "Sapphire",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 5,
+    "health": 4,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "If it coils around your image, run—it prefers the original next."
+  },
+  {
+    "id": "C032",
+    "name": "Deep Equation",
+    "rarity": "RARE",
+    "color": "Sapphire",
+    "type": "Spell",
+    "labels": [
+      "Sapphire",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "The deeper the proof, the colder the truth."
+  },
+  {
+    "id": "C033",
+    "name": "Mirror Reef",
+    "rarity": "RARE",
+    "color": "Sapphire",
+    "type": "Mine",
+    "labels": [
+      "Sapphire",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "Every tide rearranges the mirrors—and the creatures behind them."
+  },
+  {
+    "id": "C034",
+    "name": "Archon Lirane Voss, Reflector Prime",
+    "rarity": "RARE",
+    "color": "Sapphire",
+    "type": "Character",
+    "labels": [
+      "Sapphire",
+      "Character"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 5,
+    "health": 5,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "One thought, held perfectly still, can reshape a world."
+  },
+  {
+    "id": "C035",
+    "name": "Aether Whale",
+    "rarity": "MYTHIC",
+    "color": "Sapphire",
+    "type": "Creature",
+    "labels": [
+      "Sapphire",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 7,
+    "health": 7,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "It swims between possibilities, grazing on unrealized futures."
+  },
+  {
+    "id": "C036",
+    "name": "Whessa’s Reflection",
+    "rarity": "MYTHIC",
+    "color": "Sapphire",
+    "type": "Spell",
+    "labels": [
+      "Sapphire",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 4,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "To see her face is to question your own."
+  },
+  {
+    "id": "C037",
+    "name": "Whessa’s Core Spiral",
+    "rarity": "MYTHIC",
+    "color": "Sapphire",
+    "type": "Mine",
+    "labels": [
+      "Sapphire",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 4,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "Knowledge condensed until it sings."
+  },
+  {
+    "id": "C038",
+    "name": "Sapphire Diver",
+    "rarity": "PLAYER",
+    "color": "Sapphire",
+    "type": "Player",
+    "labels": [
+      "Sapphire",
+      "Player"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 10.0,
+    "holo_chance": 0.01,
+    "flavor_text": "Where others drown, she simply listens."
+  },
+  {
+    "id": "C039",
+    "name": "Mirror Architect",
+    "rarity": "PLAYER",
+    "color": "Sapphire",
+    "type": "Player",
+    "labels": [
+      "Sapphire",
+      "Player"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 10.0,
+    "holo_chance": 0.01,
+    "flavor_text": "He builds houses for thoughts that haven’t yet been imagined."
+  },
+  {
+    "id": "C040",
+    "name": "Leafrunner Scout",
+    "rarity": "COMMON",
+    "color": "Emerald",
+    "type": "Creature",
+    "labels": [
+      "Emerald",
+      "Creature"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 0,
+    "power": 3,
+    "health": 3,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Trust her footprints—they’re already growing over."
+  },
+  {
+    "id": "C041",
+    "name": "Tonebird Flock",
+    "rarity": "COMMON",
+    "color": "Emerald",
+    "type": "Creature",
+    "labels": [
+      "Emerald",
+      "Creature"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 0,
+    "power": 3,
+    "health": 1,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Their songs root themselves in your bones."
+  },
+  {
+    "id": "C042",
+    "name": "Mosswolf Pup",
+    "rarity": "COMMON",
+    "color": "Emerald",
+    "type": "Creature",
+    "labels": [
+      "Emerald",
+      "Creature"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 1,
+    "power": 2,
+    "health": 1,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Small as a leaf, loud as a storm."
+  },
+  {
+    "id": "C043",
+    "name": "Grow Pulse",
+    "rarity": "COMMON",
+    "color": "Emerald",
+    "type": "Spell",
+    "labels": [
+      "Emerald",
+      "Spell"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "The land swells, inhales, and decides to thrive."
+  },
+  {
+    "id": "C044",
+    "name": "Song of Renewal",
+    "rarity": "COMMON",
+    "color": "Emerald",
+    "type": "Spell",
+    "labels": [
+      "Emerald",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "A melody that invites the world to start again."
+  },
+  {
+    "id": "C045",
+    "name": "Vine Harpist",
+    "rarity": "UNCOMMON",
+    "color": "Emerald",
+    "type": "Creature",
+    "labels": [
+      "Emerald",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 2,
+    "health": 3,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "One pluck, and vines hurry to listen."
+  },
+  {
+    "id": "C046",
+    "name": "Verdant Shaman",
+    "rarity": "UNCOMMON",
+    "color": "Emerald",
+    "type": "Creature",
+    "labels": [
+      "Emerald",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 2,
+    "health": 4,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "He speaks for the soil, and the soil roars back."
+  },
+  {
+    "id": "C047",
+    "name": "Chordvine Panther",
+    "rarity": "UNCOMMON",
+    "color": "Emerald",
+    "type": "Creature",
+    "labels": [
+      "Emerald",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 3,
+    "health": 4,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "Each step is a chord struck on living strings."
+  },
+  {
+    "id": "C048",
+    "name": "Lifeweaver’s Tune",
+    "rarity": "UNCOMMON",
+    "color": "Emerald",
+    "type": "Spell",
+    "labels": [
+      "Emerald",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "A lullaby that knits flesh and stem."
+  },
+  {
+    "id": "C049",
+    "name": "Rootspire Garden",
+    "rarity": "UNCOMMON",
+    "color": "Emerald",
+    "type": "Mine",
+    "labels": [
+      "Emerald",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "Roots climb here—not down."
+  },
+  {
+    "id": "C050",
+    "name": "Bloom Stag",
+    "rarity": "RARE",
+    "color": "Emerald",
+    "type": "Creature",
+    "labels": [
+      "Emerald",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 3,
+    "health": 3,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "Its antlers bloom with seasons that haven’t happened yet."
+  },
+  {
+    "id": "C051",
+    "name": "Root Sentinel",
+    "rarity": "RARE",
+    "color": "Emerald",
+    "type": "Golem",
+    "labels": [
+      "Emerald",
+      "Golem"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 3,
+    "health": 3,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "Unmoving, but never still."
+  },
+  {
+    "id": "C052",
+    "name": "Overgrow",
+    "rarity": "RARE",
+    "color": "Emerald",
+    "type": "Spell",
+    "labels": [
+      "Emerald",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "When the land has had enough, it takes everything back."
+  },
+  {
+    "id": "C053",
+    "name": "Heartbloom Crater",
+    "rarity": "RARE",
+    "color": "Emerald",
+    "type": "Mine",
+    "labels": [
+      "Emerald",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "A wound healed too quickly—and too powerfully."
+  },
+  {
+    "id": "C054",
+    "name": "Bessalynn, Tiravel’s Flutist",
+    "rarity": "RARE",
+    "color": "Emerald",
+    "type": "Character",
+    "labels": [
+      "Emerald",
+      "Character"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 3,
+    "health": 3,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "Her song coaxes sap into symphony."
+  },
+  {
+    "id": "C055",
+    "name": "Verdant Colossus",
+    "rarity": "MYTHIC",
+    "color": "Emerald",
+    "type": "Creature",
+    "labels": [
+      "Emerald",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 4,
+    "power": 4,
+    "health": 7,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "A walking season."
+  },
+  {
+    "id": "C056",
+    "name": "Tiravel’s Harmony",
+    "rarity": "MYTHIC",
+    "color": "Emerald",
+    "type": "Spell",
+    "labels": [
+      "Emerald",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "Where the harmony settles, peace grows."
+  },
+  {
+    "id": "C057",
+    "name": "Tiravel’s Heartroot",
+    "rarity": "MYTHIC",
+    "color": "Emerald",
+    "type": "Mine",
+    "labels": [
+      "Emerald",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 4,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "e root that remembers every melody."
+  },
+  {
+    "id": "C058",
+    "name": "Emerald Forager",
+    "rarity": "PLAYER",
+    "color": "Emerald",
+    "type": "Player",
+    "labels": [
+      "Emerald",
+      "Player"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 10.0,
+    "holo_chance": 0.01,
+    "flavor_text": "She gathers not for hunger, but for balance."
+  },
+  {
+    "id": "C059",
+    "name": "Heartlistener Monk",
+    "rarity": "PLAYER",
+    "color": "Emerald",
+    "type": "Player",
+    "labels": [
+      "Emerald",
+      "Player"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 10.0,
+    "holo_chance": 0.01,
+    "flavor_text": "Stillness is just another form of growth."
+  },
+  {
+    "id": "C060",
+    "name": "Grave Acolyte",
+    "rarity": "COMMON",
+    "color": "Onyx",
+    "type": "Creature",
+    "labels": [
+      "Onyx",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 0,
+    "power": 1,
+    "health": 3,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "He prays not for souls, but for their echoes."
+  },
+  {
+    "id": "C061",
+    "name": "Echo Moth Swarm",
+    "rarity": "COMMON",
+    "color": "Onyx",
+    "type": "Creature",
+    "labels": [
+      "Onyx",
+      "Creature"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 1,
+    "power": 2,
+    "health": 2,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "They gather around the dying, hungry for final words."
+  },
+  {
+    "id": "C062",
+    "name": "Shadow Rat",
+    "rarity": "COMMON",
+    "color": "Onyx",
+    "type": "Creature",
+    "labels": [
+      "Onyx",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 3,
+    "health": 1,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Small, silent, utterly unforgiving."
+  },
+  {
+    "id": "C063",
+    "name": "Funeral Toll",
+    "rarity": "COMMON",
+    "color": "Onyx",
+    "type": "Spell",
+    "labels": [
+      "Onyx",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "One ring for grief. Two for the forgotten."
+  },
+  {
+    "id": "C064",
+    "name": "Dark Reprise",
+    "rarity": "COMMON",
+    "color": "Onyx",
+    "type": "Spell",
+    "labels": [
+      "Onyx",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "The dead don’t rise to fight—they rise to finish the song."
+  },
+  {
+    "id": "C065",
+    "name": "Bellkeeper Exile",
+    "rarity": "UNCOMMON",
+    "color": "Onyx",
+    "type": "Creature",
+    "labels": [
+      "Onyx",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 3,
+    "health": 4,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "He was cast out for hearing too clearly."
+  },
+  {
+    "id": "C066",
+    "name": "Crypt Sentinel",
+    "rarity": "UNCOMMON",
+    "color": "Onyx",
+    "type": "Creature",
+    "labels": [
+      "Onyx",
+      "Creature"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 1,
+    "power": 4,
+    "health": 2,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "Only the dead may pass. Others merely try."
+  },
+  {
+    "id": "C067",
+    "name": "Soul Lantern Warden",
+    "rarity": "UNCOMMON",
+    "color": "Onyx",
+    "type": "Creature",
+    "labels": [
+      "Onyx",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 4,
+    "health": 3,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "The light inside flickers to the rhythm of stolen names."
+  },
+  {
+    "id": "C068",
+    "name": "Bell of Remembrance",
+    "rarity": "UNCOMMON",
+    "color": "Onyx",
+    "type": "Spell",
+    "labels": [
+      "Onyx",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "It rings once for each regret."
+  },
+  {
+    "id": "C069",
+    "name": "Obsidian Vein",
+    "rarity": "UNCOMMON",
+    "color": "Onyx",
+    "type": "Mine",
+    "labels": [
+      "Onyx",
+      "Mine"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "A seam of black that bleeds memory."
+  },
+  {
+    "id": "C070",
+    "name": "Grave Siren",
+    "rarity": "RARE",
+    "color": "Onyx",
+    "type": "Creature",
+    "labels": [
+      "Onyx",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 3,
+    "health": 3,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "It sings you to rest—but never to peace."
+  },
+  {
+    "id": "C071",
+    "name": "Bellframe Guardian",
+    "rarity": "RARE",
+    "color": "Onyx",
+    "type": "Golem",
+    "labels": [
+      "Onyx",
+      "Golem"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 3,
+    "health": 6,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "The frame stands even when the bell shatters."
+  },
+  {
+    "id": "C072",
+    "name": "Silence the Pulse",
+    "rarity": "RARE",
+    "color": "Onyx",
+    "type": "Spell",
+    "labels": [
+      "Onyx",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "Stop the heartbeat, stop the hope."
+  },
+  {
+    "id": "C073",
+    "name": "Black Bell Cavern",
+    "rarity": "RARE",
+    "color": "Onyx",
+    "type": "Mine",
+    "labels": [
+      "Onyx",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "In the dark, the bells ring themselves."
+  },
+  {
+    "id": "C074",
+    "name": "Bellkeeper Nahl, Hollow Monk",
+    "rarity": "RARE",
+    "color": "Onyx",
+    "type": "Character",
+    "labels": [
+      "Onyx",
+      "Character"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 4,
+    "health": 6,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "His voice is gone—his echoes, never."
+  },
+  {
+    "id": "C075",
+    "name": "The Pale Regent",
+    "rarity": "MYTHIC",
+    "color": "Onyx",
+    "type": "Creature",
+    "labels": [
+      "Onyx",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 7,
+    "health": 8,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "A ruler crowned in quiet."
+  },
+  {
+    "id": "C076",
+    "name": "Dirge of N’kurath",
+    "rarity": "MYTHIC",
+    "color": "Onyx",
+    "type": "Spell",
+    "labels": [
+      "Onyx",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "A melody that demands surrender."
+  },
+  {
+    "id": "C077",
+    "name": "Echo Core Depths",
+    "rarity": "MYTHIC",
+    "color": "Onyx",
+    "type": "Mine",
+    "labels": [
+      "Onyx",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "Whispers fall here and never climb out."
+  },
+  {
+    "id": "C078",
+    "name": "Onyx Supplicant",
+    "rarity": "PLAYER",
+    "color": "Onyx",
+    "type": "Player",
+    "labels": [
+      "Onyx",
+      "Player"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 10.0,
+    "holo_chance": 0.01,
+    "flavor_text": "Kneel once—and forget why you rose."
+  },
+  {
+    "id": "C079",
+    "name": "Gravetone Acolyte",
+    "rarity": "PLAYER",
+    "color": "Onyx",
+    "type": "Player",
+    "labels": [
+      "Onyx",
+      "Player"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 10.0,
+    "holo_chance": 0.01,
+    "flavor_text": "He writes his prayers in dust and shadow."
+  },
+  {
+    "id": "C080",
+    "name": "Moon Raven",
+    "rarity": "COMMON",
+    "color": "Amethyst",
+    "type": "Creature",
+    "labels": [
+      "Amethyst",
+      "Creature"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 1,
+    "power": 1,
+    "health": 3,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "It glides on thought more than wind."
+  },
+  {
+    "id": "C081",
+    "name": "Dreamheart Fawn",
+    "rarity": "COMMON",
+    "color": "Amethyst",
+    "type": "Creature",
+    "labels": [
+      "Amethyst",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 1,
+    "health": 1,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Born from a dream someone forgot they had."
+  },
+  {
+    "id": "C082",
+    "name": "Echo Spirit",
+    "rarity": "COMMON",
+    "color": "Amethyst",
+    "type": "Creature",
+    "labels": [
+      "Amethyst",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 0,
+    "power": 3,
+    "health": 3,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "A whisper given shape."
+  },
+  {
+    "id": "C083",
+    "name": "Lullaby Veil",
+    "rarity": "COMMON",
+    "color": "Amethyst",
+    "type": "Spell",
+    "labels": [
+      "Amethyst",
+      "Spell"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Sleep settles softly—then refuses to leave."
+  },
+  {
+    "id": "C084",
+    "name": "Mind Echo",
+    "rarity": "COMMON",
+    "color": "Amethyst",
+    "type": "Spell",
+    "labels": [
+      "Amethyst",
+      "Spell"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "The thought you lost comes back sharper."
+  },
+  {
+    "id": "C085",
+    "name": "Mindpetal Mystic",
+    "rarity": "UNCOMMON",
+    "color": "Amethyst",
+    "type": "Creature",
+    "labels": [
+      "Amethyst",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 0,
+    "power": 3,
+    "health": 2,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "She blooms new ideas in anyone who listens."
+  },
+  {
+    "id": "C086",
+    "name": "Dreamsinger Monk",
+    "rarity": "UNCOMMON",
+    "color": "Amethyst",
+    "type": "Creature",
+    "labels": [
+      "Amethyst",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 3,
+    "health": 2,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "His chants ripple like moonlit water."
+  },
+  {
+    "id": "C087",
+    "name": "Lucid Seer",
+    "rarity": "UNCOMMON",
+    "color": "Amethyst",
+    "type": "Creature",
+    "labels": [
+      "Amethyst",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 3,
+    "health": 4,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "She knows the future because she dreamed it first."
+  },
+  {
+    "id": "C088",
+    "name": "Dream Refrain",
+    "rarity": "UNCOMMON",
+    "color": "Amethyst",
+    "type": "Spell",
+    "labels": [
+      "Amethyst",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "One note caught between waking and not."
+  },
+  {
+    "id": "C089",
+    "name": "Amethyst Riftpool",
+    "rarity": "UNCOMMON",
+    "color": "Amethyst",
+    "type": "Mine",
+    "labels": [
+      "Amethyst",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "A pool that reflects only possibilities."
+  },
+  {
+    "id": "C090",
+    "name": "Aurora Serpent",
+    "rarity": "RARE",
+    "color": "Amethyst",
+    "type": "Creature",
+    "labels": [
+      "Amethyst",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 4,
+    "health": 4,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "It slithers between colors no one can name."
+  },
+  {
+    "id": "C091",
+    "name": "Dream Sentinel",
+    "rarity": "RARE",
+    "color": "Amethyst",
+    "type": "Golem",
+    "labels": [
+      "Amethyst",
+      "Golem"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 4,
+    "health": 4,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "Silent, still, but always inside your thoughts."
+  },
+  {
+    "id": "C092",
+    "name": "Moonlight Chorus",
+    "rarity": "RARE",
+    "color": "Amethyst",
+    "type": "Spell",
+    "labels": [
+      "Amethyst",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "A thousand soft voices, none belonging to mortals."
+  },
+  {
+    "id": "C093",
+    "name": "Aurora Well",
+    "rarity": "RARE",
+    "color": "Amethyst",
+    "type": "Mine",
+    "labels": [
+      "Amethyst",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "Drink, and remember someone else’s dream."
+  },
+  {
+    "id": "C094",
+    "name": "Mother Iryl, Voice Between Realms",
+    "rarity": "RARE",
+    "color": "Amethyst",
+    "type": "Character",
+    "labels": [
+      "Amethyst",
+      "Character"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 3,
+    "power": 4,
+    "health": 6,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "She sings where the worlds overlap."
+  },
+  {
+    "id": "C095",
+    "name": "Lytheran Dreamwalker",
+    "rarity": "MYTHIC",
+    "color": "Amethyst",
+    "type": "Creature",
+    "labels": [
+      "Amethyst",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 5,
+    "health": 5,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "He strolls across reflections of dreams."
+  },
+  {
+    "id": "C096",
+    "name": "Lythera’s Awakening",
+    "rarity": "MYTHIC",
+    "color": "Amethyst",
+    "type": "Spell",
+    "labels": [
+      "Amethyst",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 4,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "Her first breath reshaped the horizon."
+  },
+  {
+    "id": "C097",
+    "name": "Lytheran Nexus",
+    "rarity": "MYTHIC",
+    "color": "Amethyst",
+    "type": "Mine",
+    "labels": [
+      "Amethyst",
+      "Mine"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 2,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "All dreams lead here—eventually."
+  },
+  {
+    "id": "C098",
+    "name": "Amethyst Dreamer",
+    "rarity": "PLAYER",
+    "color": "Amethyst",
+    "type": "Player",
+    "labels": [
+      "Amethyst",
+      "Player"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 10.0,
+    "holo_chance": 0.01,
+    "flavor_text": "He sees the world as it could be, not as it is."
+  },
+  {
+    "id": "C099",
+    "name": "Lytheran Prophet",
+    "rarity": "PLAYER",
+    "color": "Amethyst",
+    "type": "Player",
+    "labels": [
+      "Amethyst",
+      "Player"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 10.0,
+    "holo_chance": 0.01,
+    "flavor_text": "Truth tastes different in dreams."
+  },
+  {
+    "id": "C100",
+    "name": "Crystal Nomad",
+    "rarity": "COMMON",
+    "color": "Prism",
+    "type": "Creature",
+    "labels": [
+      "Prism",
+      "Creature"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 1,
+    "power": 3,
+    "health": 3,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "Wandering until the colors align."
+  },
+  {
+    "id": "C101",
+    "name": "Resonance Surge",
+    "rarity": "COMMON",
+    "color": "Prism",
+    "type": "Spell",
+    "labels": [
+      "Prism",
+      "Spell"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "When light remembers how to sing."
+  },
+  {
+    "id": "C102",
+    "name": "Alloyed Guardian",
+    "rarity": "COMMON",
+    "color": "Prism",
+    "type": "Golem",
+    "labels": [
+      "Prism",
+      "Golem"
+    ],
+    "gem_colored": 1,
+    "gem_colorless": 0,
+    "power": 1,
+    "health": 1,
+    "pack_weight": 18.37,
+    "holo_chance": 0.01837,
+    "flavor_text": "A body of metal, a heart of harmony."
+  },
+  {
+    "id": "C103",
+    "name": "Dualflame Beast",
+    "rarity": "UNCOMMON",
+    "color": "Prism",
+    "type": "Creature",
+    "labels": [
+      "Prism",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 2,
+    "health": 2,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "Two fires, one purpose: burn brighter."
+  },
+  {
+    "id": "C104",
+    "name": "Prismatic Flux",
+    "rarity": "UNCOMMON",
+    "color": "Prism",
+    "type": "Spell",
+    "labels": [
+      "Prism",
+      "Spell"
+    ],
+    "gem_colored": 3,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "Color unbound becomes power unrestrained."
+  },
+  {
+    "id": "C105",
+    "name": "Hybrid Experiment",
+    "rarity": "UNCOMMON",
+    "color": "Prism",
+    "type": "Creature",
+    "labels": [
+      "Prism",
+      "Creature"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 3,
+    "health": 2,
+    "pack_weight": 11.53,
+    "holo_chance": 0.01153,
+    "flavor_text": "Success is measured in how long it survives."
+  },
+  {
+    "id": "C106",
+    "name": "Prism Knight",
+    "rarity": "RARE",
+    "color": "Prism",
+    "type": "Creature",
+    "labels": [
+      "Prism",
+      "Creature"
+    ],
+    "gem_colored": 3,
+    "gem_colorless": 1,
+    "power": 4,
+    "health": 6,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "Each strike radiates a different oath."
+  },
+  {
+    "id": "C107",
+    "name": "Fifth Song Fragment",
+    "rarity": "RARE",
+    "color": "Prism",
+    "type": "Spell",
+    "labels": [
+      "Prism",
+      "Spell"
+    ],
+    "gem_colored": 2,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "A lost note that hums with unfinished promise."
+  },
+  {
+    "id": "C108",
+    "name": "Fused Beast of the Veins",
+    "rarity": "RARE",
+    "color": "Prism",
+    "type": "Creature",
+    "labels": [
+      "Prism",
+      "Creature"
+    ],
+    "gem_colored": 4,
+    "gem_colorless": 1,
+    "power": 4,
+    "health": 4,
+    "pack_weight": 4.38,
+    "holo_chance": 0.00438,
+    "flavor_text": "It moves like a storm of colors fighting for shape."
+  },
+  {
+    "id": "C109",
+    "name": "Aurora Titan",
+    "rarity": "MYTHIC",
+    "color": "Prism",
+    "type": "Golem",
+    "labels": [
+      "Prism",
+      "Golem"
+    ],
+    "gem_colored": 5,
+    "gem_colorless": 1,
+    "power": 7,
+    "health": 5,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "Every step rewrites the sky."
+  },
+  {
+    "id": "C110",
+    "name": "Call of the Sixth Song",
+    "rarity": "MYTHIC",
+    "color": "Prism",
+    "type": "Spell",
+    "labels": [
+      "Prism",
+      "Spell"
+    ],
+    "gem_colored": 4,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "A summons that resonates across realms."
+  },
+  {
+    "id": "C111",
+    "name": "Prism Warden",
+    "rarity": "MYTHIC",
+    "color": "Prism",
+    "type": "Golem",
+    "labels": [
+      "Prism",
+      "Golem"
+    ],
+    "gem_colored": 5,
+    "gem_colorless": 1,
+    "power": 5,
+    "health": 8,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "Keeper of colors no eye has seen."
+  },
+  {
+    "id": "C112",
+    "name": "Harmonic Rift Core",
+    "rarity": "MYTHIC",
+    "color": "Prism",
+    "type": "Mine",
+    "labels": [
+      "Prism",
+      "Mine"
+    ],
+    "gem_colored": 5,
+    "gem_colorless": 1,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 1.04,
+    "holo_chance": 0.00104,
+    "flavor_text": "A heart beating to six different rhythms at once."
+  },
+  {
+    "id": "C113",
+    "name": "Varetha Ironvoice, Doom Drummer",
+    "rarity": "ALTERNATE_ART",
+    "color": "Ruby",
+    "type": "Character",
+    "labels": [
+      "Ruby",
+      "Character"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 0.62,
+    "holo_chance": 0.00062,
+    "flavor_text": "Her drumbeat pierces the veil between sound and fury."
+  },
+  {
+    "id": "C114",
+    "name": "Archon Lirane Voss, Reflector Prime",
+    "rarity": "ALTERNATE_ART",
+    "color": "Sapphire",
+    "type": "Character",
+    "labels": [
+      "Sapphire",
+      "Character"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 0.62,
+    "holo_chance": 0.00062,
+    "flavor_text": "In stillness, she divines entire timelines."
+  },
+  {
+    "id": "C115",
+    "name": "Bessalynn, Tiravel’s Flutist",
+    "rarity": "ALTERNATE_ART",
+    "color": "Emerald",
+    "type": "Character",
+    "labels": [
+      "Emerald",
+      "Character"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 0.62,
+    "holo_chance": 0.00062,
+    "flavor_text": "Her flute carries a forest’s memory."
+  },
+  {
+    "id": "C116",
+    "name": "Bellkeeper Nahl, Hollow Monk",
+    "rarity": "ALTERNATE_ART",
+    "color": "Onyx",
+    "type": "Character",
+    "labels": [
+      "Onyx",
+      "Character"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 0.62,
+    "holo_chance": 0.00062,
+    "flavor_text": "His silence strikes harder than any bell."
+  },
+  {
+    "id": "C117",
+    "name": "Mother Iryl, Voice Between Realms",
+    "rarity": "ALTERNATE_ART",
+    "color": "Amethyst",
+    "type": "Character",
+    "labels": [
+      "Amethyst",
+      "Character"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 0.62,
+    "holo_chance": 0.00062,
+    "flavor_text": "She whispers songs meant for the spaces between dreams."
+  },
+  {
+    "id": "C118",
+    "name": "Aurora Titan",
+    "rarity": "ALTERNATE_ART",
+    "color": "Prism",
+    "type": "Golem",
+    "labels": [
+      "Prism",
+      "Golem"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 0.62,
+    "holo_chance": 0.00062,
+    "flavor_text": "A prism given purpose and mass."
+  },
+  {
+    "id": "C119",
+    "name": "Ramdelom’s Heart-Titan",
+    "rarity": "ALTERNATE_ART",
+    "color": "Ruby",
+    "type": "Golem",
+    "labels": [
+      "Ruby",
+      "Golem"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 0.62,
+    "holo_chance": 0.00062,
+    "flavor_text": "The heart burns hotter in this telling."
+  },
+  {
+    "id": "C120",
+    "name": "Lytheran Dreamwalker",
+    "rarity": "ALTERNATE_ART",
+    "color": "Amethyst",
+    "type": "Creature",
+    "labels": [
+      "Amethyst",
+      "Creature"
+    ],
+    "gem_colored": 0,
+    "gem_colorless": 0,
+    "power": 0,
+    "health": 0,
+    "pack_weight": 0.62,
+    "holo_chance": 0.00062,
+    "flavor_text": "He journeys across dreams that dare not wake."
+  }
+]

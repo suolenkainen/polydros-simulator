@@ -1,3 +1,5 @@
 # What the app needs to run. Development tools are in requirements-dev.txt.
 fastapi>=0.141.1
 uvicorn[standard]>=0.54.0
+# Card thumbnails in polydros/api.py
+pillow>=10.0

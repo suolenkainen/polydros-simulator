@@ -9,9 +9,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+from polydros.api import create_router
+from polydros.cards import load_cards
 from simulation import SimulationConfig, run_simulation
 
 app = FastAPI(title="Polydros Simulation API")
+
+# Card set routes from the new polydros package (docs/design.md, milestone 1).
+# Loading the card file here means a broken file stops the server at start.
+app.include_router(create_router(load_cards()))
 
 # In-memory storage for the last simulation run. Lightweight and reset on
 # server restart. Persist to disk or DB later if needed.
