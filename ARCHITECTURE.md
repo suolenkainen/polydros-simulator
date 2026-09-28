@@ -26,7 +26,7 @@ frontend/
   tests/                 Playwright end-to-end tests
 scripts/                 export_cards_from_excel.py (xlsx to cards.json; out of date, #33)
 polydros_master_set_v1.xlsx   Master card list
-run_all.ps1              Runs ruff, mypy and pytest, then starts backend and frontend
+run_all.ps1              Runs pytest, then starts backend and frontend
 ```
 
 `simulation/` has no knowledge of HTTP. `backend/` only turns requests into a

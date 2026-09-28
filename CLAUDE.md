@@ -117,7 +117,6 @@ This covers docs, comments, commit messages, PR descriptions and issues.
 ```
 pip install -r requirements-dev.txt
 pytest -q                                          # runs in CI
-pytest --cov=simulation --cov=backend --cov-report=term
 cd frontend; npx vitest run                        # unit tests, not in CI yet
 cd frontend; npm run test:e2e                      # Playwright, not in CI yet
 ```
@@ -131,7 +130,11 @@ cd frontend; npm run test:e2e                      # Playwright, not in CI yet
 - Playwright starts the backend (port 8000) and Vite (port 5173) itself, or
   reuses servers that are already running. If a stale server is up, tests can
   pass or fail against old code.
-- New behaviour gets a test. A bug fix gets a test that fails without the fix.
+- **Tests check behaviour that matters, not coverage.** A good test says
+  something about the simulation: the same seed gives the same result, money
+  never goes negative, a strong card group really wins more. Don't write tests
+  just to touch lines. New behaviour gets a test. A bug fix gets a test that
+  fails without the fix.
 - Tests use a fixed seed and must give the same result every time. Don't write
   tests that only pass "usually".
 - Tests only prove what they check. If your change affects what the user sees,
@@ -143,12 +146,15 @@ cd frontend; npm run test:e2e                      # Playwright, not in CI yet
 
 ### Lint and format
 
-`ruff`, `black`, `isort` (via pre-commit) and `mypy` are configured in
-`pyproject.toml` and `.pre-commit-config.yaml`. In CI they currently end in
-`|| true`, so they don't fail the build. Don't add new ruff or black errors in
-code you touch, but don't reformat files you aren't otherwise changing: a
-repo-wide format belongs in its own PR. Keep the black and ruff versions in
-`requirements-dev.txt` and `.pre-commit-config.yaml` in step.
+`ruff` is the only Python tool: `ruff check .` lints and `ruff format .`
+formats, both configured in `pyproject.toml`. CI doesn't run it, because the
+current code has lint errors and is going to be rewritten (#39). New code
+should be clean with both. Don't reformat files you aren't otherwise changing.
+
+**Keep the tooling small.** Don't add linters, type checkers, coverage
+services or pre-commit hooks without asking first. A tool earns its place by
+catching real problems; this repo once had six of them, and none noticed that
+the simulation didn't work.
 
 ## Dependencies, config and secrets
 
@@ -168,18 +174,15 @@ repo-wide format belongs in its own PR. Keep the black and ruff versions in
 
 ## Don't commit generated output
 
-`.coverage`, `coverage.xml`, `__pycache__/`, `.pytest_cache/`, `node_modules/`,
-`frontend/dist/` and `frontend/test-results/` can all be regenerated. Some of
-these are tracked in git by mistake (`frontend/test-results/`,
-`frontend/.coverage`); don't add to them, and fix that in its own PR rather
-than as part of unrelated work. Check `git status` for stray files before
+`__pycache__/`, `.pytest_cache/`, `node_modules/`, `frontend/dist/` and
+`frontend/test-results/` can all be regenerated. `frontend/test-results/` is
+tracked in git by mistake (#11); don't add to it. Check `git status` for stray files before
 every commit.
 
 ## Code style
 
 - Python 3.11 in CI (3.13 on this machine), 4-space indents, line length 88.
-  Use type hints; mypy runs over the whole repo. Don't use syntax newer than
-  3.11.
+  Use type hints where they help a reader. Don't use syntax newer than 3.11.
 - TypeScript in `frontend/` with 2-space indents.
 - Match the code around you: its naming, its habits and how much it comments.
 - Comments explain **why**: a game rule, a constraint, something that broke

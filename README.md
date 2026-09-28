@@ -1,7 +1,5 @@
 # Polydros: a trading card game economy simulator
 
-[![codecov](https://codecov.io/gh/suolenkainen/polydros-simulator/branch/main/graph/badge.svg)](https://codecov.io/gh/suolenkainen/polydros-simulator)
-
 Polydros simulates the economy of a trading card game. Agents with different
 traits buy and open booster packs, play games against each other, and buy and
 sell cards on a market. Runs are seeded, so the same settings always give the
@@ -28,8 +26,8 @@ npm install
 
 ## Run it
 
-`run_all.ps1` runs ruff, mypy and pytest, then opens the backend and frontend
-in two new windows and opens the browser:
+`run_all.ps1` runs pytest and, if it passes, opens the backend and frontend in
+two new windows and opens the browser:
 
 ```
 powershell -ExecutionPolicy Bypass -File .\run_all.ps1
@@ -47,10 +45,9 @@ The frontend expects the backend at `http://127.0.0.1:8000`.
 ## Test
 
 ```
-pytest -q                                                   # Python tests, from the repo root
-pytest --cov=simulation --cov=backend --cov-report=term     # with coverage
-cd frontend; npx vitest run                                 # frontend unit tests
-cd frontend; npm run test:e2e                               # Playwright
+pytest -q                        # Python tests, from the repo root
+cd frontend; npx vitest run      # frontend unit tests
+cd frontend; npm run test:e2e    # Playwright
 ```
 
 Playwright starts the backend and Vite itself if they aren't already running.
@@ -62,12 +59,12 @@ and builds the frontend. It doesn't run the frontend tests yet (#14).
 ## Lint
 
 ```
-ruff check .
-black --check .
-mypy --explicit-package-bases .
+ruff check .      # lint
+ruff format .     # format
 ```
 
-These run in CI but don't fail the build yet (#15).
+CI doesn't run ruff. The current code has lint errors, and it's going to be
+rewritten (#39), so they aren't worth fixing first.
 
 ## Card data
 

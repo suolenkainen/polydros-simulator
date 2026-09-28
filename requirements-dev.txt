@@ -1,17 +1,12 @@
-# Everything for development: tests, linters and the card export script.
+# Everything for development: tests, the linter and the card export script.
 -r requirements.txt
 
 # Tests. FastAPI's TestClient needs httpx.
 pytest>=9.1.1
-pytest-cov>=7.1.0
 httpx>=0.24
 
-# Lint, format and type checks (keep black and ruff in step with
-# .pre-commit-config.yaml)
+# Lint and format: ruff check . / ruff format .
 ruff>=0.16.9
-black>=26.5.1
-mypy>=2.3.1
-pre-commit>=3.3
 
 # scripts/export_cards_from_excel.py
 openpyxl>=3.1

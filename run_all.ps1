@@ -7,8 +7,8 @@ Usage:
 
 Behavior:
   1. Detect venv python at ./.venv/Scripts/python.exe (falls back to 'python')
-  2. Run ruff, mypy, pytest (fail fast if any step fails)
-  3. If all checks pass, open two new cmd windows:
+  2. Run pytest, and stop if it fails
+  3. If it passes, open two new cmd windows:
      - backend: runs the uvicorn server
      - frontend: cd frontend && npm run dev --host
   4. Open the frontend URL in the default browser (http://127.0.0.1:5173). Note: Vite may pick another port; check the frontend terminal.
@@ -28,16 +28,14 @@ if (-Not (Test-Path $venvPython)) {
 
 Write-Host "Using Python: $venvPython`n"
 
-Write-Host "Running ruff (lint checks)..."
-& $venvPython -m ruff check .
-Write-Host "ruff passed.`n"
-
-Write-Host "Running mypy (type checks)..."
-& $venvPython -m mypy .
-Write-Host "mypy passed.`n"
-
-Write-Host "Running pytest (unit tests)..."
+Write-Host "Running pytest..."
 & $venvPython -m pytest -q
+# PowerShell 5.1 doesn't stop on a failing native command, even with
+# $ErrorActionPreference = 'Stop', so check the exit code by hand.
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "pytest failed; not starting the servers."
+    exit 1
+}
 Write-Host "pytest passed.`n"
 
 Write-Host "Starting backend and frontend in separate windows..."

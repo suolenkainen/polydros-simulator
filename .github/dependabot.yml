@@ -1,10 +1,32 @@
 version: 2
 updates:
+  # Monthly, with each ecosystem's updates grouped into one PR, so updates
+  # arrive as a few PRs a month instead of one per package.
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    groups:
+      python:
+        patterns: ["*"]
+
   - package-ecosystem: "npm"
     directory: "/frontend"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    groups:
+      # Packages that must move together get their own group.
+      react:
+        patterns: ["react", "react-dom", "@types/react", "@types/react-dom"]
+      vite-and-vitest:
+        patterns: ["vite", "vitest", "@vitest/*", "@vitejs/*"]
+      other:
+        patterns: ["*"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      actions:
+        patterns: ["*"]
