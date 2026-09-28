@@ -1,7 +1,7 @@
 fastapi>=0.95.0
 uvicorn[standard]>=0.53.0
 numpy>=1.25
-pandas>=2.0
+pandas>=3.0.6
 pytest>=9.1.1
 httpx>=0.24
 
