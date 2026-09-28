@@ -3,7 +3,7 @@
 
 # Tests. FastAPI's TestClient needs httpx.
 pytest>=9.1.1
-pytest-cov>=4.0
+pytest-cov>=7.1.0
 httpx>=0.24
 
 # Lint, format and type checks (keep black and ruff in step with
