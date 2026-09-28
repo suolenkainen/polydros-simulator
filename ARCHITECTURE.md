@@ -1,619 +1,207 @@
-# Polydros TCG Economy Simulator - Architecture & Documentation
+# How the Polydros simulator works
 
-## 📚 Master Documentation
+This file describes how the code works today, including the parts that don't
+work the way their comments suggest. For setup and commands, see
+[README.md](README.md).
 
-This is the single source of truth for the Polydros simulator. For detailed feature guides, see `PRICE_HISTORY.md` and `TRADING_SYSTEM.md`.
-
----
-
-## 🏗️ System Architecture
-
-### Technology Stack
-- **Backend**: Python with FastAPI/Uvicorn
-- **Frontend**: React + TypeScript with Vite
-- **Simulation**: Deterministic Python engine with seeded RNG
-- **Testing**: PyTest (backend) + Playwright (E2E frontend)
-- **Build**: Vite (frontend), uvicorn (backend)
-
-### Project Structure
-```
-polydros-simulator/
-├── backend/
-│   └── main.py              # FastAPI server, endpoints
-├── frontend/
-│   ├── src/
-│   │   ├── App.tsx          # Main React component
-│   │   ├── components/      # UI components
-│   │   └── styles/          # Global CSS
-│   ├── e2e/                 # Playwright tests
-│   └── package.json
-├── simulation/
-│   ├── __init__.py
-│   ├── engine.py            # Main simulation loop
-│   ├── world.py             # WorldState, Agent classes
-│   ├── types.py             # Data structures
-│   ├── trading.py           # Trading system (454 lines)
-│   └── tests/               # PyTest files
-├── pyproject.toml           # Python config
-├── requirements.txt         # Python dependencies
-└── ARCHITECTURE.md          # This file
-```
-
----
-
-## 🎮 Core Simulation Concepts
-
-### Tick System
-- Each simulation runs for N ticks (default 50)
-- Deterministic: same seed = same results
-- Every tick: agents act, market trades, events logged
-
-### Agent System
-- 5 agents by default (configurable)
-- Each starts with:
-  - 200 Prism (currency)
-  - 0 cards initially
-  - Random trait combination (Collector, Scavenger, Competitor, Gambler)
-
-### Traits
-- **Collector**: Prefers rare/mythic cards, rarely sells them
-- **Scavenger**: Seeks cheap cards, rotates inventory frequently
-- **Competitor**: Wants duplicates of winning cards, sells after losses
-- **Gambler**: Impulsive trader, high chaos factor
-
-### Core Systems
-
-#### 1. Card System
-- Cards have properties: rarity, cost, power, defense, flavor text
-- Quality score (0-10): degrades with losses/plays
-- Desirability (0-10): based on wins and quality
-- Current price: calculated from rarity + quality
-
-#### 2. Trading System (Every 3 Ticks)
-**Selling Phase** (ticks 1, 4, 7, 10, ...):
-- Agents evaluate inventory → identify cards to list
-- Cards added to marketplace with trait-based pricing
-- Price multiplier based on agent type (0.7x-1.2x)
-
-**Buying Phase** (ticks 2, 5, 8, 11, ...):
-- Agents evaluate marketplace using desirability scoring
-- Each agent buys max 1 card (trait-specific preferences)
-- Prism transfers, card moves to buyer
-
-**No Trading** (ticks 0, 3, 6, 9, ...):
-- Market activity pauses
-
-#### 3. Price History System
-- Every card's price tracked every tick
-- Data captured: tick, price, quality_score, desirability
-- Stored in card_instances as PriceDataPoint array
-- Serialized through API for frontend visualization
-
-#### 4. Event Logging
-All significant actions logged:
-- `card_listed`: Agent sells card (has price, quality, desirability)
-- `card_purchased`: Agent buys from marketplace
-- `pack_bought`: Agent purchases booster pack
-- Other events as needed
-
----
-
-## 🔄 Data Flow
+## Layout
 
 ```
-Simulation Engine (engine.py)
-    ↓
-For each tick:
-    ├─→ Check if SELLING phase (t%3==1)
-    │   └─→ Calls trading.execute_selling_phase()
-    │       ├─ Agents identify sellable cards
-    │       ├─ Cards listed on marketplace
-    │       └─ Events logged
-    ├─→ Check if BUYING phase (t%3==2)
-    │   └─→ Calls trading.execute_buying_phase()
-    │       ├─ Agents evaluate marketplace
-    │       ├─ Purchases executed sequentially
-    │       ├─ Prism transferred, cards moved
-    │       └─ Events logged
-    ├─→ Record price history for all cards
-    │   └─→ Calls world.record_price_points()
-    ├─→ Update agent states
-    └─→ Store tick snapshot in timeseries
-
-API Response (backend/main.py)
-    ↓
-JSON serialization:
-    ├─ Agents array (with card_instances + full price_history)
-    ├─ Timeseries (tick-by-tick snapshots)
-    ├─ Events array (all logged events)
-    └─ Final state summary
-
-Frontend (React)
-    ↓
-Components receive data:
-    ├─ SimulationRunner: Accepts config, runs simulation
-    ├─ AgentList: Shows all agents
-    ├─ AgentDetail: Shows selected agent + cards
-    ├─ MarketBlock: Shows available cards for trading
-    ├─ GlobalCardSearch: Find cards by name, shows price history
-    ├─ CardDetail: Modal with chart visualization
-    └─ EventsView: Logs of all trades & events
-
-Visualization
-    ↓
-Price History Chart (SVG):
-    ├─ X-axis: Simulation ticks
-    ├─ Y-axis: Price in Prism
-    ├─ Green line: Price trend
-    ├─ Red dot: Current price
-    └─ Grid: Reference lines
+backend/main.py          FastAPI app: runs the engine, keeps the last result in memory
+simulation/
+  engine.py              SimulationConfig, run_simulation(): the tick loop, combat, pricing
+  trading.py             Selling and buying phases, per-agent desirability scoring
+  world.py               WorldState, Agent, Event, the marketplace
+  types.py               Card, trait, price history and market snapshot dataclasses
+  agents.py              Random trait generation
+  booster.py             Opening a booster pack
+  cards.py               Loads simulation/data/cards.json
+  data/cards.json        The card list (120 cards); see "Card data" in README.md
+  tests/                 pytest
+frontend/
+  src/api.ts             All calls to the backend
+  src/components/        React views: runner, world, agents, inventory, market, events, card detail
+  src/utils/, src/hooks/ Formatting, gem colours, pagination
+  src/**/__tests__/      vitest
+  tests/                 Playwright end-to-end tests
+scripts/                 export_cards_from_excel.py (xlsx to cards.json; out of date, #33)
+polydros_master_set_v1.xlsx   Master card list
+run_all.ps1              Runs ruff, mypy and pytest, then starts backend and frontend
 ```
 
----
-
-## 🚀 Features
-
-### 1. Price History Tracking ✅
-**What it does:**
-- Automatically records every card's price every tick
-- Captures quality, desirability, and market price
-- Enables price trend analysis
-
-**How to use:**
-1. Run simulation
-2. Search for a card (e.g., "Alloyed Guardian")
-3. Click result to see price history chart
-4. View green trend line with 30-100 data points
-
-**Files involved:**
-- `simulation/types.py`: PriceDataPoint class
-- `simulation/engine.py`: record_price_points() called each tick
-- `frontend/components/CardDetail.tsx`: SVG chart rendering
-- `frontend/components/GlobalCardSearch.tsx`: Search interface
-
-### 2. Trading System ✅
-**What it does:**
-- Agents trade cards based on traits every 3 ticks
-- Sophisticated desirability scoring (0-10 scale)
-- Fair sequential purchasing (no agent gets systematic advantage)
-- Proper prism & card transfers
-
-**Key mechanics:**
-- Base desirability: 5.0
-- Rarity bonus: +0.5 (Common) to +3.0 (Mythic)
-- Quality factor: (quality/10) × 2.0
-- Trait adjustments: Collector +2.0 rare, Scavenger +2.0 cheap, etc.
-- Price multipliers: 0.7x-1.2x based on agent type
-
-**Trading pattern (15 ticks example):**
-```
-Tick  1 (SELL): Listed=  9  cards
-Tick  2 (BUY):  Purchased= 3  cards (1 per agent)
-Tick  4 (SELL): Listed= 12  cards
-Tick  5 (BUY):  Purchased= 3  cards
-Tick  7 (SELL): Listed= 15  cards
-Tick  8 (BUY):  Purchased= 3  cards
-...repeats
-```
-
-**Files involved:**
-- `simulation/trading.py`: Complete trading logic (454 lines)
-- `simulation/engine.py`: Integration at ticks 1,2,4,5,7,8...
-- `frontend/components/MarketBlock.tsx`: Market display
-
-### 3. UI/UX Improvements ✅
-**Features:**
-- Dark theme for comfortable viewing
-- Color-coded rarity badges (Common, Rare, Mythic, etc.)
-- Responsive design (mobile/tablet/desktop)
-- Agent details with collapsible sections
-- Agent search and filtering
-- Market snapshot with price trends
-
-**Key components:**
-- `AgentList.tsx`: Left sidebar with agents
-- `AgentDetail.tsx`: Center panel with detailed view
-- `MarketBlock.tsx`: Marketplace display
-- `CardDetail.tsx`: Modal with price history
-- `global.css`: All styling
-
----
-
-## 🧪 Testing Strategy
-
-### Backend Tests (PyTest)
-**Location:** `simulation/tests/`
-
-**Test files:**
-- `test_api.py`: API endpoint verification
-- `test_tick_zero_state.py`: Initial state validation
-- `test_prism_negative.py`: Economy integrity
-- `test_tick_progression.py`: Determinism, tick advancement
-- `test_large_pool.py`: Card rarity distribution
-- `test_play_logic.py`: Combat and gameplay mechanics
-
-**Run tests:**
-```bash
-cd simulation
-pytest tests/ -v
-```
-
-### Frontend Tests (Playwright)
-**Location:** `frontend/e2e/`
-
-**What's tested:**
-- Simulation runner loads and executes
-- Agents render in UI
-- Market displays correctly
-- Cards can be searched
-- Price history charts render
-- All components integrate properly
-
-**Run tests:**
-```bash
-cd frontend
-npm run test
-```
-
-### Test Principles
-- Deterministic: Same seed = same results
-- Isolated: Each test independent
-- Comprehensive: Edge cases covered
-- Fast: Full test suite < 2 seconds
-
----
-
-## 🔧 Configuration
-
-### Simulation Config
-**File:** `simulation/engine.py`
-
-**Parameters:**
-```python
-class SimulationConfig:
-    seed: int = 42                  # Random seed for reproducibility
-    initial_agents: int = 5         # Number of agents (default 5)
-    ticks: int = 50                 # Simulation duration
-```
-
-**Frontend config form:**
-```
-Agents: [1-20] dropdown
-Ticks: [1-100] slider
-Seed: [text input]
-[Run Simulation] button
-```
-
-### Python Dependencies
-- `fastapi`: Web framework
-- `uvicorn`: ASGI server
-- `pydantic`: Data validation
-- `pytest`: Testing
-- `pytest-asyncio`: Async test support
-
-### Frontend Dependencies
-- `react`: UI framework
-- `typescript`: Type safety
-- `vite`: Build tool
-- `playwright`: E2E testing
-
----
-
-## 📊 Key Data Structures
-
-### Agent
-```python
-{
-  "id": 1,
-  "name": "Agent 1",
-  "prism": 200.0,
-  "traits": {
-    "collector": 0.6,
-    "scavenger": 0.2,
-    "competitor": 0.1,
-    "gambler": 0.1
-  },
-  "collection_count": 50,
-  "booster_count": 5,
-  "card_instances": [
-    {
-      "card_instance_id": "...",
-      "card_id": "C102",
-      "card_name": "Alloyed Guardian",
-      "rarity": "Common",
-      "current_price": 0.33,
-      "quality_score": 10.0,
-      "desirability": 7.0,
-      "price_history": [
-        {"tick": 1, "price": 0.33, "quality_score": 10.0, "desirability": 7.0},
-        {"tick": 2, "price": 0.33, "quality_score": 10.0, "desirability": 7.0},
-        // ... up to 100 entries
-      ]
-    }
-  ]
-}
-```
-
-### Simulation Result
-```python
-{
-  "config": SimulationConfig,
-  "agents": [Agent, Agent, ...],
-  "timeseries": [
-    {
-      "tick": 0,
-      "agent_count": 5,
-      "total_cards": 0,
-      "market_snapshot": {
-        "total_card_instances": 0,
-        "unique_cards_in_circulation": 0,
-        "price_index": 0.0
-      }
-    },
-    // ... one entry per tick
-  ],
-  "events": [
-    {
-      "tick": 1,
-      "agent_id": 1,
-      "event_type": "card_listed",
-      "description": "Agent 1 listed Alloyed Guardian for 0.33 Prism",
-      "agent_ids": [1]
-    }
-  ],
-  "final": {
-    "tick": 50,
-    "agent_count": 5,
-    "total_cards": 250
-  }
-}
-```
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Python 3.9+
-- Node.js 16+
-- Git
-
-### Installation
-```bash
-# Clone repo
-git clone https://github.com/suolenkainen/polydros-simulator.git
-cd polydros-simulator
-
-# Python setup
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-
-# Frontend setup
-cd frontend
-npm install
-cd ..
-```
-
-### Running Locally
-```bash
-# Terminal 1: Backend
-.venv\Scripts\python.exe -m uvicorn backend.main:app --reload
-
-# Terminal 2: Frontend (from frontend/ directory)
-npm run dev
-```
-
-**Access:**
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:8000
-- API docs: http://localhost:8000/docs
-
-### Running Simulations
-1. Open http://localhost:5173
-2. Set agents (5-20), ticks (1-100), seed (optional)
-3. Click "Run Simulation"
-4. Wait 1-3 seconds
-5. Explore results:
-   - View agents in left panel
-   - Click agent to see details
-   - Search for specific cards
-   - View price history charts
-
----
-
-## 🔌 API Endpoints
-
-### POST `/run`
-Run a simulation and return complete results
-
-**Request:**
-```json
-{
-  "seed": 42,
-  "agents": [{"name": "Agent 1"}],
-  "ticks": 50
-}
-```
-
-**Response:** Simulation results (see data structures above)
-
-### GET `/agents`
-Get agents from last run
-
-### GET `/agents/{agent_id}`
-Get specific agent details
-
-### GET `/agents/{agent_id}/cards`
-Get all cards for agent with full price history
-
-### GET `/world`
-Get world state summary
-
-### GET `/events`
-Get all logged events
-
----
-
-## 🎯 Design Decisions
-
-### Why Every 3 Ticks?
-- Balances activity with stability
-- 50-tick sim = ~16 trading cycles
-- Pattern: SELL (t%3==1), BUY (t%3==2), QUIET (t%3==0)
-- Prevents constant market thrashing
-
-### Why Sequential Purchasing?
-- Fair: no agent systematically advantaged
-- Predictable: easier to debug and understand
-- Realistic: agents wait their turn
-- Alternative considered: simultaneous bidding (too complex)
-
-### Why Trait-Based Desirability?
-- Enables diverse strategies
-- Reflects player personalities
-- Creates emergent trading patterns
-- Avoids "greedy agent" dominance
-
-### Why Price History Every Tick?
-- Enables trend analysis
-- Small memory cost (negligible)
-- Rich data for analytics
-- Supports future features (volatility, predictions)
-
-### Why Dark Theme?
-- Comfortable for extended use
-- Better for charts (lines stand out)
-- Professional appearance
-- Reduces eye strain
-
----
-
-## 🔮 Future Enhancements
-
-### Short Term
-- Export price history to CSV
-- Statistical aggregates (min/max/average)
-- Portfolio analysis tools
-- Volatility metrics
-
-### Medium Term
-- Multi-round tournaments (agents reset each round)
-- Skill development (agents learn from results)
-- Market manipulation detection
-- Advanced charting (candlestick, volume)
-
-### Long Term
-- Multiplayer trading (real players vs agents)
-- AI decision trees
-- Market prediction models
-- Economic policy experiments
-
----
-
-## 📊 Performance Characteristics
-
-| Metric | Value |
-|--------|-------|
-| 50-tick sim (5 agents) | ~1-2 seconds |
-| 100-tick sim (10 agents) | ~3-5 seconds |
-| Data size (100 ticks) | ~10-15 MB |
-| Chart render time | ~100ms |
-| Price points per 50-tick sim | ~2,500 |
-| Events per 50-tick sim | ~100-200 |
-
----
-
-## ✅ Quality Metrics
-
-| Metric | Status |
-|--------|--------|
-| Type Errors | 0 |
-| Build Errors | 0 |
-| Test Pass Rate | 100% |
-| Code Coverage | >80% (backend) |
-| Frontend Lighthouse | 85+ |
-| API Response Time | <500ms |
-
----
-
-## 📁 Important Files Quick Reference
-
-| File | Purpose |
-|------|---------|
-| `backend/main.py` | FastAPI server, endpoints |
-| `simulation/engine.py` | Main simulation loop |
-| `simulation/trading.py` | Trading system logic |
-| `simulation/types.py` | Data classes & structures |
-| `frontend/src/App.tsx` | React root component |
-| `frontend/src/components/` | UI components |
-| `frontend/src/styles/global.css` | All CSS styling |
-| `pyproject.toml` | Python project config |
-| `requirements.txt` | Python dependencies |
-| `README.md` | Quick start guide |
-| `TESTING.md` | Test documentation |
-| `PRICE_HISTORY.md` | Price history feature guide |
-| `TRADING_SYSTEM.md` | Trading system guide |
-
----
-
-## 🆘 Troubleshooting
-
-### Simulation runs but no data shows
-- Check browser console for errors
-- Verify backend is running on port 8000
-- Try refreshing the page
-
-### "Cannot find agents" error
-- Run simulation with at least 1 agent
-- Wait for simulation to complete (check browser console)
-
-### Chart not showing
-- Ensure simulation ran for 2+ ticks
-- Verify price_history has data points
-- Try reopening the card detail modal
-
-### Tests failing
-- Ensure all dependencies installed: `pip install -r requirements.txt`
-- Python 3.9+ required
-- Run from project root: `pytest simulation/tests/ -v`
-
----
-
-## 📞 Documentation Reference
-
-| Document | Purpose |
-|----------|---------|
-| `README.md` | Project overview, setup |
-| `TESTING.md` | Test suite details |
-| `PRICE_HISTORY.md` | Feature guide (price tracking) |
-| `TRADING_SYSTEM.md` | Feature guide (trading) |
-| `ARCHITECTURE.md` | This file (system design) |
-
----
-
-## 🎓 For New Developers
-
-1. **Understand the architecture:** Read this file
-2. **Set up locally:** Follow "Getting Started" section
-3. **Run tests:** `pytest simulation/tests/ -v`
-4. **Start frontend:** `npm run dev` from frontend/
-5. **Explore code:** Start with `simulation/engine.py`
-6. **Make changes:** Pick an issue, create PR
-
----
-
-## 🏁 Summary
-
-**Polydros** is a sophisticated TCG economy simulator featuring:
-- ✅ Deterministic tick-based simulation
-- ✅ Trait-driven agent behavior
-- ✅ Real-time trading system
-- ✅ Price history tracking & visualization
-- ✅ Comprehensive testing
-- ✅ Production-ready code
-- ✅ Beautiful responsive UI
-
-**Status: PRODUCTION READY** 🚀
-
-For feature-specific details, see `PRICE_HISTORY.md` and `TRADING_SYSTEM.md`.
+`simulation/` has no knowledge of HTTP. `backend/` only turns requests into a
+`SimulationConfig` and returns the result.
+
+## A run
+
+`run_simulation(SimulationConfig(seed, initial_agents, ticks))` builds a world,
+runs it for `ticks` ticks and returns one dict. Everything random comes from
+`random.Random` instances seeded from `seed`: the engine's own RNG, and a
+`rng_seed` per agent that each phase offsets (`rng_seed + tick + 1000` for
+opening packs, `+ 2000` for playing, and so on). Same config, same result.
+
+Setup:
+
+- Agents get IDs from 1, 200 Prism each, and random traits (see below).
+- The distributor starts with 10,000 booster packs.
+
+Each tick, in this order:
+
+1. **Buy boosters.** Each agent buys 5 packs for 12 Prism each (60 total) if it
+   can afford them. Once an agent has 60 or more cards, it only buys when a
+   random roll is below its `collector_trait`.
+2. **Open boosters.** Each agent opens up to 5 packs. A pack has 7 Common,
+   3 Uncommon, 1 Rare and 1 Player card, picked by `pack_weight`. There's a 5%
+   chance per pack that the Rare becomes a Mythic, and each card has a 2%
+   chance of being a hologram.
+3. **Play.** Agents with 40 or more cards have a 50% chance to play. They pick
+   a random opponent who also has 40 cards, and both use the first 40 cards of
+   their collection. `calculate_combat_score()` decides the winner. Every card
+   in both decks loses 1% quality. On a win, every card ID in the winner's deck
+   gets +1% price and attractiveness, and every card ID in the loser's deck
+   gets -1% (never below 0.01). These changes are per card ID, not per copy.
+4. **Age packs.** Every 180 ticks, agents holding unopened packs get a
+   `pack_age` event. Nothing else changes.
+5. **Deck maintenance.** Every 20 ticks the engine tries to replace deck cards
+   with a low feasibility score. In practice this never replaces anything (see
+   "Known gaps").
+6. **Trade.** Ticks 1, 4, 7, ... are selling phases; ticks 2, 5, 8, ... are
+   buying phases. See "Trading".
+7. **Record.** Every tracked card copy appends a price point, and the world
+   stores a market snapshot (average price, standard deviation, trade count
+   and volume for the tick).
+
+## Agents and traits
+
+`generate_agent_traits()` gives each agent four trait values. `collector_trait`
+is between 0.10 and 0.50; `competitor_trait`, `gambler_trait` and
+`scavenger_trait` are between 0 and 1. Agents also get a `primary_trait`,
+`risk_aversion` and `time_horizon`, but no code reads those yet.
+
+A trait "applies" to trading when its value is above 0.5. Because
+`collector_trait` never goes above 0.50, the collector rules in `trading.py`
+never apply.
+
+## Two records of every card
+
+This is the part most likely to confuse you. Each opened card is stored twice
+on its agent:
+
+| | `agent.collection` | `agent.card_instances` |
+|---|---|---|
+| Type | list of `CardInstance` | dict of `AgentCardInstance`, keyed by instance ID |
+| Used by | booster rules (60 cards), combat (40 cards), quality loss, `full_collection` and `deck` in the result | trading, price history, market snapshots, `/agents/{id}/cards` |
+| Quality | starts at 10.0, drops 1% per game | starts at 10.0, never changes |
+| Moves when traded | no | yes |
+
+The two are never synced. Combat wears down `collection` and changes the
+per-card-ID prices in `WorldState.card_metadata`, but trading reads
+`card_instances`, whose price only changes when a copy of that card sells. So
+combat has no effect on the market, and a traded card still counts in the
+seller's `collection`.
+
+## Trading
+
+The rules are in [simulation/trading.py](simulation/trading.py). The tuning
+numbers (chances, thresholds, multipliers) live in the functions named below;
+read them there instead of copying them into docs.
+
+**Selling phase** (`build_sell_lists`, `execute_selling_phase`). Each agent
+goes through its `card_instances`. A card goes up for sale if its quality is
+below 3.0, if it has more than 3 losses, or if a trait-based random roll hits.
+Only the first trait above 0.5 is checked, in the order scavenger, gambler,
+collector, competitor; with none above 0.5, there's a small default chance.
+The asking price starts from the card's `current_price` and is adjusted for
+how short of Prism the agent is and for its traits. Scavengers always ask 15%
+less. The minimum is 0.1 Prism.
+
+A listed card stays in the seller's inventory until someone buys it.
+Listings never expire, so unsold cards stay on the market for the rest of the
+run.
+
+**Buying phase** (`build_purchase_lists`, `execute_buying_phase`). Each agent
+scores every listing it didn't post with `calculate_desirability_for_agent()`,
+a 0 to 10 score from rarity, quality, price, affordability and traits. It
+keeps the listings above its threshold (lower for gamblers and scavengers),
+sorted best first. Agents then take turns in a random order, which is seeded
+from the tick. On its turn, an agent buys the first listing on its list that
+is still available and that it can afford, then stops: at most one purchase
+per agent per buying phase.
+
+**A sale** (`WorldState.buy_from_marketplace`) moves the card copy to the
+buyer, moves the Prism, and sets the price of every copy of that card ID, on
+every agent, to the average of its old price and the sale price.
+
+## Card prices
+
+A new card copy's price comes from `calculate_card_price()` in `engine.py`:
+the card's `base_price` times multipliers for rarity, scarcity (from
+`pack_weight`) and quality. After that, only sales change it (see above).
+
+## Price history
+
+At the end of each tick, `WorldState.record_price_points()` calls
+`record_price_point()` on every `AgentCardInstance`. That recalculates the
+copy's desirability and condition, then appends
+`{tick, price, quality_score, desirability}` to its `price_history`. A card
+opened on tick 5 of a 50-tick run has 46 points. The history travels with the
+copy when it's traded. The frontend draws it as an SVG chart in
+`CardDetail.tsx`.
+
+## The result
+
+`run_simulation()` returns:
+
+- `config`: the `SimulationConfig` as a dict.
+- `timeseries`: one entry per tick, from tick 0. Each has world counts
+  (`agent_count`, `total_cards`, `distributor_boosters`,
+  `total_unopened_boosters`) and, from tick 1, that tick's `events` and a
+  `market_snapshot`.
+- `final`: the world counts after the last tick.
+- `agents`: per agent, `id`, `name`, `nick`, `prism`, `rng_seed`, `traits`,
+  `collection_count`, `booster_count`, `full_collection` (from `collection`),
+  `card_instances` (with price history), `deck` (40 cards built by
+  `build_deck()`) and `agent_events`.
+- `events`: every event. `event_type` is one of `booster_purchase`, `combat`,
+  `play` (no opponent available), `pack_age`, `card_listed` or
+  `card_purchased`.
+
+## API
+
+The backend keeps only the most recent run, in memory. It's lost when the
+server restarts.
+
+| Endpoint | Returns |
+|---|---|
+| `POST /run` | Runs a simulation. Body: `{"seed": 42, "agents": 5, "ticks": 1}` (these are the defaults). Returns the whole result. |
+| `GET /agents` | `{"agents": [...]}` from the last run |
+| `GET /agents/{id}` | `{"agent": {...}}` |
+| `GET /agents/{id}/traits` | `{"traits": {...}}` |
+| `GET /agents/{id}/cards` | The agent's `card_instances`, with price history |
+| `GET /agents/{id}/events` | Events where the agent was the main actor |
+| `GET /agents/{id}/collection` | Meant to be a rarity breakdown; currently returns empty fields |
+
+With no run yet, or an unknown agent ID, the endpoints return
+`{"error": "..."}` with status 200, not 404. FastAPI's own docs are at
+`http://127.0.0.1:8000/docs` while the backend runs.
+
+## Known gaps
+
+These are real behaviour, not doc mistakes.
+
+- The two card records described above are never synced, so combat doesn't
+  affect trading, prices or price history ([#27](https://github.com/suolenkainen/polydros-simulator/issues/27)).
+- `win_count` and `loss_count` are never increased. Every rule that depends on
+  them (loss-based selling, competitor scoring, card condition) never fires
+  ([#28](https://github.com/suolenkainen/polydros-simulator/issues/28)).
+- The booster-buying roll and the play roll use the same seed
+  (`rng_seed + tick + 2000`), so they are the same number. Whether an agent
+  buys packs after 60 cards and whether it plays that tick are linked
+  ([#29](https://github.com/suolenkainen/polydros-simulator/issues/29)).
+- Deck maintenance looks cards up by card ID in a dict keyed by instance ID,
+  so it never finds anything to replace. Combat doesn't use `build_deck()`
+  either; it takes the first 40 cards of `collection` ([#30](https://github.com/suolenkainen/polydros-simulator/issues/30)).
+- `collector_trait` tops out at 0.50, but the trading rules check for above
+  0.5, so the collector rules never apply ([#31](https://github.com/suolenkainen/polydros-simulator/issues/31)).
+- `GET /agents/{id}/collection` reads fields the engine doesn't produce, and
+  errors come back as status 200 ([#32](https://github.com/suolenkainen/polydros-simulator/issues/32)).
