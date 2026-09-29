@@ -11,7 +11,7 @@ A Vite + React + TypeScript app with two tabs:
   in `src/components/`. It only starts a simulation run when you open it, and
   it goes once the new result views replace it.
 
-The backend address is `API_BASE` in `src/api.ts` (`http://127.0.0.1:8000`).
+The backend address is `API_BASE` in `src/api.ts` (`http://127.0.0.1:8420`).
 The backend allows requests from any origin, so no proxy is needed in
 development.
 
@@ -21,7 +21,7 @@ Start the backend first (see the [main README](../README.md)), then:
 
 ```
 npm install
-npm run dev        # http://localhost:5173
+npm run dev        # http://localhost:5420
 npm run build      # production build into dist/
 ```
 
@@ -38,7 +38,7 @@ The Playwright tests cover the old simulation page, so they open
 `#old-simulation`. Most of them fail, and already did before the card
 browser: their input selectors never match (#63).
 
-The Playwright config starts the backend on port 8000 and Vite on port 5173 if
+The Playwright config starts the backend on port 8420 and Vite on port 5420 if
 they aren't already running. If they are, it reuses them, so stop old servers
 first if you want to test the current code. The first run needs
 `npx playwright install chromium`.

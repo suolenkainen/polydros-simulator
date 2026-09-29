@@ -36,11 +36,12 @@ powershell -ExecutionPolicy Bypass -File .\run_all.ps1
 Or start them yourself, each in its own terminal:
 
 ```
-uvicorn backend.main:app --reload      # http://127.0.0.1:8000, API docs at /docs
-cd frontend; npm run dev               # http://localhost:5173
+uvicorn backend.main:app --reload --port 8420   # API docs at /docs
+cd frontend; npm run dev                        # http://localhost:5420
 ```
 
-The frontend expects the backend at `http://127.0.0.1:8000`.
+The frontend expects the backend at `http://127.0.0.1:8420`. Vite always uses
+port 5420 and stops with an error if something else already has it.
 
 ## Test
 

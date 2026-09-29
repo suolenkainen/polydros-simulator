@@ -150,7 +150,7 @@ cd frontend; npm run test:e2e                      # Playwright, not in CI yet
 - CI runs the Python tests on Linux with Python 3.11, and only builds the
   frontend. Vitest and Playwright don't run in CI, so run them yourself before
   a PR that touches `frontend/` and say which ones you ran.
-- Playwright starts the backend (port 8000) and Vite (port 5173) itself, or
+- Playwright starts the backend (port 8420) and Vite (port 5420) itself, or
   reuses servers that are already running. If a stale server is up, tests can
   pass or fail against old code.
 - **Tests check behaviour that matters, not coverage.** A good test says

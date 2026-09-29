@@ -18,15 +18,15 @@ export default defineConfig({
   webServer: [
     // Start backend
     {
-      command: 'python -m uvicorn backend.main:app --reload --port 8000',
-      port: 8000,
+      command: 'python -m uvicorn backend.main:app --reload --port 8420',
+      port: 8420,
       cwd: '..',
       reuseExistingServer: true,
     },
     // Start frontend (vite) on fixed port
     {
-      command: 'npm run dev -- --port 5173',
-      port: 5173,
+      command: 'npm run dev -- --port 5420',
+      port: 5420,
       cwd: '.',
       reuseExistingServer: true,
     },

@@ -11,7 +11,8 @@ Behavior:
   3. If it passes, open two new cmd windows:
      - backend: runs the uvicorn server
      - frontend: cd frontend && npm run dev --host
-  4. Open the frontend URL in the default browser (http://127.0.0.1:5173). Note: Vite may pick another port; check the frontend terminal.
+  4. Open the frontend in the default browser (http://localhost:5420). The
+     backend runs on http://127.0.0.1:8420.
 #>
 
 Set-StrictMode -Version Latest
@@ -41,7 +42,7 @@ Write-Host "pytest passed.`n"
 Write-Host "Starting backend and frontend in separate windows..."
 
 # Start backend in a new cmd window
-$backendCmd = "`"$venvPython`" -m uvicorn backend.main:app --reload"
+$backendCmd = "`"$venvPython`" -m uvicorn backend.main:app --reload --port 8420"
 Start-Process -FilePath 'cmd.exe' -ArgumentList "/k $backendCmd" -WorkingDirectory $scriptRoot
 
 # Start frontend in a new cmd window
@@ -52,17 +53,10 @@ Start-Process -FilePath 'cmd.exe' -ArgumentList "/k $frontendCmd" -WorkingDirect
 Write-Host "Waiting a couple of seconds for dev servers to come up..."
 Start-Sleep -Seconds 3
 
-# Open the default browser to the common Vite port. Vite may use another port; check the frontend window if this fails.
-$urlsToTry = @('http://localhost:5173','http://localhost:5174','http://localhost:5175')
-foreach ($u in $urlsToTry) {
-    try {
-        Start-Process $u
-        break
-    } catch {
-        continue
-    }
-}
+# vite.config.ts pins the port with strictPort, so the frontend is either here
+# or its window shows why it didn't start.
+Start-Process 'http://localhost:5420'
 
-Write-Host "Done. Backend and frontend started in separate windows. If the browser did not open, check the frontend terminal for the exact URL.`n"
+Write-Host "Done. Backend and frontend started in separate windows. If the page doesn't load, check the frontend window for errors.`n"
 
 return 0

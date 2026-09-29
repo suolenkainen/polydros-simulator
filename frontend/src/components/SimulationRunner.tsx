@@ -10,7 +10,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js'
-import { runSimulation } from '../api.ts'
+import { API_BASE, runSimulation } from '../api.ts'
 
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
@@ -204,7 +204,7 @@ export default function SimulationRunner({
       sessionStorage.setItem('simulationRunnerState', JSON.stringify(state))
     } catch (err) {
       console.error(err)
-      alert('Failed to run simulation; is backend running at http://127.0.0.1:8000?')
+      alert(`Failed to run simulation; is backend running at ${API_BASE}?`)
     } finally {
       setLoading(false)
     }
