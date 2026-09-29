@@ -30,8 +30,10 @@ simulation/
   data/cards.json        The card list (120 cards); see "Card data" in README.md
   tests/                 pytest
 frontend/
-  src/api.ts             All calls to the backend
-  src/components/        React views: runner, world, agents, inventory, market, events, card detail
+  src/App.tsx            Two tabs: Cards (#cards) and Old simulation (#old-simulation)
+  src/api.ts             API_BASE and the old simulation's calls to the backend
+  src/cards/             The card browser: grid, filters, card view, all from GET /cards
+  src/components/        The old simulation page: runner, world, agents, inventory, market, events
   src/utils/, src/hooks/ Formatting, gem colours, pagination
   src/**/__tests__/      vitest
   tests/                 Playwright end-to-end tests

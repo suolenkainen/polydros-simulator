@@ -1,0 +1,214 @@
+/* Card browser (CardBrowser.tsx) and card view (CardView.tsx). Rarity colours
+   match the old views. */
+
+.card-browser-message {
+  padding: 2rem;
+  color: #666;
+}
+
+.card-browser-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card-browser-filters input,
+.card-browser-filters select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.card-browser-filters input {
+  flex: 1;
+  min-width: 12rem;
+}
+
+.card-browser-count {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.card-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 0.75rem;
+}
+
+.card-tile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0 0 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  overflow: hidden;
+}
+
+.card-tile:hover,
+.card-tile:focus-visible {
+  border-color: #4a9eff;
+  box-shadow: 0 2px 8px rgba(74, 158, 255, 0.25);
+}
+
+.card-tile img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  background: #eee;
+}
+
+.card-tile-name {
+  padding: 0 0.6rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.card-tile .rarity {
+  margin: 0 0.6rem;
+  align-self: flex-start;
+}
+
+.rarity,
+.gem {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.rarity-common { background: #888888; }
+.rarity-uncommon { background: #2d5016; }
+.rarity-rare { background: #3c6382; }
+.rarity-mythic { background: #9c3c0f; }
+.rarity-player { background: #6b3b8a; }
+.rarity-alternate_art { background: #c2a000; }
+
+.card-view-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.card-view {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+.card-view-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #eee;
+}
+
+.card-view-body {
+  padding: 1.25rem;
+}
+
+.card-view-body h2 {
+  margin: 0 2rem 0.5rem 0;
+}
+
+.card-view-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card-view-type {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.card-view-stats {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.3rem 1rem;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+.card-view-stats dt {
+  color: #777;
+}
+
+.card-view-stats dd {
+  margin: 0;
+}
+
+.card-view-flavor {
+  font-style: italic;
+  color: #444;
+}
+
+.card-view-id {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.card-view-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+@media (max-width: 700px) {
+  .card-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tabs at the top of the page (App.tsx). */
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+.tabs a {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #555;
+  border-bottom: 2px solid transparent;
+}
+
+.tabs a[aria-current='page'] {
+  color: #000;
+  border-bottom-color: #4a9eff;
+  font-weight: 600;
+}

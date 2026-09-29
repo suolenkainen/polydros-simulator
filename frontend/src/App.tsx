@@ -1,52 +1,43 @@
 import React from 'react'
-import SimulationRunner from './components/SimulationRunner.tsx'
-import AgentList from './components/AgentList.tsx'
-import AgentDetail from './components/AgentDetail.tsx'
-import WorldView from './components/WorldView.tsx'
-import EventsView from './components/EventsView.tsx'
-import MarketBlock from './components/MarketBlock.tsx'
+import CardBrowser from './cards/CardBrowser'
+import OldSimulationPage from './components/OldSimulationPage'
+
+// Two tabs while the redesign is under way: the new card browser, and the old
+// simulation page. The tab is kept in the URL (#cards, #old-simulation) so a
+// reload stays on the same one. Only the open tab is mounted, so the old page
+// doesn't start a simulation run unless it's opened.
+const TABS = [
+  { id: 'cards', label: 'Cards' },
+  { id: 'old-simulation', label: 'Old simulation' },
+] as const
+
+type TabId = (typeof TABS)[number]['id']
+
+function tabFromHash(): TabId {
+  const hash = window.location.hash.slice(1)
+  return TABS.some((t) => t.id === hash) ? (hash as TabId) : 'cards'
+}
 
 export default function App() {
-  const [selectedAgentId, setSelectedAgentId] = React.useState<number | null>(null)
-  const [worldSummary, setWorldSummary] = React.useState<{
-    tick: number
-    agent_count: number
-    total_cards: number
-    total_unopened_boosters: number
-  } | null>(null)
-  const [events, setEvents] = React.useState<Array<{
-    tick: number
-    agent_id: number
-    event_type: string
-    description: string
-    agent_ids: number[]
-  }> | null>(null)
-  const [agents, setAgents] = React.useState<any[]>([])
+  const [tab, setTab] = React.useState<TabId>(tabFromHash)
 
-  // Log when agents change
   React.useEffect(() => {
-    console.log('[App] agents updated:', agents.length > 0 ? `${agents.length} agents` : 'empty')
-  }, [agents])
+    const onHashChange = () => setTab(tabFromHash())
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
 
   return (
     <div className="container">
-      <h1>Polydros — Economy Simulator</h1>
-      <SimulationRunner 
-        onWorldSummary={setWorldSummary} 
-        onEvents={setEvents}
-        onAgents={setAgents}
-      />
-      <WorldView summary={worldSummary} />
-      <EventsView events={events} />
-      <MarketBlock agents={agents} />
-      <div className="app-layout">
-        <div className="app-layout-column">
-          <AgentList onSelect={setSelectedAgentId} />
-        </div>
-        <div className="app-layout-column-large">
-          {selectedAgentId !== null && <AgentDetail id={selectedAgentId} agents={agents} />}
-        </div>
-      </div>
+      <h1>Polydros</h1>
+      <nav className="tabs">
+        {TABS.map((t) => (
+          <a key={t.id} href={`#${t.id}`} aria-current={t.id === tab ? 'page' : undefined}>
+            {t.label}
+          </a>
+        ))}
+      </nav>
+      {tab === 'cards' ? <CardBrowser /> : <OldSimulationPage />}
     </div>
   )
 }

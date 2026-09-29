@@ -6,7 +6,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Tick Progression & Reset', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:5173')
+    await page.goto('http://localhost:5173/#old-simulation')
   })
 
   test('tick counter starts at 0', async ({ page }) => {

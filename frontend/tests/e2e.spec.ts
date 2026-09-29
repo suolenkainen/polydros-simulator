@@ -16,7 +16,7 @@ import { test, expect } from '@playwright/test'
 test.describe('Polydros Simulator E2E', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to frontend
-    await page.goto('http://localhost:5173')
+    await page.goto('http://localhost:5173/#old-simulation')
   })
 
   test('run simulation and verify basic UI structure', async ({ page }) => {
