@@ -1,4 +1,5 @@
 import React from 'react'
+import { API_BASE } from '../api'
 import { type Card, RARITY_ORDER, cardThumbUrl, fetchCards, rarityName } from './cardApi'
 import { type CardFilters, NO_FILTERS, distinct, filterCards } from './filterCards'
 import CardView from './CardView'
@@ -22,7 +23,7 @@ export default function CardBrowser() {
   if (error) {
     return (
       <p className="card-browser-message">
-        Couldn't load the cards: {error}. Is the backend running at port 8000?
+        Couldn't load the cards: {error}. Is the backend running at {API_BASE}?
       </p>
     )
   }

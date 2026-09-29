@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { formatPrice, formatPriceWithCap } from '../utils/priceFormatter'
+import { API_BASE } from '../api.ts'
 import CardDetail from './CardDetail'
 
 type PricePoint = {
@@ -113,7 +114,7 @@ export default function AgentInventory({ agentId, agents }: AgentInventoryProps)
       setError(null)
       console.log('[AgentInventory] No agents prop or agent not found, falling back to API')
       try {
-        const response = await fetch(`http://127.0.0.1:8000/agents/${agentId}/cards`)
+        const response = await fetch(`${API_BASE}/agents/${agentId}/cards`)
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`)
         }

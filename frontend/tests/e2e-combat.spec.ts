@@ -17,7 +17,7 @@ import { test, expect } from '@playwright/test'
 test.describe('Combat System & Agent Behavior', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to frontend
-    await page.goto('http://localhost:5173/#old-simulation')
+    await page.goto('http://localhost:5420/#old-simulation')
   })
 
   test('tick 0 shows no events on agents (seed 42)', async ({ page }) => {
@@ -142,7 +142,7 @@ test.describe('Combat System & Agent Behavior', () => {
 
     // Fetch agent collection via API to verify card data
     const response = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/0/cards').then(r => r.json())
+      fetch('http://localhost:8420/agents/0/cards').then(r => r.json())
     )
 
     // Verify structure
@@ -188,7 +188,7 @@ test.describe('Combat System & Agent Behavior', () => {
 
     // Fetch agent 3 collection
     const response = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/3/cards').then(r => r.json())
+      fetch('http://localhost:8420/agents/3/cards').then(r => r.json())
     )
 
     // Verify agent 3 exists and has data
@@ -215,10 +215,10 @@ test.describe('Combat System & Agent Behavior', () => {
 
     // Fetch collections for agents 0 and 1
     const agent0 = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/0/cards').then(r => r.json())
+      fetch('http://localhost:8420/agents/0/cards').then(r => r.json())
     )
     const agent1 = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/1/cards').then(r => r.json())
+      fetch('http://localhost:8420/agents/1/cards').then(r => r.json())
     )
 
     // Both should have cards but potentially different collections
@@ -247,7 +247,7 @@ test.describe('Combat System & Agent Behavior', () => {
 
     // Fetch agent data to check purchase patterns
     const agent0 = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/0').then(r => r.json())
+      fetch('http://localhost:8420/agents/0').then(r => r.json())
     )
 
     // After 15 ticks at 5 cards/pack * 5 packs/tick = 75 cards expected
@@ -275,12 +275,12 @@ test.describe('Combat System & Agent Behavior', () => {
     await page.waitForTimeout(2500)
 
     const agent777 = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/0').then(r => r.json())
+      fetch('http://localhost:8420/agents/0').then(r => r.json())
     )
     const trait777 = agent777.agent.traits.collector_trait
 
     // Reset and run with seed 333
-    await page.goto('http://localhost:5173/#old-simulation')
+    await page.goto('http://localhost:5420/#old-simulation')
     await page.fill('input[type="number"]:nth-of-type(1)', '333')
     await page.fill('input[type="number"]:nth-of-type(2)', '3')
     await page.fill('input[type="number"]:nth-of-type(3)', '1')
@@ -288,7 +288,7 @@ test.describe('Combat System & Agent Behavior', () => {
     await page.waitForTimeout(2500)
 
     const agent333 = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/0').then(r => r.json())
+      fetch('http://localhost:8420/agents/0').then(r => r.json())
     )
     const trait333 = agent333.agent.traits.collector_trait
 
@@ -313,12 +313,12 @@ test.describe('Combat System & Agent Behavior', () => {
 
     // Fetch full simulation data
     const response = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents').then(r => r.json())
+      fetch('http://localhost:8420/agents').then(r => r.json())
     )
 
     // Get all events
     const events = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents').then(r => r.json())
+      fetch('http://localhost:8420/agents').then(r => r.json())
     )
 
     // Look for combat events in the events log
@@ -412,7 +412,7 @@ test.describe('Combat System & Agent Behavior', () => {
 
     // Fetch raw event data
     const allEvents = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/0').then(r => r.json())
+      fetch('http://localhost:8420/agents/0').then(r => r.json())
     )
 
     // Verify agent has events
@@ -449,7 +449,7 @@ test.describe('Combat System & Agent Behavior', () => {
 
     // Fetch collection data
     const response = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/0/cards').then(r => r.json())
+      fetch('http://localhost:8420/agents/0/cards').then(r => r.json())
     )
 
     expect(response.cards.length).toBeGreaterThan(0)
@@ -479,10 +479,10 @@ test.describe('Combat System & Agent Behavior', () => {
     await page.waitForTimeout(5000)
 
     const agent0 = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/0/cards').then(r => r.json())
+      fetch('http://localhost:8420/agents/0/cards').then(r => r.json())
     )
     const agent1 = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/1/cards').then(r => r.json())
+      fetch('http://localhost:8420/agents/1/cards').then(r => r.json())
     )
 
     // Get min/max attractiveness for each agent
@@ -514,7 +514,7 @@ test.describe('Combat System & Agent Behavior', () => {
 
     // Fetch agent collection data
     const response = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/0/cards').then(r => r.json())
+      fetch('http://localhost:8420/agents/0/cards').then(r => r.json())
     )
 
     // The simulation engine tracks card stat changes in world.card_metadata
@@ -551,7 +551,7 @@ test.describe('Combat System & Agent Behavior', () => {
     const agents = []
     for (let i = 0; i < Math.min(3, 10); i++) {
       const response = await page.evaluate((agentId) =>
-        fetch(`http://localhost:8000/agents/${agentId}/cards`).then(r => r.json()),
+        fetch(`http://localhost:8420/agents/${agentId}/cards`).then(r => r.json()),
         i
       )
       agents.push(response)
@@ -585,7 +585,7 @@ test.describe('Combat System & Agent Behavior', () => {
 
     // Fetch collection data with prices
     const response = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/0/cards').then(r => r.json())
+      fetch('http://localhost:8420/agents/0/cards').then(r => r.json())
     )
 
     expect(response.cards.length).toBeGreaterThan(0)
@@ -620,10 +620,10 @@ test.describe('Combat System & Agent Behavior', () => {
 
     // Fetch agent collections
     const agent0 = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/0/cards').then(r => r.json())
+      fetch('http://localhost:8420/agents/0/cards').then(r => r.json())
     )
     const agent1 = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/1/cards').then(r => r.json())
+      fetch('http://localhost:8420/agents/1/cards').then(r => r.json())
     )
 
     // Collect price statistics
@@ -660,7 +660,7 @@ test.describe('Combat System & Agent Behavior', () => {
     await page.waitForTimeout(4500)
 
     const response = await page.evaluate(() =>
-      fetch('http://localhost:8000/agents/0/cards').then(r => r.json())
+      fetch('http://localhost:8420/agents/0/cards').then(r => r.json())
     )
 
     // For each card, price and attractiveness should be similar

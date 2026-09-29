@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Agent Numbering and UI Updates', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:5173/#old-simulation')
+    await page.goto('http://localhost:5420/#old-simulation')
   })
 
   test('agents start from 1 not 0 in agent list', async ({ page }) => {

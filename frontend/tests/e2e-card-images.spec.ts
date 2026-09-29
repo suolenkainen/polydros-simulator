@@ -13,7 +13,7 @@ import { test, expect } from '@playwright/test'
 test.describe('Card Image Loading', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to frontend
-    await page.goto('http://localhost:5173/#old-simulation')
+    await page.goto('http://localhost:5420/#old-simulation')
   })
 
   test('card images load when opening card detail', async ({ page }) => {
@@ -170,7 +170,7 @@ test.describe('Card Image Loading', () => {
     // This test verifies fallback behavior
     // Navigate to a page and manually set an image source to a non-existent card
     
-    await page.goto('http://localhost:5173/#old-simulation')
+    await page.goto('http://localhost:5420/#old-simulation')
 
     // Run simulation
     await page.click('button[type="submit"]')

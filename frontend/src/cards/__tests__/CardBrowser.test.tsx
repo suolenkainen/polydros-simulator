@@ -52,7 +52,7 @@ describe('CardBrowser', () => {
     expect(screen.getByText('Ramdelom’s Heart-Titan')).toBeInTheDocument()
     expect(screen.getByText('2 of 2 cards')).toBeInTheDocument()
     const thumbs = document.querySelectorAll('.card-tile img')
-    expect(thumbs[0].getAttribute('src')).toBe('http://127.0.0.1:8000/cards/C001/thumb')
+    expect(thumbs[0].getAttribute('src')).toBe('http://127.0.0.1:8420/cards/C001/thumb')
   })
 
   it('narrows the grid with a filter', async () => {
@@ -75,7 +75,7 @@ describe('CardBrowser', () => {
     expect(dialog).toHaveTextContent('The ash remembers every trespass.')
     expect(dialog).toHaveTextContent('Ruby, Creature')
     expect(dialog.querySelector('img')?.getAttribute('src')).toBe(
-      'http://127.0.0.1:8000/cards/C001/image',
+      'http://127.0.0.1:8420/cards/C001/image',
     )
 
     fireEvent.keyDown(window, { key: 'Escape' })

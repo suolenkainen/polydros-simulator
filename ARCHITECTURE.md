@@ -200,7 +200,7 @@ server restarts.
 
 With no run yet, or an unknown agent ID, the endpoints return
 `{"error": "..."}` with status 200, not 404. FastAPI's own docs are at
-`http://127.0.0.1:8000/docs` while the backend runs.
+`http://127.0.0.1:8420/docs` while the backend runs.
 
 ## Known gaps
 
